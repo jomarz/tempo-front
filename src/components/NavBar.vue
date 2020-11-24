@@ -1,9 +1,9 @@
 <template>
-    <div id="navbar">
-        <div class="logo-container">
+    <div  class="row" id="navbar">
+        <div class="col-6 logo-container">
             <a class='navbar-logo'></a>
         </div>
-        <SearchBox />
+        <SearchBox class="col-6"/>
     </div> 
 </template>
 

@@ -14,5 +14,6 @@ export default {
 <style lang="scss" scoped>
     .searchbox-container {
         display: inline;
+        text-align: right;
     }
 </style>
