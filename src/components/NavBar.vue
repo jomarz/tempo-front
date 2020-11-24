@@ -1,9 +1,11 @@
 <template>
-    <div  class="row" id="navbar">
-        <div class="col-6 logo-container">
-            <a class='navbar-logo'></a>
+    <div  class="container-fluid" id="navbar">
+        <div class="row">
+            <div class="col-6 logo-container">
+                <a class='navbar-logo'></a>
+            </div>
+            <SearchBox class="col-6"/>
         </div>
-        <SearchBox class="col-6"/>
     </div> 
 </template>
 
@@ -21,13 +23,15 @@ export default {
     #navbar {
         width: 100vw;
         background-color: white;
+        .row {
         height: 76px;
+        margin: 65px 20px 55px 20px;
+        }
         .logo-container {
             height: 100%;
             display: inline;
         }
         .navbar-logo {
-            margin: 65px 0px 55px 20px;
             display: block;
             background-image: url('../assets/img/tempo_logo.svg');
             background-size: contain;
