@@ -3,6 +3,7 @@
     <TopBar />
     <NavBar />
     <Featured />
+    <ad-full-width />
   </div>
 </template>
 
@@ -10,13 +11,15 @@
 import TopBar from './components/TopBar.vue';
 import NavBar from './components/NavBar.vue';
 import Featured from './components/Featured.vue';
+import AdFullWidth from './components/AdFullWidth.vue';
 
 export default {
   name: 'App',
   components: {
     TopBar,
     NavBar,
-    Featured
+    Featured,
+    AdFullWidth
   }
 }
 </script>
