@@ -2,18 +2,21 @@
   <div class="content-container">
     <TopBar />
     <NavBar />
+    <Featured />
   </div>
 </template>
 
 <script>
 import TopBar from './components/TopBar.vue';
 import NavBar from './components/NavBar.vue';
+import Featured from './components/Featured.vue';
 
 export default {
   name: 'App',
   components: {
     TopBar,
-    NavBar
+    NavBar,
+    Featured
   }
 }
 </script>
