@@ -1,11 +1,11 @@
 <template>
     <div class="nav-bar">
-        <ul class="navbar-menu">
-            <li class="vavbar-menu-item"><a href="#" class='navbar-menu-link' data-text='INICIO'>INICIO</a></li>
-            <li class="vavbar-menu-item"><a href="#" class='navbar-menu-link' data-text='CONCIERTOS'>CONCIERTOS</a></li>
-            <li class="vavbar-menu-item"><a href="#" class='navbar-menu-link' data-text='VIDEOS TEMPO'>VIDEOS TEMPO</a></li>
-            <li class="vavbar-menu-item"><a href="#" class='navbar-menu-link' data-text='ARTÍCULOS/NOTICIAS'>ARTÍCULOS/NOTICIAS</a></li>
-            <li class="vavbar-menu-item"><a href="#" class='navbar-menu-link' data-text='NOVEDADES DISCOGRÁFICAS'>NOVEDADES DISCOGRÁFICAS</a></li>
+        <ul class="navbar-menu nav-menu">
+            <li class="navbar-menu-item"><a href="#" class='navbar-menu-link' data-text='INICIO'>INICIO</a></li>
+            <li class="navbar-menu-item"><a href="#" class='navbar-menu-link' data-text='CONCIERTOS'>CONCIERTOS</a></li>
+            <li class="navbar-menu-item"><a href="#" class='navbar-menu-link' data-text='VIDEOS TEMPO'>VIDEOS TEMPO</a></li>
+            <li class="navbar-menu-item"><a href="#" class='navbar-menu-link' data-text='ARTÍCULOS/NOTICIAS'>ARTÍCULOS/NOTICIAS</a></li>
+            <li class="navbar-menu-item"><a href="#" class='navbar-menu-link' data-text='NOVEDADES DISCOGRÁFICAS'>NOVEDADES DISCOGRÁFICAS</a></li>
         </ul>
     </div>
 </template>
@@ -32,35 +32,13 @@ export default {
         margin: 0;
         padding: 0 20px 0 20px;
     }
+
     .navbar-menu li {
         text-decoration: none;
         display: inline;
         font-size: 0.9rem;
         font-family: 'Roboto', sans-serif;
         font-weight: 400;
-        a {
-            text-decoration: none;
-            color: black;
-            display: inline-flex;
-            flex-direction: column;
-        }
-        a:hover {
-            font-weight: 700;
-        }        
-        .navbar-menu-link::after {
-            content: attr(data-text);
-            content: attr(data-text) / "";
-            height: 0;
-            visibility: hidden;
-            overflow: hidden;
-            user-select: none;
-            pointer-events: none;
-            font-weight: 700;
-
-            @media speech {
-                display: none;
-            }
-        }
     }
     .navbar-menu li:not(:first-child) {
         margin-left: 48px;
