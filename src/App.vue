@@ -4,7 +4,7 @@
     <NavBar />
     <Featured />
     <ad-full-width />
-    <concerts />
+    <concerts-section />
   </div>
 </template>
 
@@ -13,7 +13,7 @@ import TopBar from './components/TopBar.vue';
 import NavBar from './components/NavBar.vue';
 import Featured from './components/Featured.vue';
 import AdFullWidth from './components/AdFullWidth.vue';
-import Concerts from './components/Concerts.vue';
+import ConcertsSection from './components/ConcertsSection.vue';
 
 export default {
   name: 'App',
@@ -22,7 +22,7 @@ export default {
     NavBar,
     Featured,
     AdFullWidth,
-    Concerts
+    ConcertsSection
   }
 }
 </script>
