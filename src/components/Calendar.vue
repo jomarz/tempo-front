@@ -57,6 +57,12 @@ export default {
             justify-content: center;
             align-items: center;
         }
+        .month-year {
+            margin: 0 15px 0 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;            
+        }
         .month-arrow {
             width: 15px;
             height: 15px;
