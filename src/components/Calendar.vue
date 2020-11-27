@@ -4,15 +4,19 @@
             <div class="col-3">
                 <div class="calendar-title-box">
                     <h4 class="calendar-title">CALENDARIO</h4>
-                    <span class="calendar-subtitle">DE CONCIERTOS</span>
+                    <div class="calendar-subtitle">DE CONCIERTOS</div>
                 </div>
                 <div class="calendar-month">
-                    <div class="left-arrow"></div>
+                    <div class="month-arrow">
+                        <img src="../assets/img/TempoWebsiteIconsYellowArrows.svg" alt="">
+                    </div>
                     <div class="month-year">
                         <div class="month-name">ENERO</div>
                         <div class="year">2021</div>
                     </div>
-                    <div class="right-arrow"></div>
+                    <div class="month-arrow">
+                        <img src="../assets/img/TempoWebsiteIconsYellowArrows.svg" alt="">
+                    </div>
                 </div>
             </div>    
             <div class="col-9 days-container">
@@ -42,6 +46,21 @@ export default {
             font-size: 1.05rem;
             font-weight: 400;
             letter-spacing: 0.008em;
+        }
+        .calendar-title-box {
+            flex-direction: column;
+            display: flex;
+            align-items: center;
+        }
+        .calendar-month {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .month-arrow {
+            width: 15px;
+            height: 15px;
+            line-height: 100%;
         }
     }
 </style>
