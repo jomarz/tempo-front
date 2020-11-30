@@ -37,7 +37,7 @@ export default {
     .concerts-section {
         margin: 40px 0 40px 0;
         .section-nav {
-            padding: 15px 63px 15px 20px;
+            padding: 10px 63px 10px 20px;
             background-color: #f3f3f4;
         }
         .section-nav-menu {
