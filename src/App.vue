@@ -58,6 +58,7 @@ export default {
     h3 {
       font-size: 1.45rem !important;
       font-family: 'Playfair display';
+      font-weight: 700;
     }
     h4 {
       font-size: 1.2rem !important;

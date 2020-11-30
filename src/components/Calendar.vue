@@ -1,6 +1,6 @@
 <template>
     <div class="calendar row">
-            <div class="col-3 calendar-left-box">
+            <div class="col-4 calendar-left-box">
                 <div class="calendar-title-box">
                     <h4 class="calendar-title">CALENDARIO</h4>
                     <div class="calendar-subtitle">DE CONCIERTOS</div>
@@ -18,7 +18,7 @@
                     </div>
                 </div>
             </div>    
-            <div class="col-9 days-container">
+            <div class="col-8 days-container">
                 <div class="days-header row"></div>
                 <div class="days-numbers row">
                     <div class="single-day-box" v-for="day in days" :key="day">

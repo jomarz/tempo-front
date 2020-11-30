@@ -1,10 +1,10 @@
 <template>
     <div class="concerts-section container-fluid">
         <div class="section-nav row">
-            <div class="col-3 section-title-container">
+            <div class="col-2 section-title-container">
                 <h3 class="section-nav-title">Conciertos</h3>
             </div>
-            <div class="col-9 section-nav-menu">
+            <div class="col-10 section-nav-menu">
                 <ul class="nav-menu section-menu">
                     <li class="navbar-menu-item"><a href="#" class='navbar-menu-link' data-text='Clásica'>Clásica</a></li>
                     <li class="navbar-menu-item"><a href="#" class='navbar-menu-link' data-text='Ópera'>Ópera</a></li>
@@ -14,10 +14,10 @@
             </div>
         </div>
         <div class="row calendar-row">
-            <div class="col-md-9 col-lg-8 pl-0">
+            <div class="col-md-9 col-lg-7 pl-0">
                 <Calendar />
             </div>
-            <div class="col-md-3 col-lg-4 pr-0">
+            <div class="col-md-3 col-lg-5 pr-0">
                 <ad-box class="ad-small" />
             </div>
         </div>
