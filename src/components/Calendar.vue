@@ -33,8 +33,6 @@ export default {
 
 <style lang="scss" scoped>
     .calendar {
-        margin-top: 40px;
-        margin-bottom: 40px;
         .calendar-left-box {
             display: flex;
             flex-direction: column;

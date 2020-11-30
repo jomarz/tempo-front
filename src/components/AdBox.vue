@@ -10,9 +10,9 @@ export default {
 
 <style lang="scss" scoped>
     .ad-full-width {
-        height: 110px;
+        box-sizing: border-box;
+        height: 100%;
         width: 100%;
-        margin: 10px 0 10px 0;
         background-color: black;
     }
 </style>

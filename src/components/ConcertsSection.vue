@@ -13,14 +13,22 @@
                 </ul>
             </div>
         </div>
-        <Calendar />
+        <div class="row calendar-row">
+            <div class="col-md-9 col-lg-8 pl-0">
+                <Calendar />
+            </div>
+            <div class="col-md-3 col-lg-4 pr-0">
+                <ad-box class="ad-small" />
+            </div>
+        </div>
     </div>    
 </template>
 
 <script>
+import AdBox from './AdBox.vue'
 import Calendar from './Calendar.vue'
 export default {
-  components: { Calendar },
+  components: { Calendar, AdBox },
     
 }
 </script>
@@ -48,6 +56,9 @@ export default {
         }
         .section-menu li{
             margin-left: 40px;
+        }
+        .calendar-row {
+            padding: 40px 0 04px 0;
         }
     }
 </style>

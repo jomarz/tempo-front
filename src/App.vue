@@ -3,7 +3,7 @@
     <TopBar />
     <NavBar />
     <Featured />
-    <ad-full-width />
+    <ad-box class="ad-full-width"/>
     <concerts-section />
   </div>
 </template>
@@ -12,8 +12,8 @@
 import TopBar from './components/TopBar.vue';
 import NavBar from './components/NavBar.vue';
 import Featured from './components/Featured.vue';
-import AdFullWidth from './components/AdFullWidth.vue';
 import ConcertsSection from './components/ConcertsSection.vue';
+import AdBox from './components/AdBox.vue';
 
 export default {
   name: 'App',
@@ -21,8 +21,8 @@ export default {
     TopBar,
     NavBar,
     Featured,
-    AdFullWidth,
-    ConcertsSection
+    ConcertsSection,
+    AdBox
   }
 }
 </script>
@@ -116,6 +116,13 @@ export default {
     }
     h3.section-nav-title {
       line-height: 1.5rem;
+    }
+    /* ad boxes styles*/
+    .ad-full-width {
+      height: 150px;
+    }
+    .ad-small {
+      height: 100%;
     }
   }
 
