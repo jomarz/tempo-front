@@ -19,8 +19,10 @@
                 </div>
             </div>    
             <div class="col-9 days-container">
-                <div class="days-header"></div>
-                <div class="days-numbers"></div>
+                <div class="days-header row"></div>
+                <div class="days-numbers row">
+                    
+                </div>
             </div> 
     </div>    
 </template>
