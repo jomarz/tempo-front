@@ -33,5 +33,6 @@ export default {
 <style lang="scss" scoped>
     .article-grid.container {
         display: flex;
+        padding: 40px 25px 0 0; 
     }
 </style>
