@@ -21,14 +21,16 @@
                 <ad-box class="ad-small" />
             </div>
         </div>
+        <article-grid />
     </div>    
 </template>
 
 <script>
 import AdBox from './AdBox.vue'
+import ArticleGrid from './ArticleGrid.vue'
 import Calendar from './Calendar.vue'
 export default {
-  components: { Calendar, AdBox },
+  components: { Calendar, AdBox, ArticleGrid },
     
 }
 </script>
