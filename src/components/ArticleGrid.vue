@@ -1,12 +1,14 @@
 <template>
     <div class="article-grid event-grid container flex-wrap">
-        <template v-for="content in contentList" :key="content">
-            <template v-if="contentType === 'event'">
+        <template v-if="contentType === 'event'">
+            <template v-for="content in contentList" :key="content">
                 <div class="col-md-4">
-                    Event
+                    <content-small-box />
                 </div>
-            </template>
-            <template v-else-if="contentType === 'article'">
+            </template>            
+        </template>
+        <template v-else-if="contentType === 'article'">
+            <template v-for="content in contentList" :key="content">
                 <div class="col-lg-4">
                     Article
                 </div>
@@ -16,7 +18,9 @@
 </template>
 
 <script>
+import ContentSmallBox from './ContentSmallBox.vue';
 export default {
+  components: { ContentSmallBox },
     
     setup () {
         const contentType = "event";
