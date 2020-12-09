@@ -21,7 +21,11 @@
                 <ad-box class="ad-small" />
             </div>
         </div>
-        <article-grid />
+        <div class="row grid-row">
+            <div class="col">
+                <article-grid />
+            </div>
+        </div>
     </div>    
 </template>
 
