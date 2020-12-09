@@ -26,6 +26,11 @@
                 <article-grid />
             </div>
         </div>
+        <div class="receive-cta-row">
+            <div class="col">
+                <ReceiveCTA />
+            </div>
+        </div>
     </div>    
 </template>
 
@@ -33,8 +38,9 @@
 import AdBox from './AdBox.vue'
 import ArticleGrid from './ArticleGrid.vue'
 import Calendar from './Calendar.vue'
+import ReceiveCTA from './ReceiveCTA.vue'
 export default {
-  components: { Calendar, AdBox, ArticleGrid },
+  components: { Calendar, AdBox, ArticleGrid, ReceiveCTA },
     
 }
 </script>
