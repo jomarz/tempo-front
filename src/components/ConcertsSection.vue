@@ -18,12 +18,12 @@
                 <Calendar />
             </div>
             <div class="col-md-3 col-lg-5 pr-0">
-                <ad-box class="ad-small" />
+                <AdBox class="ad-small" />
             </div>
         </div>
         <div class="row grid-row">
             <div class="col">
-                <article-grid />
+                <ArticleGrid />
             </div>
         </div>
         <div class="receive-cta-row">
