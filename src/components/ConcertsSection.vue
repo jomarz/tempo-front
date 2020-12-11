@@ -2,7 +2,7 @@
     <div class="concerts-section container-fluid">
         <div class="row section-nav-row">
             <div class="col pl-0 pr-0">
-                <SectionNav />
+                <SectionNav :menuItems="menuItems"/>
             </div>
         </div>
         <div class="row calendar-row">
@@ -34,6 +34,15 @@ import ReceiveCTA from './ReceiveCTA.vue'
 import SectionNav from './SectionNav.vue'
 export default {
   components: { Calendar, AdBox, ArticleGrid, ReceiveCTA, SectionNav },
+  setup() {
+      const menuItems = [
+          { text: 'Clásica', url: "#" },
+          { text: 'Ópera', url: "#" },
+          { text: 'Jazz', url: "#" },
+          { text: 'World Music', url: "#" }
+        ];
+      return { menuItems };
+  }
     
 }
 </script>

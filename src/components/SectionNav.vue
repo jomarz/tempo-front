@@ -6,6 +6,7 @@
             </div>
             <div class="col-10 section-nav-menu">
                 <ul class="nav-menu section-menu">
+                    <li class="navbar-menu-item" v-for="menuItem in menuItems" :key="menuItem"><a :href="menuItem.url" class='navbar-menu-link' :data-text="menuItem.text">{{menuItem.text}}</a></li>
                     <li class="navbar-menu-item"><a href="#" class='navbar-menu-link' data-text='Clásica'>Clásica</a></li>
                     <li class="navbar-menu-item"><a href="#" class='navbar-menu-link' data-text='Ópera'>Ópera</a></li>
                     <li class="navbar-menu-item"><a href="#" class='navbar-menu-link' data-text='Jazz'>Jazz</a></li>
@@ -19,6 +20,11 @@
 
 <script>
 export default {
+    props: {
+        menuItems: {
+            type: Array
+        }
+    }
     
 }
 </script>
