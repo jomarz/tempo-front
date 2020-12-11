@@ -2,7 +2,7 @@
     <div class="container-fluid section-nav">
         <div class="row">
             <div class="col-2 section-title-container">
-                <h3 class="section-nav-title">Conciertos</h3>
+                <h3 class="section-nav-title">{{navTitle}}</h3>
             </div>
             <div class="col-10 section-nav-menu">
                 <ul class="nav-menu section-menu">
@@ -21,6 +21,10 @@
 <script>
 export default {
     props: {
+        navTitle: {
+            required: true,
+            type: String
+        },
         menuItems: {
             type: Array
         }
