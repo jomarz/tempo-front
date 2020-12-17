@@ -1,5 +1,5 @@
 <template>
-    <div class="concerts-section container-fluid">
+    <div class="content-section concerts-section container-fluid">
         <div class="row section-nav-row">
             <div class="col pl-0 pr-0">
                 <SectionNav :navTitle="navTitle" :menuItems="menuItems"/>
@@ -23,7 +23,7 @@
                 <ReceiveCTA />
             </div>
         </div>
-    </div>    
+    </div>
 </template>
 
 <script>
@@ -49,10 +49,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .concerts-section {
-        margin: 40px 0 40px 0;
-        .calendar-row {
-            padding: 40px 0 04px 0;
-        }
-    }
+
 </style>

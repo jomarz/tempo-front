@@ -6,6 +6,7 @@
     <ad-box class="ad-full-width"/>
     <concerts-section />
     <ad-box class="ad-full-width"/>
+    <videos-section />
   </div>
 </template>
 
@@ -15,6 +16,7 @@ import NavBar from './components/NavBar.vue';
 import Featured from './components/Featured.vue';
 import ConcertsSection from './components/ConcertsSection.vue';
 import AdBox from './components/AdBox.vue';
+import VideosSection from './components/VideosSection.vue';
 
 export default {
   name: 'App',
@@ -23,7 +25,8 @@ export default {
     NavBar,
     Featured,
     ConcertsSection,
-    AdBox
+    AdBox,
+    VideosSection
   }
 }
 </script>
@@ -113,12 +116,18 @@ export default {
             } 
         }
     }
-    .section-title-container {
+    .section-nav .section-title-container {
       padding: 10px 0 10px 0;
       border-right: 1px solid black;
     }
     h3.section-nav-title {
       line-height: 1.5rem;
+    }
+    .content-section {
+        margin: 40px 0 40px 0;
+        .calendar-row {
+            padding: 40px 0 04px 0;
+        }
     }
     /* ad boxes styles*/
     .ad-full-width {
