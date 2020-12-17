@@ -29,6 +29,7 @@ export default {
 <style lang="scss" scoped>
     .videos-section {
         .main-videos-row {
+            margin-top: 40px;
             height: 300px;
             .main-video {
                 background-color: gray;
