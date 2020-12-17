@@ -7,7 +7,7 @@
         </div>
         <div class="row main-videos-row">
             <main-video class="col-12 col-md-8 col-lg-9 main-video"></main-video>
-            <div class="col-12 col-md-3 col-lg-3 video-carousel"></div>
+            <video-carousel class="col-12 col-md-3 col-lg-3 video-carousel"></video-carousel>
         </div>
     </div>    
 </template>
@@ -15,8 +15,9 @@
 <script>
 import MainVideo from './MainVideo.vue';
 import SectionNavNoMenu from './SectionNavNoMenu.vue';
+import VideoCarousel from './VideoCarousel.vue';
 export default {
-  components: { SectionNavNoMenu, MainVideo },
+  components: { SectionNavNoMenu, MainVideo, VideoCarousel },
     setup() 
     {
         const navTitle = "Videos Tempo";
