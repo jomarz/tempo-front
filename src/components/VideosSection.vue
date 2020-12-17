@@ -2,16 +2,21 @@
     <div class="content-section videos-section container-fluid">
         <div class="row section-nav-row">
             <div class="col pl-0 pr-0">
-                <section-nav-no-menu :navTitle="navTitle" :menuItems="menuItems"/>
+                <SectionNavNoMenu :navTitle="navTitle" :menuItems="menuItems"/>
             </div>
+        </div>
+        <div class="row main-videos-row">
+            <main-video class="col-12 col-md-8 col-lg-9 main-video"></main-video>
+            <div class="col-12 col-md-3 col-lg-3 video-carousel"></div>
         </div>
     </div>    
 </template>
 
 <script>
+import MainVideo from './MainVideo.vue';
 import SectionNavNoMenu from './SectionNavNoMenu.vue';
 export default {
-  components: { SectionNavNoMenu },
+  components: { SectionNavNoMenu, MainVideo },
     setup() 
     {
         const navTitle = "Videos Tempo";
@@ -21,5 +26,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+    .videos-section {
+        .main-videos-row {
+            height: 300px;
+            .main-video {
+                background-color: gray;
+            }
+            .video-carousel {
+                background-color: wheat;
+            }
+        }
+    }
 </style>
