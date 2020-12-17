@@ -5,6 +5,7 @@
     <Featured />
     <ad-box class="ad-full-width"/>
     <concerts-section />
+    <ad-box class="ad-full-width"/>
   </div>
 </template>
 
