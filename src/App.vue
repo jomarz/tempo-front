@@ -17,6 +17,7 @@
         </div>
       </div>
     </div>
+    <articles-section />
   </div>
 </template>
 
@@ -27,6 +28,7 @@ import Featured from './components/Featured.vue';
 import ConcertsSection from './components/ConcertsSection.vue';
 import AdBox from './components/AdBox.vue';
 import VideosSection from './components/VideosSection.vue';
+import ArticlesSection from './components/ArticlesSection.vue';
 
 export default {
   name: 'App',
@@ -36,7 +38,8 @@ export default {
     Featured,
     ConcertsSection,
     AdBox,
-    VideosSection
+    VideosSection,
+    ArticlesSection
   }
 }
 </script>
