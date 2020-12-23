@@ -9,10 +9,10 @@
     <videos-section />
     <div class="container">
       <div class="row">
-        <div class="col-12 col-md-9">
+        <div class="col-12 col-md-9 pl-0 pd-0 pd-md-2">
           <ad-box />
         </div>
-        <div class="col-12 col-md-3">
+        <div class="col-12 col-md-3 pr-0 pl-0 pl-md-2">
           <ad-box />
         </div>
       </div>
@@ -141,7 +141,7 @@ export default {
     }
     /* ad boxes styles*/
     .ad-full-width {
-      height: 150px;
+      height: 130px;
     }
     .ad-small {
       height: 100%;
