@@ -5,13 +5,19 @@
                 <SectionNav :navTitle="navTitle" :menuItems="menuItems"/>
             </div>
         </div>
+        <div class="row grid-row">
+            <div class="col">
+                <ArticleGrid />
+            </div>
+        </div>
     </div>    
 </template>
 
 <script>
+import ArticleGrid from './ArticleGrid.vue';
 import SectionNav from './SectionNav.vue'
 export default {
-    components: { SectionNav },
+    components: { SectionNav, ArticleGrid },
     setup() {
         const navTitle = "Artículos/Noticias";
         const menuItems = [
