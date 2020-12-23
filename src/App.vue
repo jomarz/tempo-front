@@ -7,6 +7,16 @@
     <concerts-section />
     <ad-box class="ad-full-width"/>
     <videos-section />
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-9">
+          <ad-box />
+        </div>
+        <div class="col-12 col-md-3">
+          <ad-box />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
