@@ -2,7 +2,7 @@
     <div class="article-grid event-grid container flex-wrap">
         <template v-if="contentType === 'event'">
             <template v-for="content in contentList" :key="content">
-                <div class="col-md-4 small-box-container">
+                <div class="small-box-container">
                     <content-small-box />
                 </div>
             </template>            

@@ -6,9 +6,10 @@
             </div>
         </div>
         <div class="row grid-row">
-            <div class="col">
+            <div class="col-12 col-md-9">
                 <ArticleGrid />
             </div>
+            <div class="col-12 col-md-3">Noticias</div>
         </div>
     </div>    
 </template>

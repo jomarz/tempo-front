@@ -1,17 +1,17 @@
 <template>
-    <div class="content-small-box container">
-        <div class="row">
-            <div class="col-5 thumbnail">
+    <div class="content-small-box ">
+        <div class="">
+            <div class="thumbnail">
                 <img src="../assets/img/Pictures/thumbnail1.png" alt="">
             </div>
-            <div class="col-7 box_info container">
+            <div class="box_info container">
                 <div class="row box-title-row no-gutters">
-                    <div class="col-3"></div>
-                    <div class="col-9 box-title"></div>
+                    <div class="col-3">a</div>
+                    <div class="col-9 box-title">b</div>
                 </div>
                 <div class="row box-content-row no-gutters">
-                    <div class="col-3 box-day"></div>
-                    <div class="col-9 box-content"></div>
+                    <div class="col-3 box-day">c</div>
+                    <div class="col-9 box-content">d</div>
                 </div>
             </div>
         </div>
@@ -26,13 +26,20 @@ export default {
 
 <style lang="scss" scoped>
     .content-small-box {
-        //display: flex;
-        //box-sizing: content-box;
+        width: 330px;
+        display: inline-block;
         margin-bottom: 40px;
+        .thumbnail {
+            width: 130px;
+            float: left;
+        }
         .thumbnail img {
             height: 128px;
+            width: 130px;
         }
-        .box_info.container {
+        .box_info {
+            width: 200px;
+            float: left;
             padding-left: 25px;
             padding-right: 0px;
         }
