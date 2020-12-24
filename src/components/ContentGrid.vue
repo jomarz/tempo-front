@@ -1,5 +1,5 @@
 <template>
-    <div class="article-grid event-grid container flex-wrap">
+    <div class="content-grid container flex-wrap">
         <template v-if="contentType === 'event'">
             <template v-for="content in contentList" :key="content">
                 <div class="small-box-container">
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .article-grid.container {
+    .content-grid.container {
         display: flex;
         padding: 40px 25px 0 0; 
         .small-box-container {
