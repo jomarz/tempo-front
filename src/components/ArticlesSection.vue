@@ -6,8 +6,8 @@
             </div>
         </div>
         <div class="row grid-row">
-            <div class="col-12 col-md-9">
-                <ArticleGrid />
+            <div class="col-12 col-md-9 articles">
+                <ContentGrid />
             </div>
             <div class="col-12 col-md-3">
                 <NewsVertical />
@@ -17,11 +17,11 @@
 </template>
 
 <script>
-import ArticleGrid from './ArticleGrid.vue';
+import ContentGrid from './ContentGrid.vue';
 import SectionNav from './SectionNav.vue';
 import NewsVertical from './NewsVertical.vue';
 export default {
-    components: { SectionNav, ArticleGrid, NewsVertical },
+    components: { SectionNav, ContentGrid, NewsVertical },
     setup() {
         const navTitle = "Artículos/Noticias";
         const menuItems = [
@@ -30,7 +30,17 @@ export default {
             { text: 'Jazz', url: "#" },
             { text: 'World Music', url: "#" }
             ];
-        return { navTitle, menuItems };
+        const articleList = [
+            { id: 1, title: "Nicolas Altstaedt", subtitle: "Imodipic iissimus. Uptatem invente comnihilita soluptas eaque nus praesci Core audignate nes iditiunt quodi" },
+            { id: 2, title: "Nicolas Altstaedt", subtitle: "Imodipic iissimus. Uptatem invente comnihilita soluptas eaque nus praesci Core audignate nes iditiunt quodi" },
+            { id: 3, title: "Nicolas Altstaedt", subtitle: "Imodipic iissimus. Uptatem invente comnihilita soluptas eaque nus praesci Core audignate nes iditiunt quodi" },
+            { id: 4, title: "Nicolas Altstaedt", subtitle: "Imodipic iissimus. Uptatem invente comnihilita soluptas eaque nus praesci Core audignate nes iditiunt quodi" },
+            { id: 5, title: "Nicolas Altstaedt", subtitle: "Imodipic iissimus. Uptatem invente comnihilita soluptas eaque nus praesci Core audignate nes iditiunt quodi" },
+            { id: 6, title: "Nicolas Altstaedt", subtitle: "Imodipic iissimus. Uptatem invente comnihilita soluptas eaque nus praesci Core audignate nes iditiunt quodi" },
+            { id: 7, title: "Nicolas Altstaedt", subtitle: "Imodipic iissimus. Uptatem invente comnihilita soluptas eaque nus praesci Core audignate nes iditiunt quodi" },
+            { id: 8, title: "Nicolas Altstaedt", subtitle: "Imodipic iissimus. Uptatem invente comnihilita soluptas eaque nus praesci Core audignate nes iditiunt quodi" },
+        ];
+        return { navTitle, menuItems, articleList };
     }
 }
 </script>

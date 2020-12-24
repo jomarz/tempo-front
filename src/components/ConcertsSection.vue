@@ -15,7 +15,7 @@
         </div>
         <div class="row grid-row">
             <div class="col">
-                <ArticleGrid />
+                <ContentGrid />
             </div>
         </div>
         <div class="receive-cta-row">
@@ -28,12 +28,12 @@
 
 <script>
 import AdBox from './AdBox.vue'
-import ArticleGrid from './ArticleGrid.vue'
+import ContentGrid from './ContentGrid.vue'
 import Calendar from './Calendar.vue'
 import ReceiveCTA from './ReceiveCTA.vue'
 import SectionNav from './SectionNav.vue'
 export default {
-  components: { Calendar, AdBox, ArticleGrid, ReceiveCTA, SectionNav },
+  components: { Calendar, AdBox, ContentGrid, ReceiveCTA, SectionNav },
   setup() {
       const navTitle = "Conciertos";
       const menuItems = [
