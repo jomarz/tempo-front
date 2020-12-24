@@ -3,7 +3,7 @@
         <template v-if="contentType === 'event'">
             <template v-for="content in contentList" :key="content">
                 <div class="small-box-container">
-                    <content-small-box />
+                    <event-small-box />
                 </div>
             </template>            
         </template>
@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import ContentSmallBox from './ContentSmallBox.vue';
+import EventSmallBox from './EventSmallBox.vue';
 export default {
-  components: { ContentSmallBox },
+  components: { EventSmallBox },
     
     setup () {
         const contentType = "event";

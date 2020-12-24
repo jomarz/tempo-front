@@ -1,5 +1,5 @@
 <template>
-    <div class="content-small-box ">
+    <div class="event-small-box ">
         <div class="">
             <div class="thumbnail">
                 <img src="../assets/img/Pictures/thumbnail1.png" alt="">
@@ -25,7 +25,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .content-small-box {
+    .event-small-box {
         width: 330px;
         display: inline-block;
         margin-bottom: 40px;
