@@ -45,14 +45,14 @@ export default {
         }
         .box-title-row {
             border-bottom: 2px solid #d1d3d4;
-            height: 30%
+            height: 38px;
         }
         .box-title-row, .box-content-row {
             margin-left: 0px;
             margin-right: 0px;
         }
         .box-content-row {
-            height: 70%;
+            height: 90px;
         }
         .box-content, .box-title {
             border-left: 2px solid #d1d3d4;
