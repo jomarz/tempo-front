@@ -9,16 +9,19 @@
             <div class="col-12 col-md-9">
                 <ArticleGrid />
             </div>
-            <div class="col-12 col-md-3">Noticias</div>
+            <div class="col-12 col-md-3">
+                <NewsVertical />
+            </div>
         </div>
     </div>    
 </template>
 
 <script>
 import ArticleGrid from './ArticleGrid.vue';
-import SectionNav from './SectionNav.vue'
+import SectionNav from './SectionNav.vue';
+import NewsVertical from './NewsVertical.vue';
 export default {
-    components: { SectionNav, ArticleGrid },
+    components: { SectionNav, ArticleGrid, NewsVertical },
     setup() {
         const navTitle = "Artículos/Noticias";
         const menuItems = [
