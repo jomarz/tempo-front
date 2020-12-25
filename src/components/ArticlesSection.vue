@@ -47,5 +47,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+    .articles {
+        padding-left: 0px;
+    }
 </style>

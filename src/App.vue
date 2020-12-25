@@ -94,6 +94,8 @@ export default {
     p {
       font-size: 0.75rem !important;
       font-family: 'Roboto', sans-serif;
+      line-height: 1.18rem;
+      font-weight: 300;
     }
     h1, h2, h3, h4, h5, h6 {
       margin: 0;
