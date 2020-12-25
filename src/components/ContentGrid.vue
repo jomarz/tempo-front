@@ -3,12 +3,12 @@
         <template v-for="content in contentList" :key="content">
             <template v-if="contentType === 'event'">
                 <div class="small-box-container">
-                    <event-small-box />
+                    <event-small-box :boxContent="content"/>
                 </div>
             </template>
             <template v-else-if="contentType === 'article'">
                 <div class="small-box-container">
-                    <article-small-box />
+                    <article-small-box  :boxContent="content"/>
                 </div>
             </template>
         </template>
@@ -16,14 +16,24 @@
 </template>
 
 <script>
+import ArticleSmallBox from './ArticleSmallBox.vue';
 import EventSmallBox from './EventSmallBox.vue';
 export default {
-  components: { EventSmallBox },
-    
+  components: { EventSmallBox, ArticleSmallBox },
+    props: {
+        contentType: {
+            required: true,
+            type: String
+        },
+        contentList: {
+            required: true,
+            type: Array
+        }
+    },
     setup () {
-        const contentType = "event";
-        const contentList = [1,2,3,4,5,6,7,8,9];
-        return { contentType, contentList };
+        //const contentType = "event";
+        //const contentList = [1,2,3,4,5,6,7,8,9];
+        return { /* contentType, contentList */ };
     }
 }
 </script>

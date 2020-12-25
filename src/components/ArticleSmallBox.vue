@@ -7,7 +7,7 @@
             <div class="box_info container">
                 <div class="row box-title-row no-gutters">
                     <div class="col-3">a</div>
-                    <div class="col-9 box-title">b</div>
+                    <div class="col-9 box-title">{{ boxContent.title }}</div>
                 </div>
                 <div class="row box-content-row no-gutters">
                     <div class="col-3 box-day">c</div>
@@ -20,7 +20,12 @@
 
 <script>
 export default {
-    
+    props: {
+        boxContent: {
+            required: true,
+            type: Object
+        }
+    }
 }
 </script>
 
