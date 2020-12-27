@@ -65,7 +65,7 @@ export default {
             padding-right: 0px;
         }
         .box-info-right {
-            padding-left: 6px;
+            padding-left: 8px;
         }
         .box-title-row {
             border-bottom: 2px solid #fff;
@@ -80,6 +80,8 @@ export default {
         }
         .box-content {
             height: 100%;
+            padding-top: 5px;
+            padding-bottom: 2px;
         }
         .box-content, .box-title {
             border-left: 2px solid #fff;
@@ -105,6 +107,16 @@ export default {
                 font-size: 0.65rem !important;
                 line-height: 0.77rem;
                 padding-top: 5px;
+                margin-bottom: 0px;
+                max-height: 67px;
+        }
+        .more-link {
+            color: #278de2;
+            display: block;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-decoration: none;
         }
     }
 </style>
