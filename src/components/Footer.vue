@@ -2,9 +2,12 @@
     <div class="footer">
         <div class="footer-content container">
             <div class="row">
-                <div class="col-12 col-md-10 footer-main">
-                    <footer-subscribe />
-                    <footer-links />
+                <div class="col-12 col-md-10 footer-content-col">
+                    <div class="footer-main">
+                        <footer-subscribe />
+                        <footer-links />
+                        <div class="footer-separator"></div>
+                    </div>
                 </div>
                 <div class="col-12 col-md-2">
 
@@ -27,10 +30,19 @@ export default {
     .footer {
         .footer-content {
             max-width: 1140px;
-            .footer-main {
+            .footer-content-col {
                 display: flex;
-                flex-direction: column;
-                margin-top: 30px;
+                justify-content: center;
+                .footer-main {
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: 30px;
+                    width: 650px;
+                    .footer-separator {
+                        width: 100%;
+                        border-top: 1px solid #d1d3d4;
+                    }
+                }
             }
         }
     }
