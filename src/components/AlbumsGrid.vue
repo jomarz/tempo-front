@@ -27,6 +27,7 @@ export default {
         padding-left: 0;
         .small-box-container {
             margin-left: 20px;
+            margin-right: 20px;
             margin-bottom: 40px;
         }
     }
