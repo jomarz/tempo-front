@@ -41,7 +41,7 @@ export default {
 <style lang="scss" scoped>
     .content-grid.container {
         display: flex;
-        padding: 40px 0px 0 0; 
+        padding-left: 0;
         .small-box-container {
             padding-left: 20px;
         }

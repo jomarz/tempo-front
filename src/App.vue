@@ -143,6 +143,9 @@ export default {
         .calendar-row {
             padding: 40px 0 04px 0;
         }
+        .grid-row {
+            padding: 40px 0 0 0;
+        }
     }
     /* ad boxes styles*/
     .ad-full-width {

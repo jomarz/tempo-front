@@ -47,7 +47,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .articles {
-        padding-left: 0px;
+    .concerts-section {
+        .articles {
+            padding-left: 0;
+        }
     }
 </style>
