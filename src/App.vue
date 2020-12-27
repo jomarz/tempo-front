@@ -3,17 +3,17 @@
     <TopBar />
     <NavBar />
     <Featured />
-    <ad-box class="ad-full-width"/>
+    <ad-box class="ad-row"/>
     <concerts-section />
-    <ad-box class="ad-full-width"/>
+    <ad-box class="ad-row"/>
     <videos-section />
     <div class="container">
       <div class="row">
         <div class="col-12 col-md-9 pl-0 pd-0 pd-md-2">
-          <ad-box />
+          <ad-box class="ad-row"/>
         </div>
         <div class="col-12 col-md-3 pr-0 pl-0 pl-md-2">
-          <ad-box />
+          <ad-box class="ad-row"/>
         </div>
       </div>
     </div>
@@ -21,14 +21,15 @@
     <div class="container">
       <div class="row">
         <div class="col-12 col-md-9 pl-0 pd-0 pd-md-2">
-          <ad-box />
+          <ad-box class="ad-row"/>
         </div>
         <div class="col-12 col-md-3 pr-0 pl-0 pl-md-2">
-          <ad-box />
+          <ad-box class="ad-row"/>
         </div>
       </div>
     </div>
     <albums-section />
+    <ad-box class="ad-row"/>
   </div>
 </template>
 
@@ -195,8 +196,8 @@ export default {
     }
 
     /* ad boxes styles*/
-    .ad-full-width {
-      height: 130px;
+    .ad-row {
+      height: 115px;
     }
     .ad-small {
       height: 100%;
