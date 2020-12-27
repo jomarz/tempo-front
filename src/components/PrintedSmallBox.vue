@@ -23,8 +23,8 @@ export default {
     .printed-small-box {
         width: 209px;
         .printed-thumbnail img {
-            width: 126px;
-            height: 172px;
+            width: 136px;
+            height: 192px;
             object-fit: cover;
         }
         .printed-box-title {
