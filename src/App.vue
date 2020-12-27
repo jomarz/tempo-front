@@ -122,6 +122,13 @@ export default {
         border-radius: 5px;
         margin-left: 20px;
     }
+    input {
+      border-style: none;
+      border-radius: 5px;
+      font-family: 'Roboto', sans-serif;
+      color: white;
+      font-size: 0.55rem;
+    }
   }
   .content-container {
     display: flex;
