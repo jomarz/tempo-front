@@ -1,6 +1,16 @@
 <template>
-    <div class="container-fluid section-nav">
-        <div class="row">
+    <div class="section-nav">
+        <h3 class="section-nav-title">{{navTitle}}</h3>
+        <div class="section-nav-separator">
+            <div class="sep-left"></div>
+            <div class="sep-right"></div>
+        </div>
+        <div class="section-nav-menu">
+            <ul class="nav-menu section-menu">
+                <li class="navbar-menu-item" v-for="menuItem in menuItems" :key="menuItem"><a :href="menuItem.url" class='navbar-menu-link' :data-text="menuItem.text">{{menuItem.text}}</a></li>
+            </ul>
+        </div>
+        <!-- <div class="row">
             <div class="col-2 section-title-container">
                 <h3 class="section-nav-title">{{navTitle}}</h3>
             </div>
@@ -9,7 +19,7 @@
                     <li class="navbar-menu-item" v-for="menuItem in menuItems" :key="menuItem"><a :href="menuItem.url" class='navbar-menu-link' :data-text="menuItem.text">{{menuItem.text}}</a></li>
                 </ul>
             </div>
-        </div>
+        </div> -->
     </div>
     
 </template>
@@ -32,24 +42,40 @@ export default {
 <style lang="scss" scoped>
     
         .section-nav {
-            padding: 10px 63px 10px 20px;
-            background-color: #f3f3f4;
-        }
-        .section-nav-menu {
             display: flex;
             align-items: center;
-            padding: 10px 0 10px 0;
-        }
-        ul.section-menu {
-            margin: 0;
-            li {
-                font-size: 0.95rem;
-                font-family: 'Roboto', sans-serif;
-                font-weight: 400;
-                line-height: 1.3rem;
+            padding: 15px 20px 15px 20px;
+            background-color: #f3f3f4;
+            .section-nav-title {
+                display: inline;
             }
-        }
-        .section-menu li{
-            margin-left: 40px;
+            .section-nav-separator {
+                display: inline-flex;
+                align-items: center;
+            }
+            ul.section-menu {
+                margin: 0;
+                padding-left: 0px;
+                li {
+                    font-size: 0.95rem;
+                    font-family: 'Roboto', sans-serif;
+                    font-weight: 400;
+                    line-height: 1.3rem;
+                }
+            }
+            .section-menu li:not(:first-child){
+                margin-left: 40px;
+            }
+            .section-nav-separator>div{
+                /* display: inline-block; */
+                width: 63px;
+                height: 100%;
+            }
+            .section-nav-separator {
+                height: 1.5rem;
+                .sep-left {
+                    border-right: 1px solid black;
+                }
+            }
         }
 </style>
