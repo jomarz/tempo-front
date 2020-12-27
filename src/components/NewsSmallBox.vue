@@ -32,7 +32,7 @@ export default {
             font-size: 0.65rem !important;
             font-family: 'Roboto', sans-serif;
             font-weight: 700;
-            padding-top: 7px;
+            padding-top: 8px;
         }
         p.news-box-text {
             font-size: 0.65rem !important;

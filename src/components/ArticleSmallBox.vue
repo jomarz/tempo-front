@@ -2,7 +2,7 @@
     <div class="article-small-box ">
         <div class="">
             <div class="thumbnail">
-                <img class="thumbnail-image" src="../assets/img/Pictures/thumbnail1.png" alt="">
+                <img class="thumbnail-image" :src="boxContent.imgUrl" alt="">
             </div>
             <div class="box_info-container">
                 <div class="box-info container">

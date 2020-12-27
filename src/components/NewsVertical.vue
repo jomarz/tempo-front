@@ -25,6 +25,6 @@ export default {
 
 <style lang="scss" scoped>
     .news-box-container {
-        margin-top: 20px;
+        margin-top: 25px;
     }
 </style>
