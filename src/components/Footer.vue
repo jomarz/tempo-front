@@ -4,6 +4,7 @@
             <div class="row">
                 <div class="col-12 col-md-10 footer-main">
                     <footer-subscribe />
+                    <footer-links />
                 </div>
                 <div class="col-12 col-md-2">
 
@@ -14,9 +15,10 @@
 </template>
 
 <script>
+import FooterLinks from './FooterLinks.vue'
 import FooterSubscribe from './FooterSubscribe.vue'
 export default {
-  components: { FooterSubscribe },
+  components: { FooterSubscribe, FooterLinks },
     
 }
 </script>
@@ -27,7 +29,7 @@ export default {
             max-width: 1140px;
             .footer-main {
                 display: flex;
-                justify-content: center;
+                flex-direction: column;
                 margin-top: 30px;
             }
         }

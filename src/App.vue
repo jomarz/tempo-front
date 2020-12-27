@@ -126,8 +126,26 @@ export default {
       border-style: none;
       border-radius: 5px;
       font-family: 'Roboto', sans-serif;
-      color: white;
       font-size: 0.65rem;
+    }
+    a {
+      text-decoration: none;
+      font-family: 'Roboto', sans-serif;
+    }
+    ul.nav-menu a::after, .footer-links a::after {
+        content: attr(data-text);
+        content: attr(data-text) / "";
+        height: 0;
+        display: block;
+        visibility: hidden;
+        overflow: hidden;
+        user-select: none;
+        pointer-events: none;
+        font-weight: 700;
+
+        @media speech {
+            display: none;
+        }
     }
   }
   .content-container {
@@ -144,24 +162,9 @@ export default {
         text-decoration: none;
         display: inline;
             a {
-                text-decoration: none;
                 display: inline-flex;
                 flex-direction: column;
                 color: black;
-            }
-            a::after {
-                content: attr(data-text);
-                content: attr(data-text) / "";
-                height: 0;
-                visibility: hidden;
-                overflow: hidden;
-                user-select: none;
-                pointer-events: none;
-                font-weight: 700;
-
-                @media speech {
-                    display: none;
-                }
             }
             a:hover {
                 font-weight: 700;
