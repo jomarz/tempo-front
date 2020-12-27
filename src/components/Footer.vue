@@ -7,6 +7,7 @@
                         <footer-subscribe />
                         <footer-links />
                         <div class="footer-separator"></div>
+                        <footer-copyright />
                     </div>
                 </div>
                 <div class="col-12 col-md-2">
@@ -18,16 +19,18 @@
 </template>
 
 <script>
+import FooterCopyright from './FooterCopyright.vue'
 import FooterLinks from './FooterLinks.vue'
 import FooterSubscribe from './FooterSubscribe.vue'
 export default {
-  components: { FooterSubscribe, FooterLinks },
+  components: { FooterSubscribe, FooterLinks, FooterCopyright },
     
 }
 </script>
 
 <style lang="scss" scoped>
     .footer {
+        padding: 40px 0 20px;
         .footer-content {
             max-width: 1140px;
             .footer-content-col {
@@ -36,11 +39,14 @@ export default {
                 .footer-main {
                     display: flex;
                     flex-direction: column;
-                    margin-top: 30px;
                     width: 650px;
                     .footer-separator {
                         width: 100%;
                         border-top: 1px solid #d1d3d4;
+                    }
+                    .footer-copyright {
+                        align-self: center;
+                        margin-top: 8px;
                     }
                 }
             }

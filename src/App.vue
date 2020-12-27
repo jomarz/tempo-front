@@ -222,7 +222,6 @@ export default {
     margin-top: 70px;
     width: 100%;
     background-color: #f1f2f2;
-    height: 217px;
   }
 
 </style>
