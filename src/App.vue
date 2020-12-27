@@ -127,7 +127,7 @@ export default {
       border-radius: 5px;
       font-family: 'Roboto', sans-serif;
       color: white;
-      font-size: 0.55rem;
+      font-size: 0.65rem;
     }
   }
   .content-container {
