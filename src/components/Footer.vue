@@ -23,10 +23,13 @@ export default {
 
 <style lang="scss" scoped>
     .footer {
-        .footer-main {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
+        .footer-content {
+            max-width: 1140px;
+            .footer-main {
+                display: flex;
+                justify-content: center;
+                margin-top: 30px;
+            }
         }
     }
 </style>

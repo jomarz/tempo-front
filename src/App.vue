@@ -110,6 +110,18 @@ export default {
     h1, h2, h3, h4, h5, h6 {
       margin: 0;
       }
+    button {
+        font-family: 'Roboto', sans-serif;
+        color: white;
+        font-size: 0.55rem;
+        font-weight: 700;
+        letter-spacing: 0.045rem;
+        background-color: #278de2;
+        width: 113px;
+        border-style: none;
+        border-radius: 5px;
+        margin-left: 20px;
+    }
   }
   .content-container {
     display: flex;
@@ -180,18 +192,6 @@ export default {
             font-size: 0.65rem !important;
             display: inline;
             font-weight: 400;
-        }
-        .receive-button {
-            font-family: 'Roboto', sans-serif;
-            color: white;
-            font-size: 0.55rem;
-            font-weight: 700;
-            letter-spacing: 0.045rem;
-            background-color: #278de2;
-            width: 113px;
-            border-style: none;
-            border-radius: 5px;
-            margin-left: 20px;
         }
     }
     .receive-cta.printed-cta .receive-button {

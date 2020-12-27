@@ -17,6 +17,9 @@ export default {
 
 <style lang="scss" scoped>
     .footer-subscribe {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         .footer-subscribe-form {
             display: flex;
         }
