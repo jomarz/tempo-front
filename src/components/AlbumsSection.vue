@@ -8,6 +8,7 @@
         <div class="row grid-row">
             <div class="col-12 col-md-9 albums">
                 <albums-grid :albumList="albumList"/>
+                <AlbumsCTA />
             </div>
             <div class="col-12 col-md-3">
                 <printed-vertical :printedList="printedList" />
@@ -17,11 +18,12 @@
 </template>
 
 <script>
+import AlbumsCTA from './AlbumsCTA.vue';
 import AlbumsGrid from './AlbumsGrid.vue'
 import PrintedVertical from './PrintedVertical.vue';
 import SectionNavNoMenu from './SectionNavNoMenu.vue';
 export default {
-  components: { AlbumsGrid, SectionNavNoMenu, PrintedVertical },
+  components: { AlbumsGrid, SectionNavNoMenu, PrintedVertical, AlbumsCTA },
   setup() {
       const albumList = [
           { id: 1, title: "Imodipic iissimus", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a fermentum risus, eget vehicula magna. Aliquam erat volutpat. In condimentum neque neque, in tempus nulla interdum eget. Vestibulum et leo eget purus eleifend semper ut eget tellus. Maecenas sit amet pellentesque tellus.", imgUrl: "https://picsum.photos/seed/jorgeab1/300/300" },
