@@ -10,7 +10,7 @@
                 <albums-grid :albumList="albumList"/>
             </div>
             <div class="col-12 col-md-3">
-                
+                <printed-vertical :printedList="printedList" />
             </div>
         </div>
     </div>    
@@ -18,9 +18,10 @@
 
 <script>
 import AlbumsGrid from './AlbumsGrid.vue'
+import PrintedVertical from './PrintedVertical.vue';
 import SectionNavNoMenu from './SectionNavNoMenu.vue';
 export default {
-  components: { AlbumsGrid, SectionNavNoMenu },
+  components: { AlbumsGrid, SectionNavNoMenu, PrintedVertical },
   setup() {
       const albumList = [
           { id: 1, title: "Imodipic iissimus", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a fermentum risus, eget vehicula magna. Aliquam erat volutpat. In condimentum neque neque, in tempus nulla interdum eget. Vestibulum et leo eget purus eleifend semper ut eget tellus. Maecenas sit amet pellentesque tellus.", imgUrl: "https://picsum.photos/seed/jorgeab1/300/300" },
@@ -32,7 +33,12 @@ export default {
           { id: 7, title: "Imodipic iissimus", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a fermentum risus, eget vehicula magna. Aliquam erat volutpat. In condimentum neque neque, in tempus nulla interdum eget. Vestibulum et leo eget purus eleifend semper ut eget tellus. Maecenas sit amet pellentesque tellus.", imgUrl: "https://picsum.photos/seed/jorgeab7/300/300" },
           { id: 8, title: "Imodipic iissimus", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a fermentum risus, eget vehicula magna. Aliquam erat volutpat. In condimentum neque neque, in tempus nulla interdum eget. Vestibulum et leo eget purus eleifend semper ut eget tellus. Maecenas sit amet pellentesque tellus.", imgUrl: "https://picsum.photos/seed/jorgeab8/300/300" },
       ];
-      return { albumList };
+        const printedList = [
+            { id: 1, title: "Imodipic iissimus", text: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgeaaa/200/300" }, 
+            { id: 2, title: "Imodipic iissimus", text: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgebb/200/301" }, 
+            { id: 3, title: "Imodipic iissimus", text: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgecc/200/302" }, 
+        ];
+      return { albumList, printedList };
   }
     
 }

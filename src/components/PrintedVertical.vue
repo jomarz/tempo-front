@@ -6,7 +6,7 @@
                 <printed-small-box :printedElement="printedElement" />
             </div>
         </div>
-        <printed-cta />
+        <PrintedCTA />
     </div>
 </template>
 

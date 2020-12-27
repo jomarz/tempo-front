@@ -1,10 +1,10 @@
 <template>
     <div class="printed-small-box">
         <div class="printed-thumbnail">
-            <img :src="newsElement.imgUrl" alt="">
+            <img :src="printedElement.imgUrl" alt="">
         </div>
-        <div class="printed-box-title">{{newsElement.title}}</div>
-        <p class="printed-box-text">{{newsElement.text}}</p>
+        <div class="printed-box-title">{{printedElement.title}}</div>
+        <p class="printed-box-text">{{printedElement.text}}</p>
         <a class="more-link" href="#">VER MÁS</a>
     </div>    
 </template>
