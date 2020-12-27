@@ -5,7 +5,6 @@
         </div>
         <div class="printed-box-title">{{printedElement.title}}</div>
         <p class="printed-box-text">{{printedElement.text}}</p>
-        <a class="more-link" href="#">VER MÁS</a>
     </div>    
 </template>
 
@@ -24,8 +23,8 @@ export default {
     .printed-small-box {
         width: 209px;
         .printed-thumbnail img {
-            width: 106px;
-            height: 152px;
+            width: 126px;
+            height: 172px;
             object-fit: cover;
         }
         .printed-box-title {

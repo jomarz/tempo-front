@@ -190,6 +190,9 @@ export default {
             margin-left: 20px;
         }
     }
+    .receive-cta.printed-cta .receive-button {
+      margin-left: 0px;
+    }
 
     /* ad boxes styles*/
     .ad-full-width {

@@ -2,11 +2,11 @@
     <div class="printed-vertical">
         <div class="printed-box-column">
             <h3>Ediciones Impresas</h3>
+            <PrintedCTA class="printed-cta"/>
             <div class="printed-box-container" v-for="printedElement in printedList" :key="printedElement.key" >
                 <printed-small-box :printedElement="printedElement" />
             </div>
         </div>
-        <PrintedCTA />
     </div>
 </template>
 
