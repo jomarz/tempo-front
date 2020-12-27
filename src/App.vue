@@ -31,6 +31,7 @@
     <albums-section />
     <ad-box class="ad-row"/>
   </div>
+  <Footer />
 </template>
 
 <script>
@@ -42,6 +43,7 @@ import AdBox from './components/AdBox.vue';
 import VideosSection from './components/VideosSection.vue';
 import ArticlesSection from './components/ArticlesSection.vue';
 import AlbumsSection from './components/AlbumsSection.vue';
+import Footer from './components/Footer.vue';
 
 export default {
   name: 'App',
@@ -53,7 +55,8 @@ export default {
     AdBox,
     VideosSection,
     ArticlesSection,
-    AlbumsSection
+    AlbumsSection,
+    Footer
   }
 }
 </script>
@@ -70,14 +73,6 @@ export default {
     padding: 0px;
     background-color: white;
     color: black;
-  }
-  .content-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 1140px;
-    margin-left: auto;
-    margin-right: auto;
     h1 {
       font-size: 3.2rem !important;
       font-family: 'Playfair display';
@@ -115,6 +110,14 @@ export default {
     h1, h2, h3, h4, h5, h6 {
       margin: 0;
       }
+  }
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
     ul.nav-menu {
         list-style: none;
         padding-left: 25px;
@@ -202,6 +205,14 @@ export default {
     .ad-small {
       height: 100%;
     }
+
+    /* Footer styles */
+  }
+  .footer {
+    margin-top: 70px;
+    width: 100%;
+    background-color: #f1f2f2;
+    height: 217px;
   }
 
 </style>
