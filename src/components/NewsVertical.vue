@@ -1,7 +1,7 @@
 <template>
     <div class="news-vertical">
         <h3>Noticias</h3>
-        <news-small-box />
+        <news-small-box v-for="newsElement in newsList" :newsElement="newsElement" :key="newsElement.key" />
     </div>
 </template>
 
@@ -9,6 +9,12 @@
 import NewsSmallBox from "./NewsSmallBox.vue";
 
 export default {
+    props: {
+        newsList : {
+            required: true,
+            type: Array
+        }
+    },
     components: {
         NewsSmallBox
     }    

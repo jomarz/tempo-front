@@ -1,17 +1,22 @@
 <template>
     <div class="news-small-box">
         <div class="news-thumbnail">
-            <img src="../assets/img/Pictures/thumbnail2.jpg" alt="">
+            <img :src="newsElement.imgUrl" alt="">
         </div>
-        <div class="news-box-title">Imodipic iissimus</div>
-        <p class="news-box-text">Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur</p>
+        <div class="news-box-title">{{newsElement.title}}</div>
+        <p class="news-box-text">{{newsElement.text}}</p>
         <a class="more-link" href="#">VER MÁS</a>
     </div>    
 </template>
 
 <script>
 export default {
-    
+    props: {
+        newsElement: {
+            required: true,
+            type: Object
+        }
+    }
 }
 </script>
 

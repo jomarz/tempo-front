@@ -10,7 +10,7 @@
                 <ContentGrid :contentType="contentType" :contentList="contentList" />
             </div>
             <div class="col-12 col-md-3">
-                <NewsVertical />
+                <NewsVertical :newsList="newsList" />
             </div>
         </div>
     </div>    
@@ -41,7 +41,12 @@ export default {
             { id: 7, title: "Nicolas Altstaedt", subtitle:"Imodipic iissimus", text: "Imodipic iissimus. Uptatem invente comnihilita soluptas eaque nus praesci Core audignate nes iditiunt quodi" },
             { id: 8, title: "Nicolas Altstaedt", subtitle:"Imodipic iissimus", text: "Imodipic iissimus. Uptatem invente comnihilita soluptas eaque nus praesci Core audignate nes iditiunt quodi" },
         ];
-        return { navTitle, menuItems, contentType, contentList };
+        const newsList = [
+            { id: 1, title: "Imodipic iissimus", text: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/200/300" }, 
+            { id: 2, title: "Imodipic iissimus", text: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/200/301" }, 
+            { id: 3, title: "Imodipic iissimus", text: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/200/302" }, 
+        ];
+        return { navTitle, menuItems, contentType, contentList, newsList };
     }
 }
 </script>
