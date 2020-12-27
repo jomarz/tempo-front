@@ -1,6 +1,6 @@
 <template>
     <div class="receive-cta">
-            <h6 class="receive-title">AGENDA DE CONCIERTOS</h6>
+            <h6 class="receive-title">ÚLTIMAS NOTICIAS</h6>
             <button class="receive-button">RECIBIR</button>
     </div>    
 </template>
@@ -12,5 +12,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 </style>

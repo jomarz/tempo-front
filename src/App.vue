@@ -155,6 +155,28 @@ export default {
             padding: 40px 0 0 0;
         }
     }
+    /* CTA text and link styles */
+    .receive-cta {
+        h6 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.65rem !important;
+            display: inline;
+            font-weight: 400;
+        }
+        .receive-button {
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            font-size: 0.55rem;
+            font-weight: 700;
+            letter-spacing: 0.045rem;
+            background-color: #278de2;
+            width: 113px;
+            border-style: none;
+            border-radius: 5px;
+            margin-left: 20px;
+        }
+    }
+
     /* ad boxes styles*/
     .ad-full-width {
       height: 130px;
