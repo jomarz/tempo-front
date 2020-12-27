@@ -1,7 +1,9 @@
 <template>
     <div class="news-vertical">
         <h3>Noticias</h3>
-        <news-small-box v-for="newsElement in newsList" :newsElement="newsElement" :key="newsElement.key" />
+        <div class="news-box-container" v-for="newsElement in newsList" :key="newsElement.key" >
+            <news-small-box :newsElement="newsElement" />
+        </div>
     </div>
 </template>
 
@@ -22,5 +24,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+    .news-box-container {
+        margin-top: 20px;
+    }
 </style>
