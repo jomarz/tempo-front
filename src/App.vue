@@ -18,6 +18,16 @@
       </div>
     </div>
     <articles-section />
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-9 pl-0 pd-0 pd-md-2">
+          <ad-box />
+        </div>
+        <div class="col-12 col-md-3 pr-0 pl-0 pl-md-2">
+          <ad-box />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
