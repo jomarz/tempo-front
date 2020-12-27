@@ -99,7 +99,7 @@ export default {
     h6 {
       font-size: 0.8rem !important;
       font-family: 'Playfair display';
-      font-weight: 700;
+      font-weight: 400;
     }
     p {
       font-size: 0.75rem !important;

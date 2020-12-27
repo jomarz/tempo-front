@@ -21,6 +21,10 @@ export default {
         flex-direction: column;
         align-items: center;
         width: 100%;
+        h6 {
+            letter-spacing: 0.05rem;
+            font-weight: 400;
+        }
         .footer-subscribe-form {
             display: flex;
             width: 100%;

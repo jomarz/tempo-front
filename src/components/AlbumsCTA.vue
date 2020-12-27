@@ -1,6 +1,6 @@
 <template>
     <div class="receive-cta">
-            <h6 class="receive-title">ÚLTIMAS LANZAMIENTOS</h6>
+            <h6 class="receive-title">ÚLTIMOS LANZAMIENTOS</h6>
             <button class="receive-button">RECIBIR</button>
     </div>    
 </template>
