@@ -31,7 +31,7 @@ export default {
             font-size: 0.65rem !important;
             font-family: 'Roboto', sans-serif;
             font-weight: 700;
-            padding-top: 8ypx;
+            padding-top: 8px;
         }
         p.printed-box-text {
             font-size: 0.65rem !important;
