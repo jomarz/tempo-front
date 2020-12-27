@@ -17,6 +17,7 @@
                         <div class="box-info-left col-1 box-day"></div>
                         <div class="box-info-right col-11 box-content">
                             <p class="box-text">{{ boxContent.text }}</p>
+                            <a class="more-link" href="#">VER MÁS</a>
                         </div>
                     </div>
                 </div>
