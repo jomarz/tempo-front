@@ -106,17 +106,9 @@ export default {
         p.box-text {
                 font-size: 0.65rem !important;
                 line-height: 0.77rem;
-                padding-top: 5px;
-                margin-bottom: 0px;
+                padding-top: 4px;
+                margin-bottom: 3px;
                 max-height: 67px;
-        }
-        .more-link {
-            color: #278de2;
-            display: block;
-            font-family: 'Roboto', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 700;
-            text-decoration: none;
         }
     }
 </style>

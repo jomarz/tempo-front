@@ -131,6 +131,14 @@ export default {
             } 
         }
     }
+    .more-link {
+      color: #278de2;
+      display: block;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.60rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
     .section-nav .section-title-container {
       padding: 10px 0 10px 0;
       border-right: 1px solid black;
