@@ -12,6 +12,7 @@
                 </div>
                 <div class="col-12 col-md-2 footer-right">
                     <img src="../assets/img/tempo_logo.svg" alt="" class="footer-logo">
+                    <footer-social />
                 </div>
             </div>
         </div>    
@@ -21,9 +22,10 @@
 <script>
 import FooterCopyright from './FooterCopyright.vue'
 import FooterLinks from './FooterLinks.vue'
+import FooterSocial from './FooterSocial.vue'
 import FooterSubscribe from './FooterSubscribe.vue'
 export default {
-  components: { FooterSubscribe, FooterLinks, FooterCopyright },
+  components: { FooterSubscribe, FooterLinks, FooterCopyright, FooterSocial },
     
 }
 </script>
@@ -53,6 +55,14 @@ export default {
             .footer-right {
                 padding-right: 20px;
             }
+        }
+        .footer-logo {
+            width: 128px;
+            height: 50px;
+            object-fit: contain;
+        }
+        .footer-social {
+            margin-top: 7px;
         }
     }
 </style>
