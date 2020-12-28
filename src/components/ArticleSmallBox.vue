@@ -92,23 +92,9 @@ export default {
         .box-title {
             padding-top: 1px;
         }
-        .box-subtitle {
-            font-size: 0.65rem !important;
-            font-family: 'Roboto', sans-serif;
-            font-weight: 400;
-            display: block;
-            padding-top: 2px;
-        }
         .box-text {
             height: 100%;
-            overflow: hidden;
-        }
-        p.box-text {
-                font-size: 0.65rem !important;
-                line-height: 0.77rem;
-                padding-top: 4px;
-                margin-bottom: 3px;
-                max-height: 67px;
+            max-height: 67px;
         }
     }
 </style>
