@@ -29,6 +29,8 @@ export default {
         border-color: #bcbec0;
         border-top-left-radius: 7px;
         border-bottom-left-radius: 7px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
         padding: 4px 9px;
         margin-right: -1px;
     }
