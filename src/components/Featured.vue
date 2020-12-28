@@ -9,7 +9,7 @@
                 <featured-info :featuredType="featuredType" :featuredInfo="featuredInfo"/>
             </div>
             <div class="col-8 featured-image-box">
-                <img src="..\assets\img\Pictures\featured.jpg" alt="" class="featured-image">
+                <img src="https://picsum.photos/id/304/1000/600" alt="" class="featured-image">
             </div>    
         </div>
         <div class="row featured-bottom">
@@ -31,7 +31,8 @@ export default {
             name: 'Ian Bostridge',
             day: 18,
             month: 'JULIO, 2020',
-            location: 'Teatro Mayor, Bogota'            
+            location: 'Teatro Mayor, Bogota',
+            imgUrl: ''           
         };
         return { featuredType, featuredInfo }
     }
