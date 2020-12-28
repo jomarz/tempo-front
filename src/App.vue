@@ -74,7 +74,7 @@ export default {
     background-color: white;
     color: black;
     h1 {
-      font-size: 3.2rem !important;
+      font-size: 2.5rem !important;
       font-family: 'Playfair display';
     }
     h2 {
