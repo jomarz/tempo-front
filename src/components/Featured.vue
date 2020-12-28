@@ -5,7 +5,9 @@
             <div class="col-8 featured-top-right"></div>
         </div>    
         <div class="row featured-content">
-            <div class="col-4 featured-info"></div>
+            <div class="col-4 featured-info-box">
+                <featured-info :featuredType="featuredType" :featuredInfo="featuredInfo"/>
+            </div>
             <div class="col-8 featured-image"></div>    
         </div>
         <div class="row featured-bottom">
@@ -16,8 +18,21 @@
 </template>
 
 <script>
+import FeaturedInfo from './FeaturedInfo.vue'
 export default {
-    
+    components: { FeaturedInfo },
+    setup () {
+        const featuredType = 'article';
+        const featuredInfo = {
+            id: 1,
+            title: 'Concierto Inagural',
+            artist: 'Ian Bostridge',
+            day: 30,
+            month: 'JULIO, 2020',
+            venue: 'Teatro Mayor, Bogota'            
+        };
+        return { featuredType, featuredInfo }
+    }
 }
 </script>
 
@@ -36,7 +51,7 @@ export default {
         .featured-top-right, .featured-bottom-right {
             background-color: white;
         }
-        .featured-info {
+        .featured-info-box {
             background-color: #0d273b
         }
         .featured-image {
