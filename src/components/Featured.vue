@@ -22,7 +22,7 @@ import FeaturedInfo from './FeaturedInfo.vue'
 export default {
     components: { FeaturedInfo },
     setup () {
-        const featuredType = 'article';
+        const featuredType = 'event';
         const featuredInfo = {
             id: 1,
             title: 'Concierto Inagural',

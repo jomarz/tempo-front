@@ -1,7 +1,7 @@
 <template>
     <div class="featured-info">
-        <feat-info-event v-if="featuredType==='event'"/>
-        <feat-info-article v-if="featuredType==='article'"/>
+        <feat-info-event v-if="featuredType==='event'" :featuredInfo="featuredInfo"/>
+        <feat-info-article v-if="featuredType==='article'" :featuredInfo="featuredInfo"/>
     </div>
 </template>
 
