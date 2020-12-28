@@ -78,7 +78,7 @@ export default {
       font-family: 'Playfair display';
     }
     h2 {
-      font-size: 2rem !important;
+      font-size: 1.7rem !important;
       font-family: 'Playfair display';
     }
     h3 {
@@ -88,7 +88,7 @@ export default {
       font-weight: 700;
     }
     h4 {
-      font-size: 1.2rem !important;
+      font-size: 1rem !important;
       font-family: 'Playfair display';
       font-weight: 700;
     }

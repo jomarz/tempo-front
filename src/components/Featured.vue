@@ -26,10 +26,10 @@ export default {
         const featuredInfo = {
             id: 1,
             title: 'Concierto Inagural',
-            artist: 'Ian Bostridge',
+            name: 'Ian Bostridge',
             day: 30,
             month: 'JULIO, 2020',
-            venue: 'Teatro Mayor, Bogota'            
+            location: 'Teatro Mayor, Bogota'            
         };
         return { featuredType, featuredInfo }
     }
