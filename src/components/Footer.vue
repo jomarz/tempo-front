@@ -10,8 +10,8 @@
                         <footer-copyright />
                     </div>
                 </div>
-                <div class="col-12 col-md-2">
-
+                <div class="col-12 col-md-2 footer-right">
+                    <img src="../assets/img/tempo_logo.svg" alt="" class="footer-logo">
                 </div>
             </div>
         </div>    
@@ -49,6 +49,9 @@ export default {
                         margin-top: 8px;
                     }
                 }
+            }
+            .footer-right {
+                padding-right: 20px;
             }
         }
     }
