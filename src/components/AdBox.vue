@@ -1,5 +1,5 @@
 <template>
-    <div class="ad-full-width"></div>    
+    <div class="ad-box"></div>
 </template>
 
 <script>
@@ -9,7 +9,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .ad-full-width {
+    .ad-box {
         box-sizing: border-box;
         height: 100%;
         width: 100%;
