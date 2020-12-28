@@ -9,7 +9,7 @@
                 <featured-info :featuredType="featuredType" :featuredInfo="featuredInfo"/>
             </div>
             <div class="col-8 featured-image-box">
-                <img src="https://picsum.photos/id/304/1000/600" alt="" class="featured-image">
+                <img :src="featuredInfo.imgUrl" alt="" class="featured-image">
             </div>    
         </div>
         <div class="row featured-bottom">
@@ -32,7 +32,7 @@ export default {
             day: 18,
             month: 'JULIO, 2020',
             location: 'Teatro Mayor, Bogota',
-            imgUrl: ''           
+            imgUrl: 'https://picsum.photos/id/304/1000/600'           
         };
         return { featuredType, featuredInfo }
     }
