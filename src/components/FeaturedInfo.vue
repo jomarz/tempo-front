@@ -25,5 +25,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+    .featured-info {
+        padding: 70px 20px 40px 20px;
+    }
 </style>
