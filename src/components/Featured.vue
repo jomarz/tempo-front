@@ -8,7 +8,9 @@
             <div class="col-4 featured-info-box">
                 <featured-info :featuredType="featuredType" :featuredInfo="featuredInfo"/>
             </div>
-            <div class="col-8 featured-image"></div>    
+            <div class="col-8 featured-image-box">
+                <img src="..\assets\img\Pictures\featured.jpg" alt="" class="featured-image">
+            </div>    
         </div>
         <div class="row featured-bottom">
             <div class="col-4 featured-bottom-left"></div>
@@ -54,8 +56,18 @@ export default {
         .featured-info-box {
             background-color: #0d273b
         }
-        .featured-image {
+        .featured-image-box {
             background-color: #59686f;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        img.featured-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     }
 </style>
