@@ -27,7 +27,7 @@ export default {
             id: 1,
             title: 'Concierto Inagural',
             name: 'Ian Bostridge',
-            day: 30,
+            day: 18,
             month: 'JULIO, 2020',
             location: 'Teatro Mayor, Bogota'            
         };
