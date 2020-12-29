@@ -17,7 +17,7 @@
                         <div class="box-info-left col-1 box-day"></div>
                         <div class="box-info-right col-11 box-content">
                             <p class="box-text">{{ boxContent.text }}</p>
-                            <a class="more-link" href="#">VER MÁS</a>
+                            <a class="more-link" href="" @click.prevent="setArticle(boxContent.title)">{{store.articleData.name}}</a>
                         </div>
                     </div>
                 </div>
@@ -27,12 +27,22 @@
 </template>
 
 <script>
+import store from '../store/store.js';
+
 export default {
+    setup() {
+        return { store };
+    },
     props: {
         boxContent: {
             required: true,
             type: Object
         }
+    },
+    methods: {
+        setArticle(name) {
+            store.setArticle(name);
+        } 
     }
 }
 </script>

@@ -1,5 +1,8 @@
-import Vue from 'vue';
+import { reactive } from 'vue';
 
-export default Vue.observable({
-  movies: [],
-});
+export default  {
+    articleData: reactive({ name: 'jorge'}),
+    setArticle(name) {
+        this.articleData.name = name;
+    }
+}
