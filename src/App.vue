@@ -32,6 +32,9 @@
     <ad-box class="ad-row"/>
   </div>
   <Footer />
+  <button id="show-modal" @click="showArticle = true">Show Modal</button>    
+  <article-window v-if="showArticle" @close="showArticle = false" />
+
 </template>
 
 <script>
@@ -44,9 +47,13 @@ import VideosSection from './components/VideosSection.vue';
 import ArticlesSection from './components/ArticlesSection.vue';
 import AlbumsSection from './components/AlbumsSection.vue';
 import Footer from './components/Footer.vue';
+import ArticleWindow from './components/ArticleWindow.vue';
 
 export default {
   name: 'App',
+  data() {
+    return { showArticle: false }
+  },
   components: {
     TopBar,
     NavBar,
@@ -56,7 +63,8 @@ export default {
     VideosSection,
     ArticlesSection,
     AlbumsSection,
-    Footer
+    Footer,
+    ArticleWindow
   }
 }
 </script>
