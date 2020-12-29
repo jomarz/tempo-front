@@ -5,7 +5,7 @@
                 <div class="modal-container">
                     <div class="modal-header">
                         <slot name="header">
-                        default header
+                            <h1>{{store.articleData.name}}</h1>
                         </slot>
                     </div>
 
@@ -18,7 +18,7 @@
                     <div class="modal-footer">
                         <slot name="footer">
                         default footer
-                        <button class="modal-default-button" @click="$emit('close')">
+                        <button class="modal-default-button" @click="$emit('toggle')">
                             OK
                         </button>
                         </slot>
@@ -30,8 +30,12 @@
 </template>
 
 <script>
+import store from '../store/store.js';
+
 export default {
-    
+    setup() {
+        return { store };
+    },
 }
 </script>
 

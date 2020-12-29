@@ -23,7 +23,7 @@
                             <div class="box-text-container">
                                 <p class="box-text">{{boxContent.text}}</p>
                             </div>
-                            <a class="more-link" href="#">VER MÁS</a>
+                            <read-more-link contentType="event" :contentName="boxContent.title" :contentId="boxContent.id"/>
                         </td>
                     </tr>
                 </table>
@@ -33,7 +33,9 @@
 </template>
 
 <script>
+import ReadMoreLink from './ReadMoreLink.vue'
 export default {
+  components: { ReadMoreLink },
     props: {
         boxContent: {
             required: true,

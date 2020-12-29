@@ -33,7 +33,7 @@
   </div>
   <Footer />
   <button id="show-modal" @click="showArticle = true">Show Modal</button>    
-  <article-window v-if="showArticle" @close="showArticle = false" />
+  <article-window v-if="store.showArticle.state" @toggle="store.toggleArticle()" />
 
 </template>
 
@@ -49,10 +49,12 @@ import AlbumsSection from './components/AlbumsSection.vue';
 import Footer from './components/Footer.vue';
 import ArticleWindow from './components/ArticleWindow.vue';
 
+import store from './store/store.js';
+
 export default {
   name: 'App',
   data() {
-    return { showArticle: false }
+    return { store }
   },
   components: {
     TopBar,

@@ -17,7 +17,7 @@
                         <div class="box-info-left col-1 box-day"></div>
                         <div class="box-info-right col-11 box-content">
                             <p class="box-text">{{ boxContent.text }}</p>
-                            <a class="more-link" href="" @click.prevent="setArticle(boxContent.title)">{{store.articleData.name}}</a>
+                            <read-more-link contentType="article" :contentName="boxContent.title" :contentId="boxContent.id"/>
                         </div>
                     </div>
                 </div>
@@ -27,22 +27,15 @@
 </template>
 
 <script>
-import store from '../store/store.js';
+import ReadMoreLink from './ReadMoreLink.vue'
 
 export default {
-    setup() {
-        return { store };
-    },
+  components: { ReadMoreLink },
     props: {
         boxContent: {
             required: true,
             type: Object
         }
-    },
-    methods: {
-        setArticle(name) {
-            store.setArticle(name);
-        } 
     }
 }
 </script>
