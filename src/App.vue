@@ -32,7 +32,6 @@
     <ad-box class="ad-row"/>
   </div>
   <Footer />
-  <button id="show-modal" @click="showArticle = true">Show Modal</button>    
   <article-window v-if="store.showArticle.state" @toggle="store.toggleArticle()" />
 
 </template>

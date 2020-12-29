@@ -3,25 +3,18 @@
         <div class="modal-mask">
             <div class="modal-wrapper">
                 <div class="modal-container">
-                    <div class="modal-header">
-                        <slot name="header">
-                            <h1>{{store.articleData.name}}</h1>
-                        </slot>
-                    </div>
-
-                    <div class="modal-body">
-                        <slot name="body">
-                        default body
-                        </slot>
-                    </div>
-
-                    <div class="modal-footer">
-                        <slot name="footer">
-                        default footer
-                        <button class="modal-default-button" @click="$emit('toggle')">
+                    <div class="content-header"> 
+                        <button class="close-content-modal" @click="$emit('toggle')">
                             OK
-                        </button>
-                        </slot>
+                        </button>                   
+                        <div class="modal-content-type">CONCIERTOS</div>
+                    </div>
+                    <div class="title-row">
+                        <h3>La Integral de los Cuartetos de Beethoven</h3>
+                        <div class="modal-content-subtitle">El Cuarteto Casals: Veinte Años Para Escalar la Cima de los Cuartetos de Beethoven</div>
+                    </div>
+                    <div class="main-content-display">
+                        
                     </div>
                 </div>
             </div>
@@ -58,27 +51,37 @@ export default {
 }
 
 .modal-container {
-  width: 300px;
+  width: 764px;
   margin: 0px auto;
-  padding: 20px 30px;
+  padding: 20px 20px;
   background-color: #fff;
-  border-radius: 2px;
+  border-radius: 0px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
-  font-family: Helvetica, Arial, sans-serif;
+}
+.modal-content-type {
+    //float: left;
+    font-size: 0.85rem !important;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    clear: both;
+}
+.close-content-modal {
+    float: right;
+    display: block;
+}
+.content-header {
+    border-bottom: 1px solid #d1d3d4;
+    padding-bottom: 5px;
+}
+.title-row {
+    padding-top: 30px;
+    padding-bottom: 15px;
+}
+.modal-content-subtitle {
+    font-size: 0.95rem !important;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
 }
 
-.modal-header h3 {
-  margin-top: 0;
-  color: #42b983;
-}
-
-.modal-body {
-  margin: 20px 0;
-}
-
-.modal-default-button {
-  display: block;
-  margin-top: 1rem;
-}
 </style>
