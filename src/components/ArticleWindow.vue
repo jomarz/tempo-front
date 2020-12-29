@@ -5,7 +5,7 @@
                 <div class="modal-container">
                     <div class="content-header"> 
                         <button class="close-content-modal" @click="$emit('toggle')">
-                            OK
+                            CERRAR
                         </button>                   
                         <div class="modal-content-type">CONCIERTOS</div>
                     </div>
@@ -13,9 +13,7 @@
                         <h3>La Integral de los Cuartetos de Beethoven</h3>
                         <div class="modal-content-subtitle">El Cuarteto Casals: Veinte Años Para Escalar la Cima de los Cuartetos de Beethoven</div>
                     </div>
-                    <div class="main-content-display">
-                        
-                    </div>
+                    <modal-main-display />
                 </div>
             </div>
         </div>
@@ -24,11 +22,15 @@
 
 <script>
 import store from '../store/store.js';
+import ModalMainDisplay from './ModalMainDisplay';
 
 export default {
     setup() {
         return { store };
     },
+    components: {
+        ModalMainDisplay
+    }
 }
 </script>
 
