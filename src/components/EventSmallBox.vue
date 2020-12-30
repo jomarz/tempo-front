@@ -2,31 +2,53 @@
     <div class="event-small-box ">
         <div class="">
             <div class="thumbnail">
-                <img src="../assets/img/Pictures/thumbnail1.png" alt="">
+                <img :src="boxContent.imgUrl" alt="">
             </div>
-            <div class="box_info container">
-                <div class="row box-title-row no-gutters">
-                    <div class="col-3">a</div>
-                    <div class="col-9 box-title">b</div>
-                </div>
-                <div class="row box-content-row no-gutters">
-                    <div class="col-3 box-day">c</div>
-                    <div class="col-9 box-content">d</div>
-                </div>
+            <div class="box_info">
+                <table class="box-info-table">
+                    <tr class="box-info-top-row">
+                        <td class="box-info-left-col"></td>
+                        <td class="box-info-right-col">
+                            <h6>{{ boxContent.title }}</h6>
+                            <span class="box-subtitle">{{ boxContent.subtitle }}</span>
+                        </td>
+                    </tr>
+                    <tr class="box-info-bottom-row">
+                        <td class="box-info-left-col event-day-cell">
+                            <h4>{{boxContent.day}}</h4>
+                        </td>
+                        <td class="box-info-right-col">
+                            <span class="box-month">{{boxContent.month}}</span>
+                            <span class="box-location">{{boxContent.location}}</span>
+                            <div class="box-text-container">
+                                <p class="box-text">{{boxContent.text}}</p>
+                            </div>
+                            <read-more-link contentType="event" :contentName="boxContent.title" :contentId="boxContent.id"/>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>    
 </template>
 
 <script>
+import ReadMoreLink from './ReadMoreLink.vue'
 export default {
+  components: { ReadMoreLink },
+    props: {
+        boxContent: {
+            required: true,
+            type: Object
+        }
+    }
     
 }
 </script>
 
 <style lang="scss" scoped>
     .event-small-box {
-        width: 330px;
+        width: 335px;
         display: inline-block;
         margin-bottom: 40px;
         .thumbnail {
@@ -34,28 +56,46 @@ export default {
             float: left;
         }
         .thumbnail img {
-            height: 128px;
+            height: 137px;
             width: 130px;
         }
         .box_info {
-            width: 200px;
+            width: 205px;
             float: left;
-            padding-left: 25px;
+            padding-left: 9px;
             padding-right: 0px;
-        }
-        .box-title-row {
-            border-bottom: 2px solid #d1d3d4;
-            height: 38px;
-        }
-        .box-title-row, .box-content-row {
-            margin-left: 0px;
-            margin-right: 0px;
-        }
-        .box-content-row {
-            height: 90px;
-        }
-        .box-content, .box-title {
-            border-left: 2px solid #d1d3d4;
+            td {
+                vertical-align: top;
+            }
+            .box-info-table tr.box-info-top-row {
+                border-bottom: 2px solid #d1d3d4;
+                height: 40px;
+            }
+            .box-info-table tr.box-info-bottom-row {
+                height: 94px;
+            }
+            .box-info-table td.box-info-left-col {
+                width: 34px;
+                min-width: 34px;
+                max-width: 34px;
+                padding-right: 9px;
+                padding-left: 1px;
+            }
+            .box-info-table td.box-info-right-col {
+                border-left: 2px solid #d1d3d4;
+                width: 162px;
+                min-width: 162px;
+                max-width: 162px;
+                padding-left: 9px;
+            }
+            .event-day-cell {
+                text-align: end;
+            }
+            p.box-text {
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+            }
         }
     }
 </style>

@@ -17,7 +17,7 @@
                         <div class="box-info-left col-1 box-day"></div>
                         <div class="box-info-right col-11 box-content">
                             <p class="box-text">{{ boxContent.text }}</p>
-                            <a class="more-link" href="#">VER MÁS</a>
+                            <read-more-link contentType="article" :contentName="boxContent.title" :contentId="boxContent.id"/>
                         </div>
                     </div>
                 </div>
@@ -27,7 +27,10 @@
 </template>
 
 <script>
+import ReadMoreLink from './ReadMoreLink.vue'
+
 export default {
+  components: { ReadMoreLink },
     props: {
         boxContent: {
             required: true,
@@ -92,23 +95,9 @@ export default {
         .box-title {
             padding-top: 1px;
         }
-        .box-subtitle {
-            font-size: 0.65rem !important;
-            font-family: 'Roboto', sans-serif;
-            font-weight: 400;
-            display: block;
-            padding-top: 2px;
-        }
         .box-text {
             height: 100%;
-            overflow: hidden;
-        }
-        p.box-text {
-                font-size: 0.65rem !important;
-                line-height: 0.77rem;
-                padding-top: 4px;
-                margin-bottom: 3px;
-                max-height: 67px;
+            max-height: 67px;
         }
     }
 </style>

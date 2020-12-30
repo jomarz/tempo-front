@@ -5,12 +5,14 @@
         </div>
         <div class="album-title">{{album.title}}</div>
         <p class="album-text">{{album.text}}</p>
-        <a class="more-link" href="#">VER MÁS</a>
+        <read-more-link contentType="album" :contentName="album.title" :contentId="album.id"/>
     </div>    
 </template>
 
 <script>
+import ReadMoreLink from './ReadMoreLink.vue'
 export default {
+  components: { ReadMoreLink },
     props: {
         album: {
             required: true,

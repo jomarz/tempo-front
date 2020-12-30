@@ -32,6 +32,8 @@
     <ad-box class="ad-row"/>
   </div>
   <Footer />
+  <article-window v-if="store.showArticle.state" @toggle="store.toggleArticle()" />
+
 </template>
 
 <script>
@@ -44,9 +46,15 @@ import VideosSection from './components/VideosSection.vue';
 import ArticlesSection from './components/ArticlesSection.vue';
 import AlbumsSection from './components/AlbumsSection.vue';
 import Footer from './components/Footer.vue';
+import ArticleWindow from './components/ArticleWindow.vue';
+
+import store from './store/store.js';
 
 export default {
   name: 'App',
+  data() {
+    return { store }
+  },
   components: {
     TopBar,
     NavBar,
@@ -56,7 +64,8 @@ export default {
     VideosSection,
     ArticlesSection,
     AlbumsSection,
-    Footer
+    Footer,
+    ArticleWindow
   }
 }
 </script>
@@ -74,11 +83,11 @@ export default {
     background-color: white;
     color: black;
     h1 {
-      font-size: 3.2rem !important;
+      font-size: 2.5rem !important;
       font-family: 'Playfair display';
     }
     h2 {
-      font-size: 2rem !important;
+      font-size: 1.7rem !important;
       font-family: 'Playfair display';
     }
     h3 {
@@ -88,7 +97,7 @@ export default {
       font-weight: 700;
     }
     h4 {
-      font-size: 1.2rem !important;
+      font-size: 1.1rem !important;
       font-family: 'Playfair display';
       font-weight: 700;
     }
@@ -109,7 +118,7 @@ export default {
     }
     h1, h2, h3, h4, h5, h6 {
       margin: 0;
-      }
+    }
     button {
         font-family: 'Roboto', sans-serif;
         color: white;
@@ -132,6 +141,36 @@ export default {
       text-decoration: none;
       font-family: 'Roboto', sans-serif;
     }
+    /* Box styles */
+    .box-subtitle {
+        font-size: 0.65rem !important;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        display: block;
+    }
+    .box-month{
+      display: block;
+        font-size: 0.65rem !important;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+    }
+    .box-location {
+      display: block;
+        font-size: 0.65rem !important;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+    }
+    .box-text-container {
+      overflow: hidden
+    }
+    p.box-text {
+      font-size: 0.65rem !important;
+      line-height: 0.77rem;
+      padding-top: 4px;
+      margin-bottom: 3px;
+      overflow: hidden;
+    }
+    /* Nav styles */
     ul.nav-menu a::after, .footer-links a::after {
         content: attr(data-text);
         content: attr(data-text) / "";
