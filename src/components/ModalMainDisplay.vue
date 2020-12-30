@@ -4,7 +4,9 @@
             <feat-info-event v-if="contentType==='event'" :featuredInfo="content" class=""/>
             <feat-info-article v-if="contentType==='article'" :featuredInfo="content"/>
         </div>
-        <div class="media-box"></div>
+        <div class="media-box">
+            <iframe width="504" height="298" src="https://www.youtube-nocookie.com/embed/SSI1ahcFYJA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
     </div>    
 </template>
 
