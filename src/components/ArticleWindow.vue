@@ -171,5 +171,8 @@ export default {
     .main-article-content {
         width: 450px;
         padding-top: 20px;
+        p {
+            font-size: 0.85rem !important;
+        }
     }
 </style>
