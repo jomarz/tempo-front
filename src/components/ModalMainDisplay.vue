@@ -1,7 +1,7 @@
 <template>
     <div class="modal-main-display">
         <div class="info-box">
-            <feat-info-event v-if="contentType==='event'" :featuredInfo="content" class=""/>
+            <feat-info-event v-if="contentType==='event'" :featuredInfo="content" class="article-modal-info"/>
             <feat-info-article v-if="contentType==='article'" :featuredInfo="content"/>
         </div>
         <div class="media-box">
@@ -37,6 +37,8 @@ export default {
             width: 215px;
             height: 298px;
             background-color: #27648f;
+            display: flex;
+            justify-content: center;
         }
         .media-box {
             width: 504px;
