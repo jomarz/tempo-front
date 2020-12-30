@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .feat-info-event {
+    .home-main.feat-info-event {
         display: flex;
         flex-direction: column;
         align-items: center;

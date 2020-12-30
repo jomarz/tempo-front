@@ -13,7 +13,7 @@
                         <h3>La Integral de los Cuartetos de Beethoven</h3>
                         <div class="modal-content-subtitle">El Cuarteto Casals: Veinte Años Para Escalar la Cima de los Cuartetos de Beethoven</div>
                     </div>
-                    <modal-main-display />
+                    <modal-main-display :contentType="contentType" :content="content" />
                 </div>
             </div>
         </div>
@@ -26,7 +26,15 @@ import ModalMainDisplay from './ModalMainDisplay';
 
 export default {
     setup() {
-        return { store };
+        const contentType = 'event';
+        const content = {
+            title: 'Concierto Inagural',
+            name: 'Ian Bostridge',
+            day: 30,
+            month: 'DE JULIO, 2020',
+            location: 'Teatro Mayor, Bogota'
+        };
+        return { store, contentType, content };
     },
     components: {
         ModalMainDisplay
