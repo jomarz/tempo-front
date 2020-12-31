@@ -7,7 +7,7 @@
     <concerts-section />
     <ad-box class="ad-row"/>
     <videos-section />
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
         <div class="col-12 col-md-9 pl-0 pd-0 pd-md-2">
           <ad-box class="ad-row"/>
@@ -18,7 +18,7 @@
       </div>
     </div>
     <articles-section />
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
         <div class="col-12 col-md-9 pl-0 pd-0 pd-md-2">
           <ad-box class="ad-row"/>
