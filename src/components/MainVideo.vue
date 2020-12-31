@@ -3,22 +3,26 @@
         <div class="row main-video-row">
             <div class="col main-video">
                 <div class="video-container">
-                    <iframe :src="featVideo.src" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe :src="store.featVideo.src" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>                
             </div>
         </div>
         <div class="main-video-title">
-            <h2>{{featVideo.title}}</h2>
+            <h2>{{store.featVideo.title}}</h2>
         </div>
     </div>
 </template>
 
 <script>
+import store from '../store/store';
 export default {
         props: {
             featVideo: {
                 required: true
             }
+        },
+        setup() {
+            return { store };
         }
 }
 </script>

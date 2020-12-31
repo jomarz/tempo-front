@@ -39,7 +39,6 @@ export default {
             .main-video {
             }
             .video-carousel {
-                background-color: wheat;
             }
         }
     }
