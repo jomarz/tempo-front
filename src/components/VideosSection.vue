@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="row main-videos-row">
-            <main-video class="col-12 col-md-8 col-lg-9 main-video"></main-video>
+            <main-video :featVideo="featVideo" class="col-12 col-md-8 col-lg-9 main-video"></main-video>
             <video-carousel class="col-12 col-md-3 col-lg-3 video-carousel"></video-carousel>
         </div>
     </div>    
@@ -21,7 +21,13 @@ export default {
     setup() 
     {
         const navTitle = "Videos Tempo";
-        return { navTitle };  
+        const featVideo = {
+            title: 'Orquesta de Cámara de Colombia',
+            subtite: 'CARTAGENA MUSIC FESTIVAL 2020',
+            src: 'https://www.youtube-nocookie.com/embed/bKFLH-y6Ao0',
+
+        }
+        return { navTitle, featVideo };  
     }  
 }
 </script>
@@ -30,9 +36,7 @@ export default {
     .videos-section {
         .main-videos-row {
             margin-top: 40px;
-            height: 300px;
             .main-video {
-                background-color: gray;
             }
             .video-carousel {
                 background-color: wheat;
