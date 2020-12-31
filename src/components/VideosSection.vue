@@ -6,8 +6,8 @@
             </div>
         </div>
         <div class="row main-videos-row">
-            <main-video :featVideo="featVideo" class="col-12 col-md-8 col-lg-9 main-video"></main-video>
-            <video-carousel class="col-12 col-md-3 col-lg-3 video-carousel"></video-carousel>
+            <main-video class="col-12 col-md-8 col-lg-9 main-video" :featVideo="featVideo" ></main-video>
+            <video-carousel class="col-12 col-md-3 col-lg-3 video-carousel" :videoList="videoList" ></video-carousel>
         </div>
     </div>    
 </template>
@@ -21,13 +21,26 @@ export default {
     setup() 
     {
         const navTitle = "Videos Tempo";
-        const featVideo = {
-            title: 'Orquesta de Cámara de Colombia',
-            subtite: 'CARTAGENA MUSIC FESTIVAL 2020',
-            src: 'https://www.youtube-nocookie.com/embed/bKFLH-y6Ao0',
-
-        }
-        return { navTitle, featVideo };  
+        const videoFullList = [
+            {
+                src: 'https://www.youtube-nocookie.com/embed/YavoiqULwLc',
+                title: 'Kaleidoscope Chamber Orchestra'
+            },
+            {
+                src: 'https://www.youtube-nocookie.com/embed/4MPuoOj5TIw',
+                title: 'Gustav Mahler'
+            },
+            {
+                src: 'https://www.youtube-nocookie.com/embed/uWnKMzAedK4',
+                title: 'Franz Schubert D 759'
+            },
+            {
+                src: 'https://www.youtube-nocookie.com/embed/CRcbDMg56yg',
+                title: 'Serenade for Strings | Dvořák'
+            },
+        ];
+        const videoList = videoFullList.slice(0,3);
+        return { navTitle, videoList };  
     }  
 }
 </script>
