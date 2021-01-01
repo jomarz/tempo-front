@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import store from '../store/store.js';
 import AlbumsCTA from './AlbumsCTA.vue';
 import AlbumsGrid from './AlbumsGrid.vue'
 import PrintedVertical from './PrintedVertical.vue';
@@ -35,11 +36,22 @@ export default {
           { id: '7', title: "Imodipic iissimus", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a fermentum risus, eget vehicula magna. Aliquam erat volutpat. In condimentum neque neque, in tempus nulla interdum eget. Vestibulum et leo eget purus eleifend semper ut eget tellus. Maecenas sit amet pellentesque tellus.", imgUrl: "https://picsum.photos/seed/jorgeab7/300/300" },
           { id: '8', title: "Imodipic iissimus", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a fermentum risus, eget vehicula magna. Aliquam erat volutpat. In condimentum neque neque, in tempus nulla interdum eget. Vestibulum et leo eget purus eleifend semper ut eget tellus. Maecenas sit amet pellentesque tellus.", imgUrl: "https://picsum.photos/seed/jorgeab8/300/300" },
       ];
-        const printedList = [
-            { id: 1, title: "Imodipic iissimus", text: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgeabc1/200/300" }, 
-            { id: 2, title: "Imodipic iissimus", text: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgeacc2/200/301" },
+        const printedFullList = [
+            { id: 1, title: "Imodipic iissimus", text: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgabc1/200/300" }, 
+            { id: 2, title: "Imodipic iissimus", text: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgacc2/200/301" },
+            { id: 3, title: "Imodipic iissimus", text: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgabc3/200/300" }, 
+            { id: 4, title: "Imodipic iissimus", text: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgacc4/200/301" },
+            { id: 5, title: "Imodipic iissimus", text: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgabc5/200/300" }, 
+            { id: 6, title: "Imodipic iissimus", text: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgacc6/200/301" },
+            { id: 7, title: "Imodipic iissimus", text: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgacc7/200/301" }
         ];
-      return { albumList, printedList };
+        store.printedEdsCarousel.setNumPages(printedFullList.length);
+      return { albumList, printedFullList };
+  },
+  computed: {
+      printedList() {
+          return store.printedEdsCarousel.getCurrentPageList(this.printedFullList);
+      }
   }
     
 }
