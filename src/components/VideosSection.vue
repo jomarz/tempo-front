@@ -14,6 +14,7 @@
 
 <script>
 import store from '../store/store.js';
+import {  }from 'vue';
 import MainVideo from './MainVideo.vue';
 import SectionNavNoMenu from './SectionNavNoMenu.vue';
 import VideoCarousel from './VideoCarousel.vue';
@@ -56,9 +57,24 @@ export default {
                 title: 'Serenade for Strings | Dvořák'
             },
         ];
-        const videoList = videoFullList.slice(0,3);
-        return { navTitle, videoList, store };  
-    }  
+        store.videoCarousel.setNumPages(Math.ceil(videoFullList.length/store.videoCarousel.elemsPerPage.value));
+        console.log(store.videoCarousel.currentPage.value);
+        console.log(store.videoCarousel.numPages);
+        console.log(store.videoCarousel.elemsPerPage.value);
+        //const videoList = videoFullList.slice((store.videoCarousel.currentPage-1)*store.videoCarousel.elemsPerPage,store.videoCarousel.currentPage*store.videoCarousel.elemsPerPage);
+        return { navTitle, store, videoFullList };  
+    },
+    computed: {
+        videoList() {
+            console.log(this.videoFullList.length);
+            return this.videoFullList.slice((store.videoCarousel.currentPage.value-1)*store.videoCarousel.elemsPerPage.value,store.videoCarousel.currentPage.value*store.videoCarousel.elemsPerPage.value);
+        }
+    },
+    methods: {
+        getVideoList() {
+            return this.videoFullList.slice((store.videoCarousel.currentPage-1)*store.videoCarousel.elemsPerPage,store.videoCarousel.currentPage*store.videoCarousel.elemsPerPage);
+        }
+    }
 }
 </script>
 

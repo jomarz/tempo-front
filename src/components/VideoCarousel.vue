@@ -7,19 +7,23 @@
                 </div>
             </div>
             <div class="col-2 vdeo-carousel-nav">
-                <a href="" @click.prevent=""><img src="..\assets\img\icons\Arrows\YellowArrows_top.svg" alt="up"></a>
-                <a href="" @click.prevent=""><img src="..\assets\img\icons\Arrows\YellowArrows_down.svg" alt="down"></a>
+                <a href="" @click.prevent="store.videoCarousel.moveUp()"><img src="..\assets\img\icons\Arrows\YellowArrows_top.svg" alt="up"></a>
+                <a href="" @click.prevent="store.videoCarousel.moveDown()"><img src="..\assets\img\icons\Arrows\YellowArrows_down.svg" alt="down"></a>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import store from '../store/store'
 import videoSmallBox from './videoSmallBox.vue'
 export default {
   components: { videoSmallBox },
     props: {
         videoList: { required: true }
+    },
+    setup() {
+        return { store }
     }
 }
 </script>
