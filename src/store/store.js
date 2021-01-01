@@ -12,8 +12,8 @@ class carousel {
     moveDown() {
         if(this.currentPage.value<this.numPages.value) this.currentPage.value += 1;
     }
-    setNumPages(num) {
-        this.numPages.value = num;
+    setNumPages(listLength) {
+        this.numPages.value = Math.ceil(listLength/this.elemsPerPage.value);
     }
     setElemsPerPage(num) {
         this.elemsPerPage.value = num;

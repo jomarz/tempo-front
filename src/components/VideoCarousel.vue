@@ -6,7 +6,7 @@
                     <video-small-box :videoInfo="videoInfo" />
                 </div>
             </div>
-            <div class="col-2 vdeo-carousel-nav">
+            <div class="col-2 carousel-nav">
                 <a href="" @click.prevent="store.videoCarousel.moveUp()"><img src="..\assets\img\icons\Arrows\YellowArrows_top.svg" alt="up"></a>
                 <a href="" @click.prevent="store.videoCarousel.moveDown()"><img src="..\assets\img\icons\Arrows\YellowArrows_down.svg" alt="down"></a>
             </div>

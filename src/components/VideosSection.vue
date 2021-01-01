@@ -57,11 +57,7 @@ export default {
                 title: 'Serenade for Strings | Dvořák'
             },
         ];
-        store.videoCarousel.setNumPages(Math.ceil(videoFullList.length/store.videoCarousel.elemsPerPage.value));
-        console.log(store.videoCarousel.currentPage.value);
-        console.log(store.videoCarousel.numPages);
-        console.log(store.videoCarousel.elemsPerPage.value);
-        //const videoList = videoFullList.slice((store.videoCarousel.currentPage-1)*store.videoCarousel.elemsPerPage,store.videoCarousel.currentPage*store.videoCarousel.elemsPerPage);
+        store.videoCarousel.setNumPages(videoFullList.length);
         return { navTitle, store, videoFullList };  
     },
     computed: {
