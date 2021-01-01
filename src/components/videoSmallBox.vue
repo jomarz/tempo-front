@@ -3,6 +3,9 @@
         <div class="video-container">
             <iframe :src="videoInfo.src" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
+        <div class="video-box-subtitle">
+            {{videoInfo.title}}
+        </div>
     </div>
 </template>
 
@@ -16,9 +19,9 @@ export default {
 
 <style lang="scss" scoped>
     .video-small-box {
+        .video-container {
         width: 209px;
         height: 127px;
-        .video-container {
             overflow: hidden;
             position: relative;
             width:100%;
@@ -36,6 +39,13 @@ export default {
             left: 0;
             width: 100%;
             height: 100%;
+        }
+        .video-box-subtitle {
+            font-size: 0.75rem !important;
+            line-height: 1rem;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            margin-top: 6px;
         }
     }
 </style>

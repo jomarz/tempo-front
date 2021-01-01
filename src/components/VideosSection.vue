@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import store from '../store/store.js';
 import MainVideo from './MainVideo.vue';
 import SectionNavNoMenu from './SectionNavNoMenu.vue';
 import VideoCarousel from './VideoCarousel.vue';
@@ -38,9 +39,25 @@ export default {
                 src: 'https://www.youtube-nocookie.com/embed/CRcbDMg56yg',
                 title: 'Serenade for Strings | Dvořák'
             },
+            {
+                src: 'https://www.youtube-nocookie.com/embed/YavoiqULwLc',
+                title: 'Kaleidoscope Chamber Orchestra'
+            },
+            {
+                src: 'https://www.youtube-nocookie.com/embed/4MPuoOj5TIw',
+                title: 'Gustav Mahler'
+            },
+            {
+                src: 'https://www.youtube-nocookie.com/embed/uWnKMzAedK4',
+                title: 'Franz Schubert D 759'
+            },
+            {
+                src: 'https://www.youtube-nocookie.com/embed/CRcbDMg56yg',
+                title: 'Serenade for Strings | Dvořák'
+            },
         ];
         const videoList = videoFullList.slice(0,3);
-        return { navTitle, videoList };  
+        return { navTitle, videoList, store };  
     }  
 }
 </script>

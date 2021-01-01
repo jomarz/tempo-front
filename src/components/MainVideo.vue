@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="main-video-title">
-            <h2>{{store.featVideo.title}}</h2>
+            <h3>{{store.featVideo.title}}</h3>
         </div>
     </div>
 </template>
@@ -50,7 +50,7 @@ export default {
             height: 100%;
         }
         .main-video-title {
-            padding: 20px 0;
+            padding: 15px 0;
         }
     }
 </style>
