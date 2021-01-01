@@ -28,7 +28,9 @@ export default  {
         subtite: 'CARTAGENA MUSIC FESTIVAL 2020',
         src: 'https://www.youtube-nocookie.com/embed/bKFLH-y6Ao0',
     }),
+    eventsCarousel: new carousel(1,9),
     videoCarousel: new carousel(1,3),
+    articlesCarousel: new carousel(1,8),
     newsCarousel: new carousel(1,3),
     printedEdsCarousel: new carousel(1,2),
     setArticle(name) {
