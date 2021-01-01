@@ -14,7 +14,6 @@
 
 <script>
 import store from '../store/store.js';
-import {  }from 'vue';
 import MainVideo from './MainVideo.vue';
 import SectionNavNoMenu from './SectionNavNoMenu.vue';
 import VideoCarousel from './VideoCarousel.vue';

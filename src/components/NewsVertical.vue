@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import store from '../store/store.js';
 import NewsCTA from "./NewsCTA.vue";
 import NewsSmallBox from "./NewsSmallBox.vue";
 
@@ -29,7 +30,10 @@ export default {
     },
     components: {
         NewsSmallBox, NewsCTA
-    }    
+    },
+    setup() {
+        return { store }
+    }
 }
 </script>
 
