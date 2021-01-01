@@ -66,13 +66,7 @@ export default {
     },
     computed: {
         videoList() {
-            console.log(this.videoFullList.length);
-            return this.videoFullList.slice((store.videoCarousel.currentPage.value-1)*store.videoCarousel.elemsPerPage.value,store.videoCarousel.currentPage.value*store.videoCarousel.elemsPerPage.value);
-        }
-    },
-    methods: {
-        getVideoList() {
-            return this.videoFullList.slice((store.videoCarousel.currentPage-1)*store.videoCarousel.elemsPerPage,store.videoCarousel.currentPage*store.videoCarousel.elemsPerPage);
+            return store.videoCarousel.getCurrentPageList(this.videoFullList);
         }
     }
 }

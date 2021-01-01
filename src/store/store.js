@@ -18,6 +18,9 @@ class carousel {
     setElemsPerPage(num) {
         this.elemsPerPage.value = num;
     }
+    getCurrentPageList(list) {
+        return list.slice((this.currentPage.value-1)*this.elemsPerPage.value,this.currentPage.value*this.elemsPerPage.value);
+    }
 }
 
 export default  {
