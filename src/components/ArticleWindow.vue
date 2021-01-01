@@ -18,6 +18,7 @@
                     <div class="main-article-content">
                         <p v-for="paragraph in content.paragraphList" class="article-text" :key="paragraph.id">{{paragraph.text}}</p>
                     </div>
+                    <related-articles :relatedArticles="relatedArticles" />
                 </div>
             </div>
         </div>
@@ -27,6 +28,7 @@
 <script>
 import store from '../store/store.js';
 import ModalMainDisplay from './ModalMainDisplay';
+import RelatedArticles from './RelatedArticles';
 
 export default {
     setup() {
@@ -125,7 +127,7 @@ export default {
         return { store, contentType, content, relatedArticles };
     },
     components: {
-        ModalMainDisplay
+        ModalMainDisplay, RelatedArticles
     }
 }
 </script>
