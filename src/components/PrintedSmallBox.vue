@@ -4,7 +4,7 @@
             <img :src="printedElement.imgUrl" alt="">
         </div>
         <div class="printed-box-title">{{printedElement.title}}</div>
-        <p class="printed-box-text">{{printedElement.text}}</p>
+        <p class="printed-box-text">{{printedElement.description}}</p>
     </div>    
 </template>
 

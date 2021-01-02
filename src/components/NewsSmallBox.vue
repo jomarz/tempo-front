@@ -4,7 +4,7 @@
             <img :src="newsElement.imgUrl" alt="">
         </div>
         <div class="news-box-title">{{newsElement.title}}</div>
-        <p class="news-box-text">{{newsElement.text}}</p>
+        <p class="news-box-text">{{newsElement.description}}</p>
         <a class="more-link" href="#">VER MÁS</a>
     </div>    
 </template>

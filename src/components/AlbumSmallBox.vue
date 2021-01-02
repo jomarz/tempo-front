@@ -4,7 +4,7 @@
             <img :src="album.imgUrl" alt="" class="thumbnail-image">
         </div>
         <div class="album-title">{{album.title}}</div>
-        <p class="album-text">{{album.text}}</p>
+        <p class="album-text">{{album.description}}</p>
         <read-more-link contentType="album" :contentName="album.title" :contentId="album.id"/>
     </div>    
 </template>

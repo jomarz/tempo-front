@@ -21,7 +21,7 @@
                             <span class="box-month">{{boxContent.month}}</span>
                             <span class="box-location">{{boxContent.location}}</span>
                             <div class="box-text-container">
-                                <p class="box-text">{{boxContent.text}}</p>
+                                <p class="box-text">{{boxContent.description}}</p>
                             </div>
                             <read-more-link contentType="event" :contentName="boxContent.title" :contentId="boxContent.id"/>
                         </td>
