@@ -10,7 +10,7 @@
                 <Calendar />
             </div>
             <div class="col-md-3 col-lg-5 pr-0">
-                <AdBox class="ad-small" />
+                <AdBox class="ad-small" :ad="ad" />
             </div>
         </div>
         <div class="row grid-row">
@@ -34,6 +34,7 @@ import ReceiveCTA from './ReceiveCTA.vue'
 import SectionNav from './SectionNav.vue'
 export default {
   components: { Calendar, AdBox, ContentGrid, ReceiveCTA, SectionNav },
+  props: { ad: {required: true } },
   setup() {
         const navTitle = "Conciertos";
         const menuItems = [

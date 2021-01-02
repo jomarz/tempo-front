@@ -16,8 +16,12 @@
                     <modal-main-display :contentType="contentType" :content="content" class="sticky" />
                     <div class="text-sub">{{content.textSub}}</div>
                     <div class="main-article-content">
-                        <p v-for="paragraph in content.paragraphList" class="article-text" :key="paragraph.id">{{paragraph.text}}</p>
+                        <template v-for="(paragraph, index) in content.paragraphList" :key="paragraph.id">
+                            <ad-box v-if="index==content.paragraphList.length-1" :ad="articleAds[1]" class="ad-row" />
+                            <p class="article-text">{{paragraph.text}}</p>
+                        </template>
                     </div>
+                    <ad-box class="ad-row" :ad="articleAds[2]" />
                     <related-articles :relatedArticles="relatedArticles" />
                 </div>
             </div>
@@ -29,6 +33,7 @@
 import store from '../store/store.js';
 import ModalMainDisplay from './ModalMainDisplay';
 import RelatedArticles from './RelatedArticles';
+import AdBox from './AdBox.vue';
 
 export default {
     setup() {
@@ -124,11 +129,26 @@ export default {
                     postType: 'event'
                 },
             ];
-        return { store, contentType, content, relatedArticles };
+            const articleAds = [
+                { ad_id: '1',
+                    image_url: 'https://picsum.photos/id/1002/1200/200',
+                    link_url: '',
+                    placing: '1',
+                    },
+                { ad_id: '2',
+                    image_url: 'https://picsum.photos/id/1002/1200/200',
+                    link_url: '',
+                    placing: '2',
+                    },
+                { ad_id: '3',
+                    image_url: 'https://picsum.photos/id/1002/1200/200',
+                    link_url: '',
+                    placing: '3',
+                    },
+            ];
+        return { store, contentType, content, relatedArticles, articleAds };
     },
-    components: {
-        ModalMainDisplay, RelatedArticles
-    }
+    components: { ModalMainDisplay, RelatedArticles, AdBox }
 }
 </script>
 
@@ -205,6 +225,9 @@ export default {
         padding-top: 20px;
         p {
             font-size: 0.85rem !important;
+        }
+        .ad-row {
+            margin-bottom: 16px;
         }
     }
 </style>

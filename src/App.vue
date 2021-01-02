@@ -3,17 +3,17 @@
     <TopBar />
     <NavBar />
     <Featured />
-    <ad-box class="ad-row"/>
-    <concerts-section />
-    <ad-box class="ad-row"/>
+    <ad-box class="ad-row" :ad="homeAds[1]" />
+    <concerts-section :ad="homeAds[1]" />
+    <ad-box class="ad-row" :ad="homeAds[1]" />
     <videos-section />
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 col-md-9 pl-0 pd-0 pd-md-2">
-          <ad-box class="ad-row"/>
+          <ad-box class="ad-row" :ad="homeAds[1]" />
         </div>
         <div class="col-12 col-md-3 pr-0 pl-0 pl-md-2">
-          <ad-box class="ad-row"/>
+          <ad-box class="ad-row" :ad="homeAds[1]" />
         </div>
       </div>
     </div>
@@ -21,15 +21,15 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 col-md-9 pl-0 pd-0 pd-md-2">
-          <ad-box class="ad-row"/>
+          <ad-box class="ad-row" :ad="homeAds[1]" />
         </div>
         <div class="col-12 col-md-3 pr-0 pl-0 pl-md-2">
-          <ad-box class="ad-row"/>
+          <ad-box class="ad-row" :ad="homeAds[1]" />
         </div>
       </div>
     </div>
     <albums-section />
-    <ad-box class="ad-row"/>
+    <ad-box class="ad-row" :ad="homeAds[1]" />
   </div>
   <Footer />
   <article-window v-if="store.showArticle.state" @toggle="store.toggleArticle()" />
@@ -54,6 +54,41 @@ export default {
   name: 'App',
   data() {
     return { store }
+  },
+  setup() {
+    const homeAds = [
+      { ad_id: '1',
+        image_url: 'https://picsum.photos/id/1002/1200/200',
+        link_url: '',
+        placing: '1',
+        },
+      { ad_id: '2',
+        image_url: 'https://picsum.photos/id/1002/1200/200',
+        link_url: '',
+        placing: '2',
+        },
+      { ad_id: '3',
+        image_url: 'https://picsum.photos/id/1002/1200/200',
+        link_url: '',
+        placing: '3',
+        },
+      { ad_id: '4',
+        image_url: 'https://picsum.photos/id/1002/1200/200',
+        link_url: '',
+        placing: '4',
+        },
+      { ad_id: '5',
+        image_url: 'https://picsum.photos/id/1002/1200/200',
+        link_url: '',
+        placing: '5',
+        },
+      { ad_id: '6',
+        image_url: 'https://picsum.photos/id/1002/1200/200',
+        link_url: '',
+        placing: '6',
+        },
+    ];
+    return { homeAds }
   },
   components: {
     TopBar,
@@ -186,6 +221,13 @@ export default {
             display: none;
         }
     }
+    /* ad boxes styles*/
+    .ad-row, .ad-box.ad-row {
+      height: 115px;
+    }
+    .ad-small {
+      height: 100%;
+    }
   }
   .content-container {
     display: flex;
@@ -246,15 +288,6 @@ export default {
     .receive-cta.printed-cta .receive-button {
       margin-left: 0px;
     }
-
-    /* ad boxes styles*/
-    .ad-row {
-      height: 115px;
-    }
-    .ad-small {
-      height: 100%;
-    }
-
     /* Footer styles */
   }
   .footer {
