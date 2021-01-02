@@ -1,7 +1,8 @@
 <template>
     <div class="related-article-box" :articleInfo="articleInfo">
-        {{articleInfo.title}}
-        {{articleInfo.subtitle}}    
+        <img :src="articleInfo.imgUrl" alt="">
+        <h6>{{articleInfo.title}}</h6>
+        <p>{{articleInfo.subtitle}}</p>
     </div>    
 </template>
 
@@ -14,5 +15,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+    .related-article-box {
+        width: 157px;
+        margin-right: 15px;
+        img {
+            width: 100%
+        }
+    }
 </style>

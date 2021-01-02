@@ -99,28 +99,28 @@ export default {
                     id: '1',
                     title: 'Igor Levit',
                     subtitle: 'Imodipic iissimus',
-                    thumbnailUrl: 'https://picsum.photos/seed1/aab1/300/300',
+                    imgUrl: 'https://picsum.photos/seed/aab1/300/300',
                     postType: 'event'
                 },
                 {
                     id: '2',
                     title: 'Uptatem invente',
                     subtitle: 'comnihilita soluptas',
-                    thumbnailUrl: 'https://picsum.photos/seed2/aab1/300/300',
+                    imgUrl: 'https://picsum.photos/seed/aab1/300/300',
                     postType: 'event'
                 },
                 {
                     id: '3',
                     title: 'Nicolas Altstaedt',
                     subtitle: 'Eaque nus eos praesci',
-                    thumbnailUrl: 'https://picsum.photos/seed3/aab1/300/300',
+                    imgUrl: 'https://picsum.photos/seed/aab1/300/300',
                     postType: 'event'
                 },
                 {
                     id: '4',
                     title: 'Ad millabo reperro',
                     subtitle: 'Versped que voloreprem',
-                    thumbnailUrl: 'https://picsum.photos/seed4/aab1/300/300',
+                    imgUrl: 'https://picsum.photos/seed/aab1/300/300',
                     postType: 'event'
                 },
             ];
