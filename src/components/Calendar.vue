@@ -7,19 +7,21 @@
                 </div>
                 <div class="calendar-month">
                     <div class="month-arrow">
-                        <img src="../assets/img/TempoWebsiteIconsYellowArrows.svg" alt="">
+                        <img src="..\assets\img\icons\Arrows\YellowArrows_left.svg" alt="">
                     </div>
                     <div class="month-year">
                         <div class="month-name">ENERO</div>
                         <div class="year">2021</div>
                     </div>
                     <div class="month-arrow">
-                        <img src="../assets/img/TempoWebsiteIconsYellowArrows.svg" alt="">
+                        <img src="..\assets\img\icons\Arrows\YellowArrows_right.svg" alt="">
                     </div>
                 </div>
             </div>    
             <div class="col-8 days-container">
-                <div class="days-header row"></div>
+                <div class="days-header row">
+                    <div v-for="weekday in weekdays" :key='weekday' class="weekday-box">{{weekday}}</div>
+                </div>
                 <div class="days-numbers row">
                     <div class="single-day-box" :class="{highlight: daysWithEvent.includes(day)}" v-for="day in days" :key="day">
                         {{day}}
@@ -36,8 +38,9 @@ export default {
         daysWithEvent: {required: true}
     },
     setup() {
+        const weekdays = ['LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO']
         const days = ref(['','','',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,'']);
-        return { days };
+        return { days, weekdays };
     }
 }
 </script>
@@ -103,16 +106,16 @@ export default {
         .days-container {
             //background-color: #f3f3f4;
             border-width: 0px 1px 1px 0px;
-            border-style: solid;
+            border-style: dashed;
             border-color: #d1d3d4;
         }
         .single-day-box {
             color: #d1d3d4;
             width: 14.28%;
             border-width: 1px 0px 0px 1px;
-            border-style: solid;
+            border-style: dashed;
             border-color: #d1d3d4;
-            padding: 4px;
+            padding: 2px;
             text-align: center;
             font-family: 'Roboto', sans-serif;
             font-size: 0.75rem;
@@ -120,6 +123,17 @@ export default {
         }
         .single-day-box.highlight {
             color: black;
+        }
+        .weekday-box {
+            color: black;
+            width: 14.28%;
+            border-style: none;
+            background-color: #ffc628;
+            padding: 2px;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.50rem;
+            font-weight: 700;
         }
     }
 </style>
