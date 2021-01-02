@@ -1,12 +1,13 @@
 <template>
   <div class="content-container">
+    <div id="top"></div>
     <TopBar />
     <NavBar />
     <Featured />
     <ad-box class="ad-row" :ad="homeAds[1]" />
-    <concerts-section :ad="homeAds[1]" />
+    <concerts-section :ad="homeAds[1]" id="concerts"/>
     <ad-box class="ad-row" :ad="homeAds[1]" />
-    <videos-section />
+    <videos-section id="videos" />
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 col-md-9 pl-0 pd-0 pd-md-2">
@@ -17,7 +18,7 @@
         </div>
       </div>
     </div>
-    <articles-section />
+    <articles-section id="articles" />
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 col-md-9 pl-0 pd-0 pd-md-2">
@@ -28,10 +29,10 @@
         </div>
       </div>
     </div>
-    <albums-section />
+    <albums-section id="albums" />
     <ad-box class="ad-row" :ad="homeAds[1]" />
   </div>
-  <Footer />
+  <Footer id="footer" />
   <article-window v-if="store.showArticle.state" @toggle="store.toggleArticle()" />
 
 </template>

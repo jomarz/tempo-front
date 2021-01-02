@@ -1,11 +1,11 @@
 <template>
     <div class="nav-bar">
         <ul class="navbar-menu nav-menu">
-            <li class="navbar-menu-item"><a href="#" class='navbar-menu-link' data-text='INICIO'>INICIO</a></li>
-            <li class="navbar-menu-item"><a href="#" class='navbar-menu-link' data-text='CONCIERTOS'>CONCIERTOS</a></li>
-            <li class="navbar-menu-item"><a href="#" class='navbar-menu-link' data-text='VIDEOS TEMPO'>VIDEOS TEMPO</a></li>
-            <li class="navbar-menu-item"><a href="#" class='navbar-menu-link' data-text='ARTÍCULOS/NOTICIAS'>ARTÍCULOS/NOTICIAS</a></li>
-            <li class="navbar-menu-item"><a href="#" class='navbar-menu-link' data-text='NOVEDADES DISCOGRÁFICAS'>NOVEDADES DISCOGRÁFICAS</a></li>
+            <li class="navbar-menu-item"><a href="#top" class='navbar-menu-link' data-text='INICIO'>INICIO</a></li>
+            <li class="navbar-menu-item"><a href="#concerts" class='navbar-menu-link' data-text='CONCIERTOS'>CONCIERTOS</a></li>
+            <li class="navbar-menu-item"><a href="#videos" class='navbar-menu-link' data-text='VIDEOS TEMPO'>VIDEOS TEMPO</a></li>
+            <li class="navbar-menu-item"><a href="#articles" class='navbar-menu-link' data-text='ARTÍCULOS/NOTICIAS'>ARTÍCULOS/NOTICIAS</a></li>
+            <li class="navbar-menu-item"><a href="#albums" class='navbar-menu-link' data-text='NOVEDADES DISCOGRÁFICAS'>NOVEDADES DISCOGRÁFICAS</a></li>
         </ul>
     </div>
 </template>
