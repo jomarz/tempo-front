@@ -21,7 +21,7 @@
             <div class="col-8 days-container">
                 <div class="days-header row"></div>
                 <div class="days-numbers row">
-                    <div class="single-day-box" v-for="day in days" :key="day">
+                    <div class="single-day-box" :class="{highlight: daysWithEvent.includes(day)}" v-for="day in days" :key="day">
                         {{day}}
                     </div>
                 </div>
@@ -32,6 +32,9 @@
 <script>
 import { ref } from 'vue'
 export default {
+    props: {
+        daysWithEvent: {required: true}
+    },
     setup() {
         const days = ref(['','','',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,'']);
         return { days };
@@ -98,12 +101,13 @@ export default {
             line-height: 1.4rem;
         }
         .days-container {
-            background-color: #f3f3f4;
+            //background-color: #f3f3f4;
             border-width: 0px 1px 1px 0px;
             border-style: solid;
             border-color: #d1d3d4;
         }
         .single-day-box {
+            color: #d1d3d4;
             width: 14.28%;
             border-width: 1px 0px 0px 1px;
             border-style: solid;
@@ -113,6 +117,9 @@ export default {
             font-family: 'Roboto', sans-serif;
             font-size: 0.75rem;
             font-weight: 400;
+        }
+        .single-day-box.highlight {
+            color: black;
         }
     }
 </style>
