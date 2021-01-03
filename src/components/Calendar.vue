@@ -41,7 +41,6 @@ export default {
     setup() {
         const weekdays = ['LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO'];
         const monthNames = ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
-        /* const days = ref(['','','',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,'']); */
         const month = ref(new Date().getMonth());
         const year = ref(new Date().getFullYear());
         return { weekdays, month, year, monthNames };
@@ -50,12 +49,12 @@ export default {
         prevMonth() {
             const oldMonth = this.month;
             this.month = new Date(this.year, this.month-1).getMonth();
-            this.year = new Date(this.year, oldMonth-1).getFullYear();console.log(this.month);
+            this.year = new Date(this.year, oldMonth-1).getFullYear();
         },
         nextMonth() {
             const oldMonth = this.month;
             this.month = new Date(this.year, this.month+1).getMonth();
-            this.year = new Date(this.year, oldMonth+1).getFullYear();console.log(this.month);
+            this.year = new Date(this.year, oldMonth+1).getFullYear();
         }
     },
     computed: {
@@ -110,16 +109,20 @@ export default {
             height: 16px;
             line-height: 100%;
         }
+        .month-arrow:hover {
+            cursor: pointer;
+            font-weight: 700;
+        }
         .month-name {
             font-family: 'Roboto', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.05rem;
             font-weight: 700;
             letter-spacing: 0.04rem;
             line-height: 1.4rem;
         }
         .year {
             font-family: 'Roboto', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.05rem;
             letter-spacing: 0.18rem;
             font-weight: 400;
             line-height: 1.4rem;
