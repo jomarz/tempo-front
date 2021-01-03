@@ -48,12 +48,14 @@ export default {
     },
     methods: {
         prevMonth() {
-            this.year = new Date(this.year, this.month).getFullYear();
-            this.month = new Date(this.year, this.month-1).getMonth();console.log(this.month);
+            const oldMonth = this.month;
+            this.month = new Date(this.year, this.month-1).getMonth();
+            this.year = new Date(this.year, oldMonth-1).getFullYear();console.log(this.month);
         },
         nextMonth() {
-            this.year = new Date(this.year, this.month).getFullYear();
-            this.month = new Date(this.year, this.month+1).getMonth();console.log(this.month);
+            const oldMonth = this.month;
+            this.month = new Date(this.year, this.month+1).getMonth();
+            this.year = new Date(this.year, oldMonth+1).getFullYear();console.log(this.month);
         }
     },
     computed: {
