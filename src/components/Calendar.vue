@@ -6,14 +6,14 @@
                     <div class="calendar-subtitle">DE CONCIERTOS</div>
                 </div>
                 <div class="calendar-month">
-                    <div class="month-arrow">
+                    <div class="month-arrow" @click="prevMonth()">
                         <img src="..\assets\img\icons\Arrows\YellowArrows_left.svg" alt="">
                     </div>
                     <div class="month-year">
-                        <div class="month-name">ENERO</div>
-                        <div class="year">2021</div>
+                        <div class="month-name">{{monthNames[month]}}</div>
+                        <div class="year">{{year}}</div>
                     </div>
-                    <div class="month-arrow">
+                    <div class="month-arrow" @click="nextMonth()">
                         <img src="..\assets\img\icons\Arrows\YellowArrows_right.svg" alt="">
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                     <div v-for="weekday in weekdays" :key='weekday' class="weekday-box">{{weekday}}</div>
                 </div>
                 <div class="days-numbers row">
-                    <div class="single-day-box" :class="{highlight: daysWithEvent.includes(day)}" v-for="day in days" :key="day">
+                    <div class="single-day-box" :class="{highlight: daysWithEvent.includes(parseInt(day))}" v-for="day in days" :key="day">
                         {{day}}
                     </div>
                 </div>
@@ -33,14 +33,33 @@
 
 <script>
 import { ref } from 'vue'
+import MonthDays from '../classes/MonthDays'
 export default {
     props: {
         daysWithEvent: {required: true}
     },
     setup() {
-        const weekdays = ['LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO']
-        const days = ref(['','','',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,'']);
-        return { days, weekdays };
+        const weekdays = ['LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO'];
+        const monthNames = ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
+        /* const days = ref(['','','',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,'']); */
+        const month = ref(new Date().getMonth());
+        const year = ref(new Date().getFullYear());
+        return { weekdays, month, year, monthNames };
+    },
+    methods: {
+        prevMonth() {
+            this.year = new Date(this.year, this.month).getFullYear();
+            this.month = new Date(this.year, this.month-1).getMonth();console.log(this.month);
+        },
+        nextMonth() {
+            this.year = new Date(this.year, this.month).getFullYear();
+            this.month = new Date(this.year, this.month+1).getMonth();console.log(this.month);
+        }
+    },
+    computed: {
+        days() {
+            return ref(new MonthDays().getDaysList(this.month, this.year)).value;
+        }
     }
 }
 </script>
