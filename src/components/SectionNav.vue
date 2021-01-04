@@ -43,6 +43,7 @@ export default {
     
         .section-nav {
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
             padding: 15px 20px 15px 20px;
             background-color: #f3f3f4;
