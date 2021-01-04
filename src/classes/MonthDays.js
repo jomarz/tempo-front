@@ -12,7 +12,7 @@ export default class MonthDays {
         for(i=0; i<daysInMonth; i++) {
             this.days.push((i+1).toString());
         } 
-        for(i=0; 1>7-lastWeekDay; i++) {
+        for(i=0; i<7-lastWeekDay; i++) {
             this.days.push("");
         }
         return this.days;

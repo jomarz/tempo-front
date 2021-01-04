@@ -58,7 +58,7 @@ export default {
         }
     },
     computed: {
-        days() {
+        days() {console.log(new MonthDays().getDaysList(this.month, this.year));
             return ref(new MonthDays().getDaysList(this.month, this.year)).value;
         }
     }
@@ -128,10 +128,12 @@ export default {
             line-height: 1.4rem;
         }
         .days-container {
-            //background-color: #f3f3f4;
-            border-width: 0px 1px 1px 0px;
+            /* border-width: 0px 1px 1px 0px;
             border-style: dashed;
-            border-color: #d1d3d4;
+            border-color: #d1d3d4; */
+        }
+        .days-numbers.row {
+            min-height: 164px;
         }
         .single-day-box {
             color: #d1d3d4;
