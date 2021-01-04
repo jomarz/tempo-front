@@ -24,7 +24,8 @@
                 </div>
                 <div class="days-numbers row">
                     <div class="single-day-box" :class="{highlight: daysWithEvent.includes(parseInt(day))}" v-for="day in days" :key="day">
-                        {{day}}
+                        <template v-if="day==''" class="empty-day-box">&nbsp;</template>
+                        <template v-else>{{day}}</template>
                     </div>
                 </div>
             </div> 
@@ -136,6 +137,9 @@ export default {
             min-height: 164px;
         }
         .single-day-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: #d1d3d4;
             width: 14.28%;
             border-width: 1px 0px 0px 1px;
