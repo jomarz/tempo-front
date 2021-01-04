@@ -1,16 +1,19 @@
 <template>
     <div class="footer-subscribe">
         <h6 class="">SUSCRÍBASE A NUESTRO NEWSLETTER</h6>
-        <form action="" class="footer-subscribe-form">
+        <form action="" class="footer-subscribe-form md-up">
             <div><input type="text" name="name" placeholder="Nombre"></div>
             <div><input type="text" name="email" placeholder="Correo"></div>
             <div><button type="submit">ENVIAR</button></div>
         </form>
+        <subscribe-button class="sm-only" />
     </div>    
 </template>
 
 <script>
+import SubscribeButton from './SubscribeButton.vue'
 export default {
+  components: { SubscribeButton },
     
 }
 </script>

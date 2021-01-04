@@ -47,4 +47,16 @@ export default {
         border-bottom-right-radius: 7px;
         padding: 1px 9px 1px 2px;
     }
+
+    @media only screen and (max-width: 767px) {
+        .search-input {
+            height: 1.2rem;
+            width: 160px;
+            font-size: 1rem;
+        }
+        .search-icon {
+            height: 1.2rem;
+            width: 1.3rem;
+        }
+    }
 </style>

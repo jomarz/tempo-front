@@ -1,11 +1,12 @@
 <template>
     <div class="subscribe-button">
-        </div>    
+        <button class="receive-button">RECIBIR</button>
+    </div>    
 </template>
 
 <script>
 export default {
-    
+    props: { subscriptionType: {} }
 }
 </script>
 

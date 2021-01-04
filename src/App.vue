@@ -296,5 +296,17 @@ export default {
     width: 100%;
     background-color: #f1f2f2;
   }
-
+  @media only screen and (min-width: 768px) {
+    .sm-only {
+      display: none !important,
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    .md-up {
+      display: none !important;
+    }
+    html, body {
+    font-size: 19px;
+  }
+  }
 </style>

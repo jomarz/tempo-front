@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-12 col-md-10 footer-content-col">
                     <div class="footer-main">
-                        <footer-subscribe />
+                        <footer-subscribe/>
                         <footer-links />
                         <div class="footer-separator"></div>
                         <footer-copyright />

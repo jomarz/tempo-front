@@ -43,5 +43,13 @@ export default {
         h1 {
             color: black;
         }
+    } 
+    @media only screen and (max-width: 767px) {
+        #navbar {
+            .row {
+                height: 46px;
+                margin: 25px 15px 30px 0;
+            }
+        }
     }
 </style>
