@@ -41,7 +41,8 @@ export default {
                 .footer-main {
                     display: flex;
                     flex-direction: column;
-                    width: 650px;
+                    width: 100%;
+                    max-width: 650px;
                     .footer-separator {
                         width: 100%;
                         border-top: 1px solid #d1d3d4;
