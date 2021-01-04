@@ -13,13 +13,18 @@
             </template>
         </template>
     </div>
+    <div class="mobile-grid">
+        <horizontal-carousel v-if="contentType === 'event'" :contentList="contentList"  componentName="event-small-box"/>
+        <horizontal-carousel v-if="contentType === 'article'" :contentList="contentList" componentName="article-small-box"/>
+    </div>
 </template>
 
 <script>
 import ArticleSmallBox from './ArticleSmallBox.vue';
 import EventSmallBox from './EventSmallBox.vue';
+import HorizontalCarousel from './HorizontalCarousel.vue';
 export default {
-  components: { EventSmallBox, ArticleSmallBox },
+  components: { EventSmallBox, ArticleSmallBox, HorizontalCarousel },
     props: {
         contentType: {
             required: true,

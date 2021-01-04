@@ -9,11 +9,11 @@ export default class MonthDays {
         var i;
         if(firstWeekDay==0) {
             for(i=0; i<6; i++) {
-                this.days.push("-");
+                this.days.push("");
             }
         } else {
             for(i=0; i<firstWeekDay-1; i++) {
-                this.days.push("-");
+                this.days.push("");
             }
         }
         for(i=0; i<daysInMonth; i++) {
@@ -21,7 +21,7 @@ export default class MonthDays {
         } 
         if(lastWeekDay!=0) {
             for(i=lastWeekDay+1; i<=7; i++) {
-                this.days.push("-");
+                this.days.push("");
             }
         }console.log(this.days);
         return this.days;

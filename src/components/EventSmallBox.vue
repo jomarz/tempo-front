@@ -58,6 +58,7 @@ export default {
         .thumbnail img {
             height: 137px;
             width: 130px;
+            object-fit: cover;
         }
         .box_info {
             width: 205px;
