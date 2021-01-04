@@ -23,10 +23,11 @@
                     <div v-for="weekday in weekdays" :key='weekday' class="weekday-box">{{weekday}}</div>
                 </div>
                 <div class="days-numbers row">
-                    <div class="single-day-box" :class="{highlight: daysWithEvent.includes(parseInt(day))}" v-for="day in days" :key="day">
-                        <template v-if="day==''" class="empty-day-box">&nbsp;</template>
-                        <template v-else>{{day}}</template>
-                    </div>
+                    <template v-for="(day, index) in days" :key="index">
+                        <div class="single-day-box" :class="{highlight: daysWithEvent.includes(parseInt(day))}" >
+                            {{day}}
+                        </div>
+                    </template>
                 </div>
             </div> 
     </div>    
@@ -59,8 +60,8 @@ export default {
         }
     },
     computed: {
-        days() {console.log(new MonthDays().getDaysList(this.month, this.year));
-            return ref(new MonthDays().getDaysList(this.month, this.year)).value;
+        days() {console.log(ref(new MonthDays().getDaysList(this.month, this.year)));
+            return new MonthDays().getDaysList(this.month, this.year);
         }
     }
 }
@@ -135,6 +136,7 @@ export default {
         }
         .days-numbers.row {
             min-height: 164px;
+            max-height: 164px;
         }
         .single-day-box {
             display: flex;
@@ -142,7 +144,7 @@ export default {
             justify-content: center;
             color: #d1d3d4;
             width: 14.28%;
-            border-width: 1px 0px 0px 1px;
+            border-width: 1px 1px 1px 1px;
             border-style: dashed;
             border-color: #d1d3d4;
             padding: 2px;

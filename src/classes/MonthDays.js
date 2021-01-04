@@ -6,15 +6,24 @@ export default class MonthDays {
         const daysInMonth = new Date(year, month+1, 0).getDate();
         const firstWeekDay = new Date(year, month, 1).getDay();
         const lastWeekDay = new Date(year, month, daysInMonth).getDay();
-        for(var i=0; i<firstWeekDay-1; i++) {
-            this.days.push("");
+        var i;
+        if(firstWeekDay==0) {
+            for(i=0; i<6; i++) {
+                this.days.push("-");
+            }
+        } else {
+            for(i=0; i<firstWeekDay-1; i++) {
+                this.days.push("-");
+            }
         }
         for(i=0; i<daysInMonth; i++) {
             this.days.push((i+1).toString());
         } 
-        for(i=0; i<7-lastWeekDay; i++) {
-            this.days.push("");
-        }
+        if(lastWeekDay!=0) {
+            for(i=lastWeekDay+1; i<=7; i++) {
+                this.days.push("-");
+            }
+        }console.log(this.days);
         return this.days;
     }
     getCurrentList() {
