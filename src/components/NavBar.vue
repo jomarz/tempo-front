@@ -29,6 +29,7 @@ export default {
         list-style: none;
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
         margin: 0;
         padding: 0 20px 0 20px;
     }
