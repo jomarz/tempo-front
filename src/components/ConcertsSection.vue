@@ -64,7 +64,7 @@ export default {
         };
         const articleAPI = new EventsApi();
         var contentList = ref([]);
-        articleAPI.apiCall(testData, (data) => { contentList.value = Lister.assignDay(data.data); console.log(data.data)} );
+        articleAPI.apiCall(testData, (data) => { contentList.value = Lister.assignDay(data.data);} );
 
       return { navTitle, menuItems, contentType, contentList };
   },
