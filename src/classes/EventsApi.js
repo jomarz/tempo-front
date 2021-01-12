@@ -5,7 +5,11 @@ export default class EventApi extends TempoAPI {
         super();
         this.serviceName = 'get_events';
     }
-    apiCall (data, handler) {
+    getMonthEvents (year, month, handler) {
+        const data = {
+            year: year,
+            month: month,
+        };
         this.call(this.serviceName, data, handler);
     }
 }

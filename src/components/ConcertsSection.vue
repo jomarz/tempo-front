@@ -58,13 +58,9 @@ export default {
             { id: '8', title: "Nicolas Altstaedt", subtitle:"Imodipic iissimus", day: "27", month: "DE JULIO, 2020", location: "Teatro Mayor, Bogotá", description: "Imodipic iissimus. Uptatem invente comnihilita soluptas eaque nus praesci Core audignate nes iditiunt quodi", imgUrl:"https://picsum.photos/seed/ab8/300/300", datetime: '2021-01-27 20:00:00', music_genre: 'clásica' },
             { id: '9', title: "Nicolas Altstaedt", subtitle:"Imodipic iissimus", day: "31", month: "DE JULIO, 2020", location: "Teatro Mayor, Bogotá", description: "Imodipic iissimus. Uptatem invente comnihilita soluptas eaque nus praesci Core audignate nes iditiunt quodi", imgUrl:"https://picsum.photos/seed/ab9/300/300", datetime: '2021-01-31 20:00:00', music_genre: 'ópera' },
         ]; */
-        const testData = {
-            year: 2021,
-            month: 1,
-        };
-        const articleAPI = new EventsApi();
+        const eventsAPI = new EventsApi();
         var contentList = ref([]);
-        articleAPI.apiCall(testData, (data) => { contentList.value = Lister.assignDay(data.data);} );
+        eventsAPI.getMonthEvents(2021, 1, (data) => { contentList.value = Lister.assignDay(data.data);} );
 
       return { navTitle, menuItems, contentType, contentList };
   },
