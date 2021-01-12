@@ -1,4 +1,4 @@
-import TempoAPI from './Api'
+import TempoAPI from './TempoApi'
 
 export default class EventApi extends TempoAPI {
     constructor() {
@@ -10,6 +10,6 @@ export default class EventApi extends TempoAPI {
             year: year,
             month: month,
         };
-        this.call(this.serviceName, data, handler);
+        this.makeAPICall(this.serviceName, data, handler);
     }
 }
