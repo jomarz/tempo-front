@@ -20,6 +20,8 @@
 </template>
 
 <script>
+/* import { ref } from 'vue'
+import FeaturedApi from '../classes/FeaturedApi' */
 import FeaturedInfo from './FeaturedInfo.vue'
 export default {
     components: { FeaturedInfo },
@@ -34,6 +36,9 @@ export default {
             location: 'Teatro Mayor, Bogota',
             imgUrl: 'https://picsum.photos/id/304/1000/600'           
         };
+        /* const API = new FeaturedApi();
+        var featuredInfo = ref([]);
+        API.apiCall('', (data) => { featuredInfo.value = data.data; console.log(data.data)} ); */
         return { featuredType, featuredInfo }
     }
 }

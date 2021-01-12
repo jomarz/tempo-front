@@ -34,6 +34,7 @@
   </div>
   <Footer id="footer" />
   <article-window v-if="store.showArticle.state" @toggle="store.toggleArticle()" />
+  <subscribe-window v-if="store.showSubscribe.state" @toggle="store.toggleSubscribe()" />
 
 </template>
 
@@ -50,6 +51,7 @@ import Footer from './components/Footer.vue';
 import ArticleWindow from './components/ArticleWindow.vue';
 
 import store from './store/store.js';
+import SubscribeWindow from './components/SubscribeWindow.vue';
 
 export default {
   name: 'App',
@@ -101,7 +103,8 @@ export default {
     ArticlesSection,
     AlbumsSection,
     Footer,
-    ArticleWindow
+    ArticleWindow,
+    SubscribeWindow
   }
 }
 </script>

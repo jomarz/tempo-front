@@ -24,32 +24,32 @@ export default {
         const navTitle = "Videos Tempo";
         const videoFullList = [
             {
-                src: 'https://www.youtube-nocookie.com/embed/YavoiqULwLc',
-                title: 'Kaleidoscope Chamber Orchestra'
+                src: 'https://www.youtube.com/embed/UL1qpV6YtAE',
+                title: 'Bach en Bogotá - Hans Fagius'
             },
             {
-                src: 'https://www.youtube-nocookie.com/embed/4MPuoOj5TIw',
-                title: 'Gustav Mahler'
+                src: 'https://www.youtube-nocookie.com/embed/QIfs5LnU3d8',
+                title: 'Dmitry Masleev'
             },
             {
-                src: 'https://www.youtube-nocookie.com/embed/uWnKMzAedK4',
-                title: 'Franz Schubert D 759'
+                src: 'https://www.youtube-nocookie.com/embed/lGRwO9Dle6E',
+                title: 'Leszek Mozdzer'
             },
             {
-                src: 'https://www.youtube-nocookie.com/embed/CRcbDMg56yg',
-                title: 'Serenade for Strings | Dvořák'
+                src: 'https://www.youtube-nocookie.com/embed/UQA6ftchgVQ',
+                title: 'Emmanuel Ceysson'
             },
             {
-                src: 'https://www.youtube-nocookie.com/embed/YavoiqULwLc',
-                title: 'Kaleidoscope Chamber Orchestra'
+                src: 'https://www.youtube-nocookie.com/embed/QBvZvS_TsDU',
+                title: 'Entrevista a Emerson Quartet'
             },
             {
-                src: 'https://www.youtube-nocookie.com/embed/4MPuoOj5TIw',
-                title: 'Gustav Mahler'
+                src: 'https://www.youtube-nocookie.com/embed/zI8YFXjY1ZY',
+                title: 'Entrevista a Willy Decker'
             },
             {
-                src: 'https://www.youtube-nocookie.com/embed/uWnKMzAedK4',
-                title: 'Franz Schubert D 759'
+                src: 'https://www.youtube-nocookie.com/embed/kfNe7AK2VkA',
+                title: 'Peter Donohoe'
             },
             {
                 src: 'https://www.youtube-nocookie.com/embed/CRcbDMg56yg',
