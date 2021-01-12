@@ -18,6 +18,8 @@
 
 <script>
 import store from '../store/store.js';
+import { ref } from 'vue'
+import ArticlesAPI from '../classes/ArticlesAPI'
 import ContentGrid from './ContentGrid.vue';
 import SectionNav from './SectionNav.vue';
 import NewsVertical from './NewsVertical.vue';
@@ -32,7 +34,7 @@ export default {
             { text: 'World Music', url: "#" }
             ];
         const contentType = "article";
-        const contentList = [
+        /* const contentList = [
             { id: '1', title: "Nicolas Altstaedt", subtitle:"Imodipic iissimus", description: "Imodipic iissimus. Uptatem invente comnihilita soluptas eaque nus praesci Core audignate nes iditiunt quodi", imgUrl:"https://picsum.photos/seed/jorgeaa1/200/300" },
             { id: '2', title: "Marcelo Lomb...", subtitle:"Imodipic iissimus", description: "Imodipic iissimus. Uptatem invente comnihilita soluptas eaque nus praesci Core audignate nes iditiunt quodi", imgUrl:"https://picsum.photos/seed/jorgeaa2/200/300" },
             { id: '3', title: "Valery Gergiev", subtitle:"Imodipic iissimus", description: "Imodipic iissimus. Uptatem invente comnihilita soluptas eaque nus praesci Core audignate nes iditiunt quodi", imgUrl:"https://picsum.photos/seed/jorgeaa3/200/300" },
@@ -41,7 +43,7 @@ export default {
             { id: '6', title: "Nicolas Altstaedt", subtitle:"Imodipic iissimus", description: "Imodipic iissimus. Uptatem invente comnihilita soluptas eaque nus praesci Core audignate nes iditiunt quodi", imgUrl:"https://picsum.photos/seed/jorgeaa6/200/300" },
             { id: '7', title: "Nicolas Altstaedt", subtitle:"Imodipic iissimus", description: "Imodipic iissimus. Uptatem invente comnihilita soluptas eaque nus praesci Core audignate nes iditiunt quodi", imgUrl:"https://picsum.photos/seed/jorgeaa7/200/300" },
             { id: '8', title: "Nicolas Altstaedt", subtitle:"Imodipic iissimus", description: "Imodipic iissimus. Uptatem invente comnihilita soluptas eaque nus praesci Core audignate nes iditiunt quodi", imgUrl:"https://picsum.photos/seed/jorgeaa8/200/300" },
-        ];
+        ]; */
         const newsFullList = [
             { id: '1', title: "Imodipic iissimus", description: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgeaaa/200/300" }, 
             { id: '2', title: "Imodipic iissimus", description: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgebb/200/301" }, 
@@ -54,6 +56,9 @@ export default {
             { id: '9', title: "Imodipic iissimus", description: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgebb6/200/301" }, 
             { id: '10', title: "Imodipic iissimus", description: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgecc7/200/302" }, 
         ];
+        const articlesAPI = new ArticlesAPI();
+        var contentList = ref([]);
+        articlesAPI.getArticles(20, 0, (data)=>contentList.value = data.data);
         store.newsCarousel.setNumPages(newsFullList.length);
         return { navTitle, menuItems, contentType, contentList, newsFullList };
     },

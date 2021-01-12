@@ -4,6 +4,7 @@ export default class ArticlesAPI extends TempoAPI
 {
     constructor()
     {
+        super();
         this.serviceName = 'get_posts';
     }
     getArticles(limit, offset, handler)
