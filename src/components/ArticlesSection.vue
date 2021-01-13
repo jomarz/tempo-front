@@ -7,7 +7,7 @@
         </div>
         <div class="row grid-row">
             <div class="col-12 col-md-9 articles">
-                <ContentGrid :contentType="contentType" :contentList="contentList" />
+                <ArticlesGrid :contentType="contentType" :contentList="contentList" />
             </div>
             <div class="col-12 col-md-3">
                 <NewsVertical :newsList="newsList" />
@@ -20,11 +20,11 @@
 import store from '../store/store.js';
 import { ref } from 'vue'
 import ArticlesAPI from '../classes/ArticlesAPI'
-import ContentGrid from './ContentGrid.vue';
+import ArticlesGrid from './ArticlesGrid.vue';
 import SectionNav from './SectionNav.vue';
 import NewsVertical from './NewsVertical.vue';
 export default {
-    components: { SectionNav, ContentGrid, NewsVertical },
+    components: { SectionNav, ArticlesGrid, NewsVertical },
     setup() {
         const navTitle = "Artículos/Noticias";
         const menuItems = [
@@ -74,6 +74,7 @@ export default {
     .concerts-section {
         .articles {
             padding-left: 0;
+            padding-right: 0;
         }
     }
 </style>
