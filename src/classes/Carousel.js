@@ -19,6 +19,9 @@ export default class Carousel {
         this.elemsPerPage.value = num;
     }
     getCurrentPageList(list) {
+        if (typeof list == 'object' && typeof list.length == 'undefined'){
+            return Object.entries(list).slice((this.currentPage.value-1)*this.elemsPerPage.value, this.currentPage.value*this.elemsPerPage.value).map(entry => entry[1]);
+        }
         return list.slice((this.currentPage.value-1)*this.elemsPerPage.value,this.currentPage.value*this.elemsPerPage.value);
     }
 }

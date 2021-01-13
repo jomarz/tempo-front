@@ -57,12 +57,19 @@ export default {
             { id: '10', title: "Imodipic iissimus", description: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgecc7/200/302" }, 
         ];
         const articlesAPI = new ArticlesAPI();
-        var contentList = ref([]);
-        articlesAPI.getArticles(20, 0, (data)=>contentList.value = data.data);
+        var contentFullList = ref([]);
+        articlesAPI.getArticles(20, 0, (data)=> {
+            contentFullList.value = data.data
+            store.articlesCarousel.setNumPages(contentFullList.value.length);
+            });
+        store.articlesCarousel.setNumPages(contentFullList.value.length);
         store.newsCarousel.setNumPages(newsFullList.length);
-        return { navTitle, menuItems, contentType, contentList, newsFullList };
+        return { navTitle, menuItems, contentType, contentFullList, newsFullList };
     },
     computed: {
+        contentList() {
+                return store.articlesCarousel.getCurrentPageList(this.contentFullList);
+        },
         newsList() {
             return store.newsCarousel.getCurrentPageList(this.newsFullList);
         }
