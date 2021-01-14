@@ -12,7 +12,7 @@ export default class Carousel {
     }
     moveDown() { 
         if(this.currentPage.value<this.numPages.value) this.currentPage.value += 1;
-        if( this.listExtender && this.currentPage.value==this.numPages.value) this.listExtender();
+        else if( this.listExtender && this.currentPage.value==this.numPages.value) this.listExtender();
     }
     setNumPages(listLength) {
         this.numPages.value = Math.ceil(listLength/this.elemsPerPage.value);
