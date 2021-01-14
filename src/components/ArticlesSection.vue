@@ -79,7 +79,7 @@ export default {
             batchOffset += numArticles;
             getArticles(numArticles, batchOffset, advanceCarousel);
         };
-        store.articlesCarousel.setListExtender(() => {getMoreAticles(true)});
+        store.articlesCarousel.setListExtender(() => getMoreAticles(true));
         return { navTitle, menuItems, contentType, contentFullList, newsFullList };
     },
     computed: {
