@@ -56,14 +56,30 @@ export default {
             { id: '9', title: "Imodipic iissimus", description: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgebb6/200/301" }, 
             { id: '10', title: "Imodipic iissimus", description: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgecc7/200/302" }, 
         ];
+        store.newsCarousel.setNumPages(newsFullList.length);
         const articlesAPI = new ArticlesAPI();
         var contentFullList = ref([]);
-        articlesAPI.getArticles(20, 0, (data)=> {
-            contentFullList.value = data.data
-            store.articlesCarousel.setNumPages(Object.entries(contentFullList.value).length);
-            });
+        var numArticles = 24;
+        var batchOffset = 0;
+        var articlesPerPage = 8;
+        store.articlesCarousel.setElemsPerPage(articlesPerPage);
+        const getArticles = function(numArticles, offset, advanceCarousel = false) {
+            articlesAPI.getArticles(numArticles, offset, (data)=> {
+                console.log(data.data);
+                contentFullList.value = Object.entries(contentFullList.value).map(entry => entry[1]).concat(Object.entries(data.data).map(entry => entry[1]));
+                store.articlesCarousel.setNumPages(Object.entries(contentFullList.value).length); 
+                if( advanceCarousel ) store.articlesCarousel.moveDown();
+                console.log(store.articlesCarousel);
+                console.log(contentFullList.value);
+                });
+        }
+        getArticles(numArticles, batchOffset);
         store.articlesCarousel.setNumPages(Object.entries(contentFullList.value).length);
-        store.newsCarousel.setNumPages(newsFullList.length);
+        const getMoreAticles = function(advanceCarousel = false) {
+            batchOffset += numArticles;
+            getArticles(numArticles, batchOffset, advanceCarousel);
+        };
+        store.articlesCarousel.setListExtender(() => {getMoreAticles(true)});
         return { navTitle, menuItems, contentType, contentFullList, newsFullList };
     },
     computed: {
