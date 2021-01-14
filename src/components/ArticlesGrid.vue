@@ -50,7 +50,7 @@ export default {
         }
         .grid-nav-column {
             width: 19px;
-            padding: 5px 1px 0;
+            padding: 0px 1px 0;
         }
     }
 </style>

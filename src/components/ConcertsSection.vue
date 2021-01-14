@@ -17,6 +17,10 @@
             <div class="col">
                 <ContentGrid :contentType="contentType" :contentList="contentList" />
             </div>
+            <div class="grid-nav-column carousel-nav">
+                <a href="" @click.prevent="store.articlesCarousel.moveUp()"><img src="..\assets\img\icons\Arrows\YellowArrows_top.svg" alt="up"></a>
+                <a href="" @click.prevent="store.articlesCarousel.moveDown()"><img src="..\assets\img\icons\Arrows\YellowArrows_down.svg" alt="down"></a>
+            </div>
         </div>
         <div class="receive-cta-row">
             <div class="col">
@@ -28,6 +32,7 @@
 
 <script>
 import { ref } from 'vue'
+import store from '../store/store'
 import EventsApi from '../classes/EventsApi'
 import Lister from '../classes/Lister'
 import AdBox from './AdBox.vue'
@@ -62,7 +67,7 @@ export default {
         var contentList = ref([]);
         eventsAPI.getMonthEvents(2021, 1, (data) => { contentList.value = Lister.assignDay(data.data);} );
 
-      return { navTitle, menuItems, contentType, contentList };
+      return { store, navTitle, menuItems, contentType, contentList };
   },
   computed: {
       daysWithEvent() { 
@@ -78,5 +83,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    
+        .grid-nav-column {
+            width: 19px;
+            padding: 0 1px 0;
+        }
 
 </style>
