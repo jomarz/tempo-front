@@ -60,9 +60,9 @@ export default {
         var contentFullList = ref([]);
         articlesAPI.getArticles(20, 0, (data)=> {
             contentFullList.value = data.data
-            store.articlesCarousel.setNumPages(contentFullList.value.length);
+            store.articlesCarousel.setNumPages(Object.entries(contentFullList.value).length);
             });
-        store.articlesCarousel.setNumPages(contentFullList.value.length);
+        store.articlesCarousel.setNumPages(Object.entries(contentFullList.value).length);
         store.newsCarousel.setNumPages(newsFullList.length);
         return { navTitle, menuItems, contentType, contentFullList, newsFullList };
     },

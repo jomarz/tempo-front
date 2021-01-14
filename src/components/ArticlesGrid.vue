@@ -8,8 +8,8 @@
             </template>
         </div>
         <div class="grid-nav-column carousel-nav">
-            <a href="" @click.prevent="store.videoCarousel.moveUp()"><img src="..\assets\img\icons\Arrows\YellowArrows_top.svg" alt="up"></a>
-            <a href="" @click.prevent="store.videoCarousel.moveDown()"><img src="..\assets\img\icons\Arrows\YellowArrows_down.svg" alt="down"></a>
+            <a href="" @click.prevent="store.articlesCarousel.moveUp()"><img src="..\assets\img\icons\Arrows\YellowArrows_top.svg" alt="up"></a>
+            <a href="" @click.prevent="store.articlesCarousel.moveDown()"><img src="..\assets\img\icons\Arrows\YellowArrows_down.svg" alt="down"></a>
         </div>
     </div>
     <div class="mobile-grid">
@@ -18,15 +18,19 @@
 </template>
 
 <script>
+import store from '../store/store'
 import ArticleSmallBox from './ArticleSmallBox.vue';
 import HorizontalCarousel from './HorizontalCarousel.vue';
 export default {
-  components: { ArticleSmallBox, HorizontalCarousel },
+    components: { ArticleSmallBox, HorizontalCarousel },
     props: {
         contentList: {
             required: true,
             type: Array
         }
+    },
+    setup() {
+        return { store }
     }
 }
 </script>

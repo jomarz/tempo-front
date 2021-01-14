@@ -9,7 +9,7 @@ export default class Carousel {
     moveUp() {
         if(this.currentPage.value>1) this.currentPage.value -= 1;
     }
-    moveDown() {
+    moveDown() { 
         if(this.currentPage.value<this.numPages.value) this.currentPage.value += 1;
     }
     setNumPages(listLength) {
