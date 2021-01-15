@@ -66,26 +66,32 @@ export default {
         const month = ref(new Date().getMonth());
         const year = ref(new Date().getFullYear());
         const eventsAPI = new EventsApi();
-        var contentFullList = ref([]);
         const eventsPerPage = 6;
+        const getEvents = function(year, month)
+        {
+            eventsAPI.getMonthEvents(year, month, (data) => { 
+                contentFullList.value = Lister.assignDay(data.data);
+                store.eventsCarousel.setNumPages(data.data.length);
+                });
+        }
+        var contentFullList = ref([]);
         store.eventsCarousel.setElemsPerPage(eventsPerPage);
-        eventsAPI.getMonthEvents(2021, 1, (data) => { 
-            contentFullList.value = Lister.assignDay(data.data);
-            store.eventsCarousel.setNumPages(data.data.length);
-            });
-
-      return { store, navTitle, menuItems, month, year, contentType, contentFullList };
+        getEvents(year.value, month.value+1);
+    
+        return { store, navTitle, menuItems, month, year, contentType, contentFullList, getEvents };
     },
     methods: {
         prevMonth() {
             const oldMonth = this.month;
             this.month = new Date(this.year, this.month-1).getMonth();
             this.year = new Date(this.year, oldMonth-1).getFullYear();
+            this.getEvents(this.year, this.month+1);
         },
         nextMonth() {
             const oldMonth = this.month;
             this.month = new Date(this.year, this.month+1).getMonth();
             this.year = new Date(this.year, oldMonth+1).getFullYear();
+            this.getEvents(this.year, this.month+1);
         }
     },
     computed: {
