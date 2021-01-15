@@ -34,7 +34,6 @@
 </template>
 
 <script>
-import { ref } from 'vue'
 import MonthDays from '../classes/MonthDays'
 export default {
     props: {
@@ -49,8 +48,6 @@ export default {
     },
     computed: {
         days() {
-            console.log(this.month);
-            console.log(ref(new MonthDays().getDaysList(this.month, this.year)));
             return new MonthDays().getDaysList(this.month, this.year);
         }
     }
