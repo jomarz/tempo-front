@@ -6,14 +6,14 @@
                     <div class="calendar-subtitle">DE CONCIERTOS</div>
                 </div>
                 <div class="calendar-month">
-                    <div class="month-arrow" @click="prevMonth()">
+                    <div class="month-arrow" @click="$emit('prev-month')">
                         <img src="..\assets\img\icons\Arrows\YellowArrows_left.svg" alt="">
                     </div>
                     <div class="month-year">
                         <div class="month-name">{{monthNames[month]}}</div>
                         <div class="year">{{year}}</div>
                     </div>
-                    <div class="month-arrow" @click="nextMonth()">
+                    <div class="month-arrow" @click="$emit('next-month')">
                         <img src="..\assets\img\icons\Arrows\YellowArrows_right.svg" alt="">
                     </div>
                 </div>
@@ -38,29 +38,19 @@ import { ref } from 'vue'
 import MonthDays from '../classes/MonthDays'
 export default {
     props: {
-        daysWithEvent: {required: true}
+        daysWithEvent: {required: true},
+        month: { required: true },
+        year: { required: true }
     },
     setup() {
         const weekdays = ['LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO'];
         const monthNames = ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
-        const month = ref(new Date().getMonth());
-        const year = ref(new Date().getFullYear());
-        return { weekdays, month, year, monthNames };
-    },
-    methods: {
-        prevMonth() {
-            const oldMonth = this.month;
-            this.month = new Date(this.year, this.month-1).getMonth();
-            this.year = new Date(this.year, oldMonth-1).getFullYear();
-        },
-        nextMonth() {
-            const oldMonth = this.month;
-            this.month = new Date(this.year, this.month+1).getMonth();
-            this.year = new Date(this.year, oldMonth+1).getFullYear();
-        }
+        return { weekdays, monthNames };
     },
     computed: {
-        days() {console.log(ref(new MonthDays().getDaysList(this.month, this.year)));
+        days() {
+            console.log(this.month);
+            console.log(ref(new MonthDays().getDaysList(this.month, this.year)));
             return new MonthDays().getDaysList(this.month, this.year);
         }
     }

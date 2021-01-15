@@ -7,7 +7,7 @@
         </div>
         <div class="row calendar-row">
             <div class="col-md-9 col-lg-7 pl-0">
-                <Calendar :month="month" :year="year" :daysWithEvent="daysWithEvent" />
+                <Calendar :month="month" :year="year" :daysWithEvent="daysWithEvent" v-on:prev-month="prevMonth()" v-on:next-month="nextMonth()" />
             </div>
             <div class="col-md-3 col-lg-5 pr-0">
                 <AdBox class="ad-small" :ad="ad" />
@@ -41,9 +41,9 @@ import Calendar from './Calendar.vue'
 import ReceiveCTA from './ReceiveCTA.vue'
 import SectionNav from './SectionNav.vue'
 export default {
-  components: { Calendar, AdBox, ContentGrid, ReceiveCTA, SectionNav },
-  props: { ad: {required: true } },
-  setup() {
+    components: { Calendar, AdBox, ContentGrid, ReceiveCTA, SectionNav },
+    props: { ad: {required: true } },
+    setup() {
         const navTitle = "Conciertos";
         const menuItems = [
           { text: 'Clásica', url: "#" },
@@ -63,6 +63,8 @@ export default {
             { id: '8', title: "Nicolas Altstaedt", subtitle:"Imodipic iissimus", day: "27", month: "DE JULIO, 2020", location: "Teatro Mayor, Bogotá", description: "Imodipic iissimus. Uptatem invente comnihilita soluptas eaque nus praesci Core audignate nes iditiunt quodi", imgUrl:"https://picsum.photos/seed/ab8/300/300", datetime: '2021-01-27 20:00:00', music_genre: 'clásica' },
             { id: '9', title: "Nicolas Altstaedt", subtitle:"Imodipic iissimus", day: "31", month: "DE JULIO, 2020", location: "Teatro Mayor, Bogotá", description: "Imodipic iissimus. Uptatem invente comnihilita soluptas eaque nus praesci Core audignate nes iditiunt quodi", imgUrl:"https://picsum.photos/seed/ab9/300/300", datetime: '2021-01-31 20:00:00', music_genre: 'ópera' },
         ]; */
+        const month = ref(new Date().getMonth());
+        const year = ref(new Date().getFullYear());
         const eventsAPI = new EventsApi();
         var contentFullList = ref([]);
         const eventsPerPage = 6;
@@ -72,20 +74,32 @@ export default {
             store.eventsCarousel.setNumPages(data.data.length);
             });
 
-      return { store, navTitle, menuItems, contentType, contentFullList };
-  },
-  computed: {
-      daysWithEvent() { 
-        if(this.contentFullList.length>0) {
-            return this.contentFullList.map((event) => { return parseInt(event.datetime.match(/[0-9]{4}-[0-9]{2}-([0-9]{2})/)[1])});
-        } else {
-            return [];
+      return { store, navTitle, menuItems, month, year, contentType, contentFullList };
+    },
+    methods: {
+        prevMonth() {
+            const oldMonth = this.month;
+            this.month = new Date(this.year, this.month-1).getMonth();
+            this.year = new Date(this.year, oldMonth-1).getFullYear();
+        },
+        nextMonth() {
+            const oldMonth = this.month;
+            this.month = new Date(this.year, this.month+1).getMonth();
+            this.year = new Date(this.year, oldMonth+1).getFullYear();
         }
-      },
-      contentList() {
-          return store.eventsCarousel.getCurrentPageList(this.contentFullList);
-      }
-  }
+    },
+    computed: {
+        daysWithEvent() { 
+            if(this.contentFullList.length>0) {
+                return this.contentFullList.map((event) => { return parseInt(event.datetime.match(/[0-9]{4}-[0-9]{2}-([0-9]{2})/)[1])});
+            } else {
+                return [];
+            }
+        },
+        contentList() {
+            return store.eventsCarousel.getCurrentPageList(this.contentFullList);
+        }
+    }
     
 }
 </script>

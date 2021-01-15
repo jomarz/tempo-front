@@ -65,12 +65,9 @@ export default {
         store.articlesCarousel.setElemsPerPage(articlesPerPage);
         const getArticles = function(numArticles, offset, advanceCarousel = false) {
             articlesAPI.getArticles(numArticles, offset, (data)=> {
-                console.log(data.data);
                 contentFullList.value = Object.entries(contentFullList.value).map(entry => entry[1]).concat(Object.entries(data.data.posts).map(entry => entry[1]));
                 store.articlesCarousel.setNumPages(Object.entries(contentFullList.value).length); 
                 if( advanceCarousel ) store.articlesCarousel.moveDown();
-                console.log(store.articlesCarousel);
-                console.log(contentFullList.value);
                 });
         }
         getArticles(numArticles, batchOffset);
