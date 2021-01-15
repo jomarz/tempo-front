@@ -5,7 +5,8 @@ export default class AdsAPI extends TempoAPI {
         super();
         this.serviceName = 'get_ads';
     }
-    getAds (data = {}, handler) {
+    getAds (page, handler) {
+        const data = { page: page };
         this.makeAPICall(this.serviceName, data, handler);
     }
 }

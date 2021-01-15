@@ -51,6 +51,8 @@ import Footer from './components/Footer.vue';
 import ArticleWindow from './components/ArticleWindow.vue';
 
 import store from './store/store.js';
+import AdsAPI from './classes/AdsAPI'
+
 import SubscribeWindow from './components/SubscribeWindow.vue';
 
 export default {
@@ -91,6 +93,11 @@ export default {
         placing: '6',
         },
     ];
+    const adsAPI = new AdsAPI();
+    adsAPI.getAds('home', (data)=> { console.log(data.data);
+                //newsFullList.value = Object.entries(newsFullList.value).map(entry => entry[1]).concat(Object.entries(data.data.posts).map(entry => entry[1]));
+                //store.newsCarousel.setNumPages(Object.entries(newsFullList.value).length);
+                });
     return { homeAds }
   },
   components: {
