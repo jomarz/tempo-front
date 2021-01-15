@@ -65,7 +65,7 @@ export default {
         ]; */
         const eventsAPI = new EventsApi();
         var contentFullList = ref([]);
-        const eventsPerPage = 3;
+        const eventsPerPage = 6;
         store.eventsCarousel.setElemsPerPage(eventsPerPage);
         eventsAPI.getMonthEvents(2021, 1, (data) => { 
             contentFullList.value = Lister.assignDay(data.data);
