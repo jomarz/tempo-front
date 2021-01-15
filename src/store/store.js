@@ -14,6 +14,7 @@ export default  {
     videoCarousel: new Carousel(1,3),
     articlesCarousel: new Carousel(1,8),
     newsCarousel: new Carousel(1,3),
+    albumsCarousel: new Carousel(1,6),
     printedEdsCarousel: new Carousel(1,2),
     setArticle(name) {
         this.articleData.name = name;
