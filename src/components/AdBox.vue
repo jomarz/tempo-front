@@ -11,9 +11,6 @@
 export default {
     props: {
         ad: { required: true, type: Object }
-    },
-    setup(props){
-        console.log(props.ad);
     }
 }
 </script>

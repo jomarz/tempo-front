@@ -120,8 +120,6 @@ export default {
     });
     adsAPI.getAds('home', (data)=> {
       homeAdsList.value = homeAds.buildAdList(data.data);
-      console.log(homeAdsList.value)
-      console.log(homeAdsList.value.HOME_COVER_BOTTOM_FULL_BANNER);
     });
     return { homeAdsList }
   },
