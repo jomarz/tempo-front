@@ -81,7 +81,7 @@ export default {
         store.articlesCarousel.setListExtender(() => getMoreAticles(true));
         newsAPI.getPosts(30, 0, (data)=> {
                 newsFullList.value = Object.entries(newsFullList.value).map(entry => entry[1]).concat(Object.entries(data.data.posts).map(entry => entry[1]));
-                store.articlesCarousel.setNumPages(Object.entries(newsFullList.value).length);
+                store.newsCarousel.setNumPages(Object.entries(newsFullList.value).length);
                 });
         store.newsCarousel.setNumPages(newsFullList.value.length);
         return { navTitle, menuItems, contentType, contentFullList, newsFullList };
