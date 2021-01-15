@@ -5,7 +5,7 @@ export default class EventApi extends TempoAPI {
         super();
         this.serviceName = 'get_cover';
     }
-    apiCall (data, handler) {
-        this.call(this.serviceName, data, handler);
+    getFeaturedInfo (data, handler) {
+        this.makeAPICall(this.serviceName, data, handler);
     }
 }

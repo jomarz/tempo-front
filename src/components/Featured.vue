@@ -20,14 +20,14 @@
 </template>
 
 <script>
-/* import { ref } from 'vue'
-import FeaturedApi from '../classes/FeaturedApi' */
+import { ref } from 'vue'
+import FeaturedAPI from '../classes/FeaturedAPI'
 import FeaturedInfo from './FeaturedInfo.vue'
 export default {
     components: { FeaturedInfo },
     setup () {
         const featuredType = 'event';
-        const featuredInfo = {
+        /* const featuredInfo = {
             id: 1,
             title: 'Concierto Inagural',
             name: 'Ian Bostridge',
@@ -35,10 +35,10 @@ export default {
             month: 'JULIO, 2020',
             location: 'Teatro Mayor, Bogota',
             imgUrl: 'https://picsum.photos/id/304/1000/600'           
-        };
-        /* const API = new FeaturedApi();
+        }; */
+        const featuredAPI = new FeaturedAPI();
         var featuredInfo = ref([]);
-        API.apiCall('', (data) => { featuredInfo.value = data.data; console.log(data.data)} ); */
+        featuredAPI.getFeaturedInfo('', (data) => { featuredInfo.value = data.data[0]; console.log(data.data)} );
         return { featuredType, featuredInfo }
     }
 }
