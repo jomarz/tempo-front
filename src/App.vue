@@ -4,17 +4,17 @@
     <TopBar />
     <NavBar />
     <Featured />
-    <ad-box class="ad-row" :ad="homeAds[1]" />
-    <concerts-section :ad="homeAds[1]" id="concerts"/>
-    <ad-box class="ad-row" :ad="homeAds[1]" />
+    <ad-box class="ad-row" :ad="homeAdsList.HOME_COVER_BOTTOM_FULL_BANNER" />
+    <concerts-section :ad="homeAdsList['HOME_EVENTS_TOP_RIGHT_HALF_BANNER']" id="concerts"/>
+    <ad-box class="ad-row" :ad="homeAdsList['HOME_EVENTS_BOTTOM_FULL_BANNER']" />
     <videos-section id="videos" />
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 col-md-9 pl-0 pd-0 pd-md-2">
-          <ad-box class="ad-row" :ad="homeAds[1]" />
+          <ad-box class="ad-row" :ad="homeAdsList['HOME_VIDEOS_BOTTOM_LEFT_BANNER']" />
         </div>
         <div class="col-12 col-md-3 pr-0 pl-0 pl-md-2">
-          <ad-box class="ad-row" :ad="homeAds[1]" />
+          <ad-box class="ad-row" :ad="homeAdsList['HOME_VIDEOS_BOTTOM_RIGHT_SMALL_BANNER']" />
         </div>
       </div>
     </div>
@@ -22,15 +22,15 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 col-md-9 pl-0 pd-0 pd-md-2">
-          <ad-box class="ad-row" :ad="homeAds[1]" />
+          <ad-box class="ad-row" :ad="homeAdsList['HOME_NEWS_BOTTOM_LEFT_SMALL_BANNER']" />
         </div>
         <div class="col-12 col-md-3 pr-0 pl-0 pl-md-2">
-          <ad-box class="ad-row" :ad="homeAds[1]" />
+          <ad-box class="ad-row" :ad="homeAdsList['HOME_NEWS_BOTTOM_RIGHT_BANNER']" />
         </div>
       </div>
     </div>
     <albums-section id="albums" />
-    <ad-box class="ad-row" :ad="homeAds[1]" />
+    <ad-box class="ad-row" :ad="homeAdsList['HOME_DISCOGRAPHY_BOTTOM_FULL_BANNER']" />
   </div>
   <Footer id="footer" />
   <article-window v-if="store.showArticle.state" @toggle="store.toggleArticle()" />
@@ -50,8 +50,11 @@ import AlbumsSection from './components/AlbumsSection.vue';
 import Footer from './components/Footer.vue';
 import ArticleWindow from './components/ArticleWindow.vue';
 
+import { ref } from 'vue';
+
 import store from './store/store.js';
-import AdsAPI from './classes/AdsAPI'
+import AdsAPI from './classes/AdsAPI';
+import AdsList from './classes/AdsList';
 
 import SubscribeWindow from './components/SubscribeWindow.vue';
 
@@ -61,7 +64,7 @@ export default {
     return { store }
   },
   setup() {
-    const homeAds = [
+    /* const homeAds = [
       { ad_id: '1',
         image_url: 'https://picsum.photos/id/1002/1200/200',
         link_url: '',
@@ -92,13 +95,35 @@ export default {
         link_url: '',
         placing: '6',
         },
-    ];
+    ]; */
     const adsAPI = new AdsAPI();
-    adsAPI.getAds('home', (data)=> { console.log(data.data);
-                //newsFullList.value = Object.entries(newsFullList.value).map(entry => entry[1]).concat(Object.entries(data.data.posts).map(entry => entry[1]));
-                //store.newsCarousel.setNumPages(Object.entries(newsFullList.value).length);
-                });
-    return { homeAds }
+    const adPositions = [
+            "HOME_COVER_BOTTOM_FULL_BANNER",
+            "HOME_DISCOGRAPHY_BOTTOM_FULL_BANNER",
+            "HOME_EVENTS_BOTTOM_FULL_BANNER",
+            "HOME_EVENTS_TOP_RIGHT_HALF_BANNER",
+            "HOME_NEWS_BOTTOM_LEFT_SMALL_BANNER",
+            "HOME_NEWS_BOTTOM_RIGHT_BANNER",
+            "HOME_VIDEOS_BOTTOM_LEFT_BANNER",
+            "HOME_VIDEOS_BOTTOM_RIGHT_SMALL_BANNER"
+    ];
+    const homeAds = new AdsList(adPositions);
+    var homeAdsList = ref({
+      HOME_COVER_BOTTOM_FULL_BANNER: false,
+      HOME_DISCOGRAPHY_BOTTOM_FULL_BANNER: false,
+      HOME_EVENTS_BOTTOM_FULL_BANNER: false,
+      HOME_EVENTS_TOP_RIGHT_HALF_BANNER: false,
+      HOME_NEWS_BOTTOM_LEFT_SMALL_BANNE: false,
+      HOME_NEWS_BOTTOM_RIGHT_BANNER: false,
+      HOME_VIDEOS_BOTTOM_LEFT_BANNER: false,
+      HOME_VIDEOS_BOTTOM_RIGHT_SMALL_BANNER: false
+    });
+    adsAPI.getAds('home', (data)=> {
+      homeAdsList.value = homeAds.buildAdList(data.data);
+      console.log(homeAdsList.value)
+      console.log(homeAdsList.value.HOME_COVER_BOTTOM_FULL_BANNER);
+    });
+    return { homeAdsList }
   },
   components: {
     TopBar,

@@ -1,6 +1,9 @@
 <template>
     <div class="ad-box">
-        <img :src="ad.image_url" alt="" class="ad-img">
+        <template v-if="ad">
+            <a :href="ad.linkUrl"><img :src="ad.imgUrl" alt="" class="ad-img"></a>
+        </template>
+        <img v-else src="https://picsum.photos/id/1002/1200/200" alt="" class="ad-img">
     </div>
 </template>
 
@@ -8,6 +11,9 @@
 export default {
     props: {
         ad: { required: true, type: Object }
+    },
+    setup(props){
+        console.log(props.ad);
     }
 }
 </script>
