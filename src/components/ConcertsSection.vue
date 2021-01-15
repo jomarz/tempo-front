@@ -18,8 +18,8 @@
                 <ContentGrid :contentType="contentType" :contentList="contentList" />
             </div>
             <div class="grid-nav-column carousel-nav">
-                <a href="" @click.prevent="store.articlesCarousel.moveUp()"><img src="..\assets\img\icons\Arrows\YellowArrows_top.svg" alt="up"></a>
-                <a href="" @click.prevent="store.articlesCarousel.moveDown()"><img src="..\assets\img\icons\Arrows\YellowArrows_down.svg" alt="down"></a>
+                <a href="" @click.prevent="store.eventsCarousel.moveUp()"><img src="..\assets\img\icons\Arrows\YellowArrows_top.svg" alt="up"></a>
+                <a href="" @click.prevent="store.eventsCarousel.moveDown()"><img src="..\assets\img\icons\Arrows\YellowArrows_down.svg" alt="down"></a>
             </div>
         </div>
         <div class="receive-cta-row">
@@ -64,18 +64,26 @@ export default {
             { id: '9', title: "Nicolas Altstaedt", subtitle:"Imodipic iissimus", day: "31", month: "DE JULIO, 2020", location: "Teatro Mayor, Bogotá", description: "Imodipic iissimus. Uptatem invente comnihilita soluptas eaque nus praesci Core audignate nes iditiunt quodi", imgUrl:"https://picsum.photos/seed/ab9/300/300", datetime: '2021-01-31 20:00:00', music_genre: 'ópera' },
         ]; */
         const eventsAPI = new EventsApi();
-        var contentList = ref([]);
-        eventsAPI.getMonthEvents(2021, 1, (data) => { contentList.value = Lister.assignDay(data.data);} );
+        var contentFullList = ref([]);
+        const eventsPerPage = 3;
+        store.eventsCarousel.setElemsPerPage(eventsPerPage);
+        eventsAPI.getMonthEvents(2021, 1, (data) => { 
+            contentFullList.value = Lister.assignDay(data.data);
+            store.eventsCarousel.setNumPages(data.data.length);
+            });
 
-      return { store, navTitle, menuItems, contentType, contentList };
+      return { store, navTitle, menuItems, contentType, contentFullList };
   },
   computed: {
       daysWithEvent() { 
-        if(this.contentList.length>0) {
-            return this.contentList.map((event) => { return parseInt(event.datetime.match(/[0-9]{4}-[0-9]{2}-([0-9]{2})/)[1])});
+        if(this.contentFullList.length>0) {
+            return this.contentFullList.map((event) => { return parseInt(event.datetime.match(/[0-9]{4}-[0-9]{2}-([0-9]{2})/)[1])});
         } else {
             return [];
         }
+      },
+      contentList() {
+          return store.eventsCarousel.getCurrentPageList(this.contentFullList);
       }
   }
     
