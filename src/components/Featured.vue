@@ -38,7 +38,7 @@ export default {
         }; */
         const featuredAPI = new FeaturedAPI();
         var featuredInfo = ref([]);
-        featuredAPI.getFeaturedInfo('', (data) => { featuredInfo.value = data.data[0]; console.log(data.data)} );
+        featuredAPI.getFeaturedInfo('', (data) => { featuredInfo.value = data.data[0];} );
         return { featuredType, featuredInfo }
     }
 }

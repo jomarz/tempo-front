@@ -23,7 +23,7 @@ export default class MonthDays {
             for(i=lastWeekDay+1; i<=7; i++) {
                 this.days.push("");
             }
-        }console.log(this.days);
+        }
         return this.days;
     }
     getCurrentList() {
