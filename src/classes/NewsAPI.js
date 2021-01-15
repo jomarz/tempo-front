@@ -10,7 +10,7 @@ export default class ArticlesAPI extends TempoAPI
     getPosts(limit, offset, handler)
     {
         const data = {
-            type: 'article',
+            type: 'news',
             limit: limit,
             offset: offset
         }

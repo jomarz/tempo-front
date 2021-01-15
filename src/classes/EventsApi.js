@@ -1,4 +1,4 @@
-import TempoAPI from './TempoApi'
+import TempoAPI from './TempoAPI'
 
 export default class EventApi extends TempoAPI {
     constructor() {

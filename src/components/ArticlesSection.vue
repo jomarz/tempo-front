@@ -20,6 +20,7 @@
 import store from '../store/store.js';
 import { ref } from 'vue'
 import ArticlesAPI from '../classes/ArticlesAPI'
+import NewsAPI from '../classes/NewsAPI'
 import ArticlesGrid from './ArticlesGrid.vue';
 import SectionNav from './SectionNav.vue';
 import NewsVertical from './NewsVertical.vue';
@@ -44,7 +45,7 @@ export default {
             { id: '7', title: "Nicolas Altstaedt", subtitle:"Imodipic iissimus", description: "Imodipic iissimus. Uptatem invente comnihilita soluptas eaque nus praesci Core audignate nes iditiunt quodi", imgUrl:"https://picsum.photos/seed/jorgeaa7/200/300" },
             { id: '8', title: "Nicolas Altstaedt", subtitle:"Imodipic iissimus", description: "Imodipic iissimus. Uptatem invente comnihilita soluptas eaque nus praesci Core audignate nes iditiunt quodi", imgUrl:"https://picsum.photos/seed/jorgeaa8/200/300" },
         ]; */
-        const newsFullList = [
+        /* const newsFullList = [
             { id: '1', title: "Imodipic iissimus", description: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgeaaa/200/300" }, 
             { id: '2', title: "Imodipic iissimus", description: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgebb/200/301" }, 
             { id: '3', title: "Imodipic iissimus", description: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgecc/200/302" }, 
@@ -55,28 +56,34 @@ export default {
             { id: '8', title: "Imodipic iissimus", description: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgeaaa5/200/300" }, 
             { id: '9', title: "Imodipic iissimus", description: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgebb6/200/301" }, 
             { id: '10', title: "Imodipic iissimus", description: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgecc7/200/302" }, 
-        ];
-        store.newsCarousel.setNumPages(newsFullList.length);
+        ]; */
         const articlesAPI = new ArticlesAPI();
+        const newsAPI = new NewsAPI();
+        const newsFullList = ref([]);
         var contentFullList = ref([]);
         var numArticles = 24;
         var batchOffset = 0;
         var articlesPerPage = 8;
         store.articlesCarousel.setElemsPerPage(articlesPerPage);
         const getArticles = function(numArticles, offset, advanceCarousel = false) {
-            articlesAPI.getArticles(numArticles, offset, (data)=> {
+            articlesAPI.getPosts(numArticles, offset, (data)=> {
                 contentFullList.value = Object.entries(contentFullList.value).map(entry => entry[1]).concat(Object.entries(data.data.posts).map(entry => entry[1]));
                 store.articlesCarousel.setNumPages(Object.entries(contentFullList.value).length); 
                 if( advanceCarousel ) store.articlesCarousel.moveDown();
                 });
-        }
-        getArticles(numArticles, batchOffset);
-        store.articlesCarousel.setNumPages(Object.entries(contentFullList.value).length);
+        };
         const getMoreAticles = function(advanceCarousel = false) {
             batchOffset += numArticles;
             getArticles(numArticles, batchOffset, advanceCarousel);
         };
+        getArticles(numArticles, batchOffset);
+        store.articlesCarousel.setNumPages(Object.entries(contentFullList.value).length);
         store.articlesCarousel.setListExtender(() => getMoreAticles(true));
+        newsAPI.getPosts(30, 0, (data)=> {
+                newsFullList.value = Object.entries(newsFullList.value).map(entry => entry[1]).concat(Object.entries(data.data.posts).map(entry => entry[1]));
+                store.articlesCarousel.setNumPages(Object.entries(newsFullList.value).length);
+                });
+        store.newsCarousel.setNumPages(newsFullList.value.length);
         return { navTitle, menuItems, contentType, contentFullList, newsFullList };
     },
     computed: {
