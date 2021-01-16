@@ -1,5 +1,8 @@
 <template>
     <div class="search-results">
+        <div class="close-row">
+            <img src="..\assets\img\icons\ExitIcon.svg" @click="store.toggleSubscribe()" alt="">
+        </div>
         <div class="results-content">
             <div class="results-list">
                 <div v-for="result in resultsList" class="search-result" :key="result.id">
@@ -24,7 +27,16 @@ export default {
     background-color: white;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), 6px 6px 20px rgba(0, 0, 0, 0.19);
     .results-content {
-        padding: 15px 15px 20px 15px;
+        padding: 35px 15px 20px 15px;
+    }
+    .close-row {
+        width: 100%;
+        padding: 0 8px 0 0;
+        img {
+            height: 15px;
+            float: right;
+            margin-top: 10px;
+        }
     }
 }
 .search-result {
