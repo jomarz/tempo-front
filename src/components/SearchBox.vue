@@ -7,20 +7,29 @@
                 <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
             </svg>
         </div>
-        <div class="search-results"></div>
+        <div class="search-results-container">
+            <search-results :resultsList="resultsList"/>
+        </div>
     </div>    
 </template>
 
 <script>
 import SearchAPI from '../classes/SearchAPI';
+import SearchResults from './SearchResults.vue';
 
 export default {
     name: 'SearchBox',
     setup()
     {
         const searchAPI = new SearchAPI();
-        searchAPI.getSearchResults('Chopin', (data) => console.log(data.data));
-    }    
+        var resultsList = {};
+        searchAPI.getSearchResults('Chopin', (data) => resultsList = data.data);
+
+        return { resultsList }
+    },
+    components: {
+        SearchResults
+    }
 }
 </script>
 
@@ -32,11 +41,9 @@ export default {
         align-items: center;
         justify-content: flex-end;
     }
-    .search-results {
+    .search-results-container {
         margin-top: 15px;
-        height: 900px;
-        z-index: 10;
-        background-color: cadetblue;
+        background-color: white;
     }
     .search-input {
         height: 1.5rem;

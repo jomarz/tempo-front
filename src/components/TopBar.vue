@@ -1,8 +1,8 @@
 <template>
-    <div  class="container-fluid" id="navbar">
+    <div  class="container-fluid" id="top-bar">
         <div class="row">
             <div class="col-6 logo-container">
-                <a class='navbar-logo'></a>
+                <a class='top-bar-logo'></a>
             </div>
             <SearchBox class="col-6"/>
         </div>
@@ -12,7 +12,7 @@
 <script>
 import SearchBox from './SearchBox.vue'
 export default {
-    name: 'NavBar',
+    name: 'TopBar',
     components: {
         SearchBox
     }
@@ -20,7 +20,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    #navbar {
+    #top-bar {
+        z-index: 10;
         background-color: white;
         .row {
         height: 76px;
@@ -30,7 +31,7 @@ export default {
             height: 100%;
             display: inline;
         }
-        .navbar-logo {
+        .top-bar-logo {
             display: block;
             background-image: url('../assets/img/tempo_logo.svg');
             background-size: contain;
