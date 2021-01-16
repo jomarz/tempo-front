@@ -1,25 +1,42 @@
 <template>
     <div class="searchbox-container">
-        <input type="text" class='search-input' />
-        <svg viewBox="0 0 16 16" class="bi bi-search text-muted search-icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
-        <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
-</svg>  
+        <div class="search-box">
+            <input type="text" class='search-input' />
+            <svg viewBox="0 0 16 16" class="bi bi-search text-muted search-icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+            </svg>
+        </div>
+        <div class="search-results"></div>
     </div>    
 </template>
 
 <script>
+import SearchAPI from '../classes/SearchAPI';
+
 export default {
-    name: 'SearchBox'
-    
+    name: 'SearchBox',
+    setup()
+    {
+        const searchAPI = new SearchAPI();
+        searchAPI.getSearchResults('Chopin', (data) => console.log(data.data));
+    }    
 }
 </script>
 
 <style lang="scss" scoped>
     .searchbox-container {
+    }
+    .search-box {
         display: flex;
         align-items: center;
         justify-content: flex-end;
+    }
+    .search-results {
+        margin-top: 15px;
+        height: 900px;
+        z-index: 10;
+        background-color: cadetblue;
     }
     .search-input {
         height: 1.5rem;
