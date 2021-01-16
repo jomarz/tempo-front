@@ -22,7 +22,7 @@ export default {
 <style lang="scss" scoped>
 .search-results {
     background-color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), 6px 6px 20px rgba(0, 0, 0, 0.19);
     .results-content {
         padding: 15px 15px 20px 15px;
     }
