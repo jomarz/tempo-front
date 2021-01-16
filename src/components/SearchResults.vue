@@ -1,7 +1,7 @@
 <template>
     <div class="search-results">
         <div class="close-row">
-            <img src="..\assets\img\icons\ExitIcon.svg" @click="store.toggleSubscribe()" alt="">
+            <img src="..\assets\img\icons\ExitIcon.svg" @click="$emit('close-results')" alt="">
         </div>
         <div class="results-content">
             <div class="results-list">

@@ -8,12 +8,13 @@
             </svg>
         </div>
         <div class="search-results-container">
-            <search-results :resultsList="resultsList"/>
+            <search-results :class="{'show': showResults, 'hide': !showResults}" :resultsList="resultsList" @close-results="closeResults()"/>
         </div>
     </div>    
 </template>
 
 <script>
+import { ref } from 'vue';
 import SearchAPI from '../classes/SearchAPI';
 import SearchResults from './SearchResults.vue';
 
@@ -22,13 +23,20 @@ export default {
     setup()
     {
         const searchAPI = new SearchAPI();
+        var showResults = ref(true);
         var resultsList = {};
         searchAPI.getSearchResults('Chopin', (data) => resultsList = data.data);
 
-        return { resultsList }
+        return { resultsList, showResults }
     },
     components: {
         SearchResults
+    },
+    methods: {
+        closeResults() 
+        {console.log("Cerrar");
+            this.showResults = false;
+        }
     }
 }
 </script>
@@ -44,6 +52,12 @@ export default {
     .search-results-container {
         margin-top: 15px;
         background-color: white;
+        .show {
+            display: block;
+        }
+        .hide {
+            display: none;
+        }
     }
     .search-input {
         height: 1.5rem;
