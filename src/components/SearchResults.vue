@@ -1,9 +1,11 @@
 <template>
     <div class="search-results">
-        <div class="results-list">
-            <div v-for="result in resultsList" class="search-result" :key="result.id">
-                <h2 class="result-title">{{result.title}}</h2>
-                <div class="result-subtitle">{{result.subtitle}}</div>
+        <div class="results-content">
+            <div class="results-list">
+                <div v-for="result in resultsList" class="search-result" :key="result.id">
+                    <div class="result-title">{{result.title}}</div>
+                    <div class="result-subtitle">{{result.subtitle}}</div>
+                </div>
             </div>
         </div>
     </div>
@@ -18,12 +20,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.search-result {
+.search-results {
     background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    .results-content {
+        padding: 15px 15px 20px 15px;
+    }
+}
+.search-result {
+    border-top: 1px dashed #bcbec0;
+    padding: 7px 0 8px;
     .result-title {
+      font-size: 0.8rem;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      line-height: 1.125rem;
         color: #278de2;
     }
     .result-subtitle {
+      font-size: 0.75rem;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+      line-height: 1.125rem;
         color: #808285;
     }
 }
