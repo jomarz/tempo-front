@@ -23,9 +23,9 @@ export default {
     setup()
     {
         const searchAPI = new SearchAPI();
-        var showResults = ref(true);
+        var showResults = ref(false);
         var resultsList = ref({});
-        searchAPI.getSearchResults('Chopin', (data) => {resultsList.value = data.data.articles.concat(data.data.events); console.log(data.data)});
+        searchAPI.getSearchResults('Chopin', (data) => {resultsList.value = data.data.articles.concat(data.data.events);});
 
         return { resultsList, showResults }
     },

@@ -46,6 +46,9 @@ export default {
         }
         .feat-event-title {
             width: min-content;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
         }
         .feat-event-month {   
             font-family: 'Roboto', sans-serif;
