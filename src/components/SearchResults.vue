@@ -6,8 +6,8 @@
         <div class="results-content">
             <div class="results-list">
                 <div v-for="result in resultsList" class="search-result" :key="result.id">
-                    <div class="result-title">{{result.title}}</div>
-                    <div class="result-subtitle">{{result.subtitle}}</div>
+                    <a href="#" class="result-title">{{result.article_title}}</a>
+                    <div class="result-subtitle">{{result.article_subtitle}}</div>
                 </div>
             </div>
         </div>
@@ -42,11 +42,12 @@ export default {
 .search-result {
     border-top: 1px dashed #bcbec0;
     padding: 7px 0 8px;
-    .result-title {
-      font-size: 0.8rem;
-      font-family: 'Roboto', sans-serif;
-      font-weight: 700;
-      line-height: 1.125rem;
+    a.result-title {
+        font-size: 0.8rem;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        line-height: 1.125rem;
+        display: block;
         color: #278de2;
     }
     .result-subtitle {

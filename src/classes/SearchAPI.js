@@ -60,11 +60,11 @@ export default class SearchAPI extends TempoAPI
     }
     getSearchResults(searchString, handler)
     {
-        //const data = { searchString: searchString }
-        //this.makeAPICall(this.serviceName, data, handler);
-        const dummyResults = {
+        const data = { searchString: searchString }
+        this.makeAPICall(this.serviceName, data, handler);
+        /* const dummyResults = {
             data: this.dummy
         };
-        handler(dummyResults);
+        handler(dummyResults); */
     }
 }
