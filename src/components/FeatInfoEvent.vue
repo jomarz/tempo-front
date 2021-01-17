@@ -14,7 +14,7 @@
                     <h2 class="feat-event-day">{{featuredInfo.day}}</h2>
                 </td>
                 <td class="right-col">
-                    <span class="feat-event-month">{{featuredInfo.month}}</span>
+                    <span class="feat-event-month">DE {{featuredInfo.monthName}}, {{featuredInfo.year}}</span>
                     <span class="feat-event-location">{{featuredInfo.location}}</span>
                     <a href="#" class="feat-event-link">VER EVENTO</a>
                 </td>
@@ -49,6 +49,7 @@ export default {
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
+            overflow: hidden;
         }
         .feat-event-month {   
             font-family: 'Roboto', sans-serif;

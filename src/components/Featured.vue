@@ -21,6 +21,7 @@
 
 <script>
 import { ref } from 'vue'
+import Lister from '../classes/Lister';
 import FeaturedAPI from '../classes/FeaturedAPI'
 import FeaturedInfo from './FeaturedInfo.vue'
 export default {
@@ -38,7 +39,7 @@ export default {
         }; */
         const featuredAPI = new FeaturedAPI();
         var featuredInfo = ref([]);
-        featuredAPI.getFeaturedInfo('', (data) => { featuredInfo.value = data.data[0];} );
+        featuredAPI.getFeaturedInfo('', (data) => { featuredInfo.value = Lister.assignDateFields(data.data)[0]; console.log(featuredInfo.value)} );
         return { featuredType, featuredInfo }
     }
 }
