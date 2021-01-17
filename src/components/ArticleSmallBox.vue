@@ -9,7 +9,7 @@
                     <div class="row box-title-row no-gutters">
                         <div class="box-info-left col-1"></div>
                         <div class="box-info-right col-11 box-title">
-                            <h6>{{ boxContent.title }}</h6>
+                            <h6>{{ toLowerFirstUpper(boxContent.title) }}</h6>
                             <span class="box-subtitle">{{ boxContent.subtitle }}</span>
                         </div>
                     </div>
@@ -27,7 +27,8 @@
 </template>
 
 <script>
-import ReadMoreLink from './ReadMoreLink.vue'
+import ReadMoreLink from './ReadMoreLink.vue';
+import String from '../classes/Stringer';
 
 export default {
   components: { ReadMoreLink },
@@ -35,6 +36,12 @@ export default {
         boxContent: {
             required: true,
             type: Object
+        }
+    },
+    methods: {
+        toLowerFirstUpper(string)
+        {
+            return String.toLowerFirstUpper(string);
         }
     }
 }
