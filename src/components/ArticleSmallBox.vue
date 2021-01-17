@@ -9,7 +9,7 @@
                     <div class="row box-title-row no-gutters">
                         <div class="box-info-left col-1"></div>
                         <div class="box-info-right col-11 box-title">
-                            <h6>{{ toLowerFirstUpper(boxContent.title) }}</h6>
+                            <h6 class="article-title">{{ toLowerFirstUpper(boxContent.title) }}</h6>
                             <span class="box-subtitle">{{ boxContent.subtitle }}</span>
                         </div>
                     </div>
@@ -68,7 +68,7 @@ export default {
             background-color: #f1f2f2;
         }
         .box-info {
-            padding: 10px;
+            padding: 10px 8px 10px 5px;
         }
         .box-info-left {
             padding-left: 0px;
@@ -76,6 +76,7 @@ export default {
         }
         .box-info-right {
             padding-left: 8px;
+            padding-right: 0;
         }
         .box-title-row {
             border-bottom: 2px solid #fff;
@@ -105,6 +106,15 @@ export default {
         .box-text {
             height: 100%;
             max-height: 67px;
+        }
+        .article-title {
+            font-size: 0.8rem !important;
+            font-family: 'Playfair display';
+            font-weight: 400;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
     }
 </style>
