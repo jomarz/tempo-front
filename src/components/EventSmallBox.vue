@@ -9,7 +9,7 @@
                     <tr class="box-info-top-row">
                         <td class="box-info-left-col"></td>
                         <td class="box-info-right-col">
-                            <h6>{{ boxContent.title }}</h6>
+                            <h6 class="event-title">{{ boxContent.title }}</h6>
                             <span class="box-subtitle">{{ boxContent.subtitle }}</span>
                         </td>
                     </tr>
@@ -92,10 +92,23 @@ export default {
             .event-day-cell {
                 text-align: end;
             }
+            .event-title {
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+            .box-subtitle {
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
             p.box-text {
                 display: -webkit-box;
-                -webkit-line-clamp: 2;
+                -webkit-line-clamp: 3;
                 -webkit-box-orient: vertical;
+                overflow: hidden;
             }
         }
     }
