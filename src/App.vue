@@ -2,7 +2,7 @@
   <div class="content-container">
     <div id="top"></div>
     <TopBar />
-    <NavBar />
+    <NavBar class="md-up" />
     <Featured class="md-up"/>
     <ad-box class="ad-row" :ad="homeAdsList.HOME_COVER_BOTTOM_FULL_BANNER" />
     <concerts-section :ad="homeAdsList['HOME_EVENTS_TOP_RIGHT_HALF_BANNER']" id="concerts"/>
@@ -339,7 +339,7 @@ export default {
       display: none !important;
     }
     html, body {
-    font-size: 19px;
-  }
+      font-size: 19px;
+    }
   }
 </style>

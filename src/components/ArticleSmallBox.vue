@@ -110,8 +110,8 @@ export default {
             overflow: hidden;
         }
         .box-text {
-            height: 100%;
-            max-height: 67px;
+            //height: 100%;
+            //max-height: 67px;
             display: -webkit-box;
             -webkit-line-clamp: 4;
             -webkit-box-orient: vertical;

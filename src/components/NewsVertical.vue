@@ -4,7 +4,7 @@
             <h3>Noticias</h3>
             <div class="carousel-column">
                 <div class="carousel-box-container" >
-                    <news-small-box v-for="newsElement in newsList" :key="newsElement.key" :newsElement="newsElement" />
+                    <news-small-box v-for="newsElement in newsList" :key="newsElement.key" :boxContent="newsElement" />
                 </div>
                 <div class="carousel-nav">
                     <a href="" @click.prevent="store.newsCarousel.moveUp()"><img src="..\assets\img\icons\Arrows\YellowArrows_top.svg" alt="up"></a>

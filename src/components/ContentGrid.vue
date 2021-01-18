@@ -1,5 +1,5 @@
 <template>
-    <div class="content-grid container flex-wrap">
+    <div class="content-grid container flex-wrap md-up">
         <template v-for="content in contentList" :key="content">
             <template v-if="contentType === 'event'">
                 <div class="small-box-container">

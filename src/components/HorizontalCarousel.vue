@@ -9,12 +9,17 @@
 <script>
 import ArticleSmallBox from './ArticleSmallBox.vue';
 import EventSmallBox from './EventSmallBox.vue';
+import NewsSmallBox from './NewsSmallBox.vue';
 
 export default {
-  components: { ArticleSmallBox, EventSmallBox },
+  components: { ArticleSmallBox, EventSmallBox, NewsSmallBox },
     props: {
         componentName: { required: true },
         contentList : { required: true }
+    },
+    setup(props) {
+        if(props.componentName=='news-small-box')
+        console.log(props.contentList);
     }
 }
 </script>
@@ -26,7 +31,7 @@ export default {
         }    
     }
     .horizontal-carousel {
-        height: 145px;
+        //height: 145px;
         width: 100%;
         //overflow-x: auto;
         overflow-y: hidden;

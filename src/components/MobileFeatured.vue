@@ -1,5 +1,9 @@
 <template>
-    <div class="mobile-featured"></div>
+    <div class="mobile-featured">
+            <div class="featured-image-box">
+                <img :src="featuredInfo.imgUrl" alt="" class="featured-image">
+            </div>  
+    </div>
 </template>
 
 <script>

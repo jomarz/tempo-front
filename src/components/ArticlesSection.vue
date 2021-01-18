@@ -9,9 +9,10 @@
             <div class="col-12 col-md-9 articles">
                 <ArticlesGrid :contentType="contentType" :contentList="contentList" />
             </div>
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 md-up">
                 <NewsVertical :newsList="newsList" />
             </div>
+            <news-horizontal :newsList="newsList" />
         </div>
     </div>    
 </template>
@@ -24,8 +25,9 @@ import NewsAPI from '../classes/NewsAPI'
 import ArticlesGrid from './ArticlesGrid.vue';
 import SectionNav from './SectionNav.vue';
 import NewsVertical from './NewsVertical.vue';
+import NewsHorizontal from './NewsHorizontal.vue';
 export default {
-    components: { SectionNav, ArticlesGrid, NewsVertical },
+    components: { SectionNav, ArticlesGrid, NewsVertical, NewsHorizontal },
     setup() {
         const navTitle = "Artículos/Noticias";
         const menuItems = [
