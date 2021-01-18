@@ -39,7 +39,7 @@ export default {
         }; */
         const featuredAPI = new FeaturedAPI();
         var featuredInfo = ref([]);
-        featuredAPI.getFeaturedInfo('', (data) => { featuredInfo.value = Lister.assignDateFields(data.data)[0]; console.log(featuredInfo.value)} );
+        featuredAPI.getFeaturedInfo('', (data) => { featuredInfo.value = Lister.assignDateFields(data.data)[0];} );
         return { featuredType, featuredInfo }
     }
 }
