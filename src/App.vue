@@ -331,7 +331,7 @@ export default {
   }
   @media only screen and (min-width: 768px) {
     .sm-only {
-      display: none !important,
+      display: none !important;
     }
   }
   @media only screen and (max-width: 767px) {
