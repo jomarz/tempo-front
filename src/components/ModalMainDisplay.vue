@@ -29,7 +29,7 @@
                 <span class="dot" @click="currentSlide(2)"></span>
                 <span class="dot" @click="currentSlide(3)"></span>
             </div> -->
-            <media-controls class="article-media-controls"/>
+            <media-controls class="article-media-controls" @jump-to-type="jumpToMediaType" />
         </div>
     </div>
 </template>
@@ -84,39 +84,17 @@ export default {
             } */
             slides[this.slideIndex-1].style.display = "block";
             //dots[this.slideIndex-1].className += " active";
+        },
+        getFirstOfType(mediaType) {
+            return this.mediaFullList.findIndex((element) => element.media_type == mediaType);
+        },
+        jumpToMediaType(mediaType) {
+            const newIndex = this.getFirstOfType(mediaType);
+            this.currentSlide(newIndex+1);
         }
     },
     mounted() {
-        /* var slideIndex = 1; */
         this.showSlides(this.slideIndex);
-
-        // Next/previous controls
-       /*  function plusSlides(n) {
-            showSlides(this.slideIndex += n);
-        }
-
-        // Thumbnail image controls
-        function currentSlide(n) {
-            showSlides(this.slideIndex = n);
-        } */
-
-        /* function showSlides(n) {
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-        console.log(slides);
-        var dots = document.getElementsByClassName("dot");
-        if (n > slides.length) {this.slideIndex = 1}
-        if (n < 1) {this.slideIndex = slides.length}
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[this.slideIndex-1].style.display = "block";
-        console.log(slides);
-        dots[this.slideIndex-1].className += " active";
-        } */
     }
 }
 </script>

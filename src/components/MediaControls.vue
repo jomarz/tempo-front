@@ -1,7 +1,7 @@
 <template>
     <div class="media-controls">
-        <img src="../assets/img/icons/Media-Video.svg" alt="" class="media-icon">
-        <img src="../assets/img/icons/Media-Pictures.svg" alt="" class="media-icon">
+        <img src="../assets/img/icons/Media-Video.svg" alt="" class="media-icon" @click="$emit('jump-to-type', 'video')">
+        <img src="../assets/img/icons/Media-Pictures.svg" alt="" class="media-icon" @click="$emit('jump-to-type', 'image')">
         <img src="../assets/img/icons/Media-Play.svg" alt="" class="media-icon">
         <img src="../assets/img/icons/Media-Radio.svg" alt="" class="media-icon">
         <img src="../assets/img/icons/Media-Information.svg" alt="" class="media-icon">
