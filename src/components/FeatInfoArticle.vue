@@ -22,7 +22,7 @@ export default {
         max-width: 95%;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         h1, h2, h4 {
             color: white;
@@ -33,6 +33,7 @@ export default {
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            margin-bottom: 18px;;
         }
         .feat-event-month {   
             font-family: 'Roboto', sans-serif;

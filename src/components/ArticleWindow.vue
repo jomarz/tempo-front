@@ -31,17 +31,19 @@
 
 <script>
 import store from '../store/store.js';
+import Lister from '../classes/Lister';
 import ModalMainDisplay from './ModalMainDisplay';
 import RelatedArticles from './RelatedArticles';
 import AdBox from './AdBox.vue';
 
 export default {
     setup() {
-        const contentType = 'event';
-        const content = {
+        const contentType = 'article';
+        var content = {
             id: 1,
             title: 'Concierto Inagural',
             name: 'Ian Bostridge',
+            datetime: "2021-04-12 00:00:00",
             day: 30,
             month: 'DE JULIO, 2020',
             location: 'Teatro Mayor, Bogota',
@@ -147,6 +149,7 @@ export default {
                     placing: '3',
                     },
             ];
+        content = Lister.assignDateFields([content])[0];
         return { store, contentType, content, relatedArticles, articleAds };
     },
     components: { ModalMainDisplay, RelatedArticles, AdBox }

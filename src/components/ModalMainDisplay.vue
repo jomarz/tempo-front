@@ -2,7 +2,7 @@
     <div class="modal-main-display">
         <div class="info-box">
             <feat-info-event v-if="contentType==='event'" :featuredInfo="content" class="article-modal-info"/>
-            <feat-info-article v-if="contentType==='article'" :featuredInfo="content"/>
+            <feat-info-article v-if="contentType==='article'" :featuredInfo="content" class="article-modal-info"/>
         </div>
         <div class="media-box">
             <!-- Slideshow container -->
