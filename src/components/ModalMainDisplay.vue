@@ -6,6 +6,7 @@
         </div>
         <div class="media-box">
             <iframe width="504" height="298" src="https://www.youtube-nocookie.com/embed/SSI1ahcFYJA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <media-controls class="article-media-controls"/>
         </div>
     </div>    
 </template>
@@ -13,8 +14,9 @@
 <script>
 import FeatInfoArticle from './FeatInfoArticle.vue'
 import FeatInfoEvent from './FeatInfoEvent.vue'
+import MediaControls from './MediaControls.vue'
 export default {
-    components: { FeatInfoEvent, FeatInfoArticle },
+    components: { FeatInfoEvent, FeatInfoArticle, MediaControls },
     props: {
         contentType: {
             required: true,
@@ -44,6 +46,12 @@ export default {
             width: 504px;
             height: 298px;
             background-color: gray;
+        }
+        .article-media-controls{
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            border: solid 1px white;
         }
     }
 </style>
