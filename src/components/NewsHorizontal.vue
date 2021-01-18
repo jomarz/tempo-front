@@ -29,5 +29,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    .news-horizontal {
+        h3 {
+            margin-bottom: 15px;;
+        }
+    }
 
 </style>

@@ -100,10 +100,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @media only screen and (min-width: 768px) {
     .concerts-section {
         .articles {
             padding-left: 0;
             padding-right: 0;
         }
     }
+  }
 </style>
