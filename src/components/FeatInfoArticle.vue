@@ -35,60 +35,20 @@ export default {
             overflow: hidden;
             margin-bottom: 18px;;
         }
-        .feat-event-month {   
-            font-family: 'Roboto', sans-serif;
-            color: white;
-            font-weight: 700;
-        }
-        .feat-event-location {   
-            font-family: 'Roboto', sans-serif;
-            color: white;
-            font-weight: 300;
-            display: block;
-        }
         a.feat-event-link {
             font-family: 'Roboto', sans-serif;
             font-weight: 700;
             color: #ffc828;
             display: block;
         }
-        td.day-cell {
-            display: block;
-        }
-        .top-row {
-            border-bottom: 1px solid white;
-        }
-        .right-col {
-            border-left: 1px solid white;
-        }
     }
     .home-main.feat-info-event {
         .feat-event-title {
             max-width: 300px;
         }
-        .feat-info-box {
-            margin-top: 25px;
-        }
-        .feat-event-month {   
-            font-size: 0.8rem !important;
-        }
-        .feat-event-location {   
-            font-size: 0.8rem !important;
-        }
         a.feat-event-link {
             font-size: 0.8rem !important;
-        }
-        .feat-info-box td {
-            padding-top: 2px;
-        }
-        .feat-info-box td.right-col {
-            padding-left: 12px;
-        }
-        .feat-info-box td.left-col {
-            padding-right: 9px;
-        }
-        .top-row td {
-            padding-bottom: 5px;
+            margin-top: 10px;
         }
     }
 
@@ -100,35 +60,7 @@ export default {
         .feat-event-name {
             font-size: 0.9rem !important;
         }
-        .feat-event-day {
-            font-size: 1.1rem !important;
-        }
-        .feat-info-box {
-            max-width: 90%;
-            margin-top: 25px;
-        }
-        .feat-event-month {   
-            font-size: 0.7rem !important;
-        }
-        .feat-event-location {   
-            font-size: 0.7rem !important;
-        }
         a.feat-event-link {
-            font-size: 0.8rem !important;
-        }
-        .feat-info-box td {
-            padding-top: 2px;
-        }
-        .feat-info-box td.right-col {
-            padding-left: 8px;
-        }
-        .feat-info-box td.left-col {
-            padding-right: 5px;
-        }
-        .top-row td {
-            padding-bottom: 5px;
-        }
-        .feat-event-link {
             display: none;
         }
     }
