@@ -98,6 +98,7 @@ export default {
             height: 15px;
             float: right;
             margin-top: 10px;
+            cursor: pointer;
         }
     }
 </style>

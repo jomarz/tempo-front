@@ -4,9 +4,9 @@
             <div class="modal-wrapper">
                 <div class="modal-container">
                     <div class="content-header"> 
-                        <button class="close-content-modal" @click="$emit('toggle')">
-                            CERRAR
-                        </button>                   
+                        <div class="close-content-modal" >
+                            <img src="..\assets\img\icons\ExitIcon.svg" @click="$emit('toggle')" alt="">
+                        </div>                   
                         <div class="modal-content-type">CONCIERTOS</div>
                     </div>
                     <div class="title-row">
@@ -16,8 +16,8 @@
                     <modal-main-display :contentType="contentType" :content="content" class="sticky" />
                     <div class="text-sub">{{content.textSub}}</div>
                     <div class="main-article-content">
-                        <template v-for="(paragraph, index) in content.paragraphList" :key="paragraph.id">
-                            <ad-box v-if="index==content.paragraphList.length-1" :ad="articleAds[1]" class="ad-row" />
+                        <template v-for="(paragraph, index) in content.contents" :key="paragraph.id">
+                            <ad-box v-if="index==content.contents.length-1" :ad="articleAds[1]" class="ad-row" />
                             <p class="article-text">{{paragraph.text}}</p>
                         </template>
                     </div>
@@ -52,7 +52,7 @@ export default {
             views: 20,
             likes: 18,
             commentCount: 103,
-            paragraphList : [
+            contents : [
                 {
                     id: "",
                     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim. Vitae sapien pellentesque habitant morbi tristique senectus et. Fermentum posuere urna nec tincidunt praesent semper. Dignissim enim sit amet venenatis urna cursus eget nunc. Arcu cursus vitae congue mauris rhoncus aenean vel elit. Lacus suspendisse faucibus interdum posuere lorem ipsum dolor sit amet. Massa tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada proin. Interdum posuere lorem ipsum dolor.",
@@ -200,6 +200,12 @@ export default {
     .close-content-modal {
         float: right;
         display: block;
+        img {
+            height: 15px;
+            float: right;
+            margin-top: 10px;
+            cursor: pointer;
+        }
     }
     .content-header {
         width: 100%;
