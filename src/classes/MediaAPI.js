@@ -15,36 +15,40 @@ export default class MediaAPI extends TempoAPI
             {
                 media_id: 2,
                 media_type: "video",
-                url: 'https://www.youtube.com/embed/UL1qpV6YtAE'
+                url: 'https://www.youtube.com/embed/lGRwO9Dle6E'
             },
             {
                 media_id: 3,
                 media_type: "video",
-                url: 'https://www.youtube.com/embed/UL1qpV6YtAE'
+                url: 'https://www.youtube.com/embed/_x2QIJyxJQA'
             },
             {
                 media_id: 4,
                 media_type: "image",
-                url: 'https://tempo.wittrees.com/media/imgTest/190711-191233.png'
+                url: 'https://tempo.wittrees.com/media/imgTest/190711-191403.png'
             },
             {
                 media_id: 5,
                 media_type: "image",
-                url: 'https://tempo.wittrees.com/media/imgTest/190711-191233.png'
+                url: 'https://tempo.wittrees.com/media/imgTest/190711-191012.png'
             },
             {
                 media_id: 6,
                 media_type: "image",
-                url: 'https://tempo.wittrees.com/media/imgTest/190711-191233.png'
+                url: 'https://tempo.wittrees.com/media/imgTest/190711-190430.png'
             },
         ];
     }
     getMedia(postId, isEvent, handler)
     {
-        data = {
+        /* const data = {
             postId: postId,
             isEvnt: isEvent
         };
-        this.makeAPICall(this.serviceName, data, handler);
+        this.makeAPICall(this.serviceName, data, handler); */
+        const dummyResults = {
+            data: this.dummy
+        };
+        handler(dummyResults);
     }
 }

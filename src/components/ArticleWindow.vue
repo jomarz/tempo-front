@@ -39,6 +39,7 @@ export default {
     setup() {
         const contentType = 'event';
         const content = {
+            id: 1,
             title: 'Concierto Inagural',
             name: 'Ian Bostridge',
             day: 30,

@@ -7,26 +7,33 @@
         <div class="media-box">
             <!-- Slideshow container -->
             <div class="slideshow-container">
+                <template v-for="media in mediaFullList" :key="media.id">
+                    <div v-if="media.media_type=='image'" class="mySlides fades media-img">
+                        <img :src="media.url" style="width:100%">
+                    </div>
+                    <div v-else-if="media.media_type=='video'" class="mySlides fades media-img">
+                        <iframe width="504" height="298" :src="media.url" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
 
-            <!-- Full-width images with number and caption text -->
-            <div class="mySlides fades">
-                <div class="numbertext">1 / 3</div>
-                <img src="https://tempo.wittrees.com/media/imgTest/190711-191233.png" style="width:100%">
-            </div>
+                </template>
+            <!--     <div class="mySlides fades">
+                    <div class="numbertext">1 / 3</div>
+                    <img src="https://tempo.wittrees.com/media/imgTest/190711-191233.png" style="width:100%">
+                </div>
 
-            <div class="mySlides fades">
-                <div class="numbertext">2 / 3</div>
-                <img src="https://tempo.wittrees.com/media/imgTest/190711-191259.png" style="width:100%">
-            </div>
+                <div class="mySlides fades">
+                    <div class="numbertext">2 / 3</div>
+                    <img src="https://tempo.wittrees.com/media/imgTest/190711-191259.png" style="width:100%">
+                </div>
 
-            <div class="mySlides fades">
-                <div class="numbertext">3 / 3</div>
-                <img src="https://tempo.wittrees.com/media/imgTest/190711-190121.png" style="width:100%">
-            </div>
-            <div class="mySlides fades">
-                <div class="numbertext">1 / 3</div>
-                <iframe width="504" height="298" src="https://www.youtube-nocookie.com/embed/SSI1ahcFYJA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
+                <div class="mySlides fades">
+                    <div class="numbertext">3 / 3</div>
+                    <img src="https://tempo.wittrees.com/media/imgTest/190711-190121.png" style="width:100%">
+                </div>
+                <div class="mySlides fades">
+                    <div class="numbertext">1 / 3</div>
+                    <iframe width="504" height="298" src="https://www.youtube-nocookie.com/embed/SSI1ahcFYJA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div> -->
 
             <!-- Next and previous buttons -->
             <a class="prev" @click="plusSlides(-1)">&#10094;</a>
@@ -46,9 +53,12 @@
 </template>
 
 <script>
+import { ref } from 'vue'
 import FeatInfoArticle from './FeatInfoArticle.vue'
 import FeatInfoEvent from './FeatInfoEvent.vue'
 import MediaControls from './MediaControls.vue'
+import MediaAPI from '../classes/MediaAPI'
+
 export default {
     components: { FeatInfoEvent, FeatInfoArticle, MediaControls },
     props: {
@@ -61,9 +71,13 @@ export default {
             type: Object
         }
     },
-    setup() {
+    setup(props) {
         var slideIndex = 1;
-        return { slideIndex }
+        console.log(props);
+        var mediaFullList = ref([]);
+        const mediaAPI = new MediaAPI();
+        mediaAPI.getMedia(1, 1, (data) => {mediaFullList.value = data.data; console.log(mediaFullList.value)});
+        return { slideIndex, mediaFullList }
     },
     methods: {
         // Next/previous controls
