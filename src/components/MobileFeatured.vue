@@ -1,8 +1,11 @@
 <template>
     <div class="mobile-featured">
-            <div class="featured-image-box">
-                <img :src="featuredInfo.imgUrl" alt="" class="featured-image">
-            </div>  
+            <div class="featured-image-mobile">
+                <img :src="featuredInfo.imgUrl" alt="">
+            </div>
+            <div class="featured-content-mobile">
+                
+            </div> 
     </div>
 </template>
 
@@ -10,9 +13,8 @@
 import { ref } from 'vue'
 import Lister from '../classes/Lister';
 import FeaturedAPI from '../classes/FeaturedAPI'
-import FeaturedInfo from './FeaturedInfo.vue'
 export default {
-    components: { FeaturedInfo },
+    components: {  },
     setup () {
         const featuredType = 'event';
         /* const featuredInfo = {
@@ -33,5 +35,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+    .mobile-featured {
+        overflow: hidden;
+        margin: 10px 15px 20px;
+        .featured-image-mobile {
+            overflow: hidden;
+        }
+        .featured-image-mobile img{
+            height: 300px;
+            width: 100%;
+            object-fit: cover;
+            overflow: hidden;
+        }
+        .featured-content-mobile {
+            height: 200px;
+            margin-top: 4px;
+            background-color: #27648f;
+        }
+    }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="featured-section container-fluid">
+    <div class="featured-section container-fluid md-up">
         <div class="row featured-top">
             <div class="col-4 featured-top-left"></div>
             <div class="col-8 featured-top-right"></div>
@@ -16,7 +16,8 @@
             <div class="col-4 featured-bottom-left"></div>
             <div class="col-8 featured-bottom-right"></div>
         </div>
-    </div>    
+    </div>
+    <mobile-featured class="sm-only"/>
 </template>
 
 <script>
@@ -24,8 +25,9 @@ import { ref } from 'vue'
 import Lister from '../classes/Lister';
 import FeaturedAPI from '../classes/FeaturedAPI'
 import FeaturedInfo from './FeaturedInfo.vue'
+import MobileFeatured from './MobileFeatured.vue';
 export default {
-    components: { FeaturedInfo },
+    components: { FeaturedInfo, MobileFeatured },
     setup () {
         const featuredType = 'event';
         /* const featuredInfo = {
