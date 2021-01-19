@@ -6,7 +6,7 @@
         <div class="results-content">
             <div class="results-list">
                 <div v-for="result in resultsList" class="search-result" :key="result.id">
-                    <a href="#" class="result-title">{{result.article_title}}</a>
+                    <a href="" class="result-title" @click.prevent="setArticle(result.id, result.permalink)" >{{result.article_title}}</a>
                     <div class="result-subtitle">{{result.article_subtitle}}</div>
                 </div>
             </div>
@@ -15,9 +15,19 @@
 </template>
 
 <script>
+import store from '../store/store.js';
 export default {
+    setup() {
+        return { store };
+    },
     props: {
         resultsList: { required: true }
+    },
+    methods: {
+        setArticle(permalink, id) {
+            store.setArticle(permalink, id);
+            store.toggleArticle();
+        }
     }
 }
 </script>
