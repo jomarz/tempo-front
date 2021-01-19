@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-10 video-carousel-content">
                 <div v-for="(videoInfo, index) in videoList" :key="index" class="video-carousel-box">
-                    <video-small-box :videoInfo="videoInfo" />
+                    <video-small-box :boxContent="videoInfo" />
                 </div>
             </div>
             <div class="col-2 carousel-nav">

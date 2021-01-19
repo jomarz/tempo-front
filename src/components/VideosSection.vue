@@ -7,9 +7,11 @@
         </div>
         <div class="row main-videos-row">
             <main-video class="col-12 col-md-8 col-lg-9 main-video" :featVideo="featVideo" ></main-video>
-            <video-carousel class="col-12 col-md-3 col-lg-3 video-carousel" :videoList="videoList" ></video-carousel>
+            <video-carousel class="col-12 col-md-3 col-lg-3 video-carousel md-up" :videoList="videoList" ></video-carousel>
         </div>
-    </div>    
+        <horizontal-carousel :contentList="videoFullList" componentName="video-small-box" class="horizontal-carousel-video sm-only"/>    
+    </div>
+            
 </template>
 
 <script>
@@ -17,8 +19,9 @@ import store from '../store/store.js';
 import MainVideo from './MainVideo.vue';
 import SectionNavNoMenu from './SectionNavNoMenu.vue';
 import VideoCarousel from './VideoCarousel.vue';
+import HorizontalCarousel from './HorizontalCarousel.vue';
 export default {
-  components: { SectionNavNoMenu, MainVideo, VideoCarousel },
+  components: { SectionNavNoMenu, MainVideo, VideoCarousel, HorizontalCarousel },
     setup() 
     {
         const navTitle = "Videos Tempo";
@@ -75,6 +78,11 @@ export default {
             }
             .video-carousel {
             }
+        }
+    }
+    @media only screen and (max-width: 767px) {
+        .videos-section {
+            margin: 20px 15px;
         }
     }
 </style>

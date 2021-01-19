@@ -1,10 +1,10 @@
 <template>
     <div class="video-small-box">
         <div class="video-container">
-            <iframe :src="videoInfo.src" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe :src="boxContent.src" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="video-box-subtitle">
-            {{videoInfo.title}}
+            {{boxContent.title}}
         </div>
     </div>
 </template>
@@ -12,7 +12,7 @@
 <script>
 export default {
     props: {
-        videoInfo: {required: true}
+        boxContent: {required: true}
     }
 }
 </script>
@@ -24,7 +24,7 @@ export default {
         height: 127px;
             overflow: hidden;
             position: relative;
-            width:100%;
+            //width:100%;
         }
 
         .video-container::after {
@@ -46,6 +46,11 @@ export default {
             font-family: 'Roboto', sans-serif;
             font-weight: 400;
             margin-top: 6px;
+        }
+    }
+    .horizontal-carousel-video {
+        .video-small-box {
+            margin-right: 20px;
         }
     }
 </style>
