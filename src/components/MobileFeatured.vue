@@ -5,8 +5,10 @@
             </div>
             <div class="featured-content-mobile">
                 <div class="mobile-featured-title">{{featuredInfo.title}}</div>
-                <feat-info-event-box v-if="featuredType==='event'" :featuredInfo="featuredInfo" class="home-main"/>
-                <div v-else-if="featuredType==='article'" class="home-main" >
+                <div class="mobile-featured-info">
+                    <feat-info-event-box v-if="featuredType==='event'" :featuredInfo="featuredInfo" class="home-main"/>
+                    <div v-else-if="featuredType==='article'" class="home-main" >
+                    </div>
                 </div>
             </div> 
     </div>
@@ -42,6 +44,9 @@ export default {
     .mobile-featured {
         overflow: hidden;
         margin: 10px 15px 20px;
+        .featured-content-mobile {
+            display: flex;
+        }
         .mobile-featured-title {
             font-size: 1.2rem !important;
             font-family: 'Playfair display';
@@ -50,18 +55,24 @@ export default {
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            max-width: 50%;
+            padding: 10px 10px;
+        }
+        .mobile-featured-info {
+            width: 50%;
+            padding: 10px 10px;
         }
         .featured-image-mobile {
             overflow: hidden;
         }
         .featured-image-mobile img{
-            height: 300px;
+            height: 250px;
             width: 100%;
             object-fit: cover;
             overflow: hidden;
         }
         .featured-content-mobile {
-            height: 200px;
+            height: 150px;
             margin-top: 4px;
             background-color: #27648f;
         }
