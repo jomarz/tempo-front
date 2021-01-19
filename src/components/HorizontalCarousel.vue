@@ -10,17 +10,13 @@
 import ArticleSmallBox from './ArticleSmallBox.vue';
 import EventSmallBox from './EventSmallBox.vue';
 import NewsSmallBox from './NewsSmallBox.vue';
-import videoSmallBox from './videoSmallBox.vue';
+import VideoSmallBox from './videoSmallBox.vue';
 
 export default {
-  components: { ArticleSmallBox, EventSmallBox, NewsSmallBox, videoSmallBox },
+  components: { ArticleSmallBox, EventSmallBox, NewsSmallBox, VideoSmallBox },
     props: {
         componentName: { required: true },
         contentList : { required: true }
-    },
-    setup(props) {
-        if(props.componentName=='video-small-box')
-        console.log(props.contentList);
     }
 }
 </script>

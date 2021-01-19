@@ -58,7 +58,7 @@ export default {
         console.log(props);
         var mediaFullList = ref([]);
         const mediaAPI = new MediaAPI();
-        mediaAPI.getMedia(1, 1, (data) => {mediaFullList.value = data.data; console.log(mediaFullList.value)});
+        mediaAPI.getMedia(1, 1, (data) => {mediaFullList.value = data.data;});
         return { slideIndex, mediaFullList }
     },
     methods: {

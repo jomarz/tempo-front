@@ -33,13 +33,12 @@ export default {
     },
     methods: {
         closeResults() 
-        {console.log("Cerrar");
+        {
             this.showResults = false;
         },
         handleInput(e)
         {
             if(e.keyCode === 13) {
-                console.log(this.searchInput);
                 this.searchAPI.getSearchResults(this.searchInput, (data) => {
                     this.resultsList = data.data.articles.concat(data.data.events);
                     this.showResults = true;
