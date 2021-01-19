@@ -13,8 +13,10 @@ export default class AdsList
     buildAdList(adsObj = {})
     {
         this.pagePositions.forEach(position => {
-            if((adsObj[position] != undefined))
-                this.adsList[position] = adsObj[position];
+            if((adsObj[position] != undefined)) {
+                //this.adsList[position] = adsObj[position]; 
+                this.adsList[position] = false;
+            }
             else    this.adsList[position] = false;
         });
         return this.adsList;
