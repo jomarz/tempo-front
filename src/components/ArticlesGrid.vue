@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="mobile-grid">
-        <horizontal-carousel :contentList="contentList" componentName="article-small-box"/>
+        <horizontal-carousel :contentList="contentFullList" componentName="article-small-box"/>
     </div>
 </template>
 
@@ -25,6 +25,10 @@ export default {
     components: { ArticleSmallBox, HorizontalCarousel },
     props: {
         contentList: {
+            required: true,
+            type: Array
+        },
+        contentFullList: {
             required: true,
             type: Array
         }

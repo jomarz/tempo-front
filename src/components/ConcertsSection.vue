@@ -15,7 +15,7 @@
         </div>
         <div class="row grid-row">
             <div class="col">
-                <ContentGrid :contentType="contentType" :contentList="contentList" />
+                <ContentGrid :contentType="contentType" :contentList="contentList" :contentFullList="contentFullList" />
             </div>
             <div class="grid-nav-column carousel-nav md-up">
                 <a href="" @click.prevent="store.eventsCarousel.moveUp()"><img src="..\assets\img\icons\Arrows\YellowArrows_top.svg" alt="up"></a>

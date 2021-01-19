@@ -7,12 +7,12 @@
         </div>
         <div class="row grid-row">
             <div class="col-12 col-md-9 articles">
-                <ArticlesGrid :contentType="contentType" :contentList="contentList" />
+                <ArticlesGrid :contentType="contentType" :contentList="contentList" :contentFullList="contentFullList" />
             </div>
             <div class="col-12 col-md-3 md-up">
                 <NewsVertical :newsList="newsList" />
             </div>
-            <news-horizontal :newsList="newsList" />
+            <news-horizontal :newsList="newsFullList" />
         </div>
     </div>    
 </template>

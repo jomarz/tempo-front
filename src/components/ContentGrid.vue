@@ -14,7 +14,7 @@
         </template>
     </div>
     <div class="mobile-grid">
-        <horizontal-carousel v-if="contentType === 'event'" :contentList="contentList"  componentName="event-small-box"/>
+        <horizontal-carousel v-if="contentType === 'event'" :contentList="contentFullList"  componentName="event-small-box"/>
         <horizontal-carousel v-if="contentType === 'article'" :contentList="contentList" componentName="article-small-box"/>
     </div>
 </template>
@@ -31,6 +31,10 @@ export default {
             type: String
         },
         contentList: {
+            required: true,
+            type: Array
+        },
+        contentFullList: {
             required: true,
             type: Array
         }
