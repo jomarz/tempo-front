@@ -18,6 +18,9 @@
 export default {
     props: {
         resultsList: { required: true }
+    },
+    setup(props) {
+        console.log(props.resultsList);
     }
 }
 </script>

@@ -8,7 +8,7 @@
     <concerts-section :ad="homeAdsList['HOME_EVENTS_TOP_RIGHT_HALF_BANNER']" id="concerts"/>
     <ad-box class="ad-row" :ad="homeAdsList['HOME_EVENTS_BOTTOM_FULL_BANNER']" />
     <videos-section id="videos" />
-    <div class="container-fluid">
+    <div class="container-fluid double-ad-row">
       <div class="row">
         <div class="col-12 col-md-9 pl-0 pd-0 pd-md-2">
           <ad-box class="ad-row" :ad="homeAdsList['HOME_VIDEOS_BOTTOM_LEFT_BANNER']" />
@@ -19,7 +19,7 @@
       </div>
     </div>
     <articles-section id="articles" />
-    <div class="container-fluid">
+    <div class="container-fluid double-ad-row">
       <div class="row">
         <div class="col-12 col-md-9 pl-0 pd-0 pd-md-2">
           <ad-box class="ad-row" :ad="homeAdsList['HOME_NEWS_BOTTOM_LEFT_SMALL_BANNER']" />
@@ -260,7 +260,7 @@ export default {
     }
     /* ad boxes styles*/
     .ad-row, .ad-box.ad-row {
-      height: 115px;
+      height: 200px;
     }
     .ad-small {
       height: 100%;
@@ -343,6 +343,19 @@ export default {
     }
     html, body {
       font-size: 19px;
+    }
+    .ad-row, .ad-box.ad-row {
+      padding: 15px;
+      background-color: white;
+      height: 150px;
+    }
+    .calendar-row .ad-small {
+      padding-right: 15px;
+      background-color: white;
+      height: 150px;
+    }
+    .double-ad-row .row .col-12:first-of-type {
+      padding-right: 0;
     }
   }
 </style>
