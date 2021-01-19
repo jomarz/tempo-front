@@ -23,7 +23,7 @@
                             <div class="box-text-container">
                                 <p class="box-text">{{boxContent.description}}</p>
                             </div>
-                            <read-more-link contentType="event" :contentName="boxContent.title" :contentId="boxContent.id"/>
+                            <read-more-link contentType="event" :contentPermalink="boxContent.permalink" :contentId="boxContent.id"/>
                         </td>
                     </tr>
                 </table>

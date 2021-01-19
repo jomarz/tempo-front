@@ -1,5 +1,5 @@
 <template>
-    <a class="more-link" href="" @click.prevent="setArticle(contentName)">VER MÁS</a>
+    <a class="more-link" href="" @click.prevent="setArticle(contentPermalink, contentId)">VER MÁS</a>
 </template>
 
 <script>
@@ -18,14 +18,14 @@ export default {
             required: true,
             type: String
         },
-        contentName: {
+        contentPermalink: {
             required: true,
             type: String
         },
     },
     methods: {
-        setArticle(name) {
-            store.setArticle(name);
+        setArticle(permalink, id) {
+            store.setArticle(permalink, id);
             store.toggleArticle();
         }
     }
