@@ -5,6 +5,7 @@ export default  {
     articleData: reactive({ id: 13, name: 'jorge' }),
     showArticle: reactive({ state: false }),
     showSubscribe: reactive({ state: false }),
+    showMobileMenu: reactive({ state: false }),
     featVideo: reactive({
         title: 'Krzysztof Penderecki',
         subtite: '',
@@ -24,6 +25,9 @@ export default  {
     },
     toggleSubscribe() {
         this.showSubscribe.state = !this.showSubscribe.state;
+    },
+    toggleMobileMenu() {
+        this.showMobileMenu.state = !this.showMobileMenu.state;
     },
     setfeatVideo(videoInfo) {
         this.featVideo.src = videoInfo.src;

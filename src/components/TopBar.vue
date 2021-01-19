@@ -10,18 +10,22 @@
             <img src="../assets/img/tempo_logo.svg" alt="" class="mobile-logo">
             <div class="topbar-icons-mobile">
                 <img src="../assets/img/icons/Tempo-Search.svg" alt="" class="search-icon-mobile">
-                <img src="../assets/img/icons/menu_mobile.svg" alt="" class="menu-icon-mobile">
+                <img src="../assets/img/icons/menu_mobile.svg" alt="" class="menu-icon-mobile" @click="store.toggleMobileMenu()">
             </div>
         </div>
     </div> 
 </template>
 
 <script>
+import store from '../store/store.js';
 import SearchBox from './SearchBox.vue'
 export default {
     name: 'TopBar',
     components: {
         SearchBox
+    },
+    setup() {
+        return { store };
     }
 }
 </script>

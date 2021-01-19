@@ -33,6 +33,7 @@
     <ad-box class="ad-row" :ad="homeAdsList['HOME_DISCOGRAPHY_BOTTOM_FULL_BANNER']" />
   </div>
   <Footer id="footer" />
+  <mobile-menu v-if="store.showMobileMenu.state" @toggle="store.toggleMobileMenu()" class="sm-only"/>
   <article-window v-if="store.showArticle.state" @toggle="store.toggleArticle()" />
   <subscribe-window v-if="store.showSubscribe.state" @toggle="store.toggleSubscribe()" />
 
@@ -57,6 +58,7 @@ import AdsAPI from './classes/AdsAPI';
 import AdsList from './classes/AdsList';
 
 import SubscribeWindow from './components/SubscribeWindow.vue';
+import MobileMenu from './components/MobileMenu.vue';
 
 export default {
   name: 'App',
@@ -134,7 +136,8 @@ export default {
     AlbumsSection,
     Footer,
     ArticleWindow,
-    SubscribeWindow
+    SubscribeWindow,
+    MobileMenu,
   }
 }
 </script>
