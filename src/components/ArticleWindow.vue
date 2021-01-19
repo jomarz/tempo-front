@@ -25,7 +25,7 @@
                         </template>
                     </div>
                     <ad-box class="ad-row" :ad="articleAds[2]" />
-                    <related-articles :relatedArticles="relatedArticles" />
+                    <related-articles :relatedArticles="relatedArticles" class="md-up" />
                 </div>
             </div>
         </div>
@@ -257,6 +257,14 @@ export default {
         }
         .ad-row {
             margin-bottom: 16px;
+        }
+    }
+    @media only screen and (max-width: 767px) {
+        .modal-container {
+            width: 100%;
+        }
+        .main-article-content {
+            width: 95%;
         }
     }
 </style>

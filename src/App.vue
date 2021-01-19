@@ -8,7 +8,8 @@
     <concerts-section :ad="homeAdsList['HOME_EVENTS_TOP_RIGHT_HALF_BANNER']" id="concerts"/>
     <ad-box class="ad-row" :ad="homeAdsList['HOME_EVENTS_BOTTOM_FULL_BANNER']" />
     <videos-section id="videos" />
-    <div class="container-fluid double-ad-row">
+    <ad-box class="ad-row" :ad="homeAdsList['HOME_VIDEOS_BOTTOM_LEFT_BANNER']" />
+    <!-- <div class="container-fluid double-ad-row">
       <div class="row">
         <div class="col-12 col-md-9 pl-0 pd-0 pd-md-2">
           <ad-box class="ad-row" :ad="homeAdsList['HOME_VIDEOS_BOTTOM_LEFT_BANNER']" />
@@ -17,9 +18,10 @@
           <ad-box class="ad-row" :ad="homeAdsList['HOME_VIDEOS_BOTTOM_RIGHT_SMALL_BANNER']" />
         </div>
       </div>
-    </div>
+    </div> -->
     <articles-section id="articles" />
-    <div class="container-fluid double-ad-row">
+    <ad-box class="ad-row" :ad="homeAdsList['HOME_NEWS_BOTTOM_RIGHT_BANNER']" />
+    <!-- <div class="container-fluid double-ad-row">
       <div class="row">
         <div class="col-12 col-md-9 pl-0 pd-0 pd-md-2">
           <ad-box class="ad-row" :ad="homeAdsList['HOME_NEWS_BOTTOM_LEFT_SMALL_BANNER']" />
@@ -28,7 +30,7 @@
           <ad-box class="ad-row" :ad="homeAdsList['HOME_NEWS_BOTTOM_RIGHT_BANNER']" />
         </div>
       </div>
-    </div>
+    </div> -->
     <albums-section id="albums" />
     <ad-box class="ad-row" :ad="homeAdsList['HOME_DISCOGRAPHY_BOTTOM_FULL_BANNER']" />
   </div>

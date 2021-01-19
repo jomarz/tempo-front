@@ -1,6 +1,6 @@
 <template>
     <div class="modal-main-display">
-        <div class="info-box">
+        <div class="info-box md-up">
             <feat-info-event v-if="contentType==='event'" :featuredInfo="content" class="article-modal-info"/>
             <feat-info-article v-if="contentType==='article'" :featuredInfo="content" class="article-modal-info"/>
         </div>
@@ -12,7 +12,7 @@
                         <img :src="media.url" style="width:100%">
                     </div>
                     <div v-else-if="media.media_type=='video'" class="mySlides fades media-video">
-                        <iframe width="504" height="298" :src="media.url" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe :src="media.url" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
 
                 </template>
@@ -105,14 +105,14 @@ export default {
         display: flex;
         .info-box {
             width: 215px;
-            height: 298px;
+            height: 292px;
             background-color: #27648f;
             display: flex;
             justify-content: center;
         }
         .media-box {
             width: 504px;
-            height: 298px;
+            height: 292px;
             background-color: gray;
         }
         .article-media-controls{
@@ -130,6 +130,13 @@ export default {
         position: relative;
         margin: auto;
         overflow: hidden;
+            iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
         }
 
         /* Hide the images by default */
@@ -216,6 +223,15 @@ export default {
         @keyframes fade {
         from {opacity: .4}
         to {opacity: 1}
+        }
+    }
+    @media only screen and (max-width: 767px) {
+        .modal-main-display {
+            .media-box {
+                width: 100%;
+                height: 220px;
+                background-color: gray;
+            }
         }
     }
 </style>
