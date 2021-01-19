@@ -4,7 +4,10 @@
                 <img :src="featuredInfo.imgUrl" alt="">
             </div>
             <div class="featured-content-mobile">
-                
+                <div class="mobile-featured-title">{{featuredInfo.title}}</div>
+                <feat-info-event-box v-if="featuredType==='event'" :featuredInfo="featuredInfo" class="home-main"/>
+                <div v-else-if="featuredType==='article'" class="home-main" >
+                </div>
             </div> 
     </div>
 </template>
@@ -13,8 +16,9 @@
 import { ref } from 'vue'
 import Lister from '../classes/Lister';
 import FeaturedAPI from '../classes/FeaturedAPI'
+import FeatInfoEventBox from './FeatInfoEventBox.vue';
 export default {
-    components: {  },
+    components: {FeatInfoEventBox  },
     setup () {
         const featuredType = 'event';
         /* const featuredInfo = {
