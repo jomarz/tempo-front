@@ -1,6 +1,6 @@
 <template>
     <div class="calendar row">
-            <div class="col-4 calendar-left-box">
+            <div class="col-12 col-md-4 calendar-left-box">
                 <div class="calendar-title-box">
                     <h4 class="calendar-title">CALENDARIO</h4>
                     <div class="calendar-subtitle">DE CONCIERTOS</div>
@@ -18,7 +18,7 @@
                     </div>
                 </div>
             </div>    
-            <div class="col-8 days-container">
+            <div class="col-12 col-md-8 days-container">
                 <div class="days-header row">
                     <div v-for="weekday in weekdays" :key='weekday' class="weekday-box">{{weekday}}</div>
                 </div>
@@ -153,6 +153,30 @@ export default {
             font-family: 'Roboto', sans-serif;
             font-size: 0.50rem;
             font-weight: 700;
+        }
+    }
+    @media only screen and (max-width: 767px) {
+        .calendar {
+            .calendar-left-box {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                margin-bottom: 15px;
+            }
+            .calendar-title-box {
+                flex-direction: column;
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                .calendar-subtitle {
+                    padding-bottom: 0;
+                    border-bottom: none;
+                }
+            }
+            .calendar-month {
+                padding-top: 0px;
+                margin-left: 20px;
+            }
         }
     }
 </style>

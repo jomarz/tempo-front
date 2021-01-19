@@ -37,5 +37,11 @@ export default {
             overflow: hidden;
         }
     }
+    @media only screen and (min-width: 768px) {
+        .feat-info-event .feat-event-title {
+            font-size: 1.8rem !important;
+            width: 85%;
+        }
+    }
 
 </style>

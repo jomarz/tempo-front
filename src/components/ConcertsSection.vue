@@ -6,10 +6,10 @@
             </div>
         </div>
         <div class="row calendar-row">
-            <div class="col-md-9 col-lg-7 pl-0">
+            <div class="col-12 col-md-9 col-lg-7 calendar">
                 <Calendar :month="month" :year="year" :daysWithEvent="daysWithEvent" v-on:prev-month="prevMonth()" v-on:next-month="nextMonth()" />
             </div>
-            <div class="col-md-3 col-lg-5 pr-0">
+            <div class="col-12 col-md-3 col-lg-5 pr-0">
                 <AdBox class="ad-small" :ad="ad" />
             </div>
         </div>
@@ -112,9 +112,14 @@ export default {
 
 <style lang="scss" scoped>
     
-        .grid-nav-column {
-            width: 19px;
-            padding: 0 1px 0;
+    .grid-nav-column {
+        width: 19px;
+        padding: 0 1px 0;
+    }
+    @media only screen and (min-width: 768px) {
+        .calendar {
+            padding-left: 0;
         }
+    }
 
 </style>
