@@ -1,5 +1,5 @@
 <template>
-    <a class="more-link" href="" @click.prevent="setArticle(contentPermalink, contentId)">VER MÁS</a>
+    <a class="more-link" href="" @click.prevent="setArticle(contentPermalink, contentId, 1)">VER MÁS</a>
 </template>
 
 <script>
@@ -22,6 +22,9 @@ export default {
             required: true,
             type: String
         },
+        isEvent: {
+            type: Number
+        }
     },
     methods: {
         setArticle(permalink, id) {

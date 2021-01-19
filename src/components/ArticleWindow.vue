@@ -7,18 +7,21 @@
                         <div class="close-content-modal" >
                             <img src="..\assets\img\icons\ExitIcon.svg" @click="$emit('toggle')" alt="">
                         </div>                   
-                        <div class="modal-content-type">CONCIERTOS</div>
+                        <div v-if="store.articleData.isEvent == 1" class="modal-content-type">CONCIERTOS</div>
+                        <div v-else class="modal-content-type">ARTÍCULOS</div>
                     </div>
                     <div class="title-row">
-                        <h3>La Integral de los Cuartetos de Beethoven</h3>
-                        <div class="modal-content-subtitle">El Cuarteto Casals: Veinte Años Para Escalar la Cima de los Cuartetos de Beethoven</div>
+                        <h3>{{content.title}}</h3>
+                        <div class="modal-content-subtitle">{{content.subtitle}}</div>
                     </div>
                     <modal-main-display :contentType="contentType" :content="content" class="sticky" />
-                    <div class="text-sub">{{content.textSub}}</div>
+                    <div class="text-sub">{{content.lead}}</div>
                     <div class="main-article-content">
                         <template v-for="(paragraph, index) in content.contents" :key="paragraph.id">
                             <ad-box v-if="index==content.contents.length-1" :ad="articleAds[1]" class="ad-row" />
-                            <p class="article-text">{{paragraph.text}}</p>
+                            <p v-if="paragraph.contentType == 'p'" class="article-text">{{paragraph.html}}</p>
+                            <h2 v-else-if="paragraph.contentType == 'h2'" class="article-text">{{paragraph.html}}</h2>
+                            <h3 v-else-if="paragraph.contentType == 'h3'" class="article-text">{{paragraph.html}}</h3>
                         </template>
                     </div>
                     <ad-box class="ad-row" :ad="articleAds[2]" />
@@ -30,7 +33,9 @@
 </template>
 
 <script>
+import { ref } from 'vue';
 import store from '../store/store.js';
+import PostContentAPI from '../classes/PostContentAPI';
 import Lister from '../classes/Lister';
 import ModalMainDisplay from './ModalMainDisplay';
 import RelatedArticles from './RelatedArticles';
@@ -38,8 +43,9 @@ import AdBox from './AdBox.vue';
 
 export default {
     setup() {
-        const contentType = 'article';
-        var content = {
+        var contentType = 'article';
+        if(store.articleData.isEvent == 1)  contentType = 'event';
+        var content = ref({
             id: 1,
             title: 'Concierto Inagural',
             name: 'Ian Bostridge',
@@ -101,7 +107,7 @@ export default {
 
                 },
             ]
-        };
+        });
         const relatedArticles = [
                 {
                     id: '1',
@@ -149,7 +155,13 @@ export default {
                     placing: '3',
                     },
             ];
-        content = Lister.assignDateFields([content])[0];
+        const postContentAPI = new PostContentAPI();
+        postContentAPI.getContent(store.articleData.id, store.articleData.permalink, store.articleData.isEvent, (data) => {
+            content.value = data.data;
+            if(store.articleData.isEvent == 1)  content.value = Lister.assignDateFields([content.value])[0];
+            console.log(content.value);
+            });
+        
         return { store, contentType, content, relatedArticles, articleAds };
     },
     components: { ModalMainDisplay, RelatedArticles, AdBox }
@@ -235,6 +247,13 @@ export default {
         padding-top: 20px;
         p {
             font-size: 0.85rem !important;
+        }
+        h1 ,h2 {
+            margin-top: 10px;
+            margin-bottom: 25px;
+        }
+        h3 {
+            margin-bottom: 20px;
         }
         .ad-row {
             margin-bottom: 16px;

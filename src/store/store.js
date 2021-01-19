@@ -2,7 +2,7 @@ import { reactive } from 'vue';
 import Carousel from '../classes/Carousel'
 
 export default  {
-    articleData: reactive({ id: 13, permalink: 'jorge' }),
+    articleData: reactive({ id: 1, permalink: '', isEvent: 0 }),
     showArticle: reactive({ state: false }),
     showSubscribe: reactive({ state: false }),
     showMobileMenu: reactive({ state: false }),
@@ -17,9 +17,10 @@ export default  {
     newsCarousel: new Carousel(1,3),
     albumsCarousel: new Carousel(1,6),
     printedEdsCarousel: new Carousel(1,2),
-    setArticle(permalink, id=0) {
+    setArticle(permalink, id, isEvent=false) {
         this.articleData.permalink = permalink;
         this.articleData.id = id;
+        this.articleData.isEvent = isEvent;
     },
     toggleArticle() {
         this.showArticle.state = !this.showArticle.state;
