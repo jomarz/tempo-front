@@ -53,4 +53,16 @@ export default {
             padding: 15px 0;
         }
     }
+    @media only screen and (max-width: 767px) {
+        .main-video-container {
+            .main-video-row {
+                margin: 15px;
+                padding: 8px;
+                border: 1px solid black;
+                .main-video {
+                    padding: 0;
+                }
+            }
+        }
+    }
 </style>
