@@ -42,6 +42,15 @@ export default {
     .mobile-featured {
         overflow: hidden;
         margin: 10px 15px 20px;
+        .mobile-featured-title {
+            font-size: 1.2rem !important;
+            font-family: 'Playfair display';
+            color: white;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
         .featured-image-mobile {
             overflow: hidden;
         }
