@@ -1,10 +1,17 @@
 <template>
     <div  class="container-fluid" id="top-bar">
-        <div class="row">
+        <div class="row md-up">
             <div class="col-6 logo-container">
                 <a class='top-bar-logo'></a>
             </div>
             <SearchBox class="col-6"/>
+        </div>
+        <div class="mobile-topbar sm-only">
+            <img src="../assets/img/tempo_logo.svg" alt="" class="mobile-logo">
+            <div class="topbar-icons-mobile">
+                <img src="../assets/img/icons/Tempo-Search.svg" alt="" class="search-icon-mobile">
+                <img src="../assets/img/icons/menu_mobile.svg" alt="" class="menu-icon-mobile">
+            </div>
         </div>
     </div> 
 </template>
@@ -45,6 +52,29 @@ export default {
             color: black;
         }
     } 
+    .mobile-topbar {
+        margin: 20px 0;
+        height : 35px;
+        img.mobile-logo {
+            height: 35px;
+        }
+        .topbar-icons-mobile {
+            float: right;
+            height: 100%;
+        }
+        .search-icon-mobile {
+            height: 70%;
+            color: #bcbec0;
+            padding: 1px 9px 1px 2px;
+            margin-top: 5px;
+        }
+        .menu-icon-mobile {
+            height: 70%;
+            color: #bcbec0;
+            padding: 1px 9px 1px 2px;
+            margin-top: 5px;
+        }
+    }
     @media only screen and (max-width: 767px) {
         #navbar {
             .row {
