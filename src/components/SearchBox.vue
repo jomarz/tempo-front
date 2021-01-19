@@ -42,8 +42,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .searchbox-container {
-    }
     .search-box {
         display: flex;
         align-items: center;

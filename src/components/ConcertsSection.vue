@@ -2,7 +2,7 @@
     <div class="content-section concerts-section container-fluid">
         <div class="row section-nav-row">
             <div class="col pl-0 pr-0">
-                <SectionNav :navTitle="navTitle" :menuItems="menuItems" class="md-up"/>
+                <SectionNav :navTitle="navTitle" :menuItems="menuItems"/>
             </div>
         </div>
         <div class="row calendar-row">
