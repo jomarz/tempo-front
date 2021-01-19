@@ -55,13 +55,18 @@ export default {
     }
     @media only screen and (max-width: 767px) {
         .main-video-container {
+            margin: 5px 0px 20px;
+            padding: 0 15px;
             .main-video-row {
-                margin: 15px;
+                margin: 0;
                 padding: 8px;
                 border: 1px solid black;
                 .main-video {
                     padding: 0;
                 }
+            }
+            .main-video-title {
+                padding-top: 5px;
             }
         }
     }
