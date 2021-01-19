@@ -2,18 +2,17 @@
     <transition name="modal">
         <div class="modal-mask">
             <div class="modal-wrapper">
-                <div class="modal-container">
-                        <div class="close-row">
-                            <img src="..\assets\img\icons\ExitIcon.svg" @click="store.toggleMobileMenu()" alt="">
-                        </div>
-                    <div class="subscribe-main">
-                        <img src="../assets/img/tempo_logo.svg" alt="" class="mobile-logo">
-                        <p>Recibe gratis nuestro boletin de las ultimas noticias del mundo de la musica.</p>
-                        <form action="" class="subscribe-form">
-                            <input type="text" name="name" placeholder="Nombre">
-                            <input type="text" name="email" placeholder="Correo">
-                            <button type="submit">ENVIAR</button>
-                        </form>
+            <div class="modal-container">
+                    <div class="close-row">
+                        <img src="..\assets\img\icons\ExitIcon.svg" @click="store.toggleMobileMenu()" alt="">
+                    </div>
+                    <div class="mobile-menu-main">
+                        <img src="../assets/img/tempo_logo.svg" alt="" class="mobile-menu-logo">
+                        <a href="#" class="mobile-menu-link" @click="store.toggleMobileMenu()">Inicio</a>
+                        <a href="#concerts" class="mobile-menu-link" @click="store.toggleMobileMenu()">Conciertos</a>
+                        <a href="#videos" class="mobile-menu-link" @click="store.toggleMobileMenu()">Videos Tempo</a>
+                        <a href="#articles" class="mobile-menu-link" @click="store.toggleMobileMenu()">Artículos/Noticias</a>
+                        <a href="#albums" class="mobile-menu-link" @click="store.toggleMobileMenu()">Novedades discográficas</a>
                     </div>  
                 </div>
             </div>
@@ -49,8 +48,8 @@ export default {
     }
 
     .modal-container {
-    width: 374px;
-    //height: 100%;
+    width: 100%;
+    height: 100%;
     overflow: auto;
     display: flex;
     flex-direction: column;
@@ -62,34 +61,21 @@ export default {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
     transition: all 0.3s ease;
     }
-    .subscribe-main {
+    .mobile-menu-main {
         width: 85%;
-        input {
-            display: block;
-            width: 100%;
-            margin: 15px 0;
-            padding: 5px;
-            height: 1.5rem;
-            font-size: 1rem;
-            border: 1px solid #d1d3d4;
-            border-radius: 4px;
-
+        height: 85%;
+        display: flex;
+        flex: 0 1 auto;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-content: center;
+        .mobile-menu-logo {
+            height: 70px;
         }
-        .subscribe-title {
+        a.mobile-menu-link {
             text-align: center;
-            margin: 15px 0;
-        }
-        p { 
-            text-align: center;
-            font-weight: 400;
-        }
-        .subscribe-form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        button[type=submit] {
-            margin: 20px 0 10px;
+            font-size: 1.2rem;
+            color: black;
         }
     }
     .close-row {
