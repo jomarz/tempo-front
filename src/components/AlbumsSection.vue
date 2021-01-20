@@ -17,6 +17,7 @@
     </div>
     <div class="content-section container-fluid mobile-albums-printed sm-only">
         <horizontal-carousel :contentList="albumsFullList" componentName="album-small-box" class="horizontal-carousel-albums sm-only"/>
+        <horizontal-carousel :contentList="printedFullList" componentName="printed-small-box" class="horizontal-carousel-albums sm-only"/>
     </div>
 </template>
 

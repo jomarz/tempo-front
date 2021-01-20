@@ -1,17 +1,17 @@
 <template>
     <div class="printed-small-box">
         <div class="printed-thumbnail">
-            <img :src="printedElement.imgUrl" alt="">
+            <img :src="boxContent.imgUrl" alt="">
         </div>
-        <div class="printed-box-title">{{printedElement.title}}</div>
-        <p class="printed-box-text">{{printedElement.description}}</p>
+        <div class="printed-box-title">{{boxContent.title}}</div>
+        <p class="printed-box-text">{{boxContent.description}}</p>
     </div>    
 </template>
 
 <script>
 export default {
     props: {
-        printedElement: {
+        boxContent: {
             required: true,
             type: Object
         }

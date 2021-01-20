@@ -12,9 +12,10 @@ import EventSmallBox from './EventSmallBox.vue';
 import NewsSmallBox from './NewsSmallBox.vue';
 import VideoSmallBox from './videoSmallBox.vue';
 import AlbumSmallBox from './AlbumSmallBox.vue';
+import PrintedSmallBox from './PrintedSmallBox.vue';
 
 export default {
-  components: { ArticleSmallBox, EventSmallBox, NewsSmallBox, VideoSmallBox, AlbumSmallBox },
+  components: { ArticleSmallBox, EventSmallBox, NewsSmallBox, VideoSmallBox, AlbumSmallBox, PrintedSmallBox },
     props: {
         componentName: { required: true },
         contentList : { required: true }

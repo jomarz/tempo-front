@@ -5,7 +5,7 @@
             <PrintedCTA class="printed-cta"/>
             <div class="carousel-column">
                 <div class="carousel-box-container" >
-                    <printed-small-box v-for="printedElement in printedList" :key="printedElement.key" :printedElement="printedElement" />
+                    <printed-small-box v-for="printedElement in printedList" :key="printedElement.key" :boxContent="printedElement" />
                 </div>
                 <div class="carousel-nav">
                     <a href="" @click.prevent="store.printedEdsCarousel.moveUp()"><img src="..\assets\img\icons\Arrows\YellowArrows_top.svg" alt="up"></a>
