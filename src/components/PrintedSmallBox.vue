@@ -42,4 +42,9 @@ export default {
             overflow: hidden;
         }
     }
+    @media only screen and (max-width: 767px) {
+        .printed-small-box {
+            margin-right: 25px;
+        }
+    }
 </style>

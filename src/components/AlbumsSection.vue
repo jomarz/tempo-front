@@ -17,7 +17,7 @@
     </div>
     <div class="content-section container-fluid mobile-albums-printed sm-only">
         <horizontal-carousel :contentList="albumsFullList" componentName="album-small-box" class="horizontal-carousel-albums sm-only"/>
-        <horizontal-carousel :contentList="printedFullList" componentName="printed-small-box" class="horizontal-carousel-albums sm-only"/>
+        <horizontal-carousel :contentList="printedFullList" componentName="printed-small-box" class="horizontal-carousel-printed sm-only"/>
     </div>
 </template>
 
@@ -76,5 +76,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+    .horizontal-carousel-printed {
+        margin-top: 40px;
+    }
 </style>
