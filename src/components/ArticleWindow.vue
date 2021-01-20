@@ -15,11 +15,11 @@
                         <div class="modal-content-subtitle">{{content.subtitle}}</div>
                     </div>
                     <modal-main-display :contentType="contentType" :content="content" class="sticky" />
-                    <div class="text-sub">{{content.lead}}</div>
+                    <div class="text-sub" v-html="content.lead"></div>
                     <div class="main-article-content">
                         <template v-for="(paragraph, index) in content.contents" :key="paragraph.id">
                             <ad-box v-if="index==content.contents.length-1" :ad="articleAds[1]" class="ad-row" />
-                            <p v-if="paragraph.contentType == 'p'" class="article-text">{{paragraph.html}}</p>
+                            <p v-if="paragraph.contentType == 'p'" class="article-text" v-html="paragraph.html" ></p>
                             <h2 v-else-if="paragraph.contentType == 'h2'" class="article-text">{{paragraph.html}}</h2>
                             <h3 v-else-if="paragraph.contentType == 'h3'" class="article-text">{{paragraph.html}}</h3>
                         </template>
