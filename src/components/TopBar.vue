@@ -14,7 +14,7 @@
                     <img src="../assets/img/icons/menu_mobile.svg" alt="" class="menu-icon-mobile" @click="store.toggleMobileMenu()">
                 </div>
             </div>
-            <SearchBox v-if="store.showMobileSearchbox.state" class="mobile-searchbox"/>
+            <SearchBox v-if="store.showMobileSearchbox.state" class="mobile-searchbox" :focusOnInput="true" />
         </div>
     </div> 
 </template>

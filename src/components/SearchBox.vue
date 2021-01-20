@@ -11,7 +11,7 @@
             <search-results :class="{'show': showResults, 'hide': !showResults}" :resultsList="resultsList" @close-results="closeResults()"/>
         </div>
         <div class="mobile-search-box sm-only">
-            <input type="text" class='search-input' v-model="searchInput" @keyup="handleInput" />
+            <input type="text" class='search-input' ref="searchInput" v-model="searchInput" @keyup="handleInput" />
         </div>
     </div>    
 </template>
@@ -23,6 +23,9 @@ import SearchResults from './SearchResults.vue';
 
 export default {
     name: 'SearchBox',
+    props: {
+        focusOnInput: {}
+    },
     setup()
     {
         const searchAPI = new SearchAPI();
@@ -49,6 +52,9 @@ export default {
 
             }
         }
+    },
+    mounted() {
+        this.$refs.searchInput.focus();
     }
 }
 </script>
