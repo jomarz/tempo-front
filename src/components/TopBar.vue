@@ -6,12 +6,15 @@
             </div>
             <SearchBox class="col-6"/>
         </div>
-        <div class="mobile-topbar sm-only">
-            <img src="../assets/img/tempo_logo.svg" alt="" class="mobile-logo">
-            <div class="topbar-icons-mobile">
-                <img src="../assets/img/icons/Tempo-Search.svg" alt="" class="search-icon-mobile">
-                <img src="../assets/img/icons/menu_mobile.svg" alt="" class="menu-icon-mobile" @click="store.toggleMobileMenu()">
+        <div class="mobile-top">
+            <div v-if="!store.showMobileSearchbox.state" class="mobile-topbar sm-only">
+                <img src="../assets/img/tempo_logo.svg" alt="" class="mobile-logo">
+                <div class="topbar-icons-mobile">
+                    <img src="../assets/img/icons/Tempo-Search.svg" alt="" class="search-icon-mobile" @click="store.toggleMobileSearchbox()">
+                    <img src="../assets/img/icons/menu_mobile.svg" alt="" class="menu-icon-mobile" @click="store.toggleMobileMenu()">
+                </div>
             </div>
+            <SearchBox v-if="store.showMobileSearchbox.state" class="mobile-searchbox"/>
         </div>
     </div> 
 </template>

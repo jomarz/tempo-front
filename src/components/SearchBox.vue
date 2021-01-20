@@ -1,6 +1,6 @@
 <template>
     <div class="searchbox-container">
-        <div class="search-box">
+        <div class="search-box md-up">
             <input type="text" class='search-input' v-model="searchInput" @keyup="handleInput" />
             <svg viewBox="0 0 16 16" class="bi bi-search text-muted search-icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
@@ -9,6 +9,9 @@
         </div>
         <div class="search-results-container">
             <search-results :class="{'show': showResults, 'hide': !showResults}" :resultsList="resultsList" @close-results="closeResults()"/>
+        </div>
+        <div class="mobile-search-box sm-only">
+            <input type="text" class='search-input' v-model="searchInput" @keyup="handleInput" />
         </div>
     </div>    
 </template>
@@ -96,8 +99,14 @@ export default {
     @media only screen and (max-width: 767px) {
         .search-input {
             height: 1.2rem;
-            width: 160px;
+            width: 100%;
+            margin: 15px 0;
             font-size: 1rem;
+            border-width: 1px 1px 1px 1px;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
         }
         .search-icon {
             height: 1.2rem;

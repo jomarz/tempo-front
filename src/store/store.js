@@ -6,6 +6,7 @@ export default  {
     showArticle: reactive({ state: false }),
     showSubscribe: reactive({ state: false }),
     showMobileMenu: reactive({ state: false }),
+    showMobileSearchbox: reactive({ state:false }),
     featVideo: reactive({
         title: 'Krzysztof Penderecki',
         subtite: '',
@@ -30,6 +31,9 @@ export default  {
     },
     toggleMobileMenu() {
         this.showMobileMenu.state = !this.showMobileMenu.state;
+    },
+    toggleMobileSearchbox() {
+        this.showMobileSearchbox.state = !this.showMobileSearchbox.state;
     },
     setfeatVideo(videoInfo) {
         this.featVideo.src = videoInfo.src;

@@ -13,8 +13,7 @@
             </td>
             <td class="right-col">
                 <span class="feat-event-month">DE {{featuredInfo.monthName}}, {{featuredInfo.year}}</span>
-                <span class="feat-event-location">{{featuredInfo.location}}</span>
-                <a href="#" class="feat-event-link">VER EVENTO</a>
+                <span class="feat-event-location">{{featuredInfo.location}}</span><a href="" class="feat-event-link" @click.prevent="setArticle(result.id, result.permalink, result.postType)" >VER EVENTO</a>
             </td>
         </tr>
     </table>
@@ -27,6 +26,9 @@ export default {
             required: true,
             type: Object
         }
+    },
+    setup(props) {
+        console.log(props.featuredInfo);
     }
 }
 </script>
