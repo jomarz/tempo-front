@@ -192,7 +192,7 @@ export default {
     overflow: auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    //align-items: center;
     margin: 0px auto;
     padding: 7px 20px 20px;
     background-color: #fff;
@@ -230,6 +230,9 @@ export default {
     .title-row {
         padding-top: 15px;
         padding-bottom: 15px;
+        h3 {
+            margin-bottom: 5px;
+        }
     }
     .modal-content-subtitle {
         font-size: 0.95rem !important;
@@ -243,6 +246,7 @@ export default {
         padding-top: 10px;
     }
     .main-article-content {
+        align-self: center;
         width: 450px;
         padding-top: 20px;
         p {
