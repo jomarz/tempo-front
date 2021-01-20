@@ -8,7 +8,7 @@
     <concerts-section :ad="homeAdsList['HOME_EVENTS_TOP_RIGHT_HALF_BANNER']" id="concerts"/>
     <ad-box class="ad-row" :ad="homeAdsList['HOME_EVENTS_BOTTOM_FULL_BANNER']" />
     <videos-section id="videos" />
-    <ad-box class="ad-row" :ad="homeAdsList['HOME_VIDEOS_BOTTOM_LEFT_BANNER']" />
+    <ad-box class="ad-row" :ad="homeAdsList['HOME_VIDEOS_BOTTOM_FULL_BANNER']" />
     <!-- <div class="container-fluid double-ad-row">
       <div class="row">
         <div class="col-12 col-md-9 pl-0 pd-0 pd-md-2">
@@ -20,7 +20,7 @@
       </div>
     </div> -->
     <articles-section id="articles" />
-    <ad-box class="ad-row" :ad="homeAdsList['HOME_NEWS_BOTTOM_RIGHT_BANNER']" />
+    <ad-box class="ad-row" :ad="homeAdsList['HOME_NEWS_BOTTOM_FULL_BANNER']" />
     <!-- <div class="container-fluid double-ad-row">
       <div class="row">
         <div class="col-12 col-md-9 pl-0 pd-0 pd-md-2">
@@ -106,10 +106,8 @@ export default {
             "HOME_DISCOGRAPHY_BOTTOM_FULL_BANNER",
             "HOME_EVENTS_BOTTOM_FULL_BANNER",
             "HOME_EVENTS_TOP_RIGHT_HALF_BANNER",
-            "HOME_NEWS_BOTTOM_LEFT_SMALL_BANNER",
-            "HOME_NEWS_BOTTOM_RIGHT_BANNER",
-            "HOME_VIDEOS_BOTTOM_LEFT_BANNER",
-            "HOME_VIDEOS_BOTTOM_RIGHT_SMALL_BANNER"
+            "HOME_NEWS_BOTTOM_FULL_BANNER",
+            "HOME_VIDEOS_BOTTOM_FULL_BANNER",
     ];
     const homeAds = new AdsList(adPositions);
     var homeAdsList = ref({
@@ -117,10 +115,8 @@ export default {
       HOME_DISCOGRAPHY_BOTTOM_FULL_BANNER: false,
       HOME_EVENTS_BOTTOM_FULL_BANNER: false,
       HOME_EVENTS_TOP_RIGHT_HALF_BANNER: false,
-      HOME_NEWS_BOTTOM_LEFT_SMALL_BANNE: false,
-      HOME_NEWS_BOTTOM_RIGHT_BANNER: false,
-      HOME_VIDEOS_BOTTOM_LEFT_BANNER: false,
-      HOME_VIDEOS_BOTTOM_RIGHT_SMALL_BANNER: false
+      HOME_NEWS_BOTTOM_FULL_BANNER: false,
+      HOME_VIDEOS_BOTTOM_FULL_BANNER: false
     });
     adsAPI.getAds('home', (data)=> {
       homeAdsList.value = homeAds.buildAdList(data.data);
