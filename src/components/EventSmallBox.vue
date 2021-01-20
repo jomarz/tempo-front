@@ -41,6 +41,9 @@ export default {
             required: true,
             type: Object
         }
+    },
+    setup(props) {
+        console.log(props.boxContent);
     }
     
 }

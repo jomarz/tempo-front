@@ -1,5 +1,5 @@
 <template>
-    <a class="more-link" href="" @click.prevent="setArticle(contentPermalink, contentId, 1)">VER MÁS</a>
+    <a class="more-link" href="" @click.prevent="setArticle(contentPermalink, contentId, isEvent)">VER MÁS</a>
 </template>
 
 <script>
@@ -27,8 +27,8 @@ export default {
         }
     },
     methods: {
-        setArticle(permalink, id) {
-            store.setArticle(permalink, id);
+        setArticle(permalink, id, isEvent) {
+            store.setArticle(permalink, id, isEvent);
             store.toggleArticle();
         }
     }

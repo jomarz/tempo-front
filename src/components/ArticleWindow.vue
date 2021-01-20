@@ -157,7 +157,7 @@ export default {
             ];
         const postContentAPI = new PostContentAPI();
         postContentAPI.getContent(store.articleData.id, store.articleData.permalink, store.articleData.isEvent, (data) => {
-            content.value = data.data;
+            content.value = data.data;console.log(store.articleData.isEvent);
             if(store.articleData.isEvent == 1)  content.value = Lister.assignDateFields([content.value])[0];
             console.log(content.value);
             });
