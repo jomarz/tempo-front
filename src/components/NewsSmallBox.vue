@@ -5,12 +5,14 @@
         </div>
         <div class="news-box-title">{{boxContent.title}}</div>
         <p class="news-box-text">{{boxContent.description}}</p>
-        <a class="more-link" href="#">VER MÁS</a>
+        <read-more-link contentType="article" :contentPermalink="boxContent.permalink" :contentId="boxContent.id" />
     </div>    
 </template>
 
 <script>
+import ReadMoreLink from './ReadMoreLink.vue'
 export default {
+  components: { ReadMoreLink },
     props: {
         boxContent: {
             required: true,
