@@ -1,11 +1,13 @@
 <template>
     <div class="receive-cta">
-            <button class="receive-button">RECIBIR</button>
+            <subscribe-button />
     </div>    
 </template>
 
 <script>
+import SubscribeButton from './SubscribeButton.vue'
 export default {
+  components: { SubscribeButton },
     
 }
 </script>

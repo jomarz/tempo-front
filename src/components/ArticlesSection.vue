@@ -12,7 +12,7 @@
             <div class="col-12 col-md-3 md-up">
                 <NewsVertical :newsList="newsList" />
             </div>
-            <news-horizontal :newsList="newsFullList" />
+            <news-horizontal :newsList="newsFullList" class="sm-only" />
         </div>
     </div>    
 </template>

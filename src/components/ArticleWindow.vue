@@ -26,6 +26,7 @@
                     </div>
                     <ad-box class="ad-row" :ad="articleAds[2]" />
                     <related-articles :relatedArticles="relatedArticles" class="md-up" />
+                    <article-cta />
                 </div>
             </div>
         </div>
@@ -40,6 +41,7 @@ import Lister from '../classes/Lister';
 import ModalMainDisplay from './ModalMainDisplay';
 import RelatedArticles from './RelatedArticles';
 import AdBox from './AdBox.vue';
+import ArticleCta from './ArticleCta.vue';
 
 export default {
     setup() {
@@ -164,7 +166,7 @@ export default {
         
         return { store, contentType, content, relatedArticles, articleAds };
     },
-    components: { ModalMainDisplay, RelatedArticles, AdBox }
+    components: { ModalMainDisplay, RelatedArticles, AdBox, ArticleCta }
 }
 </script>
 
@@ -187,18 +189,22 @@ export default {
     }
 
     .modal-container {
-    width: 764px;
-    height: 100%;
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-    //align-items: center;
-    margin: 0px auto;
-    padding: 7px 20px 20px;
-    background-color: #fff;
-    border-radius: 0px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-    transition: all 0.3s ease;
+        width: 764px;
+        height: 100%;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        //align-items: center;
+        margin: 0px auto;
+        padding: 7px 20px 0px;
+        background-color: #fff;
+        border-radius: 0px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+        transition: all 0.3s ease;
+        .article-cta {
+            margin-left: -20px;
+            margin-right: -20px;
+        }
     }
     .sticky {
         position: -webkit-sticky; /* Safari */
