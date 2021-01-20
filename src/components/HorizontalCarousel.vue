@@ -11,9 +11,10 @@ import ArticleSmallBox from './ArticleSmallBox.vue';
 import EventSmallBox from './EventSmallBox.vue';
 import NewsSmallBox from './NewsSmallBox.vue';
 import VideoSmallBox from './videoSmallBox.vue';
+import AlbumSmallBox from './AlbumSmallBox.vue';
 
 export default {
-  components: { ArticleSmallBox, EventSmallBox, NewsSmallBox, VideoSmallBox },
+  components: { ArticleSmallBox, EventSmallBox, NewsSmallBox, VideoSmallBox, AlbumSmallBox },
     props: {
         componentName: { required: true },
         contentList : { required: true }
@@ -34,7 +35,6 @@ export default {
         overflow-y: hidden;
         .content-wrapper {
             display: flex;
-            align-items: center;
             width: 100%;
             overflow-x: auto;
             overflow-y: hidden;

@@ -2,7 +2,7 @@
     <div class="albums-grid container flex-wrap">
         <template v-for="album in albumList" :key="album.id">
             <div class="small-box-container">
-                <album-small-box :album="album" />
+                <album-small-box :boxContent="album" />
             </div>
         </template>
     </div>

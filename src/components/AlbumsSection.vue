@@ -1,5 +1,5 @@
 <template>
-    <div class="content-section albums-section container-fluid">
+    <div class="content-section albums-section container-fluid md-up">
         <div class="row section-nav-row">
             <div class="col pl-0 pr-0">
                 <section-nav-no-menu navTitle="Novedades Discográficas" />
@@ -14,7 +14,10 @@
                 <printed-vertical :printedList="printedList" />
             </div>
         </div>
-    </div>    
+    </div>
+    <div class="content-section container-fluid mobile-albums-printed sm-only">
+        <horizontal-carousel :contentList="albumsFullList" componentName="album-small-box" class="horizontal-carousel-albums sm-only"/>
+    </div>
 </template>
 
 <script>
@@ -25,8 +28,10 @@ import AlbumsCTA from './AlbumsCTA.vue';
 import AlbumsGrid from './AlbumsGrid.vue'
 import PrintedVertical from './PrintedVertical.vue';
 import SectionNavNoMenu from './SectionNavNoMenu.vue';
+import HorizontalCarousel from './HorizontalCarousel.vue';
+
 export default {
-  components: { AlbumsGrid, SectionNavNoMenu, PrintedVertical, AlbumsCTA },
+  components: { AlbumsGrid, SectionNavNoMenu, PrintedVertical, AlbumsCTA, HorizontalCarousel },
   setup() {
       /* const albumList = [
           { id: '1', title: "Imodipic iissimus", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a fermentum risus, eget vehicula magna. Aliquam erat volutpat. In condimentum neque neque, in tempus nulla interdum eget. Vestibulum et leo eget purus eleifend semper ut eget tellus. Maecenas sit amet pellentesque tellus.", imgUrl: "https://picsum.photos/seed/jorgeab1/300/300" },
