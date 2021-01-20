@@ -39,4 +39,14 @@ export default {
         max-width: 520px;
         }
     }
+    @media only screen and (max-width: 767px) {
+        .article-cta {
+            flex-direction: column;
+            padding: 20px 10px;
+            .article-cta-text {
+                text-align: center;
+                padding-top: 15px;
+            }
+        }
+    }
 </style>
