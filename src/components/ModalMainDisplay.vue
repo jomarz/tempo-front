@@ -109,13 +109,10 @@ export default {
         ];
         const mediaAPI = new MediaAPI();
         mediaAPI.getMedia(store.articleData.id, store.articleData.isEvent, (data) => {
-            console.log(data.data); 
             if(data.data == null)   {
-                console.log("data.data is null");
                 mediaFullList.value = dummy;
                 }
             else    mediaFullList.value = data.data;
-            console.log(mediaFullList.value) 
         });
         /* mediaFullList.value = mediaAPI.getDummyMedia(); */
         return { slideIndex, mediaFullList }
