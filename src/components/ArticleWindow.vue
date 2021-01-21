@@ -17,14 +17,24 @@
                     <modal-main-display :contentType="contentType" :content="content" class="sticky" />
                     <div class="text-sub" v-html="content.lead"></div>
                     <div class="main-article-content">
+                        <div class="author-info">
+                            <div class="author-pic">
+                                <img v-if="content.authorImgUrl == ''" src="../assets/img/Pictures/user-placeholder.png" alt="">
+                                <img v-else src="content.authorImgUrl" alt="">
+                            </div>
+                            <div class="author-data">
+                                <div class="author-name">Por: {{content.author}}</div>
+                                <div class="author-job-title">{{content.authorJobTitle}}</div>
+                            </div>
+                        </div>
                         <template v-for="(paragraph, index) in content.contents" :key="paragraph.id">
-                            <ad-box v-if="index==content.contents.length-1" :ad="articleAds[1]" class="ad-row" />
+                            <ad-box v-if="index==content.contents.length-1" :ad="articleAdsList['ARTICLE_BODY_BOTTOM_FULL_BANNER']" class="ad-row" />
                             <p v-if="paragraph.contentType == 'p'" class="article-text" v-html="paragraph.html" ></p>
                             <h2 v-else-if="paragraph.contentType == 'h2'" class="article-text">{{paragraph.html}}</h2>
                             <h3 v-else-if="paragraph.contentType == 'h3'" class="article-text">{{paragraph.html}}</h3>
                         </template>
                     </div>
-                    <ad-box class="ad-row" :ad="articleAds[2]" />
+                    <ad-box class="ad-row ad-article-full" :ad="articleAdsList['ARTICLE_CONTENT_BOTTOM_FULL_BANNER']" />
                     <related-articles :relatedArticles="relatedArticles" class="md-up" />
                     <article-cta />
                 </div>
@@ -36,6 +46,8 @@
 <script>
 import { ref } from 'vue';
 import store from '../store/store.js';
+import AdsAPI from '../classes/AdsAPI';
+import AdsList from '../classes/AdsList';
 import PostContentAPI from '../classes/PostContentAPI';
 import Lister from '../classes/Lister';
 import ModalMainDisplay from './ModalMainDisplay';
@@ -140,7 +152,7 @@ export default {
                     postType: 'event'
                 },
             ];
-            const articleAds = [
+            /* const articleAds = [
                 { ad_id: '1',
                     image_url: 'https://picsum.photos/id/1002/1200/200',
                     link_url: '',
@@ -156,7 +168,7 @@ export default {
                     link_url: '',
                     placing: '3',
                     },
-            ];
+            ]; */
         const postContentAPI = new PostContentAPI();
         postContentAPI.getContent(store.articleData.id, store.articleData.permalink, store.articleData.isEvent, (data) => {
             content.value = data.data;console.log(store.articleData.isEvent);
@@ -164,9 +176,26 @@ export default {
             console.log(content.value);
             });
         
-        return { store, contentType, content, relatedArticles, articleAds };
+        const adsAPI = new AdsAPI();
+        const adPositions = [
+                "ARTICLE_BODY_BOTTOM_FULL_BANNER",
+                "ARTICLE_BODY_LEFT_FIRST_RECTANGLE",
+                "ARTICLE_BODY_LEFT_SECOND_RECTANGLE",
+                "ARTICLE_CONTENT_BOTTOM_FULL_BANNER",
+        ];
+        const articleAds = new AdsList(adPositions);
+        var articleAdsList = ref({
+        ARTICLE_BODY_BOTTOM_FULL_BANNER: false,
+        ARTICLE_BODY_LEFT_FIRST_RECTANGLE: false,
+        ARTICLE_BODY_LEFT_SECOND_RECTANGLE: false,
+        ARTICLE_CONTENT_BOTTOM_FULL_BANNER: false
+        });
+        adsAPI.getAds('article', (data)=> {
+        articleAdsList.value = articleAds.buildAdList(data.data);
+        });
+        return { store, contentType, content, relatedArticles, articleAds, articleAdsList };
     },
-    components: { ModalMainDisplay, RelatedArticles, AdBox, ArticleCta }
+    components: { ModalMainDisplay, RelatedArticles, AdBox, ArticleCta  }
 }
 </script>
 
@@ -204,6 +233,19 @@ export default {
         .article-cta {
             margin-left: -20px;
             margin-right: -20px;
+        }
+        .main-article-content {
+            .ad-row {
+                height: 90px;
+            }
+        }
+        .ad-article-full {
+            width: calc(100% + 20px + 20px);
+            margin-left: -20px;
+            margin-right: -20px;
+            height: 150px;
+            overflow: visible;
+            padding: 0;
         }
     }
     .sticky {
@@ -268,6 +310,29 @@ export default {
         .ad-row {
             margin-bottom: 16px;
         }
+        .author-info {
+            display: flex;
+            margin-bottom: 20px;;
+        }
+        .author-pic img {
+            width: 100px;
+            height: 100px;
+        }
+        .author-data {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            .author-name {
+                font-size: 0.95rem !important;
+                font-family: 'Playfair display';
+                font-weight: 400;
+            }
+            .author-job-title {
+                font-size: 0.85rem !important;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 400;
+            }
+        }
     }
     @media only screen and (max-width: 767px) {
         .modal-container {
@@ -275,6 +340,9 @@ export default {
         }
         .main-article-content {
             width: 95%;
+            .ad-row, .ad-box.ad-row {
+                padding: 0px;
+            }
         }
     }
 </style>

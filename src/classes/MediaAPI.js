@@ -37,18 +37,30 @@ export default class MediaAPI extends TempoAPI
                 media_type: "image",
                 url: 'https://tempo.wittrees.com/media/imgTest/190711-190430.png'
             },
+            {
+                media_id: 7,
+                media_type: "audio",
+                url: 'https://temphttps://open.spotify.com/embed/playlist/37i9dQZEVXbKrooeK9WSFF?height=300&amp;theme-id=0&amp;default-tab=css,result&amp;embed-version=2o.wittrees.com/media/imgTest/190711-190430.png'
+            },
         ];
     }
-    getMedia(postId, isEvent, handler)
+    getMedia(postId, isEvent, handler, dummy = false)
     {
-        /* const data = {
-            postId: postId,
-            isEvnt: isEvent
-        };
-        this.makeAPICall(this.serviceName, data, handler); */
-        const dummyResults = {
+        if(dummy) {
+            const dummyResults = {
+                data: this.dummy
+            };
+            handler(dummyResults);
+        } else {
+            const data = {
+                postId: postId,
+                isEvnt: isEvent
+            };
+            this.makeAPICall(this.serviceName, data, handler);
+        }
+/*         const dummyResults = {
             data: this.dummy
         };
-        handler(dummyResults);
+        handler(dummyResults); */
     }
 }
