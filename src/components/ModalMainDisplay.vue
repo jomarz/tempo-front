@@ -36,6 +36,7 @@
 
 <script>
 import { ref } from 'vue'
+import store from '../store/store.js';
 import FeatInfoArticle from './FeatInfoArticle.vue'
 import FeatInfoEvent from './FeatInfoEvent.vue'
 import MediaControls from './MediaControls.vue'
@@ -51,13 +52,72 @@ export default {
         content: {
             required: true,
             type: Object
+        },
+        contentId: {
+            required: true
+        },
+        isEvent: {
+            required: true
         }
     },
     setup() {
         var slideIndex = 1;
-        var mediaFullList = ref([]);
+        const emptyMedia = [
+            {
+                media_id: 1,
+                media_type: "video",
+                url: ''
+            },
+        ];
+        var mediaFullList = ref(emptyMedia);
+        const dummy = [
+            {
+                media_id: 1,
+                media_type: "video",
+                url: 'https://www.youtube.com/embed/UL1qpV6YtAE'
+            },
+            {
+                media_id: 2,
+                media_type: "video",
+                url: 'https://www.youtube.com/embed/lGRwO9Dle6E'
+            },
+            {
+                media_id: 3,
+                media_type: "video",
+                url: 'https://www.youtube.com/embed/_x2QIJyxJQA'
+            },
+            {
+                media_id: 4,
+                media_type: "image",
+                url: 'https://tempo.wittrees.com/media/imgTest/190711-191403.png'
+            },
+            {
+                media_id: 5,
+                media_type: "image",
+                url: 'https://tempo.wittrees.com/media/imgTest/190711-191012.png'
+            },
+            {
+                media_id: 6,
+                media_type: "image",
+                url: 'https://tempo.wittrees.com/media/imgTest/190711-190430.png'
+            },
+            {
+                media_id: 7,
+                media_type: "audio",
+                url: 'https://temphttps://open.spotify.com/embed/playlist/37i9dQZEVXbKrooeK9WSFF?height=300&amp;theme-id=0&amp;default-tab=css,result&amp;embed-version=2o.wittrees.com/media/imgTest/190711-190430.png'
+            },
+        ];
         const mediaAPI = new MediaAPI();
-        mediaAPI.getMedia(1, 1, (data) => {mediaFullList.value = data.data;});
+        mediaAPI.getMedia(store.articleData.id, store.articleData.isEvent, (data) => {
+            console.log(data.data); 
+            if(data.data == null)   {
+                console.log("data.data is null");
+                mediaFullList.value = dummy;
+                }
+            else    mediaFullList.value = data.data;
+            console.log(mediaFullList.value) 
+        });
+        /* mediaFullList.value = mediaAPI.getDummyMedia(); */
         return { slideIndex, mediaFullList }
     },
     methods: {

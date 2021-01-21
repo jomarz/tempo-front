@@ -14,7 +14,7 @@
                         <h3>{{content.title}}</h3>
                         <div class="modal-content-subtitle">{{content.subtitle}}</div>
                     </div>
-                    <modal-main-display :contentType="contentType" :content="content" class="sticky" />
+                    <modal-main-display :contentId="contentId" :isEvent="store.articleData.isEvent" :contentType="contentType" :content="content" class="sticky" />
                     <div class="text-sub" v-html="content.lead"></div>
                     <div class="main-article-content">
                         <div class="author-info">
@@ -173,7 +173,6 @@ export default {
         postContentAPI.getContent(store.articleData.id, store.articleData.permalink, store.articleData.isEvent, (data) => {
             content.value = data.data;console.log(store.articleData.isEvent);
             if(store.articleData.isEvent == 1)  content.value = Lister.assignDateFields([content.value])[0];
-            console.log(content.value);
             });
         
         const adsAPI = new AdsAPI();

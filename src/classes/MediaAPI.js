@@ -5,7 +5,7 @@ export default class MediaAPI extends TempoAPI
     constructor()
     {
         super();
-        this.serviceName = 'get_media';
+        this.serviceName = 'get_post_media';
         this.dummy = [
             {
                 media_id: 1,
@@ -44,23 +44,19 @@ export default class MediaAPI extends TempoAPI
             },
         ];
     }
-    getMedia(postId, isEvent, handler, dummy = false)
+    getMedia(postId, isEvent, handler)
     {
-        if(dummy) {
-            const dummyResults = {
-                data: this.dummy
-            };
-            handler(dummyResults);
-        } else {
-            const data = {
-                postId: postId,
-                isEvnt: isEvent
-            };
-            this.makeAPICall(this.serviceName, data, handler);
-        }
+        const data = {
+            postId: postId,
+            isEvnt: isEvent
+        };
+        this.makeAPICall(this.serviceName, data, handler);
 /*         const dummyResults = {
             data: this.dummy
         };
         handler(dummyResults); */
+    }
+    getDummyMedia() {
+        return this.dummy;
     }
 }
