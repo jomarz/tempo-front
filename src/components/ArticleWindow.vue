@@ -2,7 +2,7 @@
     <transition name="modal">
         <div class="modal-mask">
             <div class="modal-wrapper">
-                <div class="modal-container">
+                <div v-if="showContent" class="modal-container">
                     <div class="content-header"> 
                         <div class="close-content-modal" >
                             <img src="..\assets\img\icons\ExitIcon.svg" @click="$emit('toggle')" alt="">
@@ -92,34 +92,7 @@ export default {
                     imgUrl: "",
                     isQuote: "false",
 
-                },
-                {
-                    id: "",
-                    text: "Cursus euismod quis viverra nibh cras pulvinar mattis nunc sed. Eu volutpat odio facilisis mauris sit amet massa vitae tortor. Velit egestas dui id ornare arcu odio ut sem nulla. Et odio pellentesque diam volutpat commodo sed. Proin sagittis nisl rhoncus mattis rhoncus urna. Massa tempor nec feugiat nisl pretium fusce. Amet porttitor eget dolor morbi non. Eget aliquet nibh praesent tristique magna sit amet purus gravida. At lectus urna duis convallis convallis. Interdum varius sit amet mattis vulputate enim nulla. Faucibus nisl tincidunt eget nullam non nisi est.",
-                    mediaId: "3",
-                    hasImage: "false",
-                    imgUrl: "",
-                    isQuote: "false",
-
-                },
-                {
-                    id: "",
-                    text: "Porttitor massa id neque aliquam vestibulum morbi. Quis varius quam quisque id diam vel quam elementum. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Mauris cursus mattis molestie a iaculis. Quis risus sed vulputate odio ut enim blandit. Viverra nam libero justo laoreet. Aenean pharetra magna ac placerat vestibulum lectus mauris ultrices eros. Commodo nulla facilisi nullam vehicula ipsum a arcu cursus. Aliquam etiam erat velit scelerisque. Pellentesque adipiscing commodo elit at. Ultricies mi eget mauris pharetra et.",
-                    mediaId: "4",
-                    hasImage: "false",
-                    imgUrl: "",
-                    isQuote: "false",
-
-                },
-                {
-                    id: "",
-                    text: "Sit amet risus nullam eget felis eget. Ac orci phasellus egestas tellus rutrum tellus pellentesque. Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque. Metus aliquam eleifend mi in nulla posuere sollicitudin. Morbi enim nunc faucibus a. Porttitor rhoncus dolor purus non enim praesent. At elementum eu facilisis sed odio morbi. Auctor eu augue ut lectus arcu. Nibh nisl condimentum id venenatis. Sodales ut etiam sit amet nisl. Cursus sit amet dictum sit amet justo donec enim. Tristique risus nec feugiat in fermentum posuere urna nec tincidunt. Diam sollicitudin tempor id eu nisl nunc.",
-                    mediaId: "5",
-                    hasImage: "false",
-                    imgUrl: "",
-                    isQuote: "false",
-
-                },
+                }
             ]
         });
         const relatedArticles = [
@@ -169,10 +142,14 @@ export default {
                     placing: '3',
                     },
             ]; */
+        var showContent = ref(false);
         const postContentAPI = new PostContentAPI();
         postContentAPI.getContent(store.articleData.id, store.articleData.permalink, store.articleData.isEvent, (data) => {
-            content.value = data.data;console.log(store.articleData);
-            if(store.articleData.isEvent == 1)  content.value = Lister.assignDateFields([content.value])[0]; 
+            if(data.data != null) {
+                content.value = data.data;
+                if(store.articleData.isEvent == 1)  content.value = Lister.assignDateFields([content.value])[0]; 
+                showContent.value = true;
+            }
             console.log(data.data);
             });
         
@@ -193,7 +170,7 @@ export default {
         adsAPI.getAds('article', (data)=> {
         articleAdsList.value = articleAds.buildAdList(data.data);
         });
-        return { store, contentType, content, relatedArticles, articleAds, articleAdsList };
+        return { store, contentType, content, relatedArticles, articleAds, articleAdsList, showContent };
     },
     components: { ModalMainDisplay, RelatedArticles, AdBox, ArticleCta  }
 }
