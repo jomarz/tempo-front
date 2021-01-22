@@ -1,6 +1,7 @@
 <template>
   <div class="content-container">
     <div id="top"></div>
+    <h1>The user is {{ $route.params.permalink }}</h1>
     <TopBar />
     <NavBar class="md-up" />
     <Featured />
