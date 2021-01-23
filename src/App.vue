@@ -137,7 +137,16 @@ export default {
     ArticleWindow,
     SubscribeWindow,
     MobileMenu,
-  }
+  },
+  watch:{
+    $route (to, from){
+        console.log(from);
+        console.log(to);
+    }
+  }, 
+  mounted() {console.log(this.$route);
+    if(this.$route.params.permalink == "") console.log("Go home");
+    else console.log(this.$route.params.permalink);}
 }
 </script>
 
