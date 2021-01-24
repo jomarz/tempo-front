@@ -18,9 +18,14 @@ export default  {
     newsCarousel: new Carousel(1,3),
     albumsCarousel: new Carousel(1,6),
     printedEdsCarousel: new Carousel(1,2),
-    setArticle(permalink, id, isEvent=false) {
+    setArticle(permalink, id, isEvent=0) {
         this.articleData.permalink = permalink;
         this.articleData.id = id;
+        this.articleData.isEvent = isEvent;
+    },
+    setArticlePermalink(permalink, isEvent=0) {
+        this.articleData.permalink = permalink;
+        this.articleData.id = 0;
         this.articleData.isEvent = isEvent;
     },
     toggleArticle() {

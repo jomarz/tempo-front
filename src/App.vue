@@ -139,9 +139,21 @@ export default {
     MobileMenu,
   },
   watch:{
-    $route (to, from){
+    $route (newRoute, from){
         console.log(from);
-        console.log(to);
+        console.log(newRoute);
+        if(newRoute.params != undefined && newRoute.params.type != undefined && newRoute.params.permalink != undefined)  {
+            var isEvent = 0;
+          if(newRoute.params.type == 'articulo') {
+            store.setArticlePermalink(newRoute.params.permalink, isEvent);
+            store.toggleArticle();
+          } else if (newRoute.params.type == 'evento') {
+            isEvent = 1;
+            store.setArticlePermalink(newRoute.params.permalink, isEvent);
+            store.toggleArticle();
+          }
+        }
+        else  console.log('No permalink');
     }
   }, 
   mounted() {console.log(this.$route);

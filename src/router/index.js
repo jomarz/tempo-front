@@ -3,7 +3,12 @@ import App from "@/App.vue";
 
 const routes = [
   {
-    path: "/:permalink",
+    path: "/",
+    name: "App",
+    component: App,
+  },
+  {
+    path: "/:type/:permalink",
     name: "App",
     component: App,
   },

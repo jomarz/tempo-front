@@ -27,9 +27,6 @@ export default {
             type: Object
         }
     },
-    setup(props) {
-        console.log(props.featuredInfo);
-    }
 }
 </script>
 
