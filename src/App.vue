@@ -119,6 +119,8 @@ export default {
             isEvent = 1;
             store.setArticlePermalink(newRoute.params.permalink, isEvent);
             store.toggleArticle();
+          } else {
+            this.$router.push('/');
           }
         }
         else  console.log('No permalink');
