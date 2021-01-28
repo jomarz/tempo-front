@@ -5,7 +5,7 @@
         </div>
         <div class="news-box-title">{{boxContent.title}}</div>
         <p class="news-box-text">{{boxContent.description}}</p>
-        <read-more-link contentType="article" :contentPermalink="boxContent.permalink" :contentId="boxContent.id" />
+        <read-more-link contentType="article" :contentPermalink="boxContent.permalink" isEvent="0" :contentId="boxContent.id" />
     </div>    
 </template>
 

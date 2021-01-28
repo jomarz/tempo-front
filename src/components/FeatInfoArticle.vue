@@ -1,13 +1,15 @@
 <template>
-    <div class="feat-info-event">
-        <h1 class="feat-event-title">{{featuredInfo.title}}</h1>
-        <h2 class="feat-event-name">{{featuredInfo.name}}</h2>
-        <a href="#" class="feat-event-link">VER MÁS</a>
+    <div class="feat-info-article">
+        <h1 class="feat-article-title">{{featuredInfo.title}}</h1>
+        <h2 class="feat-article-name">{{featuredInfo.name}}</h2>
+        <read-more-link class="feat-article-link" contentType="article" :contentPermalink="featuredInfo.permalink" isEvent="0" :contentId="featuredInfo.id" />
     </div>
 </template>
 
 <script>
+import ReadMoreLink from './ReadMoreLink.vue'
 export default {
+  components: { ReadMoreLink },
     props: {
         featuredInfo: {
             required: true,
@@ -18,7 +20,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .feat-info-event {
+    .feat-info-article {
         max-width: 95%;
         display: flex;
         flex-direction: column;
@@ -27,7 +29,7 @@ export default {
         h1, h2, h4 {
             color: white;
         }
-        .feat-event-title {
+        .feat-article-title {
             width: min-content;
             display: -webkit-box;
             -webkit-line-clamp: 3;
@@ -35,32 +37,32 @@ export default {
             overflow: hidden;
             margin-bottom: 18px;;
         }
-        a.feat-event-link {
+        a.feat-article-link {
             font-family: 'Roboto', sans-serif;
             font-weight: 700;
             color: #ffc828;
             display: block;
         }
     }
-    .home-main.feat-info-event {
-        .feat-event-title {
+    .home-main.feat-info-article {
+        .feat-article-article {
             max-width: 300px;
         }
-        a.feat-event-link {
+        a.feat-article-link {
             font-size: 0.8rem !important;
             margin-top: 10px;
         }
     }
 
-    .article-modal-info.feat-info-event {
-        .feat-event-title {
+    .article-modal-info.feat-info-article {
+        .feat-article-title {
             max-width: 190px;
             font-size: 1.5rem !important;
         }
-        .feat-event-name {
+        .feat-article-name {
             font-size: 0.9rem !important;
         }
-        a.feat-event-link {
+        a.feat-article-link {
             display: none;
         }
     }

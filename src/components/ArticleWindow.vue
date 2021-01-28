@@ -125,23 +125,6 @@ export default {
                     postType: 'event'
                 },
             ];
-            /* const articleAds = [
-                { ad_id: '1',
-                    image_url: 'https://picsum.photos/id/1002/1200/200',
-                    link_url: '',
-                    placing: '1',
-                    },
-                { ad_id: '2',
-                    image_url: 'https://picsum.photos/id/1002/1200/200',
-                    link_url: '',
-                    placing: '2',
-                    },
-                { ad_id: '3',
-                    image_url: 'https://picsum.photos/id/1002/1200/200',
-                    link_url: '',
-                    placing: '3',
-                    },
-            ]; */
         var showContent = ref(false);
         const postContentAPI = new PostContentAPI();
         postContentAPI.getContent(store.articleData.id, store.articleData.permalink, store.articleData.isEvent, (data) => {

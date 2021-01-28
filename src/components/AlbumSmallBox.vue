@@ -5,7 +5,7 @@
         </div>
         <div class="album-title">{{boxContent.title}}</div>
         <p class="album-text">{{boxContent.description}}</p>
-        <read-more-link contentType="album" :contentPermalink="boxContent.permalink" :contentId="boxContent.id"/>
+        <read-more-link contentType="album" :contentPermalink="boxContent.permalink" isEvent="0" :contentId="boxContent.id"/>
     </div>    
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-    <a class="more-link" href="" @click.prevent="setArticle(contentPermalink, contentId, isEvent)">VER MÁS</a>
+    <a class="more-link" href="" @click.prevent="openContent(contentPermalink, contentId, isEvent)">VER MÁS</a>
 </template>
 
 <script>
@@ -27,9 +27,12 @@ export default {
         }
     },
     methods: {
-        setArticle(permalink, id, isEvent) {
-            store.setArticle(permalink, id, isEvent);
-            store.toggleArticle();
+        openContent(permalink, id, isEvent) {console.log({permalink, id, isEvent});
+            if (isEvent == 1)   this.$router.push('/evento/'+permalink);
+            else                this.$router.push('/articulo/'+permalink);
+
+            /* store.setArticle(permalink, id, isEvent);
+            store.toggleArticle(); */
         }
     }
 }

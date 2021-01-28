@@ -13,14 +13,18 @@
             </td>
             <td class="right-col">
                 <span class="feat-event-month">DE {{featuredInfo.monthName}}, {{featuredInfo.year}}</span>
-                <span class="feat-event-location">{{featuredInfo.location}}</span><a href="" class="feat-event-link" @click.prevent="setArticle(result.id, result.permalink, result.postType)" >VER EVENTO</a>
+                <span class="feat-event-location">{{featuredInfo.location}}</span>
+                <read-more-link class="feat-event-link" contentType="event" :contentPermalink="featuredInfo.permalink" isEvent="1" :contentId="featuredInfo.id" />
             </td>
         </tr>
     </table>
 </template>
 
 <script>
+import ReadMoreLink from './ReadMoreLink.vue'
+
 export default {
+  components: { ReadMoreLink },
     props: {
         featuredInfo: {
             required: true,
