@@ -34,4 +34,13 @@ export default {
             border-left: 1px solid black;
         }
     }
+    @media only screen and (max-width: 767px) {
+        .footer-links {
+            margin: 20px 0 20px;
+            a {
+                font-size: 0.62rem;
+                margin: 0 8px;
+            }
+        }
+    }
 </style>

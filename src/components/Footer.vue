@@ -5,12 +5,16 @@
                 <div class="col-12 col-md-10 footer-content-col">
                     <div class="footer-main">
                         <footer-subscribe/>
+                        <div class="mobile-footer-logo-social sm-only">
+                            <img src="../assets/img/tempo_logo.svg" alt="" class="footer-logo only-sm">
+                            <footer-social class="only-sm"/>
+                        </div>
                         <footer-links />
                         <div class="footer-separator"></div>
                         <footer-copyright />
                     </div>
                 </div>
-                <div class="col-12 col-md-2 footer-right">
+                <div class="col-12 col-md-2 footer-right md-up">
                     <img src="../assets/img/tempo_logo.svg" alt="" class="footer-logo">
                     <footer-social />
                 </div>
@@ -51,6 +55,12 @@ export default {
                         align-self: center;
                         margin-top: 8px;
                     }
+                    .mobile-footer-logo-social {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        margin: 20px 0 0;
+                    }
                 }
             }
             .footer-right {
@@ -66,4 +76,10 @@ export default {
             margin-top: 7px;
         }
     }
+    @media only screen and (max-width: 767px) {
+        .footer {
+            padding: 30px 0 20px;
+        }
+    }
+    
 </style>

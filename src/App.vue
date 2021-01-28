@@ -1,7 +1,6 @@
 <template>
   <div class="content-container">
     <div id="top"></div>
-    <h1>The user is {{ $route.params.permalink }}</h1>
     <TopBar />
     <NavBar class="md-up" />
     <Featured />
@@ -352,6 +351,19 @@ export default {
     }
     .double-ad-row .row .col-12:first-of-type {
       padding-right: 0;
+    }
+    .footer {
+      margin-top: 50px;
+    }
+    .receive-cta{
+      margin-top: 20px;
+    }
+    .content-container .receive-cta h6.receive-title {
+      font-size: 0.75rem !important;
+    }
+    .receive-button {
+      width: 140px;
+      font-size: 0.75rem;
     }
   }
 </style>

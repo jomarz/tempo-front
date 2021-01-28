@@ -11,5 +11,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    .footer-copyright {
+        p {
+            font-size: 0.70rem !important;
+            font-weight: 400;
+        }
+    }
 
 </style>
