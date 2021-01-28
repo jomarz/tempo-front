@@ -69,38 +69,6 @@ export default {
     return { store }
   },
   setup() {
-    /* const homeAds = [
-      { ad_id: '1',
-        image_url: 'https://picsum.photos/id/1002/1200/200',
-        link_url: '',
-        placing: '1',
-        },
-      { ad_id: '2',
-        image_url: 'https://picsum.photos/id/1002/1200/200',
-        link_url: '',
-        placing: '2',
-        },
-      { ad_id: '3',
-        image_url: 'https://picsum.photos/id/1002/1200/200',
-        link_url: '',
-        placing: '3',
-        },
-      { ad_id: '4',
-        image_url: 'https://picsum.photos/id/1002/1200/200',
-        link_url: '',
-        placing: '4',
-        },
-      { ad_id: '5',
-        image_url: 'https://picsum.photos/id/1002/1200/200',
-        link_url: '',
-        placing: '5',
-        },
-      { ad_id: '6',
-        image_url: 'https://picsum.photos/id/1002/1200/200',
-        link_url: '',
-        placing: '6',
-        },
-    ]; */
     const adsAPI = new AdsAPI();
     const adPositions = [
             "HOME_COVER_BOTTOM_FULL_BANNER",
