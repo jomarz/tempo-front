@@ -5,7 +5,7 @@
                 <div v-if="showContent" class="modal-container">
                     <div class="content-header"> 
                         <div class="close-content-modal" >
-                            <img src="..\assets\img\icons\ExitIcon.svg" @click="$emit('toggle')" alt="">
+                            <img src="..\assets\img\icons\ExitIcon.svg" @click="$emit('close-article')" alt="">
                         </div>                   
                         <div v-if="store.articleData.isEvent == 1" class="modal-content-type">CONCIERTOS</div>
                         <div v-else class="modal-content-type">ARTÍCULOS</div>

@@ -66,6 +66,7 @@ export default {
             background-color: #0d273b
         }
         .featured-image-box {
+            height: 100%;
             background-color: #59686f;
             padding: 0;
             display: flex;

@@ -37,7 +37,7 @@
   </div>
   <Footer id="footer" />
   <mobile-menu v-if="store.showMobileMenu.state" @toggle="store.toggleMobileMenu()" class="sm-only"/>
-  <article-window v-if="store.showArticle.state" @toggle="store.toggleArticle()" />
+  <article-window v-if="store.showArticle.state" @close-article="closeArticle()" />
   <subscribe-window v-if="store.showSubscribe.state" @toggle="store.toggleSubscribe()" />
 
 </template>
@@ -105,6 +105,12 @@ export default {
     ArticleWindow,
     SubscribeWindow,
     MobileMenu,
+  },
+  methods: {
+    closeArticle() {
+      this.store.toggleArticle();
+      this.$router.push('/');
+    }
   },
   watch:{
     $route (newRoute, from){
