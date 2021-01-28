@@ -29,6 +29,7 @@ export default {
             if(postType=='event')   isEvent = 1;
             store.setArticle(permalink, id, isEvent);
             store.toggleArticle();
+            this.$emit('clear-search-input');
         },
         closeMobileSearchbox() {
             if(store.showMobileSearchbox.state)   store.toggleMobileSearchbox()

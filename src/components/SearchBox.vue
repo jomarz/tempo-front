@@ -8,7 +8,7 @@
             </svg>
         </div>
         <div class="search-results-container">
-            <search-results :class="{'show': showResults, 'hide': !showResults}" :resultsList="resultsList" @close-results="closeResults()"/>
+            <search-results :class="{'show': showResults, 'hide': !showResults}" :resultsList="resultsList" @close-results="closeResults()" @clear-search-input="cleanSearchInput()" />
         </div>
         <div class="mobile-search-box sm-only">
             <input type="text" class='search-input' ref="searchInput" v-model="searchInput" @keyup="handleInput" />
@@ -51,6 +51,10 @@ export default {
                     });
 
             }
+        },
+        cleanSearchInput()
+        {
+            this.searchInput = "";
         }
     },
     mounted() {
