@@ -39,6 +39,7 @@
                                 <li v-for="(item, index) in JSON.parse(element.html)" :key="index" v-html="item" ></li>
                             </ol>
                         </template>
+                        <article-comments />
                     </div>
                     <ad-box class="ad-row ad-article-full" :ad="articleAdsList['ARTICLE_CONTENT_BOTTOM_FULL_BANNER']" />
                     <related-articles :relatedArticles="relatedArticles" class="md-up" />
@@ -60,6 +61,7 @@ import ModalMainDisplay from './ModalMainDisplay';
 import RelatedArticles from './RelatedArticles';
 import AdBox from './AdBox.vue';
 import ArticleCta from './ArticleCta.vue';
+import ArticleComments from './ArticleComments.vue';
 
 export default {
     setup() {
@@ -161,7 +163,7 @@ export default {
         });
         return { store, contentType, content, relatedArticles, articleAds, articleAdsList, showContent };
     },
-    components: { ModalMainDisplay, RelatedArticles, AdBox, ArticleCta  }
+    components: { ModalMainDisplay, RelatedArticles, AdBox, ArticleCta, ArticleComments  }
 }
 </script>
 
