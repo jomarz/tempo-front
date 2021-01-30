@@ -27,11 +27,17 @@
                                 <div class="author-job-title">{{content.authorJobTitle}}</div>
                             </div>
                         </div>
-                        <template v-for="(paragraph, index) in content.contents" :key="paragraph.id">
+                        <template v-for="(element, index) in content.contents" :key="element.id">
                             <ad-box v-if="index==content.contents.length-1" :ad="articleAdsList['ARTICLE_BODY_BOTTOM_FULL_BANNER']" class="ad-row" />
-                            <p v-if="paragraph.contentType == 'p'" class="article-text" v-html="paragraph.html" ></p>
-                            <h2 v-else-if="paragraph.contentType == 'h2'" class="article-text">{{paragraph.html}}</h2>
-                            <h3 v-else-if="paragraph.contentType == 'h3'" class="article-text">{{paragraph.html}}</h3>
+                            <p v-if="element.contentType == 'p'" class="article-text" v-html="element.html" ></p>
+                            <h2 v-else-if="element.contentType == 'h2'" class="article-text">{{element.html}}</h2>
+                            <h3 v-else-if="element.contentType == 'h3'" class="article-text">{{element.html}}</h3>
+                            <ul v-else-if="element.contentType == 'ul'" class="article-text">
+                                <li v-for="(item, index) in JSON.parse(element.html)" :key="index" v-html="item" ></li>
+                            </ul>
+                            <ol v-else-if="element.contentType == 'ol'" class="article-text">
+                                <li v-for="(item, index) in JSON.parse(element.html)" :key="index" v-html="item" ></li>
+                            </ol>
                         </template>
                     </div>
                     <ad-box class="ad-row ad-article-full" :ad="articleAdsList['ARTICLE_CONTENT_BOTTOM_FULL_BANNER']" />
@@ -266,6 +272,11 @@ export default {
         }
         h3 {
             margin-bottom: 20px;
+        }
+        ul li, ol li {
+            font-size: 0.85rem !important;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
         }
         .ad-row {
             margin-bottom: 16px;
