@@ -39,7 +39,8 @@
                                 <li v-for="(item, index) in JSON.parse(element.html)" :key="index" v-html="item" ></li>
                             </ol>
                         </template>
-                        <article-comments />
+                        <article-icons @toggle-article-comments="toggleArticleComments()" />
+                        <article-comments v-if="showComments" @toggle-article-comments="toggleArticleComments()" />
                     </div>
                     <ad-box class="ad-row ad-article-full" :ad="articleAdsList['ARTICLE_CONTENT_BOTTOM_FULL_BANNER']" />
                     <related-articles :relatedArticles="relatedArticles" class="md-up" />
@@ -62,10 +63,12 @@ import RelatedArticles from './RelatedArticles';
 import AdBox from './AdBox.vue';
 import ArticleCta from './ArticleCta.vue';
 import ArticleComments from './ArticleComments.vue';
+import ArticleIcons from './ArticleIcons.vue';
 
 export default {
     setup() {
         var contentType = 'article';
+        var showComments = ref(false);
         if(store.articleData.isEvent == 1)  contentType = 'event';
         var content = ref({
             id: 1,
@@ -161,9 +164,14 @@ export default {
         adsAPI.getAds('article', (data)=> {
         articleAdsList.value = articleAds.buildAdList(data.data);
         });
-        return { store, contentType, content, relatedArticles, articleAds, articleAdsList, showContent };
+        return { store, contentType, content, relatedArticles, articleAds, articleAdsList, showContent, showComments };
     },
-    components: { ModalMainDisplay, RelatedArticles, AdBox, ArticleCta, ArticleComments  }
+    components: { ModalMainDisplay, RelatedArticles, AdBox, ArticleCta, ArticleComments, ArticleIcons  },
+    methods: {
+        toggleArticleComments() {
+            this.showComments = !this.showComments;
+        }
+    }
 }
 </script>
 

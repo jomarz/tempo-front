@@ -1,6 +1,9 @@
 <template>
     <div class="article-comments">
         <div class="separator"></div>
+        <div class="comment-nav-row">
+            <img src="..\assets\img\icons\BlueArrowDownIcon.svg" alt="" class="close-comments-icon" @click="$emit('toggle-article-comments')">
+        </div>
         <comment />
         <div class="separator"></div>
         <comment />
@@ -24,7 +27,18 @@ export default {
 
 <style lang="scss" scoped>
     .article-comments {
-        margin: 0 0 55px;
+        margin: 20px 0 55px;
+        .comment-nav-row {
+            display: flex;
+            justify-content: flex-end;
+            margin: 0 0 10px;
+            .close-comments-icon {
+                height: 1rem;
+            }
+            .close-comments-icon:hover {
+                cursor: pointer;
+            }
+        }
         .comment-add-section {
             display: flex;
             align-items: center;
