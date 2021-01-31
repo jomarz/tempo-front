@@ -1,16 +1,16 @@
 <template>
     <div class="article-comments">
         <div class="separator"></div>
+        <comment />
+        <div class="separator"></div>
+        <comment />
+        <div class="separator"></div>
+        <comment />
+        <div class="separator"></div>
         <div class="comment-add-section">
             <textarea class="new-comment-input" type="text" placeholder="Escribe tu comentario ..." />
             <img src="..\assets\img\icons\EnviarIcon.svg" alt="" class="send-icon">
         </div>
-        <div class="separator"></div>
-        <comment />
-        <div class="separator"></div>
-        <comment />
-        <div class="separator"></div>
-        <comment />
     </div>
 </template>
 
@@ -24,7 +24,7 @@ export default {
 
 <style lang="scss" scoped>
     .article-comments {
-        margin: 0 0 25px;
+        margin: 0 0 55px;
         .comment-add-section {
             display: flex;
             align-items: center;
