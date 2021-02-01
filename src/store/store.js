@@ -28,6 +28,9 @@ export default  {
         this.articleData.id = 0;
         this.articleData.isEvent = isEvent;
     },
+    setArticleId(id) {
+        this.articleData.id = id;
+    },
     toggleArticle() {
         this.showArticle.state = !this.showArticle.state;
     },

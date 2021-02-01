@@ -39,7 +39,7 @@
                                 <li v-for="(item, index) in JSON.parse(element.html)" :key="index" v-html="item" ></li>
                             </ol>
                         </template>
-                        <article-icons @toggle-article-comments="toggleArticleComments()" :views="content.views" :likes="content.likes" :commentCount="commentCount" />
+                        <article-icons @toggle-article-comments="toggleArticleComments()" :views="content.views" :likes="likesCount" :commentCount="commentCount" :postIsLiked="postIsLiked" @like-post="likePost()" />
                         <article-comments v-if="showComments" :comments="comments" @toggle-article-comments="toggleArticleComments()" />
                     </div>
                     <ad-box class="ad-row ad-article-full" :ad="articleAdsList['ARTICLE_CONTENT_BOTTOM_FULL_BANNER']" />
@@ -59,6 +59,7 @@ import CommentsAPI from '../classes/CommentsAPI';
 import AdsList from '../classes/AdsList';
 import PostContentAPI from '../classes/PostContentAPI';
 import Lister from '../classes/Lister';
+import LikePostAPI from '../classes/LikePostAPI';
 import ModalMainDisplay from './ModalMainDisplay';
 import RelatedArticles from './RelatedArticles';
 import AdBox from './AdBox.vue';
@@ -70,6 +71,7 @@ export default {
     setup() {
         var contentType = 'article';
         var showComments = ref(false);
+        var postIsLiked = ref(false);
         if(store.articleData.isEvent == 1)  contentType = 'event';
         var content = ref({
             id: 1,
@@ -164,6 +166,7 @@ export default {
         var showContent = ref(false);
         const postContentAPI = new PostContentAPI();
         const commentsAPI = new CommentsAPI();
+        const likePostAPI = new LikePostAPI();
         const countComments = function(comments) {
             var count = 0;
             comments.forEach(comment => {
@@ -175,12 +178,18 @@ export default {
             return count;
         }
         var commentCount = ref(0);
+        var likesCount = ref(0);
         postContentAPI.getContent(store.articleData.id, store.articleData.permalink, store.articleData.isEvent, (data) => {
             if(data.data != null) {
                 content.value = data.data;
-                if(store.articleData.isEvent == 1)  content.value = Lister.assignDateFields([content.value])[0]; console.log(store.articleData);
+                // Create reactive likes-count variable
+                likesCount.value = content.value.likes;
+                // Assign month name
+                if(store.articleData.isEvent == 1)  content.value = Lister.assignDateFields([content.value])[0]; 
+                // Save post id in case we didn't have it
+                if(store.articleData.id == 0 || store.articleData.id === undefined)   store.setArticleId(content.value.postId);
+                // Get post comments from API
                 commentsAPI.getCommentsFromPermalink(store.articleData.permalink, store.articleData.isEvent, (response) => {
-                    console.log(response.data);
                     comments.value = response.data;
                     commentCount.value = countComments(comments.value);
                 });
@@ -207,12 +216,18 @@ export default {
         adsAPI.getAds('article', (data)=> {
         articleAdsList.value = articleAds.buildAdList(data.data);
         });
-        return { store, contentType, content, relatedArticles, articleAds, articleAdsList, showContent, showComments, comments, commentCount };
+        return { store, contentType, content, relatedArticles, articleAds, articleAdsList, showContent, showComments, comments, commentCount, likePostAPI, postIsLiked, likesCount };
     },
     components: { ModalMainDisplay, RelatedArticles, AdBox, ArticleCta, ArticleComments, ArticleIcons  },
     methods: {
         toggleArticleComments() {
             this.showComments = !this.showComments;
+        },
+        likePost() {
+            this.likePostAPI.likePost(this.store.articleData.id, this.store.articleData.isEvent, () => {
+                this.postIsLiked = true;
+                this.likesCount ++;
+            });
         }
     }
 }

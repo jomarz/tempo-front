@@ -5,7 +5,8 @@
             <div class="article-icons-count">{{views}}</div>
         </div>
         <div class="article-likes article-icons-element">
-            <img src="..\assets\img\icons\LikesIcon.svg" alt="" class="article-icon clickable" @click="$emit('like-article')">
+            <img v-if="postIsLiked" src="..\assets\img\icons\BlueLikesIcon.svg" alt="" class="article-icon" >
+            <img v-else src="..\assets\img\icons\LikesIcon.svg" alt="" class="article-icon clickable" @click="$emit('like-post')">
             <div class="article-icons-count">{{likes}}</div>
         </div>
         <div class="article-comment-counter article-icons-element">
@@ -23,8 +24,9 @@ export default {
     props: {
         views: {},
         likes: {},
-        commentCount: {}
-    }
+        commentCount: {},
+        postIsLiked: {}
+    },
 }
 </script>
 
