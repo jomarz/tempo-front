@@ -10,6 +10,14 @@
             <div class="comment-dislikes">{{comment.comment_dislikes}}</div>
             <div class="time-since-comment">Hace 1 hora</div>
         </div>
+        <div v-if="comment.hasChildren" class="replies" >
+            <template v-for="reply in comment.replies" :key="reply.comment_id" >
+                <div class="reply">
+                    <Comment :comment="reply" />
+                    <div class="separator"></div>
+                </div>
+            </template>
+        </div>
     </div>    
 </template>
 
@@ -18,6 +26,7 @@ export default {
     props: {
         comment: {required: true}
     },
+    name: 'Comment',
     setup(props) {
         console.log(props.comment);
     },
@@ -39,16 +48,17 @@ export default {
         .comment-actions {
             display: flex;
             align-items: center;
-            padding: 15px 0 5px;
-            font-size: 0.75rem;
-            line-height: 0.75rem;
+            padding: 10px 0 5px;
+            font-size: 0.7rem;
+            line-height: 0.7rem;
             .answer-link {
                 color: #3F89C9;
-                font-weight: 400;
+                font-weight: 700;
                 text-decoration: underline;
                 margin-right: 20px;
-                font-size: 0.80rem;
-                line-height: 0.80rem;
+                font-size: 0.7rem;
+                line-height: 0.70rem;
+                letter-spacing: 0.02rem;
             }
             .answer-link:hover, .comment-action-icon:hover {
                 cursor: pointer;
@@ -61,9 +71,20 @@ export default {
                 font-weight: 400;
             }
             .time-since-comment {
-                font-weight: 400;
+                font-weight: 700;
                 margin-left: auto;
             }
+        }
+        .separator {
+            width: 100%;
+            margin: 20px 0;
+            border-top: 1px solid #bcbec0;
+        }
+        .replies {
+            margin: 20px 0 0 50px;
+        }
+        .reply:last-child .separator {
+            display: none;
         }
     }
 </style>

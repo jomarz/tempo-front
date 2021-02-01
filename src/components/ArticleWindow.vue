@@ -185,8 +185,9 @@ export default {
                     commentCount.value = countComments(comments.value);
                 });
                 showContent.value = true;
+            } else {
+                this.$router.push('/');
             }
-            console.log(data.data);
             });
         
         const adsAPI = new AdsAPI();
