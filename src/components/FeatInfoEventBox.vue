@@ -14,7 +14,7 @@
             <td class="right-col">
                 <span class="feat-event-month">DE {{featuredInfo.monthName}}, {{featuredInfo.year}}</span>
                 <span class="feat-event-location">{{featuredInfo.location}}</span>
-                <read-more-link class="feat-event-link" contentType="event" :contentPermalink="featuredInfo.permalink" isEvent="1" :contentId="featuredInfo.id" />
+                <read-more-link v-if="featuredInfo.showContent==1" class="feat-event-link" contentType="event" :contentPermalink="featuredInfo.permalink" isEvent="1" :contentId="featuredInfo.id" />
             </td>
         </tr>
     </table>
