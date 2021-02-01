@@ -6,7 +6,7 @@
         <div class="results-content">
             <div class="results-list">
                 <div v-for="result in resultsList" class="search-result" :key="result.id">
-                    <a href="" class="result-title" @click.prevent="setArticle(result.id, result.permalink, result.postType); $emit('close-results'); closeMobileSearchbox();" >{{result.article_title}}</a>
+                    <a href="" class="result-title" @click.prevent="openContent(result.permalink, result.postType); $emit('close-results'); closeMobileSearchbox();" >{{result.article_title}}</a>
                     <div class="result-subtitle">{{result.article_subtitle}}</div>
                 </div>
             </div>
@@ -30,6 +30,15 @@ export default {
             store.setArticle(permalink, id, isEvent);
             store.toggleArticle();
             this.$emit('clear-search-input');
+        },
+        openContent(permalink, postType) {
+            var isEvent = 0;
+            if(postType=='event')   isEvent = 1;
+            if (isEvent == 1)   this.$router.push('/evento/'+permalink);
+            else                this.$router.push('/articulo/'+permalink);
+
+            /* store.setArticle(permalink, id, isEvent);
+            store.toggleArticle(); */
         },
         closeMobileSearchbox() {
             if(store.showMobileSearchbox.state)   store.toggleMobileSearchbox()

@@ -10,7 +10,7 @@ export default class CommentsAPI extends TempoAPI
     getCommentsFromPermalink(permalink, isEvent, handler) 
     {
         const data = {
-            permalink: permalink,
+            postPermalink: permalink,
             isEvent: isEvent
         }
         this.makeAPICall(this.serviceName, data, handler);

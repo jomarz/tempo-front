@@ -1,13 +1,13 @@
 <template>
     <div class="comment">
-        <div class="comment-name">Akvjcbsnsdk</div>
-        <div class="comment-text">Pit, cuptatque et fuga. Et millam rerunto volupta nulparum et ent pe volorumqui utAtur aborume turiass equiassint.</div>
+        <div class="comment-name">{{comment.comment_author_name}}</div>
+        <div class="comment-text">{{comment.comment_text}}</div>
         <div class="comment-actions">
             <div class="answer-link">RESPONDER</div>
             <img src="..\assets\img\icons\ThumbsUpIcon.svg" alt="" class="comment-action-icon">
-            <div class="comment-likes">5</div>
+            <div class="comment-likes">{{comment.comment_likes}}</div>
             <img src="..\assets\img\icons\ThumbsDownIcon.svg" alt="" class="comment-action-icon">
-            <div class="comment-dislikes">0</div>
+            <div class="comment-dislikes">{{comment.comment_dislikes}}</div>
             <div class="time-since-comment">Hace 1 hora</div>
         </div>
     </div>    
@@ -15,7 +15,12 @@
 
 <script>
 export default {
-    
+    props: {
+        comment: {required: true}
+    },
+    setup(props) {
+        console.log(props.comment);
+    },
 }
 </script>
 

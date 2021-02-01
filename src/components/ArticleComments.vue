@@ -4,12 +4,10 @@
         <div class="comment-nav-row">
             <img src="..\assets\img\icons\BlueArrowDownIcon.svg" alt="" class="close-comments-icon" @click="$emit('toggle-article-comments')">
         </div>
-        <comment />
-        <div class="separator"></div>
-        <comment />
-        <div class="separator"></div>
-        <comment />
-        <div class="separator"></div>
+        <template v-for="comment in comments" :key="comment.comment_id" >
+            <Comment :comment="comment" />
+            <div class="separator"></div>
+        </template>
         <div class="comment-add-section">
             <textarea class="new-comment-input" type="text" placeholder="Escribe tu comentario ..." />
             <img src="..\assets\img\icons\EnviarIcon.svg" alt="" class="send-icon">
@@ -20,7 +18,13 @@
 <script>
 import Comment from './Comment.vue'
 export default {
-  components: { Comment },
+    components: { Comment },
+    props: {
+        comments: {type: Array}
+    },
+    setup(props) {
+        console.log(props.comments);
+    },
     
 }
 </script>

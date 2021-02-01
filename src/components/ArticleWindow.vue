@@ -40,7 +40,7 @@
                             </ol>
                         </template>
                         <article-icons @toggle-article-comments="toggleArticleComments()" />
-                        <article-comments v-if="showComments" @toggle-article-comments="toggleArticleComments()" />
+                        <article-comments v-if="showComments" :comments="comments" @toggle-article-comments="toggleArticleComments()" />
                     </div>
                     <ad-box class="ad-row ad-article-full" :ad="articleAdsList['ARTICLE_CONTENT_BOTTOM_FULL_BANNER']" />
                     <related-articles :relatedArticles="relatedArticles" class="md-up" />
@@ -55,6 +55,7 @@
 import { ref } from 'vue';
 import store from '../store/store.js';
 import AdsAPI from '../classes/AdsAPI';
+import CommentsAPI from '../classes/CommentsAPI';
 import AdsList from '../classes/AdsList';
 import PostContentAPI from '../classes/PostContentAPI';
 import Lister from '../classes/Lister';
@@ -136,12 +137,41 @@ export default {
                     postType: 'event'
                 },
             ];
+        const comments = ref([
+            {
+                "comment_id": 12,
+                "comment_parent_id": null,
+                "comment_author_name": 'Bob',
+                "comment_text": "Dsrrr hghfj yuu",
+                "comment_datetime": "2021-01-20 17:58:15",
+                "comment_status": "published",
+                "comment_likes": 0,
+                "comment_dislikes": 0,
+                "hasChildren": null
+            },
+            {
+                "comment_id": 13,
+                "comment_parent_id": null,
+                "comment_author_name": 'Alica',
+                "comment_text": "Dsdsd ddd",
+                "comment_datetime": "2021-01-20 17:58:15",
+                "comment_status": "published",
+                "comment_likes": 0,
+                "comment_dislikes": 0,
+                "hasChildren": null
+            },
+        ]);
         var showContent = ref(false);
         const postContentAPI = new PostContentAPI();
+        const commentsAPI = new CommentsAPI();
         postContentAPI.getContent(store.articleData.id, store.articleData.permalink, store.articleData.isEvent, (data) => {
             if(data.data != null) {
                 content.value = data.data;
-                if(store.articleData.isEvent == 1)  content.value = Lister.assignDateFields([content.value])[0]; 
+                if(store.articleData.isEvent == 1)  content.value = Lister.assignDateFields([content.value])[0]; console.log(store.articleData);
+                commentsAPI.getCommentsFromPermalink(store.articleData.permalink, store.articleData.isEvent, (response) => {
+                    console.log(response.data);
+                    comments.value = response.data;
+                });
                 showContent.value = true;
             }
             console.log(data.data);
@@ -164,7 +194,7 @@ export default {
         adsAPI.getAds('article', (data)=> {
         articleAdsList.value = articleAds.buildAdList(data.data);
         });
-        return { store, contentType, content, relatedArticles, articleAds, articleAdsList, showContent, showComments };
+        return { store, contentType, content, relatedArticles, articleAds, articleAdsList, showContent, showComments, comments };
     },
     components: { ModalMainDisplay, RelatedArticles, AdBox, ArticleCta, ArticleComments, ArticleIcons  },
     methods: {
