@@ -2,15 +2,15 @@
     <div class="article-icons">
         <div class="article-views article-icons-element">
             <img src="..\assets\img\icons\ViewsIcon.svg" alt="" class="article-icon">
-            <div class="article-icons-count">20</div>
+            <div class="article-icons-count">{{views}}</div>
         </div>
         <div class="article-likes article-icons-element">
             <img src="..\assets\img\icons\LikesIcon.svg" alt="" class="article-icon clickable" @click="$emit('like-article')">
-            <div class="article-icons-count">18</div>
+            <div class="article-icons-count">{{likes}}</div>
         </div>
         <div class="article-comment-counter article-icons-element">
             <img src="..\assets\img\icons\ComentariosIcon.svg" alt="" class="article-icon clickable" @click="$emit('toggle-article-comments')" >
-            <div class="article-icons-count">103</div>
+            <div class="article-icons-count">{{commentCount}}</div>
         </div>
         <div class="article-share article-icons-element">
             <img src="..\assets\img\icons\ShareIcon.svg" alt="" class="article-icon clickable" @click="$emit('share-article')" >
@@ -20,7 +20,11 @@
 
 <script>
 export default {
-    
+    props: {
+        views: {},
+        likes: {},
+        commentCount: {}
+    }
 }
 </script>
 

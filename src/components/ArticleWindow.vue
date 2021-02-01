@@ -39,7 +39,7 @@
                                 <li v-for="(item, index) in JSON.parse(element.html)" :key="index" v-html="item" ></li>
                             </ol>
                         </template>
-                        <article-icons @toggle-article-comments="toggleArticleComments()" />
+                        <article-icons @toggle-article-comments="toggleArticleComments()" :views="content.views" :likes="content.likes" :commentCount="commentCount" />
                         <article-comments v-if="showComments" :comments="comments" @toggle-article-comments="toggleArticleComments()" />
                     </div>
                     <ad-box class="ad-row ad-article-full" :ad="articleAdsList['ARTICLE_CONTENT_BOTTOM_FULL_BANNER']" />
@@ -164,6 +164,17 @@ export default {
         var showContent = ref(false);
         const postContentAPI = new PostContentAPI();
         const commentsAPI = new CommentsAPI();
+        const countComments = function(comments) {
+            var count = 0;
+            comments.forEach(comment => {
+                count++;
+                if(comment.hasChildren) {
+                    count += countComments(comment.replies);
+                }
+            });
+            return count;
+        }
+        var commentCount = ref(0);
         postContentAPI.getContent(store.articleData.id, store.articleData.permalink, store.articleData.isEvent, (data) => {
             if(data.data != null) {
                 content.value = data.data;
@@ -171,6 +182,7 @@ export default {
                 commentsAPI.getCommentsFromPermalink(store.articleData.permalink, store.articleData.isEvent, (response) => {
                     console.log(response.data);
                     comments.value = response.data;
+                    commentCount.value = countComments(comments.value);
                 });
                 showContent.value = true;
             }
@@ -194,7 +206,7 @@ export default {
         adsAPI.getAds('article', (data)=> {
         articleAdsList.value = articleAds.buildAdList(data.data);
         });
-        return { store, contentType, content, relatedArticles, articleAds, articleAdsList, showContent, showComments, comments };
+        return { store, contentType, content, relatedArticles, articleAds, articleAdsList, showContent, showComments, comments, commentCount };
     },
     components: { ModalMainDisplay, RelatedArticles, AdBox, ArticleCta, ArticleComments, ArticleIcons  },
     methods: {
