@@ -12,12 +12,10 @@ export default class NewCommentAPI extends TempoAPI
         const data = {
             isEvent: isEvent,
             postId: postId,
-            autor: author,
+            author: author,
             text: text,
             parentId: parentId
         }
-        console.log(data);
-        handler(data);
-        //this.makeAPICall(this.serviceName, data, handler);
+        this.makeAPICall(this.serviceName, data, handler);
     }
 }
