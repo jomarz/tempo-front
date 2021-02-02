@@ -40,8 +40,8 @@
                             </ol>
                         </template>
                         <article-icons @toggle-article-comments="toggleArticleComments()" :views="content.views" :likes="likesCount" :commentCount="commentCount" :postIsLiked="postIsLiked" @like-post="likePost()" />
-                        <article-comments v-if="showComments" :comments="comments" @toggle-article-comments="toggleArticleComments()" />
-                        <comment-respond class="main-comment-input" />
+                        <article-comments v-if="showComments" :comments="comments" @toggle-article-comments="toggleArticleComments()" @update-comments="updateComments()" />
+                        <comment-respond class="main-comment-input" @update-comments="updateComments()" />
                     </div>
                     <ad-box class="ad-row ad-article-full" :ad="articleAdsList['ARTICLE_CONTENT_BOTTOM_FULL_BANNER']" />
                     <related-articles :relatedArticles="relatedArticles" class="md-up" />
@@ -169,7 +169,19 @@ export default {
         const postContentAPI = new PostContentAPI();
         const commentsAPI = new CommentsAPI();
         const likePostAPI = new LikePostAPI();
-        const countComments = function(comments) {
+        /* const getPostComments = function() 
+        {
+            // Get post comments from API
+            commentsAPI.getCommentsFromPermalink(store.articleData.permalink, store.articleData.isEvent, (response) => {
+                if(response.data != null) {
+                    return response.data;
+                    comments.value = response.data;
+                    commentCount.value = countComments(comments.value);
+                } else return [];
+            });
+        } */
+        const countComments = function(comments) 
+        {
             var count = 0;
             comments.forEach(comment => {
                 count++;
@@ -190,6 +202,7 @@ export default {
                 if(store.articleData.isEvent == 1)  content.value = Lister.assignDateFields([content.value])[0]; 
                 // Save post id in case we didn't have it
                 if(store.articleData.id == 0 || store.articleData.id === undefined)   store.setArticleId(content.value.postId);
+
                 // Get post comments from API
                 commentsAPI.getCommentsFromPermalink(store.articleData.permalink, store.articleData.isEvent, (response) => {
                     comments.value = response.data;
@@ -218,7 +231,7 @@ export default {
         adsAPI.getAds('article', (data)=> {
         articleAdsList.value = articleAds.buildAdList(data.data);
         });
-        return { store, contentType, content, relatedArticles, articleAds, articleAdsList, showContent, showComments, comments, commentCount, likePostAPI, postIsLiked, likesCount };
+        return { store, contentType, content, relatedArticles, articleAds, articleAdsList, showContent, showComments, comments, commentCount, likePostAPI, postIsLiked, likesCount, countComments, commentsAPI };
     },
     components: { ModalMainDisplay, RelatedArticles, AdBox, ArticleCta, ArticleComments, ArticleIcons, CommentRespond  },
     methods: {
@@ -229,6 +242,12 @@ export default {
             this.likePostAPI.likePost(this.store.articleData.id, this.store.articleData.isEvent, () => {
                 this.postIsLiked = true;
                 this.likesCount ++;
+            });
+        },
+        updateComments() {
+            this.commentsAPI.getCommentsFromPermalink(store.articleData.permalink, store.articleData.isEvent, (response) => {
+                this.comments = response.data;
+                this.commentCount = this.countComments(this.comments);
             });
         }
     }

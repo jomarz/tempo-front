@@ -5,7 +5,7 @@
             <img src="..\assets\img\icons\BlueArrowDownIcon.svg" alt="" class="close-comments-icon" @click="$emit('toggle-article-comments')">
         </div>
         <template v-for="comment in comments" :key="comment.comment_id" >
-            <Comment :comment="comment" />
+            <Comment :comment="comment" @update-comments="$emit('update-comments')" />
             <div class="separator"></div>
         </template>
     </div>

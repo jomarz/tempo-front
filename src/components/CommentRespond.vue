@@ -26,7 +26,10 @@ export default {
             if(this.parentCommentId == undefined)  parentId = null;
             else    parentId = this.parentCommentId;
             
-            this.newCommentAPI.sendNewComment(store.articleData.isEvent, store.articleData.id, this.commentAuthor, this.commentText, parentId, (response) => console.log(response));
+            this.newCommentAPI.sendNewComment(store.articleData.isEvent, store.articleData.id, this.commentAuthor, this.commentText, parentId, (response) => {
+                console.log(response);
+                this.$emit('update-comments');
+            });
         }
     }
 }
