@@ -82,6 +82,12 @@ export default {
         }
         .replies {
             margin: 20px 0 0 50px;
+            .answer-link {
+                display: none;
+            }
+            .comment-action-icon:first-of-type {
+                margin-left: 0px;
+            }
         }
         .reply:last-child .separator {
             display: none;
