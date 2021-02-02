@@ -8,15 +8,13 @@
             <Comment :comment="comment" />
             <div class="separator"></div>
         </template>
-        <comment-respond />
     </div>
 </template>
 
 <script>
 import Comment from './Comment.vue'
-import CommentRespond from './CommentRespond.vue';
 export default {
-    components: { Comment, CommentRespond },
+    components: { Comment },
     props: {
         comments: {type: Array}
     },
@@ -29,7 +27,7 @@ export default {
 
 <style lang="scss" scoped>
     .article-comments {
-        margin: 20px 0 55px;
+        margin: 20px 0 25px;
         .comment-nav-row {
             display: flex;
             justify-content: flex-end;

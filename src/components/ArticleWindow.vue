@@ -41,6 +41,7 @@
                         </template>
                         <article-icons @toggle-article-comments="toggleArticleComments()" :views="content.views" :likes="likesCount" :commentCount="commentCount" :postIsLiked="postIsLiked" @like-post="likePost()" />
                         <article-comments v-if="showComments" :comments="comments" @toggle-article-comments="toggleArticleComments()" />
+                        <comment-respond class="main-comment-input" />
                     </div>
                     <ad-box class="ad-row ad-article-full" :ad="articleAdsList['ARTICLE_CONTENT_BOTTOM_FULL_BANNER']" />
                     <related-articles :relatedArticles="relatedArticles" class="md-up" />
@@ -65,6 +66,7 @@ import RelatedArticles from './RelatedArticles';
 import AdBox from './AdBox.vue';
 import ArticleCta from './ArticleCta.vue';
 import ArticleComments from './ArticleComments.vue';
+import CommentRespond from './CommentRespond.vue';
 import ArticleIcons from './ArticleIcons.vue';
 
 export default {
@@ -218,7 +220,7 @@ export default {
         });
         return { store, contentType, content, relatedArticles, articleAds, articleAdsList, showContent, showComments, comments, commentCount, likePostAPI, postIsLiked, likesCount };
     },
-    components: { ModalMainDisplay, RelatedArticles, AdBox, ArticleCta, ArticleComments, ArticleIcons  },
+    components: { ModalMainDisplay, RelatedArticles, AdBox, ArticleCta, ArticleComments, ArticleIcons, CommentRespond  },
     methods: {
         toggleArticleComments() {
             this.showComments = !this.showComments;
@@ -371,6 +373,9 @@ export default {
                 font-family: 'Roboto', sans-serif;
                 font-weight: 400;
             }
+        }
+        .main-comment-input {
+            margin: 0 0 60px;
         }
     }
     @media only screen and (max-width: 767px) {
