@@ -3,13 +3,14 @@
         <div class="comment-name">{{comment.comment_author_name}}</div>
         <div class="comment-text">{{comment.comment_text}}</div>
         <div class="comment-actions">
-            <div class="answer-link">RESPONDER</div>
+            <div class="answer-link" @click="showCommentResponseInput()" >RESPONDER</div>
             <img src="..\assets\img\icons\ThumbsUpIcon.svg" alt="" class="comment-action-icon">
             <div class="comment-likes">{{comment.comment_likes}}</div>
             <img src="..\assets\img\icons\ThumbsDownIcon.svg" alt="" class="comment-action-icon">
             <div class="comment-dislikes">{{comment.comment_dislikes}}</div>
             <div class="time-since-comment">Hace 1 hora</div>
         </div>
+        <comment-respond v-if="showResponseInput" class="individual-comment-response" :parentCommentId="comment.comment_id" />
         <div v-if="comment.hasChildren" class="replies" >
             <template v-for="reply in comment.replies" :key="reply.comment_id" >
                 <div class="reply">
@@ -22,14 +23,24 @@
 </template>
 
 <script>
+import { ref } from 'vue';
+import CommentRespond from './CommentRespond.vue';
 export default {
+  components: { CommentRespond },
     props: {
         comment: {required: true}
     },
     name: 'Comment',
-    setup(props) {
-        console.log(props.comment);
+    setup() {
+        var showResponseInput = ref(false);
+        return { showResponseInput }
     },
+    methods: {
+        showCommentResponseInput()
+        {
+            this.showResponseInput = true;
+        }
+    }
 }
 </script>
 
@@ -74,6 +85,9 @@ export default {
                 font-weight: 700;
                 margin-left: auto;
             }
+        }
+        .individual-comment-response {
+            margin: 15px 0;
         }
         .separator {
             width: 100%;
