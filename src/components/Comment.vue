@@ -10,7 +10,7 @@
             <div class="comment-dislikes">{{comment.comment_dislikes}}</div>
             <div class="time-since-comment">Hace 1 hora</div>
         </div>
-        <comment-respond v-if="showResponseInput" class="individual-comment-response" :parentCommentId="comment.comment_id" @update-comments="$emit('update-comments')" />
+        <comment-respond v-if="showResponseInput" class="individual-comment-response" :parentCommentId="comment.comment_id" @update-comments="$emit('update-comments')" @hide-response-input="hideResponseInput()" />
         <div v-if="comment.hasChildren" class="replies" >
             <template v-for="reply in comment.replies" :key="reply.comment_id" >
                 <div class="reply">
@@ -39,6 +39,10 @@ export default {
         showCommentResponseInput()
         {
             this.showResponseInput = true;
+        },
+        hideResponseInput()
+        {
+            this.showResponseInput = false;
         }
     }
 }

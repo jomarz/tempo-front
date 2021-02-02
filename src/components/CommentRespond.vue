@@ -15,6 +15,12 @@ export default {
     props: {
         parentCommentId: {}
     },
+    data() {
+        return {
+            commentAuthor: "", 
+            commentText: ""
+        }
+    },
     setup() {
         const newCommentAPI = new NewCommentAPI();
         return { newCommentAPI };
@@ -22,14 +28,20 @@ export default {
     methods: {
         sendNewComment()
         {
-            let parentId;
-            if(this.parentCommentId == undefined)  parentId = null;
-            else    parentId = this.parentCommentId;
-            
-            this.newCommentAPI.sendNewComment(store.articleData.isEvent, store.articleData.id, this.commentAuthor, this.commentText, parentId, (response) => {
-                console.log(response);
-                this.$emit('update-comments');
-            });
+            if (this.commentAuthor != "" && this.commentText != "") {
+                let parentId;
+                if(this.parentCommentId == undefined)  parentId = null;
+                else    parentId = this.parentCommentId;
+                
+                this.newCommentAPI.sendNewComment(store.articleData.isEvent, store.articleData.id, this.commentAuthor, this.commentText, parentId, (response) => {
+                    if(response.response_code == 100) {
+                        this.$emit('update-comments');
+                        this.commentAuthor = "";
+                        this.commentText = "";
+                        this.$emit('hide-response-input');
+                    }
+                });
+            }
         }
     }
 }
