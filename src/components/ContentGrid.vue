@@ -50,5 +50,10 @@ export default {
         .small-box-container {
             padding-left: 20px;
         }
-    }
+    }/* 
+    @media only screen and (min-width: 768px) and (max-width: 1199px) {
+        .content-grid.container {
+            max-width: 745px;
+        }
+    } */
 </style>

@@ -124,4 +124,21 @@ export default {
             overflow: hidden;
         }
     }
+    
+    @media only screen and (min-width: 768px) and (max-width: 1199px) {
+        .article-small-box {
+            width: 332px;
+            .thumbnail {
+                width: 166px;
+            }
+            .thumbnail img {
+                height: 147px;
+                width: 166px;
+            }
+            .box_info-container {
+                width: 166px;
+                height: 147px;
+            }
+        }
+    }
 </style>

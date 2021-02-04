@@ -14,7 +14,7 @@
                         <h3>{{content.title}}</h3>
                         <div class="modal-content-subtitle">{{content.subtitle}}</div>
                     </div>
-                    <modal-main-display :contentId="contentId" :isEvent="store.articleData.isEvent" :contentType="contentType" :content="content" class="sticky" />
+                    <modal-main-display :contentId="contentId" :isEvent="store.articleData.isEvent" :contentType="contentType" :content="content" class="" />
                     <div class="text-sub" v-html="content.lead"></div>
                     <div class="main-article-content">
                         <div class="author-info">

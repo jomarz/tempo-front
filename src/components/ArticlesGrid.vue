@@ -55,6 +55,14 @@ export default {
         .grid-nav-column {
             width: 19px;
             padding: 0px 1px 0;
+            margin-left: 8px;
+        }
+    }
+    @media only screen and (min-width: 768px) and (max-width: 1199px) {
+        .content-grid.container {
+            .small-box-container {
+                padding-left: 13px;
+            }
         }
     }
 </style>
