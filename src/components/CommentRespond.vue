@@ -55,6 +55,9 @@ export default {
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+            input, textarea {
+                font-family: 'Roboto', sans-serif;
+            }
         }
         .new-comment-input, .new-comment-author {
             height: 2rem;
