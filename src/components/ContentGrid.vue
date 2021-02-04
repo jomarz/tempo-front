@@ -46,6 +46,7 @@ export default {
     .content-grid.container {
         display: flex;
         padding-left: 0;
+        padding-right: 0;
         .small-box-container {
             padding-left: 20px;
         }
