@@ -14,12 +14,20 @@
             <div class="article-icons-count">{{commentCount}}</div>
         </div>
         <div class="article-share article-icons-element">
-            <img src="..\assets\img\icons\ShareIcon.svg" alt="" class="article-icon clickable" @click="$emit('share-article')" >
+            <img src="..\assets\img\icons\ShareIcon.svg" alt="" class="article-icon clickable" @click="displayShareIcons()" >
+            <div v-if="showShareIcons" class="share-icons">
+                <a href="#"><img src="..\assets\img\icons\Facebook.svg" alt="facebook"></a>
+                <a href="#"><img src="..\assets\img\icons\Instagram.svg" alt="instagram"></a>
+                <a href="#"><img src="..\assets\img\icons\Twitter.svg" alt="twitter"></a>
+                <a href="#"><img src="..\assets\img\icons\Youtube.svg" alt="youtube"></a>
+                <a href="#"><img src="..\assets\img\icons\Spotify.svg" alt="spotify"></a>
+            </div>   
         </div>
     </div>    
 </template>
 
 <script>
+import { ref } from 'vue';
 export default {
     props: {
         views: {},
@@ -27,6 +35,15 @@ export default {
         commentCount: {},
         postIsLiked: {}
     },
+    setup() {
+        var showShareIcons = ref(false);
+        return { showShareIcons }
+    },
+    methods: {
+        displayShareIcons() {
+            this.showShareIcons = !this.showShareIcons;
+        }
+    }
 }
 </script>
 
@@ -48,6 +65,26 @@ export default {
             }
             .article-icon.clickable:hover {
                 cursor: pointer;
+            }
+        }
+        .article-share {
+            position: relative;
+        }
+        .share-icons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: -20px;
+            right: -220px;
+            background-color: #f3f3f4;
+            padding: 2px 5px 5px;
+            border-radius: 4px;
+            img {
+                width: 20px;
+                height: 20px;
+                margin: 0 10px;
+                object-fit: contain;
             }
         }
     }
