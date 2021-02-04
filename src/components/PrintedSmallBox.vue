@@ -21,7 +21,8 @@ export default {
 
 <style lang="scss" scoped>
     .printed-small-box {
-        width: 209px;
+        max-width: 209px;
+        padding: 0 5px 0 0;
         .printed-thumbnail img {
             width: 136px;
             height: 192px;
@@ -45,6 +46,7 @@ export default {
     @media only screen and (max-width: 767px) {
         .printed-small-box {
             margin-right: 25px;
+            padding: 0;
         }
     }
 </style>
