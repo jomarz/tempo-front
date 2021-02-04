@@ -1,6 +1,6 @@
 <template>
     <div class="related-articles">
-        <h5 class="related-articles-title">Otros eventos de interés</h5>
+        <h5 class="related-articles-title">También podría interesarle</h5>
         <div class="related-articles-boxes">
             <related-article-box v-for="articleInfo in relatedArticles" :articleInfo="articleInfo" :key="articleInfo.id" />
         </div>
@@ -24,7 +24,7 @@ export default {
         display: flex;
         flex-direction: column;
         .related-articles-title {
-            margin: 15px 0 10px;
+            margin: 35px 0 25px;
         }
         .related-articles-boxes {
             display: flex;

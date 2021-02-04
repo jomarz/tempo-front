@@ -17,7 +17,7 @@ export default {
 <style lang="scss" scoped>
     .related-article-box {
         width: 157px;
-        margin-right: 15px;
+        margin-right: 20px;
         img {
             width: 100%;
             margin-bottom: 8px;
