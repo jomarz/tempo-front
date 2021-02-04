@@ -167,6 +167,7 @@ export default {
             justify-content: center;
         }
         .media-box {
+            position: relative;
             width: 504px;
             height: 292px;
             background-color: gray;
