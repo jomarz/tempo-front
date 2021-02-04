@@ -28,35 +28,43 @@ export default {
         const videoFullList = [
             {
                 src: 'https://www.youtube.com/embed/UL1qpV6YtAE',
-                title: 'Bach en Bogotá - Hans Fagius'
+                title: 'Bach en Bogotá - Hans Fagius',
+                subtitle: ''
             },
             {
                 src: 'https://www.youtube-nocookie.com/embed/QIfs5LnU3d8',
-                title: 'Dmitry Masleev'
+                title: 'Dmitry Masleev',
+                subtitle: ''
             },
             {
                 src: 'https://www.youtube-nocookie.com/embed/lGRwO9Dle6E',
-                title: 'Leszek Mozdzer'
+                title: 'Leszek Mozdzer',
+                subtitle: ''
             },
             {
                 src: 'https://www.youtube-nocookie.com/embed/UQA6ftchgVQ',
-                title: 'Emmanuel Ceysson'
+                title: 'Emmanuel Ceysson',
+                subtitle: ''
             },
             {
                 src: 'https://www.youtube-nocookie.com/embed/QBvZvS_TsDU',
-                title: 'Entrevista a Emerson Quartet'
+                title: 'Entrevista a Emerson Quartet',
+                subtitle: ''
             },
             {
                 src: 'https://www.youtube-nocookie.com/embed/zI8YFXjY1ZY',
-                title: 'Entrevista a Willy Decker'
+                title: 'Entrevista a Willy Decker',
+                subtitle: ''
             },
             {
                 src: 'https://www.youtube-nocookie.com/embed/kfNe7AK2VkA',
-                title: 'Peter Donohoe'
+                title: 'Peter Donohoe',
+                subtitle: ''
             },
             {
                 src: 'https://www.youtube-nocookie.com/embed/CRcbDMg56yg',
-                title: 'Serenade for Strings | Dvořák'
+                title: 'Serenade for Strings | Dvořák',
+                subtitle: ''
             },
         ];
         store.videoCarousel.setNumPages(videoFullList.length);

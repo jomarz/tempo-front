@@ -9,7 +9,7 @@ export default  {
     showMobileSearchbox: reactive({ state:false }),
     featVideo: reactive({
         title: 'Krzysztof Penderecki',
-        subtite: '',
+        subtitle: '',
         src: 'https://www.youtube-nocookie.com/embed/_x2QIJyxJQA',
     }),
     eventsCarousel: new Carousel(1,9),
@@ -45,5 +45,6 @@ export default  {
     },
     setfeatVideo(videoInfo) {
         this.featVideo.src = videoInfo.src;
+        this.featVideo.title = videoInfo.title;
     },
 }

@@ -28,7 +28,9 @@ export default {
     },
     methods: {
         changeVideo(videoInfo) {
+            console.log(store.featVideo);
             store.setfeatVideo(videoInfo);
+            console.log(store.featVideo);
         }
     }
 }
