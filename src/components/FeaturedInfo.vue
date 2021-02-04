@@ -28,6 +28,6 @@ export default {
     .featured-info {
         display: flex;
         justify-content: center;
-        padding: 70px 20px 40px 20px;
+        padding: 40px 20px 40px 20px;
     }
 </style>

@@ -32,6 +32,7 @@ export default {
         .feat-article-title {
             width: min-content;
             display: -webkit-box;
+            text-align: center;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;

@@ -31,6 +31,7 @@ export default {
         .feat-event-title {
             width: min-content;
             max-width: 90%;
+            text-align: center;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;

@@ -63,6 +63,7 @@ export default {
             background-color: white;
         }
         .featured-info-box {
+            display: flex;
             background-color: #0d273b
         }
         .featured-image-box {
