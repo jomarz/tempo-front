@@ -332,6 +332,21 @@ export default {
       display: none !important;
     }
   }
+  @media only screen and (min-width: 992px) {
+    .md-down {
+      display: none !important;
+    }
+  }
+  @media only screen and (max-width: 991px) {
+    .lg-up {
+      display: none !important;
+    }
+  }
+  @media only screen and (max-width: 1199px) {
+    .xl-up {
+      display: none !important;
+    }
+  }
   @media only screen and (max-width: 767px) {
     .md-up {
       display: none !important;

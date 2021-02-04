@@ -2,19 +2,19 @@
     <div class="footer">
         <div class="footer-content container">
             <div class="row">
-                <div class="col-12 col-md-10 footer-content-col">
+                <div class="col-12 col-lg-10 footer-content-col">
                     <div class="footer-main">
                         <footer-subscribe/>
-                        <div class="mobile-footer-logo-social sm-only">
+                        <div class="mobile-footer-logo-social md-down">
                             <img src="../assets/img/tempo_logo.svg" alt="" class="footer-logo only-sm">
-                            <footer-social class="only-sm"/>
+                            <footer-social class=""/>
                         </div>
                         <footer-links />
                         <div class="footer-separator"></div>
                         <footer-copyright />
                     </div>
                 </div>
-                <div class="col-12 col-md-2 footer-right md-up">
+                <div class="col-12 col-lg-2 footer-right lg-up">
                     <img src="../assets/img/tempo_logo.svg" alt="" class="footer-logo">
                     <footer-social />
                 </div>

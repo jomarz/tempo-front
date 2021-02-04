@@ -53,4 +53,11 @@ export default {
             margin-right: 20px;
         }
     }
+    @media only screen and (min-width: 767px) and (max-width: 1199px) {
+        .video-small-box {
+            .video-container {
+                width: 170px;
+            }
+        }
+    }
 </style>

@@ -6,10 +6,10 @@
             </div>
         </div>
         <div class="row grid-row">
-            <div class="col-12 col-md-9 articles">
+            <div class="col-12 col-xl-9 articles">
                 <ArticlesGrid :contentType="contentType" :contentList="contentList" :contentFullList="contentFullList" />
             </div>
-            <div class="col-12 col-md-3 md-up">
+            <div class="col-12 col-xl-3 xl-up">
                 <NewsVertical :newsList="newsList" />
             </div>
             <news-horizontal :newsList="newsFullList" class="sm-only" />
