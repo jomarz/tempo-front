@@ -16,11 +16,8 @@
         <div class="article-share article-icons-element">
             <img src="..\assets\img\icons\ShareIcon.svg" alt="" class="article-icon clickable" @click="displayShareIcons()" >
             <div v-if="showShareIcons" class="share-icons">
-                <a href="#"><img src="..\assets\img\icons\Facebook.svg" alt="facebook"></a>
-                <a href="#"><img src="..\assets\img\icons\Instagram.svg" alt="instagram"></a>
-                <a href="#"><img src="..\assets\img\icons\Twitter.svg" alt="twitter"></a>
-                <a href="#"><img src="..\assets\img\icons\Youtube.svg" alt="youtube"></a>
-                <a href="#"><img src="..\assets\img\icons\Spotify.svg" alt="spotify"></a>
+                <a :href="'https://www.facebook.com/sharer/sharer.php?u=' + store.siteURL + $route.fullPath" target="blank" ><img src="..\assets\img\icons\Facebook.svg" alt="facebook"></a>
+                <a :href="'https://twitter.com/intent/tweet?url=' + store.siteURL + $route.fullPath" target="blank" ><img src="..\assets\img\icons\Twitter.svg" alt="twitter"></a>
             </div>   
         </div>
     </div>    
@@ -28,6 +25,7 @@
 
 <script>
 import { ref } from 'vue';
+import store from '../store/store'
 export default {
     props: {
         views: {},
@@ -37,7 +35,7 @@ export default {
     },
     setup() {
         var showShareIcons = ref(false);
-        return { showShareIcons }
+        return { showShareIcons, store }
     },
     methods: {
         displayShareIcons() {

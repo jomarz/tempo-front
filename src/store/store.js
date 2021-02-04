@@ -2,6 +2,7 @@ import { reactive } from 'vue';
 import Carousel from '../classes/Carousel'
 
 export default  {
+    siteURL: "https://revistatempo.co",
     articleData: reactive({ id: 1, permalink: '', isEvent: 0 }),
     showArticle: reactive({ state: false }),
     showSubscribe: reactive({ state: false }),
