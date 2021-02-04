@@ -12,7 +12,7 @@
                     </div>
                     <div class="title-row">
                         <h3>{{content.title}}</h3>
-                        <div class="modal-content-subtitle">{{content.subtitle}}</div>
+                        <div class="modal-content-subtitle" v-html="content.subtitle" ></div>
                     </div>
                     <modal-main-display :contentId="contentId" :isEvent="store.articleData.isEvent" :contentType="contentType" :content="content" class="" />
                     <div class="text-sub" v-html="content.lead"></div>
