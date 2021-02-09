@@ -30,4 +30,9 @@ export default {
         justify-content: center;
         padding: 40px 20px 40px 20px;
     }
+    @media only screen and (min-width: 768px) and (max-width: 1199px) {
+        .featured-info {
+            padding: 40px 0px;
+        }
+    }
 </style>

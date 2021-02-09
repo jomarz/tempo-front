@@ -73,4 +73,11 @@ export default {
             object-fit: cover;
         }
     }
+    @media only screen and (min-width: 768px) and (max-width: 1199px) {
+        .featured-section {
+            .featured-info-box {
+                padding: 0;
+            }
+        }
+    }
 </style>

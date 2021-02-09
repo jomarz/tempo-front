@@ -135,7 +135,7 @@ export default {
             display: none;
         }
     }
-    @media only screen and (max-width: 767px) {
+    @media only screen and (max-width: 768px) {
         .name-cell {
             height: 1.2rem;
         }
