@@ -2,7 +2,7 @@ export default class EventDatetime
 {
     constructor(datetimeString)
     {
-        this.datetime = new Date(datetimeString);
+        this.datetime = new Date(datetimeString).getTime();
     }
     getDistanceToEvent()
     {
@@ -10,7 +10,7 @@ export default class EventDatetime
         var now = new Date().getTime();
             
         // Find the distance between now and the count down date
-        var distance = this.datetime.getTime() - now;
+        var distance = this.datetime - now;
             
         // Time calculations for days, hours, minutes and seconds
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));

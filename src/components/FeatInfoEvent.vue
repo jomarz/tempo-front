@@ -2,14 +2,15 @@
     <div class="feat-info-event">
         <h1 class="feat-event-title">{{featuredInfo.title}}</h1>
         <feat-info-event-box :featuredInfo="featuredInfo"/>
-        <h1>{{featuredInfo.datetime}}</h1>
+        <count-down :datetime="featuredInfo.datetime" ></count-down>
     </div>
 </template>
 
 <script>
 import FeatInfoEventBox from './FeatInfoEventBox.vue'
+import CountDown from './CountDown.vue';
 export default {
-  components: { FeatInfoEventBox },
+  components: { FeatInfoEventBox, CountDown },
     props: {
         featuredInfo: {
             required: true,

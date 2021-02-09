@@ -6,10 +6,10 @@
         </div>    
         <div class="row featured-content">
             <div class="col-4 featured-info-box">
-                <featured-info :featuredType="featuredType" :featuredInfo="featuredInfo"/>
+                <featured-info v-if="showInfo" :featuredType="featuredType" :featuredInfo="featuredInfo"/>
             </div>
             <div class="col-8 featured-image-box">
-                <img :src="featuredInfo.imgUrl" alt="" class="featured-image">
+                <img v-if="showInfo" :src="featuredInfo.imgUrl" alt="" class="featured-image">
             </div>    
         </div>
         <div class="row featured-bottom">
@@ -30,19 +30,11 @@ export default {
     components: { FeaturedInfo, MobileFeatured },
     setup () {
         const featuredType = 'event';
-        /* const featuredInfo = {
-            id: 1,
-            title: 'Concierto Inagural',
-            name: 'Ian Bostridge',
-            day: 18,
-            month: 'JULIO, 2020',
-            location: 'Teatro Mayor, Bogota',
-            imgUrl: 'https://picsum.photos/id/304/1000/600'           
-        }; */
         const featuredAPI = new FeaturedAPI();
         var featuredInfo = ref([]);
-        featuredAPI.getFeaturedInfo('', (data) => { featuredInfo.value = Lister.assignDateFields(data.data)[0];} );
-        return { featuredType, featuredInfo }
+        var showInfo = ref(false);
+        featuredAPI.getFeaturedInfo('', (data) => { featuredInfo.value = Lister.assignDateFields(data.data)[0]; showInfo.value = true;} );
+        return { featuredType, featuredInfo, showInfo }
     }
 }
 </script>
