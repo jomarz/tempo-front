@@ -40,7 +40,7 @@ export default {
         display: flex;
         justify-content: space-around;
         width: 100%;
-        margin: 30px 0 0;
+        margin: 50px 0 0;
         color: #fff;
         .count-down-item {
             font-family: 'Roboto', sans-serif;
