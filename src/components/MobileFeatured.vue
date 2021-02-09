@@ -52,8 +52,9 @@ export default {
             display: flex;
             justify-content: space-evenly;    
             align-items: center;
-            height: 170px;
+            //height: 170px;
             margin-top: 4px;
+            padding: 0px 10px 10px;
             background-color: #27648f;
         }
         .mobile-featured-title {
@@ -67,7 +68,7 @@ export default {
         }
         .mobile-featured-left-info {
             max-width: 50%;
-            padding: 10px 10px;
+            padding: 0;
         }
         .mobile-featured-info {
             max-width: 50%;

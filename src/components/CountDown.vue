@@ -67,13 +67,13 @@ export default {
     }
     @media only screen and (max-width: 767px) {
         .count-down {
-            margin: 10px 0 0;
+            margin: 15px 0 0;
             .count-down-item {
-                height: 60px;
-                width: 60px;
+                height: 48px;
+                width: 48px;
             }
             .count-down-number {
-                font-size: 1rem;
+                font-size: 0.95rem;
                 line-height: 1.05rem;
             }
             .count-down-item-title {
