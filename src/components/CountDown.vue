@@ -1,15 +1,15 @@
 <template>
     <div class="count-down">
         <div class="count-down-item">
-            <h2>{{distanceToEvent.days}}</h2>
+            <div class="count-down-number">{{distanceToEvent.days}}</div>
             <div class="count-down-item-title">DÍAS</div>
         </div>
         <div class="count-down-item">
-            <h2>{{distanceToEvent.hours}}</h2>
+            <div class="count-down-number">{{distanceToEvent.hours}}</div>
             <div class="count-down-item-title">HORAS</div>
         </div>
         <div class="count-down-item">
-            <h2>{{distanceToEvent.minutes}}</h2>
+            <div class="count-down-number">{{distanceToEvent.minutes}}</div>
             <div class="count-down-item-title">MINUTOS</div>
         </div>
     </div>    
@@ -23,12 +23,7 @@ export default {
             required: true,
             type: String
         }
-    },/* 
-    data(props) {console.log(props.hora);
-        var eventDatetime = new EventDatetime(props.hora);
-        var distanceToEvent = eventDatetime.getDistanceToEvent();console.log(distanceToEvent);
-        return { distanceToEvent }
-    }, */
+    },
     computed: {
         distanceToEvent()
         {
@@ -43,17 +38,30 @@ export default {
 <style lang="scss" scoped>
     .count-down {
         display: flex;
-        align-content: space-between;
+        justify-content: space-around;
         width: 100%;
+        margin: 30px 0 0;
         color: #fff;
         .count-down-item {
+            font-family: 'Roboto', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            border: 2px solid #fff;
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            padding-bottom: 3px;;
+        }
+        .count-down-number {
+            font-size: 1.4rem;
+            line-height: 1.5rem;
         }
         .count-down-item-title {
-            font-family: 'Roboto', sans-serif;
-            font-size: 0.7rem;
+            font-size: 0.6rem;
         }
     }
 </style>
