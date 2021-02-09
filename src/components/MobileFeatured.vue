@@ -4,7 +4,10 @@
                 <img :src="featuredInfo.imgUrl" alt="">
             </div>
             <div class="featured-content-mobile">
-                <div class="mobile-featured-title">{{featuredInfo.title}}</div>
+                <div class="mobile-featured-left-info">
+                    <div class="mobile-featured-title">{{featuredInfo.title}}</div>
+                    <count-down class="mobile-countdown" :datetime="featuredInfo.datetime" ></count-down>
+                </div>
                 <div class="mobile-featured-info">
                     <feat-info-event-box v-if="featuredType==='event'" :featuredInfo="featuredInfo" class="home-main"/>
                     <div v-else-if="featuredType==='article'" class="home-main" >
@@ -19,8 +22,9 @@ import { ref } from 'vue'
 import Lister from '../classes/Lister';
 import FeaturedAPI from '../classes/FeaturedAPI'
 import FeatInfoEventBox from './FeatInfoEventBox.vue';
+import CountDown from './CountDown.vue';
 export default {
-    components: {FeatInfoEventBox  },
+    components: {FeatInfoEventBox, CountDown  },
     setup () {
         const featuredType = 'event';
         /* const featuredInfo = {
@@ -46,7 +50,11 @@ export default {
         margin: 10px 15px 20px;
         .featured-content-mobile {
             display: flex;
-            justify-content: space-evenly;
+            justify-content: space-evenly;    
+            align-items: center;
+            height: 170px;
+            margin-top: 4px;
+            background-color: #27648f;
         }
         .mobile-featured-title {
             font-size: 1.2rem !important;
@@ -56,6 +64,8 @@ export default {
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
+        }
+        .mobile-featured-left-info {
             max-width: 50%;
             padding: 10px 10px;
         }
@@ -71,11 +81,6 @@ export default {
             width: 100%;
             object-fit: cover;
             overflow: hidden;
-        }
-        .featured-content-mobile {
-            height: 150px;
-            margin-top: 4px;
-            background-color: #27648f;
         }
     }
 </style>

@@ -65,4 +65,20 @@ export default {
             font-size: 0.55rem;
         }
     }
+    @media only screen and (max-width: 767px) {
+        .count-down {
+            margin: 10px 0 0;
+            .count-down-item {
+                height: 60px;
+                width: 60px;
+            }
+            .count-down-number {
+                font-size: 1rem;
+                line-height: 1.05rem;
+            }
+            .count-down-item-title {
+                font-size: 0.4rem;
+            }
+        }
+    }
 </style>
