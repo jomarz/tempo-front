@@ -46,6 +46,7 @@ export default {
         margin: 10px 15px 20px;
         .featured-content-mobile {
             display: flex;
+            justify-content: space-evenly;
         }
         .mobile-featured-title {
             font-size: 1.2rem !important;
@@ -59,7 +60,7 @@ export default {
             padding: 10px 10px;
         }
         .mobile-featured-info {
-            width: 50%;
+            max-width: 50%;
             padding: 10px 10px;
         }
         .featured-image-mobile {

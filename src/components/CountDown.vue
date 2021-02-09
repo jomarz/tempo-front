@@ -40,6 +40,7 @@ export default {
         display: flex;
         justify-content: space-around;
         width: 100%;
+        max-width: 270px;
         margin: 50px 0 0;
         color: #fff;
         .count-down-item {
@@ -49,19 +50,19 @@ export default {
             align-items: center;
             justify-content: center;
             border: 2px solid #fff;
-            height: 80px;
-            width: 80px;
+            height: 75px;
+            width: 75px;
             border-radius: 50%;
             -moz-border-radius: 50%;
             -webkit-border-radius: 50%;
             padding-bottom: 3px;;
         }
         .count-down-number {
-            font-size: 1.4rem;
-            line-height: 1.5rem;
+            font-size: 1.3rem;
+            line-height: 1.4rem;
         }
         .count-down-item-title {
-            font-size: 0.6rem;
+            font-size: 0.55rem;
         }
     }
 </style>
