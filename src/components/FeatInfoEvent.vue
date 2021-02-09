@@ -2,6 +2,7 @@
     <div class="feat-info-event">
         <h1 class="feat-event-title">{{featuredInfo.title}}</h1>
         <feat-info-event-box :featuredInfo="featuredInfo"/>
+        <h1>{{featuredInfo.datetime}}</h1>
     </div>
 </template>
 
