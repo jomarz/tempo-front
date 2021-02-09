@@ -177,7 +177,7 @@ export default {
             padding-top: 2px;
         }
         .feat-info-box td.right-col {
-            padding-left: 12px;
+            padding-left: 6px;
             padding-right: 5px;
         }
         .feat-info-box td.left-col {
