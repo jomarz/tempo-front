@@ -4,9 +4,9 @@
         <div class="comment-text">{{comment.comment_text}}</div>
         <div class="comment-actions">
             <div class="answer-link" @click="showCommentResponseInput()" >RESPONDER</div>
-            <img src="..\assets\img\icons\ThumbsUpIcon.svg" @click="likeComment()" alt="" class="comment-action-icon">
+            <img src="..\assets\img\icons\ThumbsUpIcon.svg" @click="likeComment()" alt="" class="comment-action-icon" :class="{clickable: !commentHasReaction}" >
             <div class="comment-likes">{{comment.comment_likes}}</div>
-            <img src="..\assets\img\icons\ThumbsDownIcon.svg" alt="" class="comment-action-icon">
+            <img src="..\assets\img\icons\ThumbsDownIcon.svg" @click="dislikeComment()" alt="" class="comment-action-icon" :class="{clickable: !commentHasReaction}" >
             <div class="comment-dislikes">{{comment.comment_dislikes}}</div>
             <div class="time-since-comment">Hace 1 hora</div>
         </div>
@@ -14,7 +14,7 @@
         <div v-if="comment.hasChildren" class="replies" >
             <template v-for="reply in comment.replies" :key="reply.comment_id" >
                 <div class="reply">
-                    <Comment :comment="reply" />
+                    <Comment :comment="reply" @update-comments="$emit('update-comments')" />
                     <div class="separator"></div>
                 </div>
             </template>
@@ -25,8 +25,8 @@
 <script>
 import { ref } from 'vue';
 import store from '../store/store';
-import CommentRespond from './CommentRespond.vue';
 import CommentReactionAPI from '../classes/CommentReactionAPI';
+import CommentRespond from './CommentRespond.vue';
 export default {
   components: { CommentRespond },
     props: {
@@ -35,7 +35,8 @@ export default {
     name: 'Comment',
     setup() {
         var showResponseInput = ref(false);
-        return { showResponseInput }
+        var commentHasReaction = ref(false);
+        return { showResponseInput, commentHasReaction }
     },
     methods: {
         showCommentResponseInput()
@@ -49,7 +50,22 @@ export default {
         likeComment()
         {
             var commentReactionAPI = new CommentReactionAPI();
-            commentReactionAPI.likeComment(this.comment.comment_id, store.articleData.isEvent, () => console.log("liked!"));
+            commentReactionAPI.likeComment(this.comment.comment_id, store.articleData.isEvent, (response) => {
+                if(response.response_code == 100) {
+                    this.$emit('update-comments');
+                    this.commentHasReaction = true;
+                }
+            });
+        },
+        dislikeComment()
+        {
+            var commentReactionAPI = new CommentReactionAPI();
+            commentReactionAPI.dislikeComment(this.comment.comment_id, store.articleData.isEvent, (response) =>  {
+                if(response.response_code == 100) {
+                    this.$emit('update-comments');
+                    this.commentHasReaction = true;
+                }
+            });
         }
     }
 }
@@ -82,7 +98,7 @@ export default {
                 line-height: 0.70rem;
                 letter-spacing: 0.02rem;
             }
-            .answer-link:hover, .comment-action-icon:hover {
+            .answer-link:hover, .comment-action-icon.clickable:hover {
                 cursor: pointer;
             }
             .comment-action-icon {
