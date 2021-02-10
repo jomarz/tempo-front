@@ -4,7 +4,7 @@
         <div class="comment-text">{{comment.comment_text}}</div>
         <div class="comment-actions">
             <div class="answer-link" @click="showCommentResponseInput()" >RESPONDER</div>
-            <img src="..\assets\img\icons\ThumbsUpIcon.svg" alt="" class="comment-action-icon">
+            <img src="..\assets\img\icons\ThumbsUpIcon.svg" @click="likeComment()" alt="" class="comment-action-icon">
             <div class="comment-likes">{{comment.comment_likes}}</div>
             <img src="..\assets\img\icons\ThumbsDownIcon.svg" alt="" class="comment-action-icon">
             <div class="comment-dislikes">{{comment.comment_dislikes}}</div>
@@ -24,7 +24,9 @@
 
 <script>
 import { ref } from 'vue';
+import store from '../store/store';
 import CommentRespond from './CommentRespond.vue';
+import CommentReactionAPI from '../classes/CommentReactionAPI';
 export default {
   components: { CommentRespond },
     props: {
@@ -43,6 +45,11 @@ export default {
         hideResponseInput()
         {
             this.showResponseInput = false;
+        },
+        likeComment()
+        {
+            var commentReactionAPI = new CommentReactionAPI();
+            commentReactionAPI.likeComment(this.comment.comment_id, store.articleData.isEvent, () => console.log("liked!"));
         }
     }
 }

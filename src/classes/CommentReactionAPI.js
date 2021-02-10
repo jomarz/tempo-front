@@ -10,7 +10,7 @@ export default class CommentReactionAPI extends TempoAPI
     }
     likeComment(comment_id, isEvent, handler)
     {
-        data = {
+        let data = {
             comment_id: comment_id,
             isEvent: isEvent
         }
@@ -18,7 +18,7 @@ export default class CommentReactionAPI extends TempoAPI
     }
     dislikeComment(comment_id, isEvent, handler)
     {
-        data = {
+        let data = {
             comment_id: comment_id,
             isEvent: isEvent
         }
