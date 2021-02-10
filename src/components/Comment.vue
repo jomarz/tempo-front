@@ -8,7 +8,7 @@
             <div class="comment-likes">{{comment.comment_likes}}</div>
             <img src="..\assets\img\icons\ThumbsDownIcon.svg" @click="dislikeComment()" alt="" class="comment-action-icon" :class="{clickable: !commentHasReaction}" >
             <div class="comment-dislikes">{{comment.comment_dislikes}}</div>
-            <div class="time-since-comment">Hace 1 hora</div>
+            <div class="time-since-comment">Hace {{timeSinceCommentString}}</div>
         </div>
         <comment-respond v-if="showResponseInput" class="individual-comment-response" :parentCommentId="comment.comment_id" @update-comments="$emit('update-comments')" @hide-response-input="hideResponseInput()" />
         <div v-if="comment.hasChildren" class="replies" >
@@ -25,18 +25,40 @@
 <script>
 import { ref } from 'vue';
 import store from '../store/store';
+import EventDatetime from '../classes/EventDatetime';
 import CommentReactionAPI from '../classes/CommentReactionAPI';
 import CommentRespond from './CommentRespond.vue';
 export default {
   components: { CommentRespond },
     props: {
-        comment: {required: true}
+        comment: {
+            required: true,
+            type: Object
+            }
     },
     name: 'Comment',
     setup() {
         var showResponseInput = ref(false);
         var commentHasReaction = ref(false);
+
         return { showResponseInput, commentHasReaction }
+    },
+    computed: {
+        timeSinceCommentString()
+        {
+            let commentDatetime = new EventDatetime(this.comment.comment_datetime);console.log(this.comment.comment_datetime);
+            var timeSinceComment = commentDatetime.getDistanceToEvent();console.log(timeSinceComment);
+            if(timeSinceComment.days > 0) {
+                if(timeSinceComment.days == 1)      return '1 día';
+                else                                return timeSinceComment.days+' días';
+            } else if(timeSinceComment.hours > 0) {
+                if(timeSinceComment.hours == 1)     return '1 hora';
+                else                                return timeSinceComment.hours+' horas';
+            } else {
+                if(timeSinceComment.minutes == 1)   return '1 minuto';
+                else                                return timeSinceComment.minutes+' minutos';
+            }
+        }
     },
     methods: {
         showCommentResponseInput()

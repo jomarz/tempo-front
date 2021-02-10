@@ -28,7 +28,6 @@ export default {
         distanceToEvent()
         {
             let eventDatetime = new EventDatetime(this.datetime);
-            console.log(eventDatetime.getDistanceToEvent());
             return eventDatetime.getDistanceToEvent();
         }
     }
