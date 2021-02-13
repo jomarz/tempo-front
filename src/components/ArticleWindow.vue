@@ -57,6 +57,7 @@ import { ref } from 'vue';
 import store from '../store/store.js';
 import AdsAPI from '../classes/AdsAPI';
 import CommentsAPI from '../classes/CommentsAPI';
+import RelatedArticlesAPI from '../classes/RelatedArticlesAPI';
 import AdsList from '../classes/AdsList';
 import PostContentAPI from '../classes/PostContentAPI';
 import Lister from '../classes/Lister';
@@ -111,36 +112,36 @@ export default {
                 }
             ]
         });
-        const relatedArticles = [
+        const relatedArticles = ref([
                 {
                     id: '1',
-                    title: 'Igor Levit',
+                    article_title: 'Igor Levit',
                     subtitle: 'Imodipic iissimus',
                     imgUrl: 'https://picsum.photos/seed/aab1/300/300',
                     postType: 'event'
                 },
                 {
                     id: '2',
-                    title: 'Uptatem invente',
+                    article_title: 'Uptatem invente',
                     subtitle: 'comnihilita soluptas',
                     imgUrl: 'https://picsum.photos/seed/aab1/300/300',
                     postType: 'event'
                 },
                 {
                     id: '3',
-                    title: 'Nicolas Altstaedt',
+                    article_title: 'Nicolas Altstaedt',
                     subtitle: 'Eaque nus eos praesci',
                     imgUrl: 'https://picsum.photos/seed/aab1/300/300',
                     postType: 'event'
                 },
                 {
                     id: '4',
-                    title: 'Ad millabo reperro',
+                    article_title: 'Ad millabo reperro',
                     subtitle: 'Versped que voloreprem',
                     imgUrl: 'https://picsum.photos/seed/aab1/300/300',
                     postType: 'event'
                 },
-            ];
+            ]);
         const comments = ref([
             {
                 "comment_id": 12,
@@ -165,9 +166,11 @@ export default {
                 "hasChildren": null
             },
         ]);
+         
         var showContent = ref(false);
         const postContentAPI = new PostContentAPI();
         const commentsAPI = new CommentsAPI();
+        const relatedAPI = new RelatedArticlesAPI();
         const likePostAPI = new LikePostAPI();
         /* const getPostComments = function() 
         {
@@ -207,6 +210,11 @@ export default {
                 commentsAPI.getCommentsFromPermalink(store.articleData.permalink, store.articleData.isEvent, (response) => {
                     comments.value = response.data;
                     commentCount.value = countComments(comments.value);
+                });
+                console.log(content.value.tags);
+                console.log(relatedAPI);
+                relatedAPI.getRelatedPosts(content.value.tags, (response) => {
+                    relatedArticles.value = response.data;
                 });
                 showContent.value = true;
             } else {

@@ -1,8 +1,8 @@
 <template>
     <div class="related-article-box" :articleInfo="articleInfo">
         <img :src="articleInfo.imgUrl" alt="">
-        <h6>{{articleInfo.title}}</h6>
-        <p>{{articleInfo.subtitle}}</p>
+        <div class="related_title">{{articleInfo.article_title}}</div>
+        <p>{{articleInfo.article_subtitle}}</p>
     </div>    
 </template>
 
@@ -21,6 +21,10 @@ export default {
         img {
             width: 100%;
             margin-bottom: 8px;
+        }
+        .related_title {
+            font-size: 0.9rem;
+            margin: 0 0 5px;
         }
     }
 </style>
