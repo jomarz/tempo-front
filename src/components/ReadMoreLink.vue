@@ -1,5 +1,6 @@
 <template>
-    <a class="more-link" href="" @click.prevent="openContent(contentPermalink, contentId, isEvent)">VER MÁS</a>
+    <a class="more-link" href="" @click.prevent="openContent(contentPermalink, contentId, isEvent)">VER MÁS <img class="read-more-arrow" src="..\assets\img\icons\Arrows\BlueArrows_right.svg" alt=""><img class="read-more-arrow featured-arrow" src="..\assets\img\icons\Arrows\YellowArrows_right.svg" alt=""></a>
+    
 </template>
 
 <script>
@@ -39,5 +40,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    .read-more-arrow {
+        height: 0.5rem;
+        margin: 0 0 2px 2px;
+    }
+    .featured-arrow {
+        display: none;
+    }
+    .featured-info .featured-arrow {
+        display: inline;
+    }
+    .featured-info .read-more-arrow:not(.featured-arrow) {
+        display: none;
+    }
 
 </style>
