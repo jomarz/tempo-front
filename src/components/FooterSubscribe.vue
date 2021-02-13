@@ -1,20 +1,27 @@
 <template>
     <div class="footer-subscribe">
         <h6 class="">SUSCRÍBASE A NUESTRO NEWSLETTER</h6>
-        <form action="" class="footer-subscribe-form md-up">
-            <div><input type="text" name="name" placeholder="Nombre"></div>
-            <div><input type="text" name="email" placeholder="Correo"></div>
-            <div><button type="submit">ENVIAR</button></div>
-        </form>
+        <div action="" class="footer-subscribe-form md-up">
+            <div><input type="text" v-model="name" name="name" placeholder="Nombre"></div>
+            <div><input type="text" v-model="email" name="email" placeholder="Correo"></div>
+            <div><button @click="subscribeToNewsletter()">ENVIAR</button></div>
+        </div>
         <subscribe-button class="sm-only" />
     </div>    
 </template>
 
 <script>
 import SubscribeButton from './SubscribeButton.vue'
+import SubscribeAPI from '../classes/SubscribeAPI';
 export default {
-  components: { SubscribeButton },
-    
+    components: { SubscribeButton },
+    methods: {
+        subscribeToNewsletter()
+        {
+            const subscribeAPI = new SubscribeAPI();
+            subscribeAPI.sendSubscriptionRequest(this.email, this.name, (response) => {console.log(response)} );
+        }
+    }
 }
 </script>
 
