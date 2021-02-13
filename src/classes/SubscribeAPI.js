@@ -8,7 +8,7 @@ export default class LikePostAPI extends TempoAPI
         this.serviceName = 'insert_subscriber';
     }
 
-    subscribeToNewsletter(email, name, handler)
+    sendSubscriptionRequest(email, name, handler)
     {
         const data = {
             email: email,

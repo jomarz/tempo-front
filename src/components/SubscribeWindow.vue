@@ -9,11 +9,11 @@
                     <div class="subscribe-main">
                         <h2 class="subscribe-title">Suscríbete</h2>
                         <p>Recibe gratis nuestro boletin de las ultimas noticias del mundo de la musica.</p>
-                        <form action="" class="subscribe-form">
-                            <input type="text" name="name" placeholder="Nombre">
-                            <input type="text" name="email" placeholder="Correo">
-                            <button type="submit">ENVIAR</button>
-                        </form>
+                        <div class="subscribe-form">
+                            <input type="text" v-model="name" name="name" placeholder="Nombre">
+                            <input type="text" v-model="email" name="email" placeholder="Email">
+                            <button @click="subscribeToNewsletter()">ENVIAR</button>
+                        </div>
                     </div>  
                 </div>
             </div>
@@ -23,9 +23,17 @@
 
 <script>
     import store from '../store/store.js';
+    import SubscribeAPI from '../classes/SubscribeAPI';
 export default {
     setup() {
         return { store };
+    },
+    methods: {
+        subscribeToNewsletter()
+        {
+            const subscribeAPI = new SubscribeAPI();
+            subscribeAPI.sendSubscriptionRequest(this.email, this.name, () => store.toggleSubscribe() );
+        }
     }
 }
 </script>
