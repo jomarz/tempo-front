@@ -72,42 +72,42 @@ export default {
         var mediaFullList = ref(emptyMedia);
         const dummy = [
             {
-                media_id: 1,
-                media_type: "video",
+                mediaId: 1,
+                mediaType: "video",
                 url: 'https://www.youtube.com/embed/UL1qpV6YtAE'
             },
             {
-                media_id: 2,
-                media_type: "video",
+                mediaId: 2,
+                mediaType: "video",
                 url: 'https://www.youtube.com/embed/lGRwO9Dle6E'
             },
             {
-                media_id: 3,
-                media_type: "video",
+                mediaId: 3,
+                mediaType: "video",
                 url: 'https://www.youtube.com/embed/_x2QIJyxJQA'
             },
             {
-                media_id: 4,
-                media_type: "image",
+                mediaId: 4,
+                mediaType: "imgUrl",
                 url: 'https://tempo.wittrees.com/media/imgTest/190711-191403.png'
             },
             {
-                media_id: 5,
-                media_type: "image",
+                mediaId: 5,
+                mediaType: "imgUrl",
                 url: 'https://tempo.wittrees.com/media/imgTest/190711-191012.png'
             },
             {
-                media_id: 6,
-                media_type: "image",
+                mediaId: 6,
+                mediaType: "imgUrl",
                 url: 'https://tempo.wittrees.com/media/imgTest/190711-190430.png'
             },
             {
-                media_id: 7,
-                media_type: "audio",
+                mediaId: 7,
+                mediaType: "audio",
                 url: 'https://temphttps://open.spotify.com/embed/playlist/37i9dQZEVXbKrooeK9WSFF?height=300&amp;theme-id=0&amp;default-tab=css,result&amp;embed-version=2o.wittrees.com/media/imgTest/190711-190430.png'
             },
         ];
-        function showSlide(n) {
+        /* function showSlide(n) {
             var i;
             var slides = document.getElementsByClassName("mySlides");
             //var dots = document.getElementsByClassName("dot");
@@ -117,16 +117,17 @@ export default {
                 slides[i].style.display = "none";
             }
             slides[this.slideIndex-1].style.display = "block";
-        }
+        } */
         const mediaAPI = new MediaAPI();
         mediaAPI.getMedia(store.articleData.id, store.articleData.permalink, store.articleData.isEvent, (data) => {
             if(data.data == null)   {
                 mediaFullList.value = dummy;
                 }
             else {
-                mediaFullList.value = data.data.mediaComponents;
+                mediaFullList.value = dummy;
+                //mediaFullList.value = data.data.mediaComponents;
                 console.log(document.getElementsByClassName("mySlides"));
-                showSlide(2);
+                //showSlide(2);
             }
         });
         /* mediaFullList.value = mediaAPI.getDummyMedia(); */
@@ -157,7 +158,7 @@ export default {
             //dots[this.slideIndex-1].className += " active";
         },
         getFirstOfType(mediaType) {
-            return this.mediaFullList.findIndex((element) => element.media_type == mediaType);
+            return this.mediaFullList.findIndex((element) => element.mediaType == mediaType);
         },
         jumpToMediaType(mediaType) {
             const newIndex = this.getFirstOfType(mediaType);
