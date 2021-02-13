@@ -64,6 +64,20 @@ export default {
             font-size: 0.55rem;
         }
     }
+    .modal-main-display .count-down {
+        margin: 20px 0 5px;
+        .count-down-item {
+            height: 55px;
+            width: 55px;
+        }
+        .count-down-number {
+            font-size: 1.05rem;
+            line-height: 1.1rem;
+        }
+        .count-down-item-title {
+            font-size: 0.45rem;
+        }
+    }
     @media only screen and (max-width: 767px) {
         .count-down {
             margin: 15px 0 0;
