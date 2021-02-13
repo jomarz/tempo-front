@@ -61,7 +61,12 @@ export default {
             height: 15px;
             float: right;
             margin-top: 10px;
+            cursor: pointer;
         }
+    }
+    .results-list {
+        overflow-y: auto;
+        max-height: 70vh;
     }
 }
 .search-result {
