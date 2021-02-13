@@ -7,11 +7,11 @@
         <div class="media-box">
             <!-- Slideshow container -->
             <div class="slideshow-container">
-                <template v-for="media in mediaFullList" :key="media.id">
-                    <div v-if="media.media_type=='image'" class="mySlides fades media-img">
+                <template v-for="media in mediaFullList" :key="media.mediaId">
+                    <div v-if="media.mediaType=='imgUrl'" class="mySlides fades media-img">
                         <img :src="media.url" style="width:100%">
                     </div>
-                    <div v-else-if="media.media_type=='video'" class="mySlides fades media-video">
+                    <div v-else-if="media.mediaType=='video'" class="mySlides fades media-video">
                         <iframe :src="media.url" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
 
@@ -64,8 +64,8 @@ export default {
         var slideIndex = 1;
         const emptyMedia = [
             {
-                media_id: 1,
-                media_type: "video",
+                mediaId: 1,
+                mediaType: "video",
                 url: ''
             },
         ];
@@ -107,12 +107,27 @@ export default {
                 url: 'https://temphttps://open.spotify.com/embed/playlist/37i9dQZEVXbKrooeK9WSFF?height=300&amp;theme-id=0&amp;default-tab=css,result&amp;embed-version=2o.wittrees.com/media/imgTest/190711-190430.png'
             },
         ];
+        function showSlide(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            //var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {this.slideIndex = 1}
+            if (n < 1) {this.slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[this.slideIndex-1].style.display = "block";
+        }
         const mediaAPI = new MediaAPI();
-        mediaAPI.getMedia(store.articleData.id, store.articleData.isEvent, (data) => {
+        mediaAPI.getMedia(store.articleData.id, store.articleData.permalink, store.articleData.isEvent, (data) => {
             if(data.data == null)   {
                 mediaFullList.value = dummy;
                 }
-            else    mediaFullList.value = data.data;
+            else {
+                mediaFullList.value = data.data.mediaComponents;
+                console.log(document.getElementsByClassName("mySlides"));
+                showSlide(2);
+            }
         });
         /* mediaFullList.value = mediaAPI.getDummyMedia(); */
         return { slideIndex, mediaFullList }

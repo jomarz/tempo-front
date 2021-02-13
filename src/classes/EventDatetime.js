@@ -30,11 +30,11 @@ export default class EventDatetime
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         return {
-            'days': days,
-            'hours': hours,
-            'minutes': minutes,
-            'seconds': seconds,
-            'eventIsPast': eventIsPast
+            days: days,
+            hours: hours,
+            minutes: minutes,
+            seconds: seconds,
+            eventIsPast: eventIsPast
         };
     }
 }

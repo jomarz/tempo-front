@@ -44,11 +44,12 @@ export default class MediaAPI extends TempoAPI
             },
         ];
     }
-    getMedia(postId, isEvent, handler)
+    getMedia(postId, permalink, isEvent, handler)
     {
         const data = {
             postId: postId,
-            isEvnt: isEvent
+            postPermalink: permalink,
+            isEvent: isEvent
         };
         this.makeAPICall(this.serviceName, data, handler);
 /*         const dummyResults = {
