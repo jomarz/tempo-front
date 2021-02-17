@@ -18,7 +18,7 @@ export default {
     .media-controls {
         display: flex;
         background-color: black;
-        height: min-content;
+        //height: min-content;
         padding: 5px 0;
         .media-icon {
             box-sizing: content-box;
