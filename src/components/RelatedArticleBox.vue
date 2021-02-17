@@ -1,5 +1,5 @@
 <template>
-    <div class="related-article-box" :articleInfo="articleInfo">
+    <div class="related-article-box" :articleInfo="articleInfo" @click="openContent(articleInfo.permalink, articleInfo.postType)">
         <img :src="articleInfo.imgUrl" alt="">
         <div class="related_title">{{articleInfo.article_title}}</div>
         <p>{{articleInfo.article_subtitle}}</p>
@@ -7,9 +7,21 @@
 </template>
 
 <script>
+import store from '../store/store'
 export default {
     props: {
         articleInfo: { required: true }
+    },
+    methods: {
+        openContent(permalink, postType) {
+            
+            var isEvent = 0;
+            if(postType=='event')   isEvent = 1;
+            store.setArticlePermalink(permalink, isEvent);
+            if (isEvent == 1)   this.$router.push('/evento/'+permalink);
+            else                this.$router.push('/articulo/'+permalink);
+
+        }
     }
 }
 </script>
@@ -17,6 +29,7 @@ export default {
 <style lang="scss" scoped>
     .related-article-box {
         width: 157px;
+        cursor: pointer;
         img {
             width: 100%;
             height: 89px;

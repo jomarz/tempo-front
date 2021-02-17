@@ -211,8 +211,6 @@ export default {
                     comments.value = response.data;
                     commentCount.value = countComments(comments.value);
                 });
-                console.log(content.value.tags);
-                console.log(relatedAPI);
                 relatedAPI.getRelatedPosts(content.value.tags, (response) => {
                     relatedArticles.value = response.data;
                 });
@@ -258,7 +256,7 @@ export default {
                 this.commentCount = this.countComments(this.comments);
             });
         }
-    }
+    },
 }
 </script>
 

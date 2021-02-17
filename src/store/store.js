@@ -35,6 +35,12 @@ export default  {
     toggleArticle() {
         this.showArticle.state = !this.showArticle.state;
     },
+    openArticle() {
+        this.showArticle.state = true;
+    },
+    getShowArticleState() {
+        return this.showArticle.state;
+    },
     toggleSubscribe() {
         this.showSubscribe.state = !this.showSubscribe.state;
     },

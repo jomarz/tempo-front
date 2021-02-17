@@ -36,7 +36,7 @@
   </div>
   <Footer id="footer" />
   <mobile-menu v-if="store.showMobileMenu.state" @toggle="store.toggleMobileMenu()" class="sm-only"/>
-  <article-window v-if="store.showArticle.state" @close-article="closeArticle()" />
+  <article-window v-if="store.showArticle.state" @close-article="closeArticle()" :key="articleKey"/>
   <subscribe-window v-if="store.showSubscribe.state" @toggle="store.toggleSubscribe()" />
 
 </template>
@@ -65,7 +65,7 @@ import MobileMenu from './components/MobileMenu.vue';
 export default {
   name: 'App',
   data() {
-    return { store }
+    return { store, articleKey: 0 }
   },
   setup() {
     const adsAPI = new AdsAPI();
@@ -116,17 +116,34 @@ export default {
         console.log(from);
         console.log(newRoute);
         if(newRoute.params != undefined && newRoute.params.type != undefined && newRoute.params.permalink != undefined)  {
-            var isEvent = 0;
-          if(newRoute.params.type == 'articulo') {
-            store.setArticlePermalink(newRoute.params.permalink, isEvent);
-            store.toggleArticle();
-          } else if (newRoute.params.type == 'evento') {
-            isEvent = 1;
-            store.setArticlePermalink(newRoute.params.permalink, isEvent);
-            store.toggleArticle();
-          } else {
-            this.$router.push('/');
-          }
+            var isEvent = 0; console.log(store.getShowArticleState());
+            if(store.getShowArticleState()) {
+                this.articleKey += 1;
+                /* this.store.toggleArticle();
+                console.log(store.getShowArticleState());
+                if(newRoute.params.type == 'articulo') {
+                    store.setArticlePermalink(newRoute.params.permalink, isEvent);
+                    store.openArticle();
+                } else if (newRoute.params.type == 'evento') {
+                    isEvent = 1;
+                    store.setArticlePermalink(newRoute.params.permalink, isEvent);
+                    store.openArticle();
+                } else {
+                    this.$router.push('/');
+                } */
+            }
+            else {
+                if(newRoute.params.type == 'articulo') {
+                    store.setArticlePermalink(newRoute.params.permalink, isEvent);
+                    store.openArticle();
+                } else if (newRoute.params.type == 'evento') {
+                    isEvent = 1;
+                    store.setArticlePermalink(newRoute.params.permalink, isEvent);
+                    store.openArticle();
+                } else {
+                    this.$router.push('/');
+                }
+            }
         }
         else  console.log('No permalink');
     }
