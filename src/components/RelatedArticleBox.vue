@@ -17,9 +17,10 @@ export default {
 <style lang="scss" scoped>
     .related-article-box {
         width: 157px;
-        margin-right: 20px;
         img {
             width: 100%;
+            height: 89px;
+            object-fit: cover;
             margin-bottom: 8px;
         }
         .related_title {

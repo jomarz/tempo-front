@@ -23,11 +23,14 @@ export default {
     .related-articles {
         display: flex;
         flex-direction: column;
+        margin: 0 13px 0 13px;
         .related-articles-title {
             margin: 35px 0 25px;
         }
         .related-articles-boxes {
             display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
     }
 </style>

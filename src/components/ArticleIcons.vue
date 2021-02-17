@@ -73,8 +73,8 @@ export default {
             justify-content: space-between;
             align-items: center;
             position: absolute;
-            top: -20px;
-            right: -220px;
+            top: -40px;
+            right: -60px;
             background-color: #f3f3f4;
             padding: 2px 5px 5px;
             border-radius: 4px;
