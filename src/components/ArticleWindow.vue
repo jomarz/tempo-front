@@ -284,8 +284,8 @@ export default {
         width: 764px;
         height: 100%;
         overflow: auto;
-        display: flex;
-        flex-direction: column;
+        /* display: flex;
+        flex-direction: column; */
         //align-items: center;
         margin: 0px auto;
         padding: 7px 20px 0px;
@@ -360,6 +360,11 @@ export default {
         align-self: center;
         width: 450px;
         padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+
         p {
             font-size: 0.85rem !important;
         }
