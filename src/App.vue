@@ -148,9 +148,11 @@ export default {
         else  console.log('No permalink');
     }
   }, 
-  mounted() {console.log(this.$route);
-    if(this.$route.params.permalink == "") console.log("Go home");
-    else console.log(this.$route.params.permalink);}
+    mounted() {
+        /* console.log(this.$route);
+        if(this.$route.params.permalink == "") console.log("Go home");
+        else console.log(this.$route.params.permalink); */
+    }
 }
 </script>
 
