@@ -19,7 +19,7 @@
                     <div class="main-article-content">
                         <div class="author-info">
                             <div class="author-pic">
-                                <img v-if="content.authorImgUrl == ''" src="../assets/img/Pictures/user-placeholder.png" alt="">
+                                <img v-if="content.authorImgUrl == ''" src="../assets/img/icons/User_Icon.svg" alt="">
                                 <img v-else src="content.authorImgUrl" alt="">
                             </div>
                             <div class="author-data">
@@ -418,8 +418,8 @@ export default {
             margin-bottom: 20px;;
         }
         .author-pic img {
-            width: 100px;
-            height: 100px;
+            width: 74px;
+            height: 74px;
         }
         .author-data {
             display: flex;
