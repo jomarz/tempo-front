@@ -1,16 +1,18 @@
 <template>
     <div class="content-grid container flex-wrap md-up">
         <template v-for="content in contentList" :key="content">
-            <template v-if="contentType === 'event'">
-                <div class="small-box-container">
-                    <event-small-box :boxContent="content"/>
-                </div>
-            </template>
-            <template v-else-if="contentType === 'article'">
-                <div class="small-box-container">
-                    <article-small-box  :boxContent="content"/>
-                </div>
-            </template>
+            <div>
+                <template v-if="contentType === 'event'">
+                    <div class="small-box-container">
+                        <event-small-box :boxContent="content"/>
+                    </div>
+                </template>
+                <template v-else-if="contentType === 'article'">
+                    <div class="small-box-container">
+                        <article-small-box  :boxContent="content"/>
+                    </div>
+                </template>
+            </div>
         </template>
     </div>
     <div class="mobile-grid">

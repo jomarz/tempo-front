@@ -9,29 +9,10 @@
     <ad-box class="ad-row" :ad="homeAdsList['HOME_EVENTS_BOTTOM_FULL_BANNER']" />
     <videos-section id="videos" />
     <ad-box class="ad-row" :ad="homeAdsList['HOME_VIDEOS_BOTTOM_FULL_BANNER']" />
-    <!-- <div class="container-fluid double-ad-row">
-      <div class="row">
-        <div class="col-12 col-md-9 pl-0 pd-0 pd-md-2">
-          <ad-box class="ad-row" :ad="homeAdsList['HOME_VIDEOS_BOTTOM_LEFT_BANNER']" />
-        </div>
-        <div class="col-12 col-md-3 pr-0 pl-0 pl-md-2">
-          <ad-box class="ad-row" :ad="homeAdsList['HOME_VIDEOS_BOTTOM_RIGHT_SMALL_BANNER']" />
-        </div>
-      </div>
-    </div> -->
     <articles-section id="articles" />
     <ad-box class="ad-row" :ad="homeAdsList['HOME_NEWS_BOTTOM_FULL_BANNER']" />
-    <!-- <div class="container-fluid double-ad-row">
-      <div class="row">
-        <div class="col-12 col-md-9 pl-0 pd-0 pd-md-2">
-          <ad-box class="ad-row" :ad="homeAdsList['HOME_NEWS_BOTTOM_LEFT_SMALL_BANNER']" />
-        </div>
-        <div class="col-12 col-md-3 pr-0 pl-0 pl-md-2">
-          <ad-box class="ad-row" :ad="homeAdsList['HOME_NEWS_BOTTOM_RIGHT_BANNER']" />
-        </div>
-      </div>
-    </div> -->
-    <albums-section id="albums" />
+    <div id="albums-section"></div>
+    <albums-section id="" />
     <ad-box class="ad-row" :ad="homeAdsList['HOME_DISCOGRAPHY_BOTTOM_FULL_BANNER']" />
   </div>
   <Footer id="footer" />

@@ -9,6 +9,7 @@ export default  {
     showContactForm: reactive({ state: false }),
     showMobileMenu: reactive({ state: false }),
     showMobileSearchbox: reactive({ state:false }),
+    eventFilter: reactive({filter: 'none'}),
     featVideo: reactive({
         title: 'Krzysztof Penderecki',
         subtitle: '',
@@ -29,6 +30,10 @@ export default  {
         this.articleData.permalink = permalink;
         this.articleData.id = 0;
         this.articleData.isEvent = isEvent;
+    },
+    setEventFilter(filter) {
+        this.eventFilter.filter = filter; 
+        console.log(this.eventFilter.filter);
     },
     setArticleId(id) {
         this.articleData.id = id;

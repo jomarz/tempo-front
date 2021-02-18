@@ -5,7 +5,7 @@
             <li class="navbar-menu-item"><a href="#concerts" class='navbar-menu-link' data-text='CONCIERTOS'>CONCIERTOS</a></li>
             <li class="navbar-menu-item"><a href="#videos" class='navbar-menu-link' data-text='VIDEOS TEMPO'>VIDEOS TEMPO</a></li>
             <li class="navbar-menu-item"><a href="#articles" class='navbar-menu-link' data-text='ARTÍCULOS/NOTICIAS'>ARTÍCULOS/NOTICIAS</a></li>
-            <li class="navbar-menu-item"><a href="#albums" class='navbar-menu-link' data-text='NOVEDADES DISCOGRÁFICAS'>NOVEDADES DISCOGRÁFICAS</a></li>
+            <li class="navbar-menu-item"><a href="#albums-section" class='navbar-menu-link' data-text='NOVEDADES DISCOGRÁFICAS'>NOVEDADES DISCOGRÁFICAS</a></li>
         </ul>
     </div>
 </template>

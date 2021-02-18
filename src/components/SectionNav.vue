@@ -7,25 +7,19 @@
         </div>
         <div class="section-nav-menu">
             <ul class="nav-menu section-menu">
-                <li class="navbar-menu-item" v-for="menuItem in menuItems" :key="menuItem"><a :href="menuItem.url" class='navbar-menu-link' :data-text="menuItem.text">{{menuItem.text}}</a></li>
+                <li class="navbar-menu-item" v-for="menuItem in menuItems" :key="menuItem"><a href="" class='navbar-menu-link' :data-text="menuItem.text" @click.prevent="store.setEventFilter(menuItem.filter)">{{menuItem.text}}</a></li>
             </ul>
         </div>
-        <!-- <div class="row">
-            <div class="col-2 section-title-container">
-                <h3 class="section-nav-title">{{navTitle}}</h3>
-            </div>
-            <div class="col-10 section-nav-menu">
-                <ul class="nav-menu section-menu">
-                    <li class="navbar-menu-item" v-for="menuItem in menuItems" :key="menuItem"><a :href="menuItem.url" class='navbar-menu-link' :data-text="menuItem.text">{{menuItem.text}}</a></li>
-                </ul>
-            </div>
-        </div> -->
     </div>
     
 </template>
 
 <script>
+import store from '../store/store';
 export default {
+    setup() {
+        return { store }
+    },
     props: {
         navTitle: {
             required: true,

@@ -46,10 +46,10 @@ export default {
     setup() {
         const navTitle = "Conciertos";
         const menuItems = [
-          { text: 'Clásica', url: "#" },
-          { text: 'Ópera', url: "#" },
-          { text: 'Jazz', url: "#" },
-          { text: 'World Music', url: "#" }
+          { text: 'Clásica', url: "#", filter: 'clásica' },
+          { text: 'Ópera', url: "#", filter: 'ópera' },
+          { text: 'Jazz', url: "#", filter: 'jazz' },
+          { text: 'World Music', url: "#", filter: 'world music' }
         ];
         const contentType = "event";
         /* const contentList = [
