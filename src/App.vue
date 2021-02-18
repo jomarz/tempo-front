@@ -38,6 +38,7 @@
   <mobile-menu v-if="store.showMobileMenu.state" @toggle="store.toggleMobileMenu()" class="sm-only"/>
   <article-window v-if="store.showArticle.state" @close-article="closeArticle()" :key="articleKey"/>
   <subscribe-window v-if="store.showSubscribe.state" @toggle="store.toggleSubscribe()" />
+  <contact-form v-if="store.showContactForm.state" @toggle="store.toggleContactForm()" />
 
 </template>
 
@@ -61,6 +62,7 @@ import AdsList from './classes/AdsList';
 
 import SubscribeWindow from './components/SubscribeWindow.vue';
 import MobileMenu from './components/MobileMenu.vue';
+import ContactForm from './components/ContactForm.vue';
 
 export default {
   name: 'App',
@@ -104,6 +106,7 @@ export default {
     ArticleWindow,
     SubscribeWindow,
     MobileMenu,
+    ContactForm,
   },
   methods: {
     closeArticle() {

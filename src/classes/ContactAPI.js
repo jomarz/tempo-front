@@ -1,18 +1,19 @@
 import TempoAPI from './TempoAPI';
 
-export default class SubscribeAPI extends TempoAPI
+export default class ContactAPI extends TempoAPI
 {
     constructor()
     {
         super();
-        this.serviceName = 'insert_subscriber';
+        this.serviceName = 'contact_form';
     }
 
-    sendSubscriptionRequest(email, name, handler)
+    sendContactForm(email, name, message, handler)
     {
         const data = {
             email: email,
-            name: name
+            name: name,
+            message: message
         };
         this.makeAPICall(this.serviceName, data, handler);
     }

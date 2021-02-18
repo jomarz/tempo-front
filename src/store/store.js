@@ -6,6 +6,7 @@ export default  {
     articleData: reactive({ id: 1, permalink: '', isEvent: 0 }),
     showArticle: reactive({ state: false }),
     showSubscribe: reactive({ state: false }),
+    showContactForm: reactive({ state: false }),
     showMobileMenu: reactive({ state: false }),
     showMobileSearchbox: reactive({ state:false }),
     featVideo: reactive({
@@ -43,6 +44,9 @@ export default  {
     },
     toggleSubscribe() {
         this.showSubscribe.state = !this.showSubscribe.state;
+    },
+    toggleContactForm() {
+        this.showContactForm.state = !this.showContactForm.state;
     },
     toggleMobileMenu() {
         this.showMobileMenu.state = !this.showMobileMenu.state;

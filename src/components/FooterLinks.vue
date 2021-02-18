@@ -1,6 +1,6 @@
 <template>
     <div class="footer-links">
-        <a href="#" data-text='Contacto'>Contacto</a>
+        <a href="" @click.prevent="store.toggleContactForm()" data-text='Contacto'>Contacto</a>
         <span class="footer-link-separator"></span>
         <a href="#" data-text='Términos y Condiciones'>Términos y Condiciones</a>
         <span class="footer-link-separator"></span>
@@ -9,7 +9,11 @@
 </template>
 
 <script>
+import store from '../store/store'
 export default {
+    setup() {
+        return { store }
+    }
     
 }
 </script>
