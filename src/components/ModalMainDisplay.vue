@@ -175,6 +175,7 @@ export default {
     .modal-main-display {
         width: 100%;
         display: flex;
+        margin-bottom: 35px;
         .info-box {
             width: 215px;
             height: 292px;
@@ -190,9 +191,10 @@ export default {
         }
         .article-media-controls{
             position: absolute;
-            bottom: 5px;
-            right: 5px;
-            border: solid 1px white;
+            bottom: -34px;
+            right: 0px;
+            /* border: solid 1px white; */
+            border-top: solid 1px white;
         }
         * {box-sizing:border-box}
 
