@@ -27,6 +27,7 @@ export default {
         padding: 10px 10px;
         background-color: #f3f3f4;
         .receive-button.article-cta-button {
+            font-family: 'Playfair display';
             font-size: 0.75rem;
             padding: 5px 10px;
             margin-left: 0;
