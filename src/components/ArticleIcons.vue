@@ -13,13 +13,17 @@
             <img src="..\assets\img\icons\ComentariosIcon.svg" alt="" class="article-icon clickable" @click="$emit('toggle-article-comments')" >
             <div class="article-icons-count">{{commentCount}}</div>
         </div>
-        <div class="article-share article-icons-element">
+            <div class="share-icons">
+                <a :href="'https://www.facebook.com/sharer/sharer.php?u=' + store.siteURL + $route.fullPath" target="blank" ><img src="..\assets\img\icons\Facebook.svg" alt="facebook"></a>
+                <a :href="'https://twitter.com/intent/tweet?url=' + store.siteURL + $route.fullPath" target="blank" ><img src="..\assets\img\icons\Twitter.svg" alt="twitter"></a>
+            </div>   
+        <!-- <div class="article-share article-icons-element">
             <img src="..\assets\img\icons\ShareIcon.svg" alt="" class="article-icon clickable" @click="displayShareIcons()" >
             <div v-if="showShareIcons" class="share-icons">
                 <a :href="'https://www.facebook.com/sharer/sharer.php?u=' + store.siteURL + $route.fullPath" target="blank" ><img src="..\assets\img\icons\Facebook.svg" alt="facebook"></a>
                 <a :href="'https://twitter.com/intent/tweet?url=' + store.siteURL + $route.fullPath" target="blank" ><img src="..\assets\img\icons\Twitter.svg" alt="twitter"></a>
             </div>   
-        </div>
+        </div> -->
     </div>    
 </template>
 
@@ -72,16 +76,16 @@ export default {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: absolute;
+            /* position: absolute;
             top: -40px;
-            right: -60px;
-            background-color: #f3f3f4;
-            padding: 2px 5px 5px;
+            right: -60px; */
+            /* background-color: #f3f3f4; */
+            //padding: 2px 5px 5px;
             border-radius: 4px;
             img {
                 width: 20px;
                 height: 20px;
-                margin: 0 10px;
+                margin: 0 30px 0 0;
                 object-fit: contain;
             }
         }
