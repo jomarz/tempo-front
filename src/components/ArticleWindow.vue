@@ -27,8 +27,12 @@
                                 <div class="author-job-title">{{content.authorJobTitle}}</div>
                             </div>
                         </div>
-                        <template v-for="(element, index) in content.contents" :key="element.id">
+                        <div v-for="(element, index) in content.contents" :key="element.id">
                             <ad-box v-if="index==content.contents.length-1" :ad="articleAdsList['ARTICLE_BODY_BOTTOM_FULL_BANNER']" class="ad-row" />
+                            <div v-if="index == index2ndParagraph" class="article-body-add">
+                                <img src="https://tempo.wittrees.com/media/imgTest/11215670141163291475.png" alt="">
+                                <img src="https://tempo.wittrees.com/media/imgTest/sociosalmayor-banners.png" alt="">
+                            </div>
                             <p v-if="element.contentType == 'p'" class="article-text" v-html="element.html" ></p>
                             <h2 v-else-if="element.contentType == 'h2'" class="article-text">{{element.html}}</h2>
                             <h3 v-else-if="element.contentType == 'h3'" class="article-text">{{element.html}}</h3>
@@ -38,7 +42,7 @@
                             <ol v-else-if="element.contentType == 'ol'" class="article-text">
                                 <li v-for="(item, index) in JSON.parse(element.html)" :key="index" v-html="item" ></li>
                             </ol>
-                        </template>
+                        </div>
                         <article-icons @toggle-article-comments="toggleArticleComments()" :views="content.views" :likes="likesCount" :commentCount="commentCount" :postIsLiked="postIsLiked" @like-post="likePost()" />
                         <article-comments v-if="showComments" :comments="comments" @toggle-article-comments="toggleArticleComments()" @update-comments="updateComments()" />
                         <comment-respond class="main-comment-input" @update-comments="updateComments()" />
@@ -257,6 +261,19 @@ export default {
             });
         }
     },
+    computed: {
+        index2ndParagraph()
+        {
+            var paragraphCount = 0;
+            this.content.contents.forEach((element, index) => {
+                if(element.contentType == 'p') {
+                    paragraphCount ++;
+                    if(paragraphCount == 2) return index;
+                }
+            });
+            return 1;
+        }
+    }
 }
 </script>
 
@@ -299,6 +316,17 @@ export default {
         .main-article-content {
             .ad-row {
                 height: 90px;
+            }
+            .article-body-add {
+                float: left;
+                display: flex;
+                flex-direction: column;
+            }
+            .article-body-add img {
+                width: 135px; 
+                height: 90px; 
+                margin: 5px 18px 15px 0;
+                object-fit: cover;
             }
         }
         .ad-article-full {
@@ -350,6 +378,7 @@ export default {
         font-weight: 400;
     }
     .text-sub{
+        line-height: 0.95rem;
         font-size: 0.75rem !important;
         font-family: 'Roboto', sans-serif;
         font-weight: 300;
@@ -364,8 +393,10 @@ export default {
         margin-left: auto;
         margin-right: auto;
 
-        p {
-            font-size: 0.85rem !important;
+        p {    
+            line-height: 0.95rem;
+            font-size: 0.75rem !important;
+            text-align: justify;
         }
         h1 ,h2 {
             margin-top: 10px;
