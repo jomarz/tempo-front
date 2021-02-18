@@ -11,7 +11,7 @@
                         <p>Recibe gratis nuestro boletin de las ultimas noticias del mundo de la musica.</p>
                         <div class="subscribe-form">
                             <input type="text" v-model="name" name="name" placeholder="Nombre">
-                            <input type="text" v-model="email" name="email" placeholder="Email">
+                            <input type="text" v-model="email" name="email" placeholder="Correo electrónico">
                             <button @click="subscribeToNewsletter()">ENVIAR</button>
                         </div>
                     </div>  
@@ -95,10 +95,31 @@ export default {
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-        button[type=submit] {
-            margin: 20px 0 10px;
-        }
+            button {
+                width: 190px;
+                margin: 20px 0 10px;
+                padding: 7px 5px 5px;
+                font-size: 0.8rem;
+                font-weight: 400;
+            }
+            input {
+                text-align: center;
+            }
+            ::-webkit-input-placeholder { /* Edge */
+                color: #278de2;
+                font-size: 0.5rem;
+            }
+
+            :-ms-input-placeholder { /* Internet Explorer 10-11 */
+                color: #278de2;
+                font-size: 0.5rem;
+            }
+
+            ::placeholder {
+                color: #278de2;
+                font-size: 0.8rem;
+            }
+        }        
     }
     .close-row {
         width: 100%;
