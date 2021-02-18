@@ -17,5 +17,8 @@ export default {
 <style lang="scss" scoped>
     .subscribe-button {
         display: inline-block;
+        button {
+            padding: 3px 0 1px;
+        }
     }
 </style>
