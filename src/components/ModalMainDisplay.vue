@@ -8,10 +8,10 @@
             <!-- Slideshow container -->
             <div class="slideshow-container">
                 <template v-for="media in mediaFullList" :key="media.mediaId">
-                    <div v-if="media.mediaType=='imgUrl'" class="mySlides fades media-img">
+                    <div v-if="media.mediaType=='imgUrl'" class="mySlides fades media-img" :class="hideSlides">
                         <img :src="media.url" style="width:100%">
                     </div>
-                    <div v-else-if="media.mediaType=='video'" class="mySlides fades media-video">
+                    <div v-else-if="media.mediaType=='VideoUrl'" class="mySlides fades media-video">
                         <iframe :src="media.url" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div v-else-if="media.mediaType=='audio'" class="mySlides fades media-audio">
@@ -68,25 +68,26 @@ export default {
         const emptyMedia = [
             {
                 mediaId: 1,
-                mediaType: "video",
+                mediaType: "VideoUrl",
                 url: ''
             },
         ];
         var mediaFullList = ref(emptyMedia);
+        var hideSlides = ref(true);
         const dummy = [
             {
                 mediaId: 1,
-                mediaType: "video",
+                mediaType: "VideoUrl",
                 url: 'https://www.youtube.com/embed/UL1qpV6YtAE'
             },
             {
                 mediaId: 2,
-                mediaType: "video",
+                mediaType: "VideoUrl",
                 url: 'https://www.youtube.com/embed/lGRwO9Dle6E'
             },
             {
                 mediaId: 3,
-                mediaType: "video",
+                mediaType: "VideoUrl",
                 url: 'https://www.youtube.com/embed/_x2QIJyxJQA'
             },
             {
@@ -110,31 +111,18 @@ export default {
                 url: 'https://open.spotify.com/embed/playlist/37i9dQZEVXbKrooeK9WSFF?height=300&amp;theme-id=0&amp;default-tab=css,result&amp;embed-version=2o.wittrees.com/media/imgTest/190711-190430.png'
             },
         ];
-        /* function showSlide(n) {
-            var i;
-            var slides = document.getElementsByClassName("mySlides");
-            //var dots = document.getElementsByClassName("dot");
-            if (n > slides.length) {this.slideIndex = 1}
-            if (n < 1) {this.slideIndex = slides.length}
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slides[this.slideIndex-1].style.display = "block";
-        } */
         const mediaAPI = new MediaAPI();
         mediaAPI.getMedia(store.articleData.id, store.articleData.permalink, store.articleData.isEvent, (data) => {
             if(data.data == null)   {
                 mediaFullList.value = dummy;
                 }
             else {
-                mediaFullList.value = dummy;console.log(data.data);
-                //mediaFullList.value = data.data.mediaComponents;
-                console.log(document.getElementsByClassName("mySlides"));
-                //showSlide(2);
+                mediaFullList.value = data.data.mediaComponents;
+                hideSlides.value = true;
             }
         });
         /* mediaFullList.value = mediaAPI.getDummyMedia(); */
-        return { slideIndex, mediaFullList }
+        return { slideIndex, mediaFullList, hideSlides }
     },
     methods: {
         // Next/previous controls
@@ -217,9 +205,9 @@ export default {
             }
         }
 
-        /* Hide the images by default */
-        .mySlides {
-        display: none;
+        /* Class used to hide the slides by default */
+        .hideSlides {
+            display: none;
         }
 
         /* Next & previous buttons */
