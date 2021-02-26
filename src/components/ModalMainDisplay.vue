@@ -14,6 +14,9 @@
                     <div v-else-if="media.mediaType=='video'" class="mySlides fades media-video">
                         <iframe :src="media.url" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
+                    <div v-else-if="media.mediaType=='audio'" class="mySlides fades media-audio">
+                        <iframe :src="media.url" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
 
                 </template>
 
@@ -104,7 +107,7 @@ export default {
             {
                 mediaId: 7,
                 mediaType: "audio",
-                url: 'https://temphttps://open.spotify.com/embed/playlist/37i9dQZEVXbKrooeK9WSFF?height=300&amp;theme-id=0&amp;default-tab=css,result&amp;embed-version=2o.wittrees.com/media/imgTest/190711-190430.png'
+                url: 'https://open.spotify.com/embed/playlist/37i9dQZEVXbKrooeK9WSFF?height=300&amp;theme-id=0&amp;default-tab=css,result&amp;embed-version=2o.wittrees.com/media/imgTest/190711-190430.png'
             },
         ];
         /* function showSlide(n) {
@@ -124,7 +127,7 @@ export default {
                 mediaFullList.value = dummy;
                 }
             else {
-                mediaFullList.value = dummy;
+                mediaFullList.value = dummy;console.log(data.data);
                 //mediaFullList.value = data.data.mediaComponents;
                 console.log(document.getElementsByClassName("mySlides"));
                 //showSlide(2);
