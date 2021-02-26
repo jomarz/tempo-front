@@ -11,7 +11,7 @@
                         <div v-else class="modal-content-type">ARTÍCULOS</div>
                     </div>
                     <div class="title-row">
-                        <h3>{{content.title}}</h3>
+                        <h3 v-html="content.title"></h3>
                         <div class="modal-content-subtitle" v-html="content.subtitle" ></div>
                     </div>
                     <modal-main-display :contentId="contentId" :isEvent="store.articleData.isEvent" :contentType="contentType" :content="content" class="" />
@@ -34,8 +34,8 @@
                                 <img src="https://tempo.wittrees.com/media/imgTest/sociosalmayor-banners.png" alt="">
                             </div>
                             <p v-if="element.contentType == 'p'" class="article-text" v-html="element.html" ></p>
-                            <h2 v-else-if="element.contentType == 'h2'" class="article-text">{{element.html}}</h2>
-                            <h3 v-else-if="element.contentType == 'h3'" class="article-text">{{element.html}}</h3>
+                            <h2 v-else-if="element.contentType == 'h2'" class="article-text" v-html="element.html"></h2>
+                            <h3 v-else-if="element.contentType == 'h3'" class="article-text" v-html="element.html"></h3>
                             <ul v-else-if="element.contentType == 'ul'" class="article-text">
                                 <li v-for="(item, index) in JSON.parse(element.html)" :key="index" v-html="item" ></li>
                             </ul>
@@ -201,7 +201,7 @@ export default {
         var commentCount = ref(0);
         var likesCount = ref(0);
         postContentAPI.getContent(store.articleData.id, store.articleData.permalink, store.articleData.isEvent, (data) => {
-            if(data.data != null) {
+            if(data.data != null) {console.log(data.data);
                 content.value = data.data;
                 // Create reactive likes-count variable
                 likesCount.value = content.value.likes;
