@@ -36,6 +36,7 @@
                             <p v-if="element.contentType == 'p'" class="article-text" v-html="element.html" ></p>
                             <h2 v-else-if="element.contentType == 'h2'" class="article-text" v-html="element.html"></h2>
                             <h3 v-else-if="element.contentType == 'h3'" class="article-text" v-html="element.html"></h3>
+                            <div v-else-if="element.contentType == 'highlightP'" class="article-text-highlight" v-html="element.html"></div>
                             <ul v-else-if="element.contentType == 'ul'" class="article-text">
                                 <li v-for="(item, index) in JSON.parse(element.html)" :key="index" v-html="item" ></li>
                             </ul>
@@ -404,6 +405,13 @@ export default {
         }
         h3 {
             margin-bottom: 20px;
+        }
+        .article-text-highlight {
+            font-family: 'Playfair display';
+            font-size: 0.9rem !important;
+            line-height: 1.2rem;
+            margin: 0 1.5rem 1rem;
+            text-align: center;
         }
         ul li, ol li {
             font-size: 0.85rem !important;
