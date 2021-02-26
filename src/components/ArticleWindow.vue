@@ -43,6 +43,11 @@
                             <ol v-else-if="element.contentType == 'ol'" class="article-text">
                                 <li v-for="(item, index) in JSON.parse(element.html)" :key="index" v-html="item" ></li>
                             </ol>
+                            <table v-if="element.contentType == 'table'" class="article-text-table">
+                                <tr v-for="(row, index) in element.html" :key="index">
+                                    <td v-for="(tableCell, index) in row" :key="index" v-html="tableCell"></td>
+                                </tr>
+                            </table>
                         </div>
                         <article-icons @toggle-article-comments="toggleArticleComments()" :views="content.views" :likes="likesCount" :commentCount="commentCount" :postIsLiked="postIsLiked" @like-post="likePost()" />
                         <article-comments v-if="showComments" :comments="comments" @toggle-article-comments="toggleArticleComments()" @update-comments="updateComments()" />
@@ -203,7 +208,16 @@ export default {
         var likesCount = ref(0);
         postContentAPI.getContent(store.articleData.id, store.articleData.permalink, store.articleData.isEvent, (data) => {
             if(data.data != null) {console.log(data.data);
-                content.value = data.data;
+                console.log(content.value);
+                let tempContent = data.data;
+                tempContent.contents.forEach((element, index) => {
+                    if(element.contentType === 'table') {
+                        console.log(JSON.parse(element.html));
+                        console.log(index);
+                        tempContent.contents[index].html = JSON.parse(element.html);
+                    }
+                });
+                content.value = tempContent;
                 // Create reactive likes-count variable
                 likesCount.value = content.value.likes;
                 // Assign month name
@@ -412,6 +426,12 @@ export default {
             line-height: 1.2rem;
             margin: 0 1.5rem 1rem;
             text-align: center;
+        }
+        .article-text-table {
+            margin: 0 auto 1rem;
+            td:not(:first-of-type) {
+                padding-left: 25px;
+            }
         }
         ul li, ol li {
             font-size: 0.85rem !important;
