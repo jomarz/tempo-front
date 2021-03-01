@@ -178,6 +178,7 @@ export default {
             position: relative;
             width: 504px;
             height: 292px;
+            margin-left: 3px;
             background-color: gray;
         }
         .article-media-controls{
@@ -296,6 +297,7 @@ export default {
             .media-box {
                 width: 100%;
                 height: 220px;
+                margin-left: 0;
                 background-color: gray;
             }
         }
