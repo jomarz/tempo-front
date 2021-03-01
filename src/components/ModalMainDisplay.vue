@@ -6,16 +6,16 @@
         </div>
         <div class="media-box">
             <!-- Slideshow container -->
-            <div class="slideshow-container">
-                <template v-for="media in mediaFullList" :key="media.mediaId">
-                    <div v-if="media.mediaType=='imgUrl'" class="mySlides fades media-img" :class="hideSlides">
+            <div class="slideshow-container" :class="hideSlides">
+                <template v-for="(media, index) in mediaFullList" :key="media.mediaId">
+                    <div v-if="media.mediaType=='imgUrl'" class="mySlides fades media-img" :class="{firstslide: index==0}">
                         <img :src="media.url" style="width:100%">
                     </div>
-                    <div v-else-if="media.mediaType=='VideoUrl'" class="mySlides fades media-video">
+                    <div v-else-if="media.mediaType=='VideoUrl'" class="mySlides fades media-video" :class="{firstslide: index==0}">
                         <iframe :src="media.url" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
-                    <div v-else-if="media.mediaType=='audio'" class="mySlides fades media-audio">
-                        <iframe :src="media.url" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div v-else-if="media.mediaType=='playlistUrl'" class="mySlides fades media-audio" :class="{firstslide: index==0}">
+                        <iframe :src="media.url" frameborder="0" allowtransparency="true" allow="encrypted-media;" allowfullscreen></iframe>
                     </div>
 
                 </template>
@@ -74,7 +74,7 @@ export default {
         ];
         var mediaFullList = ref(emptyMedia);
         var hideSlides = ref(true);
-        const dummy = [
+        /* const dummy = [
             {
                 mediaId: 1,
                 mediaType: "VideoUrl",
@@ -107,18 +107,18 @@ export default {
             },
             {
                 mediaId: 7,
-                mediaType: "audio",
+                mediaType: "playlistUrl",
                 url: 'https://open.spotify.com/embed/playlist/37i9dQZEVXbKrooeK9WSFF?height=300&amp;theme-id=0&amp;default-tab=css,result&amp;embed-version=2o.wittrees.com/media/imgTest/190711-190430.png'
             },
-        ];
+        ]; */
         const mediaAPI = new MediaAPI();
         mediaAPI.getMedia(store.articleData.id, store.articleData.permalink, store.articleData.isEvent, (data) => {
             if(data.data == null)   {
-                mediaFullList.value = dummy;
+                //mediaFullList.value = dummy;
                 }
             else {
                 mediaFullList.value = data.data.mediaComponents;
-                hideSlides.value = true;
+                hideSlides.value = false;
             }
         });
         /* mediaFullList.value = mediaAPI.getDummyMedia(); */
@@ -133,7 +133,7 @@ export default {
         currentSlide(n) {
             this.showSlides(this.slideIndex = n);
         },
-        showSlides(n) {
+        showSlides(n) {console.log(this.mediaFullList);
             var i;
             var slides = document.getElementsByClassName("mySlides");
             //var dots = document.getElementsByClassName("dot");
@@ -153,11 +153,13 @@ export default {
         },
         jumpToMediaType(mediaType) {
             const newIndex = this.getFirstOfType(mediaType);
-            this.currentSlide(newIndex+1);
+            if(newIndex != -1)  this.currentSlide(newIndex+1);
         }
     },
     mounted() {
-        this.showSlides(this.slideIndex);
+        console.log(this.slideIndex);
+        console.log(this.mediaFullList);
+        //this.showSlides(this.slideIndex);
     }
 }
 </script>
@@ -210,7 +212,9 @@ export default {
         .hideSlides {
             display: none;
         }
-
+        .mySlides:not(.firstslide) {
+            display: none;
+        }
         /* Next & previous buttons */
         .prev, .next {
         cursor: pointer;
