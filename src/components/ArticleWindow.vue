@@ -48,6 +48,7 @@
                                     <td v-for="(tableCell, index) in row" :key="index" v-html="tableCell"></td>
                                 </tr>
                             </table>
+                            <hr v-else-if="element.contentType == 'separator'" class="article-text-separator" />
                         </div>
                         <article-icons @toggle-article-comments="toggleArticleComments()" :views="content.views" :likes="likesCount" :commentCount="commentCount" :postIsLiked="postIsLiked" @like-post="likePost()" />
                         <article-comments v-if="showComments" :comments="comments" @toggle-article-comments="toggleArticleComments()" @update-comments="updateComments()" />
@@ -432,6 +433,9 @@ export default {
             td:not(:first-of-type) {
                 padding-left: 25px;
             }
+        }
+        .article-text-separator {
+            margin: 0 0 1rem;
         }
         ul li, ol li {
             font-size: 0.85rem !important;
