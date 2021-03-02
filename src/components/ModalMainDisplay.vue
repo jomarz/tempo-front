@@ -17,6 +17,9 @@
                     <div v-else-if="media.mediaType=='playlistUrl'" class="mySlides fades media-audio" :class="{firstslide: index==0}">
                         <iframe :src="media.url" frameborder="0" allowtransparency="true" allow="encrypted-media;" allowfullscreen></iframe>
                     </div>
+                    <div v-else-if="media.mediaType=='timeLineUrl'" class="mySlides fades media-audio" :class="{firstslide: index==0}">
+                        <img :src="media.url" >
+                    </div>
 
                 </template>
 

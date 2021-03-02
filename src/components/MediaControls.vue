@@ -4,7 +4,7 @@
         <img src="../assets/img/icons/Media-Pictures.svg" alt="" class="media-icon" @click="$emit('jump-to-type', 'imgUrl')">
         <img src="../assets/img/icons/Media-Play.svg" alt="" class="media-icon" @click="$emit('jump-to-type', 'playlistUrl')">
         <img src="../assets/img/icons/Media-Radio.svg" alt="" class="media-icon" @click="$emit('jump-to-type', 'podcast')">
-        <img src="../assets/img/icons/Media-Information.svg" alt="" class="media-icon" @click="$emit('jump-to-type', 'info')">
+        <img src="../assets/img/icons/Media-Information.svg" alt="" class="media-icon" @click="$emit('jump-to-type', 'timeLineUrl')">
     </div>
 </template>
 
