@@ -48,7 +48,7 @@ export default {
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            border: 2px solid #fff;
+            border: 3px solid #f3f3f4;
             height: 75px;
             width: 75px;
             border-radius: 50%;
