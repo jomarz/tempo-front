@@ -56,6 +56,7 @@ export default {
         }
         .featured-info-box {
             display: flex;
+            justify-content: center;
             background-color: #0d273b
         }
         .featured-image-box {
