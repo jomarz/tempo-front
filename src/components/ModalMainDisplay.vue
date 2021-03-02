@@ -61,15 +61,18 @@ export default {
         },
         isEvent: {
             required: true
+        },
+        featuredImg: {
+            type: String
         }
     },
-    setup() {
+    setup(props) {
         var slideIndex = 1;
         const emptyMedia = [
             {
                 mediaId: 1,
-                mediaType: "VideoUrl",
-                url: ''
+                mediaType: "imgUrl",
+                url: props.featuredImg
             },
         ];
         var mediaFullList = ref(emptyMedia);
@@ -194,11 +197,20 @@ export default {
 
         /* Slideshow container */
         .slideshow-container {
-        max-width: 1000px;
-        height: 100%;
-        position: relative;
-        margin: auto;
-        overflow: hidden;
+            max-width: 1000px;
+            height: 100%;
+            position: relative;
+            margin: auto;
+            overflow: hidden;
+            .media-img {
+                width: 100%;
+                height: 100%;
+                img {    
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
             iframe {
                 position: absolute;
                 top: 0;
