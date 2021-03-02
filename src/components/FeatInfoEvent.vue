@@ -40,6 +40,18 @@ export default {
             overflow: hidden;
         }
     }
+    .home-main.feat-info-event {
+        .feat-event-title {
+            max-width: 300px;
+        }
+    }
+    .article-modal-info.feat-info-event {
+        .feat-event-title {
+            max-width: 190px;
+            font-size: 1.35rem !important;
+            line-height: normal;
+        }
+    }
     @media only screen and (min-width: 768px) {
         .feat-info-event .feat-event-title {
             font-size: 1.8rem !important;

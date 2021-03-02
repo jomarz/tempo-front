@@ -66,8 +66,8 @@ export default {
     }
 
     .home-main.feat-info-event {
-        .feat-event-title {
-            max-width: 300px;
+        .feat-event-name {
+            min-height: 1.1rem;
         }
         .feat-info-box {
             margin-top: 25px;
@@ -79,7 +79,7 @@ export default {
             font-size: 0.8rem !important;
         }
         a.feat-event-link {
-            font-size: 0.8rem !important;
+            font-size: 0.6rem !important;
         }
         .feat-info-box td {
             padding-top: 2px;
@@ -96,12 +96,10 @@ export default {
     }
 
     .article-modal-info.feat-info-event {
-        .feat-event-title {
-            max-width: 190px;
-            font-size: 1.5rem !important;
-        }
         .feat-event-name {
-            font-size: 0.9rem !important;
+            font-size: 0.75rem !important;
+            min-height: 0.85rem;
+            line-height: normal;
         }
         .feat-event-day {
             font-size: 1.1rem !important;
@@ -111,13 +109,15 @@ export default {
             margin-top: 25px;
         }
         .feat-event-month {   
-            font-size: 0.7rem !important;
+            font-size: 0.65rem !important;
+            line-height: normal;
         }
         .feat-event-location {   
-            font-size: 0.7rem !important;
+            font-size: 0.55rem !important;
+            line-height: normal;
         }
         a.feat-event-link {
-            font-size: 0.8rem !important;
+            font-size: 0.55rem !important;
         }
         .feat-info-box td {
             padding-top: 2px;
@@ -140,20 +140,21 @@ export default {
             height: 1.2rem;
         }
         .feat-event-name {
-            font-size: 0.9rem !important;
+            font-size: 0.75rem !important;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            min-height: 0.85rem;
         }
         .feat-event-month {   
-            font-size: 0.7rem !important;
+            font-size: 0.65rem !important;
             font-family: 'Roboto', sans-serif;
             color: white;
             font-weight: 700;
         }
         .feat-event-location {   
-            font-size: 0.7rem !important;
+            font-size: 0.55rem !important;
             font-family: 'Roboto', sans-serif;
             color: white;
             font-weight: 300;
@@ -164,7 +165,7 @@ export default {
             overflow: hidden;
         }
         a.feat-event-link {
-            font-size: 0.7rem !important;
+            font-size: 0.55rem !important;
             font-family: 'Roboto', sans-serif;
             font-weight: 700;
             color: #ffc828;
