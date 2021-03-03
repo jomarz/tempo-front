@@ -1,8 +1,8 @@
 <template>
     <div class="related-article-box" :articleInfo="articleInfo" @click="openContent(articleInfo.permalink, articleInfo.postType)">
         <img :src="articleInfo.imgUrl" alt="">
-        <div class="related_title">{{articleInfo.article_title}}</div>
-        <p>{{articleInfo.article_subtitle}}</p>
+        <div class="related-title">{{articleInfo.article_title}}</div>
+        <p class="related-description">{{articleInfo.article_subtitle}}</p>
     </div>    
 </template>
 
@@ -36,9 +36,13 @@ export default {
             object-fit: cover;
             margin-bottom: 8px;
         }
-        .related_title {
+        .related-title {
             font-size: 0.9rem;
+            line-height: 1.15rem;
             margin: 0 0 5px;
+        }
+        .related-description {
+            line-height: normal;
         }
     }
 </style>
