@@ -9,7 +9,12 @@ export default  {
     showContactForm: reactive({ state: false }),
     showMobileMenu: reactive({ state: false }),
     showMobileSearchbox: reactive({ state:false }),
-    eventFilter: reactive({filter: 'none'}),
+    eventFilter: reactive({ applyFilter: false, filter: '' }),
+    articleFilter: reactive({ applyFilter: false, filter: '' }),
+    sectionFilter: reactive({
+        events: { applyFilter: false, filter: '' },
+        articles: { applyFilter: false, filter: '' }
+    }),
     featVideo: reactive({
         title: 'Krzysztof Penderecki',
         subtitle: '',
@@ -31,9 +36,9 @@ export default  {
         this.articleData.id = 0;
         this.articleData.isEvent = isEvent;
     },
-    setEventFilter(filter) {
-        this.eventFilter.filter = filter; 
-        console.log(this.eventFilter.filter);
+    setSectionFilter(section, filter) {
+        this.sectionFilter[section].applyFilter = true;
+        this.sectionFilter[section].filter = filter;
     },
     setArticleId(id) {
         this.articleData.id = id;

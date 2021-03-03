@@ -7,7 +7,7 @@
         </div>
         <div class="section-nav-menu">
             <ul class="nav-menu section-menu">
-                <li class="navbar-menu-item" v-for="menuItem in menuItems" :key="menuItem"><a href="" class='navbar-menu-link' :data-text="menuItem.text" @click.prevent="store.setEventFilter(menuItem.filter)">{{menuItem.text}}</a></li>
+                <li class="navbar-menu-item" v-for="menuItem in menuItems" :key="menuItem"><a href="" class='navbar-menu-link' :data-text="menuItem.text" @click.prevent="store.setSectionFilter(section, menuItem.filter)">{{menuItem.text}}</a></li>
             </ul>
         </div>
     </div>
@@ -27,6 +27,9 @@ export default {
         },
         menuItems: {
             type: Array
+        },
+        section: {
+            type: String
         }
     }
     
