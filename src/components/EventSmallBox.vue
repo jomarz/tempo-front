@@ -17,8 +17,8 @@
                         <td class="box-info-left-col event-day-cell">
                             <h4>{{boxContent.day}}</h4>
                         </td>
-                        <td class="box-info-right-col">
-                            <span class="box-month">{{boxContent.month}}</span>
+                        <td class="box-info-right-col box-info-content-cell">
+                            <span class="box-month">DE {{boxContent.monthName}}, {{boxContent.year}}</span>
                             <span class="box-location">{{boxContent.location}}</span>
                             <div class="box-text-container">
                                 <p class="box-text">{{boxContent.description}}</p>
@@ -70,10 +70,10 @@ export default {
             }
             .box-info-table tr.box-info-top-row {
                 border-bottom: 2px solid #d1d3d4;
-                height: 40px;
+                height: 36px;
             }
             .box-info-table tr.box-info-bottom-row {
-                height: 94px;
+                height: 98px;
             }
             .box-info-table td.box-info-left-col {
                 width: 34px;
@@ -92,17 +92,30 @@ export default {
             .event-day-cell {
                 text-align: end;
             }
+            .box-info-content-cell {
+                padding-top: 4px;
+            }
             .event-title {
+                font-size: 0.75rem !important;
+                line-height: 0.85rem;
                 display: -webkit-box;
                 -webkit-line-clamp: 1;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
             }
             .box-subtitle {
+                font-size: 0.6rem !important;
                 display: -webkit-box;
                 -webkit-line-clamp: 1;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
+            }
+            .box-month {
+                font-size: 0.55rem !important;
+            }
+            .box-location {
+                font-size: 0.55rem !important;
+                line-height: 0.65rem;
             }
             p.box-text {
                 display: -webkit-box;
@@ -110,6 +123,15 @@ export default {
                 -webkit-box-orient: vertical;
                 overflow: hidden;
             }
+            .more-link {
+                font-size: 0.5rem !important;
+                line-height: 0.6rem;
+            }
+        }
+    }
+    @media only screen and (max-width: 767px) {
+        .event-small-box {
+            margin-bottom: 5px;
         }
     }
 </style>

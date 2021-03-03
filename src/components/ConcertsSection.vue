@@ -60,7 +60,8 @@ export default {
         const getEvents = function(year, month)
         {
             eventsAPI.getMonthEvents(year, month, (data) => { 
-                contentUnfilteredFullList.value = Lister.assignDay(data.data);
+                contentUnfilteredFullList.value = Lister.assignDateFields(data.data);
+                console.log(contentUnfilteredFullList.value);
                 store.eventsCarousel.setNumPages(data.data.length);
                 });
         }
@@ -87,10 +88,8 @@ export default {
         contentFullList: function() {
             if(store.sectionFilter.events.applyFilter) {
                 var filteredContent = this.contentUnfilteredFullList.filter( element => {
-                    console.log(element.musicGenre);
                     return element.musicGenre.includes(store.sectionFilter.events.filter);
                 });
-                console.log(filteredContent);
                 return filteredContent;
             }
             return this.contentUnfilteredFullList;
