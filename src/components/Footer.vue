@@ -2,15 +2,19 @@
     <div class="footer">
         <div class="footer-content container">
             <div class="row">
-                <div class="col-12 col-md-10 footer-content-col">
+                <div class="col-12 col-lg-10 footer-content-col">
                     <div class="footer-main">
-                        <footer-subscribe />
+                        <footer-subscribe/>
+                        <div class="mobile-footer-logo-social md-down">
+                            <img src="../assets/img/tempo_logo.svg" alt="" class="footer-logo only-sm">
+                            <footer-social class=""/>
+                        </div>
                         <footer-links />
                         <div class="footer-separator"></div>
                         <footer-copyright />
                     </div>
                 </div>
-                <div class="col-12 col-md-2 footer-right">
+                <div class="col-12 col-lg-2 footer-right lg-up">
                     <img src="../assets/img/tempo_logo.svg" alt="" class="footer-logo">
                     <footer-social />
                 </div>
@@ -41,7 +45,8 @@ export default {
                 .footer-main {
                     display: flex;
                     flex-direction: column;
-                    width: 650px;
+                    width: 100%;
+                    max-width: 650px;
                     .footer-separator {
                         width: 100%;
                         border-top: 1px solid #d1d3d4;
@@ -49,6 +54,12 @@ export default {
                     .footer-copyright {
                         align-self: center;
                         margin-top: 8px;
+                    }
+                    .mobile-footer-logo-social {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        margin: 20px 0 0;
                     }
                 }
             }
@@ -65,4 +76,10 @@ export default {
             margin-top: 7px;
         }
     }
+    @media only screen and (max-width: 767px) {
+        .footer {
+            padding: 30px 0 20px;
+        }
+    }
+    
 </style>

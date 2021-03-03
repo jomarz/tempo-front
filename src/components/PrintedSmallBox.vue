@@ -1,17 +1,17 @@
 <template>
     <div class="printed-small-box">
         <div class="printed-thumbnail">
-            <img :src="printedElement.imgUrl" alt="">
+            <img :src="boxContent.imgUrl" alt="">
         </div>
-        <div class="printed-box-title">{{printedElement.title}}</div>
-        <p class="printed-box-text">{{printedElement.text}}</p>
+        <div class="printed-box-title">{{boxContent.title}}</div>
+        <p class="printed-box-text">{{boxContent.description}}</p>
     </div>    
 </template>
 
 <script>
 export default {
     props: {
-        printedElement: {
+        boxContent: {
             required: true,
             type: Object
         }
@@ -21,7 +21,8 @@ export default {
 
 <style lang="scss" scoped>
     .printed-small-box {
-        width: 209px;
+        max-width: 209px;
+        padding: 0 5px 0 0;
         .printed-thumbnail img {
             width: 136px;
             height: 192px;
@@ -40,6 +41,12 @@ export default {
             margin-bottom: 7px;
             max-height: 1.54rem;
             overflow: hidden;
+        }
+    }
+    @media only screen and (max-width: 767px) {
+        .printed-small-box {
+            margin-right: 25px;
+            padding: 0;
         }
     }
 </style>

@@ -1,5 +1,6 @@
 <template>
-    <a class="more-link" href="" @click.prevent="setArticle(contentName)">VER MÁS</a>
+    <a class="more-link" href="" @click.prevent="openContent(contentPermalink, contentId, isEvent)">VER MÁS <img class="read-more-arrow" src="..\assets\img\icons\Arrows\BlueArrows_right.svg" alt=""><img class="read-more-arrow featured-arrow" src="..\assets\img\icons\Arrows\YellowArrows_right.svg" alt=""></a>
+    
 </template>
 
 <script>
@@ -18,20 +19,39 @@ export default {
             required: true,
             type: String
         },
-        contentName: {
+        contentPermalink: {
             required: true,
             type: String
         },
+        isEvent: {
+            type: Number
+        }
     },
     methods: {
-        setArticle(name) {
-            store.setArticle(name);
-            store.toggleArticle();
+        openContent(permalink, id, isEvent) {console.log({permalink, id, isEvent});
+            if (isEvent == 1)   this.$router.push('/evento/'+permalink);
+            else                this.$router.push('/articulo/'+permalink);
+
+            /* store.setArticle(permalink, id, isEvent);
+            store.toggleArticle(); */
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
+    .read-more-arrow {
+        height: 0.5rem;
+        margin: 0 0 2px 2px;
+    }
+    .featured-arrow {
+        display: none;
+    }
+    .featured-info .featured-arrow {
+        display: inline;
+    }
+    .featured-info .read-more-arrow:not(.featured-arrow) {
+        display: none;
+    }
 
 </style>

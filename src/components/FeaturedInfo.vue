@@ -1,7 +1,7 @@
 <template>
     <div class="featured-info">
         <feat-info-event v-if="featuredType==='event'" :featuredInfo="featuredInfo" class="home-main"/>
-        <feat-info-article v-if="featuredType==='article'" :featuredInfo="featuredInfo"/>
+        <feat-info-article v-if="featuredType==='article'" :featuredInfo="featuredInfo" class="home-main"/>
     </div>
 </template>
 
@@ -28,6 +28,11 @@ export default {
     .featured-info {
         display: flex;
         justify-content: center;
-        padding: 70px 20px 40px 20px;
+        padding: 40px 20px 40px 20px;
+    }
+    @media only screen and (min-width: 768px) and (max-width: 1199px) {
+        .featured-info {
+            padding: 40px 0px;
+        }
     }
 </style>

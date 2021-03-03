@@ -1,40 +1,40 @@
 <template>
-    <div class="featured-section container-fluid">
+    <div class="featured-section container-fluid md-up">
         <div class="row featured-top">
             <div class="col-4 featured-top-left"></div>
             <div class="col-8 featured-top-right"></div>
         </div>    
         <div class="row featured-content">
             <div class="col-4 featured-info-box">
-                <featured-info :featuredType="featuredType" :featuredInfo="featuredInfo"/>
+                <featured-info v-if="showInfo" :featuredType="featuredType" :featuredInfo="featuredInfo"/>
             </div>
             <div class="col-8 featured-image-box">
-                <img :src="featuredInfo.imgUrl" alt="" class="featured-image">
+                <img v-if="showInfo" :src="featuredInfo.imgUrl" alt="" class="featured-image">
             </div>    
         </div>
         <div class="row featured-bottom">
             <div class="col-4 featured-bottom-left"></div>
             <div class="col-8 featured-bottom-right"></div>
         </div>
-    </div>    
+    </div>
+    <mobile-featured class="sm-only"/>
 </template>
 
 <script>
+import { ref } from 'vue'
+import Lister from '../classes/Lister';
+import FeaturedAPI from '../classes/FeaturedAPI'
 import FeaturedInfo from './FeaturedInfo.vue'
+import MobileFeatured from './MobileFeatured.vue';
 export default {
-    components: { FeaturedInfo },
+    components: { FeaturedInfo, MobileFeatured },
     setup () {
         const featuredType = 'event';
-        const featuredInfo = {
-            id: 1,
-            title: 'Concierto Inagural',
-            name: 'Ian Bostridge',
-            day: 18,
-            month: 'JULIO, 2020',
-            location: 'Teatro Mayor, Bogota',
-            imgUrl: 'https://picsum.photos/id/304/1000/600'           
-        };
-        return { featuredType, featuredInfo }
+        const featuredAPI = new FeaturedAPI();
+        var featuredInfo = ref([]);
+        var showInfo = ref(false);
+        featuredAPI.getFeaturedInfo('', (data) => { featuredInfo.value = Lister.assignDateFields(data.data)[0]; showInfo.value = true;} );
+        return { featuredType, featuredInfo, showInfo }
     }
 }
 </script>
@@ -55,9 +55,12 @@ export default {
             background-color: white;
         }
         .featured-info-box {
+            display: flex;
+            justify-content: center;
             background-color: #0d273b
         }
         .featured-image-box {
+            height: 100%;
             background-color: #59686f;
             padding: 0;
             display: flex;
@@ -69,6 +72,13 @@ export default {
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+    }
+    @media only screen and (min-width: 768px) and (max-width: 1199px) {
+        .featured-section {
+            .featured-info-box {
+                padding: 0;
+            }
         }
     }
 </style>

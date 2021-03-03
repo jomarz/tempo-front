@@ -2,22 +2,61 @@
     <transition name="modal">
         <div class="modal-mask">
             <div class="modal-wrapper">
-                <div class="modal-container">
+                <div v-if="showContent" class="modal-container">
                     <div class="content-header"> 
-                        <button class="close-content-modal" @click="$emit('toggle')">
-                            CERRAR
-                        </button>                   
-                        <div class="modal-content-type">CONCIERTOS</div>
+                        <div class="close-content-modal" >
+                            <img src="..\assets\img\icons\ExitIcon.svg" @click="$emit('close-article')" alt="">
+                        </div>                   
+                        <div v-if="store.articleData.isEvent == 1" class="modal-content-type">CONCIERTOS</div>
+                        <div v-else class="modal-content-type">ARTÍCULOS</div>
                     </div>
                     <div class="title-row">
-                        <h3>La Integral de los Cuartetos de Beethoven</h3>
-                        <div class="modal-content-subtitle">El Cuarteto Casals: Veinte Años Para Escalar la Cima de los Cuartetos de Beethoven</div>
+                        <h3 v-html="content.title"></h3>
+                        <div class="modal-content-subtitle" v-html="content.subtitle" ></div>
                     </div>
-                    <modal-main-display :contentType="contentType" :content="content" class="sticky" />
-                    <div class="text-sub">{{content.textSub}}</div>
+                    <modal-main-display :contentId="contentId" :isEvent="store.articleData.isEvent" :contentType="contentType" :content="content" class="" :featuredImg="content.imgUrl" />
+                    <div class="text-sub" v-html="content.lead"></div>
                     <div class="main-article-content">
-                        <p v-for="paragraph in content.paragraphList" class="article-text" :key="paragraph.id">{{paragraph.text}}</p>
+                        <div class="author-info">
+                            <div class="author-pic">
+                                <img v-if="content.authorImgUrl == ''" src="../assets/img/icons/User_Icon.svg" alt="">
+                                <img v-else src="content.authorImgUrl" alt="">
+                            </div>
+                            <div class="author-data">
+                                <div class="author-name">Por: {{content.author}}</div>
+                                <div class="author-job-title">{{content.authorJobTitle}}</div>
+                            </div>
+                        </div>
+                        <div v-for="(element, index) in content.contents" :key="element.id">
+                            <ad-box v-if="index==content.contents.length-1" :ad="articleAdsList['ARTICLE_BODY_BOTTOM_FULL_BANNER']" class="ad-row" />
+                            <div v-if="index == index2ndParagraph" class="article-body-add">
+                                <img src="https://tempo.wittrees.com/media/imgTest/11215670141163291475.png" alt="">
+                                <img src="https://tempo.wittrees.com/media/imgTest/sociosalmayor-banners.png" alt="">
+                            </div>
+                            <p v-if="element.contentType == 'p'" class="article-text" v-html="element.html" ></p>
+                            <h2 v-else-if="element.contentType == 'h2'" class="article-text" v-html="element.html"></h2>
+                            <h3 v-else-if="element.contentType == 'h3'" class="article-text" v-html="element.html"></h3>
+                            <div v-else-if="element.contentType == 'highlightP'" class="article-text-highlight" v-html="element.html"></div>
+                            <ul v-else-if="element.contentType == 'ul'" class="article-text">
+                                <li v-for="(item, index) in JSON.parse(element.html)" :key="index" v-html="item" ></li>
+                            </ul>
+                            <ol v-else-if="element.contentType == 'ol'" class="article-text">
+                                <li v-for="(item, index) in JSON.parse(element.html)" :key="index" v-html="item" ></li>
+                            </ol>
+                            <table v-if="element.contentType == 'table'" class="article-text-table">
+                                <tr v-for="(row, index) in element.html" :key="index">
+                                    <td v-for="(tableCell, index) in row" :key="index" v-html="tableCell"></td>
+                                </tr>
+                            </table>
+                            <hr v-else-if="element.contentType == 'separator'" class="article-text-separator" />
+                        </div>
+                        <article-icons @toggle-article-comments="toggleArticleComments()" :views="content.views" :likes="likesCount" :commentCount="commentCount" :postIsLiked="postIsLiked" @like-post="likePost()" />
+                        <article-comments v-if="showComments" :comments="comments" @toggle-article-comments="toggleArticleComments()" @update-comments="updateComments()" />
+                        <comment-respond class="main-comment-input" @update-comments="updateComments()" />
                     </div>
+                    <ad-box class="ad-row ad-article-full" :ad="articleAdsList['ARTICLE_CONTENT_BOTTOM_FULL_BANNER']" />
+                    <related-articles :relatedArticles="relatedArticles" class="md-up" />
+                    <article-cta />
                 </div>
             </div>
         </div>
@@ -25,15 +64,34 @@
 </template>
 
 <script>
+import { ref } from 'vue';
 import store from '../store/store.js';
+import AdsAPI from '../classes/AdsAPI';
+import CommentsAPI from '../classes/CommentsAPI';
+import RelatedArticlesAPI from '../classes/RelatedArticlesAPI';
+import AdsList from '../classes/AdsList';
+import PostContentAPI from '../classes/PostContentAPI';
+import Lister from '../classes/Lister';
+import LikePostAPI from '../classes/LikePostAPI';
 import ModalMainDisplay from './ModalMainDisplay';
+import RelatedArticles from './RelatedArticles';
+import AdBox from './AdBox.vue';
+import ArticleCta from './ArticleCta.vue';
+import ArticleComments from './ArticleComments.vue';
+import CommentRespond from './CommentRespond.vue';
+import ArticleIcons from './ArticleIcons.vue';
 
 export default {
     setup() {
-        const contentType = 'event';
-        const content = {
+        var contentType = 'article';
+        var showComments = ref(false);
+        var postIsLiked = ref(false);
+        if(store.articleData.isEvent == 1)  contentType = 'event';
+        var content = ref({
+            id: 1,
             title: 'Concierto Inagural',
             name: 'Ian Bostridge',
+            datetime: "2021-04-12 00:00:00",
             day: 30,
             month: 'DE JULIO, 2020',
             location: 'Teatro Mayor, Bogota',
@@ -44,7 +102,7 @@ export default {
             views: 20,
             likes: 18,
             commentCount: 103,
-            paragraphList : [
+            contents : [
                 {
                     id: "",
                     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim. Vitae sapien pellentesque habitant morbi tristique senectus et. Fermentum posuere urna nec tincidunt praesent semper. Dignissim enim sit amet venenatis urna cursus eget nunc. Arcu cursus vitae congue mauris rhoncus aenean vel elit. Lacus suspendisse faucibus interdum posuere lorem ipsum dolor sit amet. Massa tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada proin. Interdum posuere lorem ipsum dolor.",
@@ -62,40 +120,175 @@ export default {
                     imgUrl: "",
                     isQuote: "false",
 
-                },
-                {
-                    id: "",
-                    text: "Cursus euismod quis viverra nibh cras pulvinar mattis nunc sed. Eu volutpat odio facilisis mauris sit amet massa vitae tortor. Velit egestas dui id ornare arcu odio ut sem nulla. Et odio pellentesque diam volutpat commodo sed. Proin sagittis nisl rhoncus mattis rhoncus urna. Massa tempor nec feugiat nisl pretium fusce. Amet porttitor eget dolor morbi non. Eget aliquet nibh praesent tristique magna sit amet purus gravida. At lectus urna duis convallis convallis. Interdum varius sit amet mattis vulputate enim nulla. Faucibus nisl tincidunt eget nullam non nisi est.",
-                    mediaId: "3",
-                    hasImage: "false",
-                    imgUrl: "",
-                    isQuote: "false",
-
-                },
-                {
-                    id: "",
-                    text: "Porttitor massa id neque aliquam vestibulum morbi. Quis varius quam quisque id diam vel quam elementum. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Mauris cursus mattis molestie a iaculis. Quis risus sed vulputate odio ut enim blandit. Viverra nam libero justo laoreet. Aenean pharetra magna ac placerat vestibulum lectus mauris ultrices eros. Commodo nulla facilisi nullam vehicula ipsum a arcu cursus. Aliquam etiam erat velit scelerisque. Pellentesque adipiscing commodo elit at. Ultricies mi eget mauris pharetra et.",
-                    mediaId: "4",
-                    hasImage: "false",
-                    imgUrl: "",
-                    isQuote: "false",
-
-                },
-                {
-                    id: "",
-                    text: "Sit amet risus nullam eget felis eget. Ac orci phasellus egestas tellus rutrum tellus pellentesque. Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque. Metus aliquam eleifend mi in nulla posuere sollicitudin. Morbi enim nunc faucibus a. Porttitor rhoncus dolor purus non enim praesent. At elementum eu facilisis sed odio morbi. Auctor eu augue ut lectus arcu. Nibh nisl condimentum id venenatis. Sodales ut etiam sit amet nisl. Cursus sit amet dictum sit amet justo donec enim. Tristique risus nec feugiat in fermentum posuere urna nec tincidunt. Diam sollicitudin tempor id eu nisl nunc.",
-                    mediaId: "5",
-                    hasImage: "false",
-                    imgUrl: "",
-                    isQuote: "false",
-
-                },
+                }
             ]
-        };
-        return { store, contentType, content };
+        });
+        const relatedArticles = ref([
+                {
+                    id: '1',
+                    article_title: 'Igor Levit',
+                    subtitle: 'Imodipic iissimus',
+                    imgUrl: 'https://picsum.photos/seed/aab1/300/300',
+                    postType: 'event'
+                },
+                {
+                    id: '2',
+                    article_title: 'Uptatem invente',
+                    subtitle: 'comnihilita soluptas',
+                    imgUrl: 'https://picsum.photos/seed/aab1/300/300',
+                    postType: 'event'
+                },
+                {
+                    id: '3',
+                    article_title: 'Nicolas Altstaedt',
+                    subtitle: 'Eaque nus eos praesci',
+                    imgUrl: 'https://picsum.photos/seed/aab1/300/300',
+                    postType: 'event'
+                },
+                {
+                    id: '4',
+                    article_title: 'Ad millabo reperro',
+                    subtitle: 'Versped que voloreprem',
+                    imgUrl: 'https://picsum.photos/seed/aab1/300/300',
+                    postType: 'event'
+                },
+            ]);
+        const comments = ref([
+            {
+                "comment_id": 12,
+                "comment_parent_id": null,
+                "comment_author_name": 'Bob',
+                "comment_text": "Dsrrr hghfj yuu",
+                "comment_datetime": "2021-01-20 17:58:15",
+                "comment_status": "published",
+                "comment_likes": 0,
+                "comment_dislikes": 0,
+                "hasChildren": null
+            },
+            {
+                "comment_id": 13,
+                "comment_parent_id": null,
+                "comment_author_name": 'Alica',
+                "comment_text": "Dsdsd ddd",
+                "comment_datetime": "2021-01-20 17:58:15",
+                "comment_status": "published",
+                "comment_likes": 0,
+                "comment_dislikes": 0,
+                "hasChildren": null
+            },
+        ]);
+         
+        var showContent = ref(false);
+        const postContentAPI = new PostContentAPI();
+        const commentsAPI = new CommentsAPI();
+        const relatedAPI = new RelatedArticlesAPI();
+        const likePostAPI = new LikePostAPI();
+        /* const getPostComments = function() 
+        {
+            // Get post comments from API
+            commentsAPI.getCommentsFromPermalink(store.articleData.permalink, store.articleData.isEvent, (response) => {
+                if(response.data != null) {
+                    return response.data;
+                    comments.value = response.data;
+                    commentCount.value = countComments(comments.value);
+                } else return [];
+            });
+        } */
+        const countComments = function(comments) 
+        {
+            var count = 0;
+            comments.forEach(comment => {
+                count++;
+                if(comment.hasChildren) {
+                    count += countComments(comment.replies);
+                }
+            });
+            return count;
+        }
+        var commentCount = ref(0);
+        var likesCount = ref(0);
+        postContentAPI.getContent(store.articleData.id, store.articleData.permalink, store.articleData.isEvent, (data) => {
+            if(data.data != null) {console.log(data.data);
+                console.log(content.value);
+                let tempContent = data.data;
+                tempContent.contents.forEach((element, index) => {
+                    if(element.contentType === 'table') {
+                        console.log(JSON.parse(element.html));
+                        console.log(index);
+                        tempContent.contents[index].html = JSON.parse(element.html);
+                    }
+                });
+                content.value = tempContent;
+                // Create reactive likes-count variable
+                likesCount.value = content.value.likes;
+                // Assign month name
+                if(store.articleData.isEvent == 1)  content.value = Lister.assignDateFields([content.value])[0]; 
+                // Save post id in case we didn't have it
+                if(store.articleData.id == 0 || store.articleData.id === undefined)   store.setArticleId(content.value.postId);
+
+                // Get post comments from API
+                commentsAPI.getCommentsFromPermalink(store.articleData.permalink, store.articleData.isEvent, (response) => {
+                    comments.value = response.data;
+                    commentCount.value = countComments(comments.value);
+                });
+                relatedAPI.getRelatedPosts(content.value.tags, (response) => {
+                    relatedArticles.value = response.data;
+                });
+                showContent.value = true;
+            } else {
+                this.$router.push('/');
+            }
+            });
+        
+        const adsAPI = new AdsAPI();
+        const adPositions = [
+                "ARTICLE_BODY_BOTTOM_FULL_BANNER",
+                "ARTICLE_BODY_LEFT_FIRST_RECTANGLE",
+                "ARTICLE_BODY_LEFT_SECOND_RECTANGLE",
+                "ARTICLE_CONTENT_BOTTOM_FULL_BANNER",
+        ];
+        const articleAds = new AdsList(adPositions);
+        var articleAdsList = ref({
+        ARTICLE_BODY_BOTTOM_FULL_BANNER: false,
+        ARTICLE_BODY_LEFT_FIRST_RECTANGLE: false,
+        ARTICLE_BODY_LEFT_SECOND_RECTANGLE: false,
+        ARTICLE_CONTENT_BOTTOM_FULL_BANNER: false
+        });
+        adsAPI.getAds('article', (data)=> {
+        articleAdsList.value = articleAds.buildAdList(data.data);
+        });
+        return { store, contentType, content, relatedArticles, articleAds, articleAdsList, showContent, showComments, comments, commentCount, likePostAPI, postIsLiked, likesCount, countComments, commentsAPI };
     },
-    components: {
-        ModalMainDisplay
+    components: { ModalMainDisplay, RelatedArticles, AdBox, ArticleCta, ArticleComments, ArticleIcons, CommentRespond  },
+    methods: {
+        toggleArticleComments() {
+            this.showComments = !this.showComments;
+        },
+        likePost() {
+            this.likePostAPI.likePost(this.store.articleData.id, this.store.articleData.isEvent, () => {
+                this.postIsLiked = true;
+                this.likesCount ++;
+            });
+        },
+        updateComments() {
+            this.commentsAPI.getCommentsFromPermalink(store.articleData.permalink, store.articleData.isEvent, (response) => {
+                this.comments = response.data;
+                this.commentCount = this.countComments(this.comments);
+            });
+        }
+    },
+    computed: {
+        index2ndParagraph()
+        {
+            var paragraphCount = 0;
+            this.content.contents.forEach((element, index) => {
+                if(element.contentType == 'p') {
+                    paragraphCount ++;
+                    if(paragraphCount == 2) return index;
+                }
+            });
+            return 1;
+        }
     }
 }
 </script>
@@ -109,7 +302,8 @@ export default {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    display: table;
+    display: flex;
+    justify-content: center;
     transition: opacity 0.3s ease;
     }
 
@@ -119,18 +313,46 @@ export default {
     }
 
     .modal-container {
-    width: 764px;
-    height: 100%;
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0px auto;
-    padding: 7px 20px 20px;
-    background-color: #fff;
-    border-radius: 0px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-    transition: all 0.3s ease;
+        width: 764px;
+        height: 100%;
+        overflow: auto;
+        /* display: flex;
+        flex-direction: column; */
+        //align-items: center;
+        margin: 0px auto;
+        padding: 7px 20px 0px;
+        background-color: #fff;
+        border-radius: 0px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+        transition: all 0.3s ease;
+        .article-cta {
+            margin-left: -20px;
+            margin-right: -20px;
+        }
+        .main-article-content {
+            .ad-row {
+                height: 90px;
+            }
+            .article-body-add {
+                float: left;
+                display: flex;
+                flex-direction: column;
+            }
+            .article-body-add img {
+                width: 135px; 
+                height: 90px; 
+                margin: 5px 18px 15px 0;
+                object-fit: cover;
+            }
+        }
+        .ad-article-full {
+            width: calc(100% + 20px + 20px);
+            margin-left: -20px;
+            margin-right: -20px;
+            height: 150px;
+            overflow: visible;
+            padding: 0;
+        }
     }
     .sticky {
         position: -webkit-sticky; /* Safari */
@@ -147,6 +369,12 @@ export default {
     .close-content-modal {
         float: right;
         display: block;
+        img {
+            height: 15px;
+            float: right;
+            margin-top: 10px;
+            cursor: pointer;
+        }
     }
     .content-header {
         width: 100%;
@@ -156,6 +384,9 @@ export default {
     .title-row {
         padding-top: 15px;
         padding-bottom: 15px;
+        h3 {
+            margin-bottom: 5px;
+        }
     }
     .modal-content-subtitle {
         font-size: 0.95rem !important;
@@ -163,16 +394,93 @@ export default {
         font-weight: 400;
     }
     .text-sub{
+        line-height: 0.95rem;
         font-size: 0.75rem !important;
         font-family: 'Roboto', sans-serif;
         font-weight: 300;
         padding-top: 10px;
     }
     .main-article-content {
+        align-self: center;
         width: 450px;
         padding-top: 20px;
-        p {
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+
+        p {    
+            line-height: 0.95rem;
+            font-size: 0.75rem !important;
+            text-align: justify;
+        }
+        h1 ,h2 {
+            margin-top: 10px;
+            margin-bottom: 25px;
+        }
+        h3 {
+            margin-bottom: 20px;
+        }
+        .article-text-highlight {
+            font-family: 'Playfair display';
+            font-size: 0.9rem !important;
+            line-height: 1.2rem;
+            margin: 0 1.5rem 1rem;
+            text-align: center;
+        }
+        .article-text-table {
+            margin: 0 auto 1rem;
+            td:not(:first-of-type) {
+                padding-left: 25px;
+            }
+        }
+        .article-text-separator {
+            margin: 0 0 1rem;
+        }
+        ul li, ol li {
             font-size: 0.85rem !important;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+        }
+        .ad-row {
+            margin-bottom: 16px;
+        }
+        .author-info {
+            display: flex;
+            margin-bottom: 20px;;
+        }
+        .author-pic img {
+            width: 74px;
+            height: 74px;
+        }
+        .author-data {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            .author-name {
+                font-size: 0.95rem !important;
+                font-family: 'Playfair display';
+                font-weight: 400;
+            }
+            .author-job-title {
+                font-size: 0.85rem !important;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 400;
+            }
+        }
+        .main-comment-input {
+            margin: 0 0 60px;
+        }
+    }
+    @media only screen and (max-width: 767px) {
+        .modal-container {
+            width: 100%;
+        }
+        .main-article-content {
+            width: 95%;
+            .ad-row, .ad-box.ad-row {
+                padding: 0px;
+            }
         }
     }
 </style>

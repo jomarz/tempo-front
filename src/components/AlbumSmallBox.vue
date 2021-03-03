@@ -1,11 +1,11 @@
 <template>
     <div class="album-small-box">
         <div class="thumbnal-container">
-            <img :src="album.imgUrl" alt="" class="thumbnail-image">
+            <img :src="boxContent.imgUrl" alt="" class="thumbnail-image">
         </div>
-        <div class="album-title">{{album.title}}</div>
-        <p class="album-text">{{album.text}}</p>
-        <read-more-link contentType="album" :contentName="album.title" :contentId="album.id"/>
+        <div class="album-title">{{boxContent.title}}</div>
+        <p class="album-text">{{boxContent.description}}</p>
+        <read-more-link contentType="album" :contentPermalink="boxContent.permalink" isEvent="0" :contentId="boxContent.id"/>
     </div>    
 </template>
 
@@ -14,7 +14,7 @@ import ReadMoreLink from './ReadMoreLink.vue'
 export default {
   components: { ReadMoreLink },
     props: {
-        album: {
+        boxContent: {
             required: true,
             type: Object
         }
@@ -47,6 +47,11 @@ export default {
             margin-bottom: 7px;
             max-height: 2.31rem;
             overflow: hidden;
+        }
+    }
+    @media only screen and (max-width: 767px) {
+        .album-small-box {
+            margin-right: 25px;
         }
     }
 </style>

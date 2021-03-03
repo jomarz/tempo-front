@@ -9,7 +9,7 @@
                     <tr class="box-info-top-row">
                         <td class="box-info-left-col"></td>
                         <td class="box-info-right-col">
-                            <h6>{{ boxContent.title }}</h6>
+                            <h6 class="event-title">{{ boxContent.title }}</h6>
                             <span class="box-subtitle">{{ boxContent.subtitle }}</span>
                         </td>
                     </tr>
@@ -21,9 +21,9 @@
                             <span class="box-month">{{boxContent.month}}</span>
                             <span class="box-location">{{boxContent.location}}</span>
                             <div class="box-text-container">
-                                <p class="box-text">{{boxContent.text}}</p>
+                                <p class="box-text">{{boxContent.description}}</p>
                             </div>
-                            <read-more-link contentType="event" :contentName="boxContent.title" :contentId="boxContent.id"/>
+                            <read-more-link v-if="boxContent.showContent==1" contentType="event" :contentPermalink="boxContent.permalink" :contentId="boxContent.id" isEvent="1" />
                         </td>
                     </tr>
                 </table>
@@ -58,6 +58,7 @@ export default {
         .thumbnail img {
             height: 137px;
             width: 130px;
+            object-fit: cover;
         }
         .box_info {
             width: 205px;
@@ -91,10 +92,23 @@ export default {
             .event-day-cell {
                 text-align: end;
             }
+            .event-title {
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+            .box-subtitle {
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
             p.box-text {
                 display: -webkit-box;
-                -webkit-line-clamp: 2;
+                -webkit-line-clamp: 3;
                 -webkit-box-orient: vertical;
+                overflow: hidden;
             }
         }
     }

@@ -1,38 +1,25 @@
 <template>
   <div class="content-container">
+    <div id="top"></div>
     <TopBar />
-    <NavBar />
+    <NavBar class="md-up" />
     <Featured />
-    <ad-box class="ad-row"/>
-    <concerts-section />
-    <ad-box class="ad-row"/>
-    <videos-section />
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-md-9 pl-0 pd-0 pd-md-2">
-          <ad-box class="ad-row"/>
-        </div>
-        <div class="col-12 col-md-3 pr-0 pl-0 pl-md-2">
-          <ad-box class="ad-row"/>
-        </div>
-      </div>
-    </div>
-    <articles-section />
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-md-9 pl-0 pd-0 pd-md-2">
-          <ad-box class="ad-row"/>
-        </div>
-        <div class="col-12 col-md-3 pr-0 pl-0 pl-md-2">
-          <ad-box class="ad-row"/>
-        </div>
-      </div>
-    </div>
-    <albums-section />
-    <ad-box class="ad-row"/>
+    <ad-box class="ad-row" :ad="homeAdsList.HOME_COVER_BOTTOM_FULL_BANNER" />
+    <concerts-section :ad="homeAdsList['HOME_EVENTS_TOP_RIGHT_HALF_BANNER']" id="concerts"/>
+    <ad-box class="ad-row" :ad="homeAdsList['HOME_EVENTS_BOTTOM_FULL_BANNER']" />
+    <videos-section id="videos" />
+    <ad-box class="ad-row" :ad="homeAdsList['HOME_VIDEOS_BOTTOM_FULL_BANNER']" />
+    <articles-section id="articles" />
+    <ad-box class="ad-row" :ad="homeAdsList['HOME_NEWS_BOTTOM_FULL_BANNER']" />
+    <div id="albums-section"></div>
+    <albums-section id="" />
+    <ad-box class="ad-row" :ad="homeAdsList['HOME_DISCOGRAPHY_BOTTOM_FULL_BANNER']" />
   </div>
-  <Footer />
-  <article-window v-if="store.showArticle.state" @toggle="store.toggleArticle()" />
+  <Footer id="footer" />
+  <mobile-menu v-if="store.showMobileMenu.state" @toggle="store.toggleMobileMenu()" class="sm-only"/>
+  <article-window v-if="store.showArticle.state" @close-article="closeArticle()" :key="articleKey"/>
+  <subscribe-window v-if="store.showSubscribe.state" @toggle="store.toggleSubscribe()" />
+  <contact-form v-if="store.showContactForm.state" @toggle="store.toggleContactForm()" />
 
 </template>
 
@@ -48,12 +35,44 @@ import AlbumsSection from './components/AlbumsSection.vue';
 import Footer from './components/Footer.vue';
 import ArticleWindow from './components/ArticleWindow.vue';
 
+import { ref } from 'vue';
+
 import store from './store/store.js';
+import AdsAPI from './classes/AdsAPI';
+import AdsList from './classes/AdsList';
+
+import SubscribeWindow from './components/SubscribeWindow.vue';
+import MobileMenu from './components/MobileMenu.vue';
+import ContactForm from './components/ContactForm.vue';
 
 export default {
   name: 'App',
   data() {
-    return { store }
+    return { store, articleKey: 0 }
+  },
+  setup() {
+    const adsAPI = new AdsAPI();
+    const adPositions = [
+            "HOME_COVER_BOTTOM_FULL_BANNER",
+            "HOME_DISCOGRAPHY_BOTTOM_FULL_BANNER",
+            "HOME_EVENTS_BOTTOM_FULL_BANNER",
+            "HOME_EVENTS_TOP_RIGHT_HALF_BANNER",
+            "HOME_NEWS_BOTTOM_FULL_BANNER",
+            "HOME_VIDEOS_BOTTOM_FULL_BANNER",
+    ];
+    const homeAds = new AdsList(adPositions);
+    var homeAdsList = ref({
+      HOME_COVER_BOTTOM_FULL_BANNER: false,
+      HOME_DISCOGRAPHY_BOTTOM_FULL_BANNER: false,
+      HOME_EVENTS_BOTTOM_FULL_BANNER: false,
+      HOME_EVENTS_TOP_RIGHT_HALF_BANNER: false,
+      HOME_NEWS_BOTTOM_FULL_BANNER: false,
+      HOME_VIDEOS_BOTTOM_FULL_BANNER: false
+    });
+    adsAPI.getAds('home', (data)=> {
+      homeAdsList.value = homeAds.buildAdList(data.data);
+    });
+    return { homeAdsList }
   },
   components: {
     TopBar,
@@ -65,8 +84,59 @@ export default {
     ArticlesSection,
     AlbumsSection,
     Footer,
-    ArticleWindow
-  }
+    ArticleWindow,
+    SubscribeWindow,
+    MobileMenu,
+    ContactForm,
+  },
+  methods: {
+    closeArticle() {
+      this.store.toggleArticle();
+      this.$router.push('/');
+    }
+  },
+  watch:{
+    $route (newRoute, from){
+        console.log(from);
+        console.log(newRoute);
+        if(newRoute.params != undefined && newRoute.params.type != undefined && newRoute.params.permalink != undefined)  {
+            var isEvent = 0; console.log(store.getShowArticleState());
+            if(store.getShowArticleState()) {
+                this.articleKey += 1;
+                /* this.store.toggleArticle();
+                console.log(store.getShowArticleState());
+                if(newRoute.params.type == 'articulo') {
+                    store.setArticlePermalink(newRoute.params.permalink, isEvent);
+                    store.openArticle();
+                } else if (newRoute.params.type == 'evento') {
+                    isEvent = 1;
+                    store.setArticlePermalink(newRoute.params.permalink, isEvent);
+                    store.openArticle();
+                } else {
+                    this.$router.push('/');
+                } */
+            }
+            else {
+                if(newRoute.params.type == 'articulo') {
+                    store.setArticlePermalink(newRoute.params.permalink, isEvent);
+                    store.openArticle();
+                } else if (newRoute.params.type == 'evento') {
+                    isEvent = 1;
+                    store.setArticlePermalink(newRoute.params.permalink, isEvent);
+                    store.openArticle();
+                } else {
+                    this.$router.push('/');
+                }
+            }
+        }
+        else  console.log('No permalink');
+    }
+  }, 
+    mounted() {
+        /* console.log(this.$route);
+        if(this.$route.params.permalink == "") console.log("Go home");
+        else console.log(this.$route.params.permalink); */
+    }
 }
 </script>
 
@@ -186,6 +256,13 @@ export default {
             display: none;
         }
     }
+    /* ad boxes styles*/
+    .ad-row, .ad-box.ad-row {
+      height: 200px;
+    }
+    .ad-small {
+      height: 100%;
+    }
   }
   .content-container {
     display: flex;
@@ -246,15 +323,6 @@ export default {
     .receive-cta.printed-cta .receive-button {
       margin-left: 0px;
     }
-
-    /* ad boxes styles*/
-    .ad-row {
-      height: 115px;
-    }
-    .ad-small {
-      height: 100%;
-    }
-
     /* Footer styles */
   }
   .footer {
@@ -262,5 +330,58 @@ export default {
     width: 100%;
     background-color: #f1f2f2;
   }
-
+  @media only screen and (min-width: 768px) {
+    .sm-only {
+      display: none !important;
+    }
+  }
+  @media only screen and (min-width: 992px) {
+    .md-down {
+      display: none !important;
+    }
+  }
+  @media only screen and (max-width: 991px) {
+    .lg-up {
+      display: none !important;
+    }
+  }
+  @media only screen and (max-width: 1199px) {
+    .xl-up {
+      display: none !important;
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    .md-up {
+      display: none !important;
+    }
+    html, body {
+      font-size: 19px;
+    }
+    .ad-row, .ad-box.ad-row {
+      padding: 15px;
+      background-color: white;
+      height: 150px;
+    }
+    .calendar-row .ad-small {
+      padding-right: 15px;
+      background-color: white;
+      height: 150px;
+    }
+    .double-ad-row .row .col-12:first-of-type {
+      padding-right: 0;
+    }
+    .footer {
+      margin-top: 50px;
+    }
+    .receive-cta{
+      margin-top: 20px;
+    }
+    .content-container .receive-cta h6.receive-title {
+      font-size: 0.75rem !important;
+    }
+    .receive-button {
+      width: 140px;
+      font-size: 0.75rem;
+    }
+  }
 </style>
