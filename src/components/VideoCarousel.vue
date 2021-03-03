@@ -35,6 +35,7 @@ export default {
 <style lang="scss" scoped>
     .video-carousel-container {
         display: flex;
+        height: 590px;
         padding-right: 0;
         justify-content: space-between;
         .video-carousel-content {
@@ -42,7 +43,7 @@ export default {
             flex-direction: column;
             justify-content: space-between;
             overflow: hidden;
-            padding-left: 10px;
+            padding-left: 20px;
             .video-carousel-box {
                 margin-bottom: 12px;
                 position: relative;
@@ -51,7 +52,7 @@ export default {
         .carousel-nav {
             display: flex;
             flex-direction: column;
-            padding: 0 0 0 20px;
+            padding: 0 0 0 40px;
             a {
                 line-height: 17px;
             }
@@ -71,6 +72,12 @@ export default {
             top: 0;
             left: 0;
             cursor: pointer;
+        }
+    }
+    
+    @media only screen and (min-width: 768px) and (max-width: 1160px) {
+        .carousel-nav {
+            margin-right: 20px;
         }
     }
 </style>

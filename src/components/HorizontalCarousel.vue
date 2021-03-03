@@ -39,7 +39,7 @@ export default {
         }    
     }
     .horizontal-carousel {
-        //height: 145px;
+        margin-left: 15px;
         width: 100%;
         //overflow-x: auto;
         overflow-y: hidden;

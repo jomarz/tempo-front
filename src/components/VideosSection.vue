@@ -1,13 +1,13 @@
 <template>
-    <div class="content-section videos-section container-fluid">
-        <div class="row section-nav-row">
-            <div class="col pl-0 pr-0">
+    <div class="content-section videos-section">
+        <div class="section-nav-row">
+            <div class="">
                 <SectionNavNoMenu :navTitle="navTitle" :menuItems="menuItems"/>
             </div>
         </div>
-        <div class="row main-videos-row">
-            <main-video class="col-12 col-md-8 col-lg-9 main-video" :featVideo="featVideo" ></main-video>
-            <video-carousel class="col-12 col-md-3 col-lg-3 video-carousel md-up" :videoList="videoList" ></video-carousel>
+        <div class="main-videos-row">
+            <main-video class="main-video" :featVideo="featVideo" ></main-video>
+            <video-carousel class="video-carousel md-up" :videoList="videoList" ></video-carousel>
         </div>
         <horizontal-carousel :contentList="videoFullList" componentName="video-small-box" class="horizontal-carousel-video sm-only"/>    
     </div>
@@ -80,7 +80,10 @@ export default {
 
 <style lang="scss" scoped>
     .videos-section {
+        width: 100%;
         .main-videos-row {
+            display: flex;
+            justify-content: space-between;
             margin-top: 40px;
             .main-video {
             }
@@ -88,9 +91,17 @@ export default {
             }
         }
     }
+    @media only screen and (min-width: 768px) {
+        .main-video {
+            flex-grow: 1;
+        }
+    }
     @media only screen and (max-width: 767px) {
         .videos-section {
             margin: 20px 15px;
+        }
+        .main-video {
+            width: 100%;
         }
     }
 </style>

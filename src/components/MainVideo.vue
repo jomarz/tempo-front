@@ -1,12 +1,10 @@
 <template>
-    <div class="main-video-container container">
-        <div class="row main-video-row">
-            <div class="col main-video">
+    <div class="main-video-container">
+            <div class="main-video">
                 <div class="video-container">
                     <iframe :src="store.featVideo.src" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>                
             </div>
-        </div>
         <div class="main-video-title">
             <h3>{{store.featVideo.title}}</h3>
         </div>
@@ -29,11 +27,13 @@ export default {
 
 <style lang="scss" scoped>
     .main-video-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         padding: 0;
         .video-container {
             overflow: hidden;
             position: relative;
-            width:100%;
         }
 
         .video-container::after {
@@ -41,7 +41,11 @@ export default {
             display: block;
             content: '';
         }
-
+        .main-video {
+            max-width: 791px;
+            padding: 8px;
+            border: 1px solid #d1d3d4;
+        }
         .video-container iframe {
             position: absolute;
             top: 0;
@@ -53,6 +57,11 @@ export default {
             padding: 15px 0;
         }
     }
+    @media only screen and (min-width: 768px) {
+        .main-video-container {
+            margin: 0 20px;
+        }
+    }
     @media only screen and (max-width: 767px) {
         .main-video-container {
             margin: 5px 0px 20px;
@@ -60,7 +69,7 @@ export default {
             .main-video-row {
                 margin: 0;
                 padding: 8px;
-                border: 1px solid black;
+                border: 1px solid #d1d3d4;
                 .main-video {
                     padding: 0;
                 }
