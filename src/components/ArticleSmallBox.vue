@@ -141,4 +141,9 @@ export default {
             }
         }
     }
+    @media only screen and (max-width: 767px) {
+        .article-small-box {
+            margin-bottom: 30px;
+        }
+    }
 </style>
