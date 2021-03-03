@@ -1,17 +1,15 @@
 <template>
-    <div class="video-carousel-container container">
-        <div class="row">
-            <div class="col-10 video-carousel-content">
+    <div class="video-carousel-container">
+            <div class="video-carousel-content">
                 <div v-for="(videoInfo, index) in videoList" :key="index" class="video-carousel-box">
                     <video-small-box :boxContent="videoInfo" />
                     <div class="mask-youtube" @click="changeVideo(videoInfo)" ></div>
                 </div>
             </div>
-            <div class="col-2 carousel-nav">
+            <div class="carousel-nav">
                 <a href="" @click.prevent="store.videoCarousel.moveUp()"><img src="..\assets\img\icons\Arrows\YellowArrows_top.svg" alt="up"></a>
                 <a href="" @click.prevent="store.videoCarousel.moveDown()"><img src="..\assets\img\icons\Arrows\YellowArrows_down.svg" alt="down"></a>
             </div>
-        </div>
     </div>
 </template>
 
@@ -36,12 +34,30 @@ export default {
 
 <style lang="scss" scoped>
     .video-carousel-container {
-        //padding: 0;
+        display: flex;
+        padding-right: 0;
+        justify-content: space-between;
         .video-carousel-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             overflow: hidden;
+            padding-left: 10px;
             .video-carousel-box {
                 margin-bottom: 12px;
                 position: relative;
+            }
+        }
+        .carousel-nav {
+            display: flex;
+            flex-direction: column;
+            padding: 0 0 0 20px;
+            a {
+                line-height: 17px;
+            }
+            img {
+                width: 17px;
+                margin-bottom: 18px;
             }
         }
         .video-carousel-nav {
