@@ -27,13 +27,26 @@
                                 <div class="author-job-title">{{content.authorJobTitle}}</div>
                             </div>
                         </div>
-                        <div v-for="(element, index) in content.contents" :key="element.id">
+                        <template v-for="(element, index) in content.contents" :key="element.id" :class="{innerAdContainer: element.contentType=='innerAds'}">
                             <ad-box v-if="index==content.contents.length-1" :ad="articleAdsList['ARTICLE_BODY_BOTTOM_FULL_BANNER']" class="ad-row" />
-                            <div v-if="index == index2ndParagraph" class="article-body-add">
-                                <img src="https://tempo.wittrees.com/media/imgTest/11215670141163291475.png" alt="">
-                                <img src="https://tempo.wittrees.com/media/imgTest/sociosalmayor-banners.png" alt="">
+                            <!-- <div v-else-if="element.contentType == 'innerAds'" class="article-body-ad" >
+                                <div style="float: left">
+                                    <img :src="element.ads[0].imgUrl" alt="">
+                                    <div class="inner-ad-title" v-html="element.ads[0].title"></div>
+                                    <div class="inner-ad-subtitle" v-html="element.ads[0].subtitle"></div>
+                                    <img :src="element.ads[0].imgUrl" alt="">
+                                </div>
+                                <p>Ut facilisis, metus laoreet porttitor pharetra, arcu lacus mattis magna, a blandit ligula risus rutrum leo. Vivamus in ullamcorper massa. Donec congue risus sed magna fringilla, vitae dignissim metus ultrices. Quisque finibus lorem ac nibh bibendum malesuada. Donec at neque eu arcu sodales aliquam. Vivamus eu odio nibh. Vivamus eu mi libero. Donec nibh ligula, malesuada nec finibus eget, porttitor</p>
+                                <p>Ut facilisis, metus laoreet porttitor pharetra, arcu lacus mattis magna, a blandit ligula risus rutrum leo. Vivamus in ullamcorper massa. Donec congue risus sed magna fringilla, vitae dignissim metus ultrices. Quisque finibus lorem ac nibh bibendum malesuada. Donec at neque eu arcu sodales aliquam. Vivamus eu odio nibh. Vivamus eu mi libero. Donec nibh ligula, malesuada nec finibus eget, porttitor</p>
+                            </div> -->
+                            <div v-else-if="element.contentType == 'innerAds'" class="article-body-ad" >
+                                <div v-for="(innerAd, index) in element.ads" class="article-inner-ad" :key="index">
+                                    <img :src="innerAd.imgUrl" alt="">
+                                    <div class="inner-ad-title" v-html="innerAd.title"></div>
+                                    <div class="inner-ad-subtitle" v-html="innerAd.subtitle"></div>
+                                </div>
                             </div>
-                            <p v-if="element.contentType == 'p'" class="article-text" v-html="element.html" ></p>
+                            <p v-else-if="element.contentType == 'p'" class="article-text" v-html="element.html" ></p>
                             <h2 v-else-if="element.contentType == 'h2'" class="article-text" v-html="element.html"></h2>
                             <h3 v-else-if="element.contentType == 'h3'" class="article-text" v-html="element.html"></h3>
                             <div v-else-if="element.contentType == 'highlightP'" class="article-text-highlight" v-html="element.html"></div>
@@ -43,13 +56,13 @@
                             <ol v-else-if="element.contentType == 'ol'" class="article-text">
                                 <li v-for="(item, index) in JSON.parse(element.html)" :key="index" v-html="item" ></li>
                             </ol>
-                            <table v-if="element.contentType == 'table'" class="article-text-table">
+                            <table v-else-if="element.contentType == 'table'" class="article-text-table">
                                 <tr v-for="(row, index) in element.html" :key="index">
                                     <td v-for="(tableCell, index) in row" :key="index" v-html="tableCell"></td>
                                 </tr>
                             </table>
                             <hr v-else-if="element.contentType == 'separator'" class="article-text-separator" />
-                        </div>
+                        </template>
                         <article-icons @toggle-article-comments="toggleArticleComments()" :views="content.views" :likes="likesCount" :commentCount="commentCount" :postIsLiked="postIsLiked" @like-post="likePost()" />
                         <article-comments v-if="showComments" :comments="comments" @toggle-article-comments="toggleArticleComments()" @update-comments="updateComments()" />
                         <comment-respond class="main-comment-input" @update-comments="updateComments()" />
@@ -87,6 +100,19 @@ export default {
         var showComments = ref(false);
         var postIsLiked = ref(false);
         if(store.articleData.isEvent == 1)  contentType = 'event';
+        var innerAds = {
+            contentType: 'innerAds',
+            ads: [
+                {
+                    imgUrl: 'https://tempo.wittrees.com/media/imgTest/11215670141163291475.png',
+                    title: 'Nicolas Altstaedt',
+                    subtitle: 'Imodipic iissimus'},
+                {
+                    imgUrl: 'https://tempo.wittrees.com/media/imgTest/sociosalmayor-banners.png',
+                    title: 'Nicolas Altstaedt',
+                    subtitle: 'Imodipic iissimus'}
+            ]
+        };
         var content = ref({
             id: 1,
             title: 'Concierto Inagural',
@@ -205,6 +231,17 @@ export default {
             });
             return count;
         }
+        const getIndex2ndParagraph = function(contents)
+        {
+            var paragraphCount = 0;
+            contents.forEach((element, index) => {
+                if(element.contentType == 'p') {
+                    paragraphCount ++;
+                    if(paragraphCount == 2) return index;
+                }
+            });
+            return 1;
+        }
         var commentCount = ref(0);
         var likesCount = ref(0);
         postContentAPI.getContent(store.articleData.id, store.articleData.permalink, store.articleData.isEvent, (data) => {
@@ -218,7 +255,9 @@ export default {
                         tempContent.contents[index].html = JSON.parse(element.html);
                     }
                 });
-                content.value = tempContent;
+                let index2ndP = getIndex2ndParagraph(tempContent.contents);
+                tempContent.contents.splice(index2ndP, 0, innerAds);
+                content.value = tempContent; console.log(tempContent);
                 // Create reactive likes-count variable
                 likesCount.value = content.value.likes;
                 // Assign month name
@@ -333,16 +372,30 @@ export default {
             .ad-row {
                 height: 90px;
             }
-            .article-body-add {
+            .article-body-ad {
                 float: left;
                 display: flex;
                 flex-direction: column;
             }
-            .article-body-add img {
+            .article-body-ad img {
                 width: 135px; 
                 height: 90px; 
-                margin: 5px 18px 15px 0;
+                margin: 5px 18px 8px 0;
                 object-fit: cover;
+            }
+            .innerAdContainer {
+                float: left;
+            }
+            .article-inner-ad {
+                margin: 0 0 15px;
+            }
+            .inner-ad-title {
+                font-family: 'Playfair display';
+                font-size: 0.8rem;
+            }
+            .inner-ad-subtitle {
+                font-family: 'Roboto', sans-serif;
+                font-size: 0.7rem;
             }
         }
         .ad-article-full {
@@ -404,8 +457,8 @@ export default {
         align-self: center;
         width: 450px;
         padding-top: 20px;
-        display: flex;
-        flex-direction: column;
+        //display: flex;
+        //flex-direction: column;
         margin-left: auto;
         margin-right: auto;
 
@@ -435,6 +488,7 @@ export default {
             }
         }
         .article-text-separator {
+            clear: both;
             margin: 0 0 1rem;
         }
         ul li, ol li {
