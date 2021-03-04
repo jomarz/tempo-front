@@ -59,7 +59,12 @@ export default {
     }
     @media only screen and (min-width: 768px) {
         .main-video-container {
-            margin: 0 20px;
+            margin: 0 10px 0 20px;
+        }
+    }
+    @media only screen and (min-width: 768px) and (max-width: 1199px) {
+        .main-video-container {
+            justify-content: start;
         }
     }
     @media only screen and (max-width: 767px) {
