@@ -147,7 +147,7 @@ export default {
             }
         }
     }
-    @media only screen and (max-width: 1059px) {
+    @media only screen and (max-width: 1069px) {
         .news-vertical-block {
             display: none;
         }
@@ -165,7 +165,7 @@ export default {
             }
         }
     }
-    @media only screen and (min-width: 1060px) {
+    @media only screen and (min-width: 1070px) {
         .articles-block {
             max-width: 75% !important;
             padding: 0 !important;

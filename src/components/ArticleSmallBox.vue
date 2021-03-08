@@ -49,7 +49,7 @@ export default {
 
 <style lang="scss" scoped>
     .article-small-box {
-        width: 392px;
+        //width: 392px;
         display: inline-block;
         margin-bottom: 40px;
         .thumbnail {
@@ -125,15 +125,31 @@ export default {
         }
     }
     
-    @media only screen and (min-width: 768px) and (max-width: 1199px) {
+    @media only screen and (min-width: 850px) and (max-width: 1199px) {
         .article-small-box {
-            width: 332px;
+            //width: 332px;
             .thumbnail {
                 width: 166px;
             }
             .thumbnail img {
+                width: 176px;
                 height: 147px;
+            }
+            .box_info-container {
+                width: 176px;
+                height: 147px;
+            }
+        }
+    }
+    @media only screen and (min-width: 768px) and (max-width: 849px) {
+        .article-small-box {
+            //width: 332px;
+            .thumbnail {
                 width: 166px;
+            }
+            .thumbnail img {
+                width: 166px;
+                height: 147px;
             }
             .box_info-container {
                 width: 166px;

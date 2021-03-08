@@ -1,5 +1,5 @@
 <template>
-    <div class="content-grid container md-up">
+    <div class="content-grid md-up">
         <div class="grid-column flex-wrap">
             <template v-for="content in contentList" :key="content">
                 <div class="small-box-container">
@@ -40,31 +40,38 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .content-grid.container {
+    .content-grid {
         display: flex;
         padding-left: 0;
         padding-right: 0;
         .small-box-container {
-            padding-left: 15px;
-            padding-right: 0px;
+            padding-right: 15px;
+            /* padding-left: 15px;
+            padding-right: 0px; */
         }
         .grid-column {
             display: flex;
-            //width: 96%;
         }
         .grid-nav-column {
-            width: 19px;
-            padding: 0px 1px 0;
-            margin-left: 8px;
+            padding: 0px 10px 0 0;
             a img {
                 width: 17px;
             }
         }
     }
-    @media only screen and (min-width: 768px) and (max-width: 1199px) {
-        .content-grid.container {
+    @media only screen and (min-width: 850px) and (max-width: 1199px) {
+        .content-grid {
+            margin-left: 40px;
             .small-box-container {
-                padding-left: 13px;
+                /* padding-left: 13px; */
+            }
+        }
+    }
+    @media only screen and (min-width: 768px) and (max-width: 849px) {
+        .content-grid {
+            margin-left: 10px;
+            .small-box-container {
+                padding-right: 13px;
             }
         }
     }
