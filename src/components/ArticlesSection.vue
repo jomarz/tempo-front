@@ -1,20 +1,43 @@
 <template>
-    <div class="content-section concerts-section container-fluid">
-        <div class="row section-nav-row">
-            <div class="col pl-0 pr-0">
-                <SectionNav :navTitle="navTitle" :menuItems="menuItems" section="articles" />
+    <!-- <div class="content-section articles-section container-fluid">
+        <div class="row">
+            <div class="col pl-0 pr-0 section-nav-row">
+                    <SectionNav :navTitle="navTitle" :menuItems="menuItems" section="articles" />
             </div>
         </div>
-        <div class="row grid-row">
-            <div class="col-12 col-xl-9 articles">
-                <ArticlesGrid :contentType="contentType" :contentList="contentList" :contentFullList="contentFullList" />
+        <div class="row article-grid-row">
+            <div class="articles-block">
+                <ArticlesGrid :contentType="contentType" :contentList="contentList" :contentFullList="contentFullList" class="articles-block"/>
             </div>
-            <div class="col-12 col-xl-3 xl-up">
+            <div class="news-vertical-block">
                 <NewsVertical :newsList="newsList" />
-            </div>
-            <news-horizontal :newsList="newsFullList" class="sm-only" />
+            </div>                
         </div>
-    </div>    
+        <div class="row grid-row horizontal-news">
+            <div class="col">
+            <news-horizontal :newsList="newsFullList" />
+            </div>
+        </div>
+    </div> -->    
+    
+    <div class="content-section articles-section">
+            <div class="section-nav-row">
+                    <SectionNav :navTitle="navTitle" :menuItems="menuItems" section="articles" />
+            </div>
+            <div class="articles-section-content">
+                <div class="article-grid-row">
+                    <div class="articles-block">
+                        <ArticlesGrid :contentType="contentType" :contentList="contentList" :contentFullList="contentFullList" class="articles-block"/>
+                    </div>
+                    <div class="news-vertical-block">
+                        <NewsVertical :newsList="newsList" />
+                    </div>                
+                </div>
+                <div class="grid-row horizontal-news">
+                    <news-horizontal :newsList="newsFullList" />
+                </div>
+            </div>
+    </div>  
 </template>
 
 <script>
@@ -89,13 +112,66 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-  @media only screen and (min-width: 768px) {
-    .concerts-section {
-        .articles {
-            padding-left: 0;
-            padding-right: 0;
+<style lang="scss">
+    .articles-section {
+        width: 100%;
+        margin: 20px 0 0;
+        .section-nav-row {
+            padding: 0;
+        }
+        .article-grid-row {
+            max-width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0 0;
         }
     }
-  }
+    @media only screen and (min-width: 768px) {
+        .articles-block {
+            padding: 0 !important;
+        }
+        .news-vertical-block {
+            padding: 0 !important;
+        }
+    }
+    @media only screen and (min-width: 768px) and (max-width: 1160px) {
+        .news-vertical-block {
+            margin-right: 20px;
+        }
+    }
+    @media only screen and (max-width: 767px) {
+        .articles-block {
+            padding: 0 !important;
+            .horizontal-carousel {
+                padding: 0;
+            }
+        }
+    }
+    @media only screen and (max-width: 1059px) {
+        .news-vertical-block {
+            display: none;
+        }
+        .articles-section-content {
+            margin: 0 20px;
+        }
+        .articles-block {
+            max-width: 100%;
+        }
+        .horizontal-news .horizontal-carousel{
+            display: block;
+            padding: 0;
+            .news-small-box {
+                margin-right: 20px;
+            }
+        }
+    }
+    @media only screen and (min-width: 1060px) {
+        .articles-block {
+            max-width: 75% !important;
+            padding: 0 !important;
+        }
+        .horizontal-news {
+            display: none;
+        }
+    }
 </style>

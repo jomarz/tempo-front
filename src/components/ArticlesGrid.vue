@@ -50,12 +50,15 @@ export default {
         }
         .grid-column {
             display: flex;
-            width: 96%;
+            //width: 96%;
         }
         .grid-nav-column {
             width: 19px;
             padding: 0px 1px 0;
             margin-left: 8px;
+            a img {
+                width: 17px;
+            }
         }
     }
     @media only screen and (min-width: 768px) and (max-width: 1199px) {

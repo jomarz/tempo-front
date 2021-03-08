@@ -38,6 +38,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    .news-vertical {
+        max-width: 270px;
+        border-left: 1px solid #d1d3d4;
+        padding-left: 25px;
+    }
     .news-box-column {
         display: flex;
         justify-content: space-between;
@@ -51,6 +56,9 @@ export default {
                 flex-direction: column;
                 margin-top: 20px;
             }
+        }
+        .carousel-nav {
+            margin-left: 10px;
         }
         .carousel-nav a{
             display: block;
