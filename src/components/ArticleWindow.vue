@@ -39,7 +39,7 @@
                                 <p>Ut facilisis, metus laoreet porttitor pharetra, arcu lacus mattis magna, a blandit ligula risus rutrum leo. Vivamus in ullamcorper massa. Donec congue risus sed magna fringilla, vitae dignissim metus ultrices. Quisque finibus lorem ac nibh bibendum malesuada. Donec at neque eu arcu sodales aliquam. Vivamus eu odio nibh. Vivamus eu mi libero. Donec nibh ligula, malesuada nec finibus eget, porttitor</p>
                                 <p>Ut facilisis, metus laoreet porttitor pharetra, arcu lacus mattis magna, a blandit ligula risus rutrum leo. Vivamus in ullamcorper massa. Donec congue risus sed magna fringilla, vitae dignissim metus ultrices. Quisque finibus lorem ac nibh bibendum malesuada. Donec at neque eu arcu sodales aliquam. Vivamus eu odio nibh. Vivamus eu mi libero. Donec nibh ligula, malesuada nec finibus eget, porttitor</p>
                             </div> -->
-                            <div v-else-if="element.contentType == 'innerAds'" class="article-body-ad" >
+                            <div v-if="element.contentType == 'innerAds'" class="article-body-ad" >
                                 <div v-for="(innerAd, index) in element.ads" class="article-inner-ad" :key="index">
                                     <img :src="innerAd.imgUrl" alt="">
                                     <div class="inner-ad-title" v-html="innerAd.title"></div>
