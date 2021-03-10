@@ -1,6 +1,6 @@
 <template>
     <transition name="modal">
-        <div class="modal-mask">
+        <div class="modal-mask article-modal">
             <div class="modal-wrapper">
                 <div v-if="showContent" class="modal-container">
                     <div class="content-header"> 
@@ -29,16 +29,6 @@
                         </div>
                         <template v-for="(element, index) in content.contents" :key="element.id" :class="{innerAdContainer: element.contentType=='innerAds'}">
                             <ad-box v-if="index==content.contents.length-1" :ad="articleAdsList['ARTICLE_BODY_BOTTOM_FULL_BANNER']" class="ad-row" />
-                            <!-- <div v-else-if="element.contentType == 'innerAds'" class="article-body-ad" >
-                                <div style="float: left">
-                                    <img :src="element.ads[0].imgUrl" alt="">
-                                    <div class="inner-ad-title" v-html="element.ads[0].title"></div>
-                                    <div class="inner-ad-subtitle" v-html="element.ads[0].subtitle"></div>
-                                    <img :src="element.ads[0].imgUrl" alt="">
-                                </div>
-                                <p>Ut facilisis, metus laoreet porttitor pharetra, arcu lacus mattis magna, a blandit ligula risus rutrum leo. Vivamus in ullamcorper massa. Donec congue risus sed magna fringilla, vitae dignissim metus ultrices. Quisque finibus lorem ac nibh bibendum malesuada. Donec at neque eu arcu sodales aliquam. Vivamus eu odio nibh. Vivamus eu mi libero. Donec nibh ligula, malesuada nec finibus eget, porttitor</p>
-                                <p>Ut facilisis, metus laoreet porttitor pharetra, arcu lacus mattis magna, a blandit ligula risus rutrum leo. Vivamus in ullamcorper massa. Donec congue risus sed magna fringilla, vitae dignissim metus ultrices. Quisque finibus lorem ac nibh bibendum malesuada. Donec at neque eu arcu sodales aliquam. Vivamus eu odio nibh. Vivamus eu mi libero. Donec nibh ligula, malesuada nec finibus eget, porttitor</p>
-                            </div> -->
                             <div v-if="element.contentType == 'innerAds'" class="article-body-ad" >
                                 <div v-for="(innerAd, index) in element.ads" class="article-inner-ad" :key="index">
                                     <img :src="innerAd.imgUrl" alt="">
@@ -332,8 +322,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-    .modal-mask {
+<style lang="scss" >
+    .modal-mask.article-modal {
     position: fixed;
     z-index: 9998;
     top: 0;
@@ -345,195 +335,201 @@ export default {
     justify-content: center;
     transition: opacity 0.3s ease;
     }
+    .article-modal {
+        .modal-wrapper {
+        display: table-cell;
+        vertical-align: middle;
+        }
 
-    .modal-wrapper {
-    display: table-cell;
-    vertical-align: middle;
-    }
-
-    .modal-container {
-        width: 764px;
-        height: 100%;
-        overflow: auto;
-        /* display: flex;
-        flex-direction: column; */
-        //align-items: center;
-        margin: 0px auto;
-        padding: 7px 20px 0px;
-        background-color: #fff;
-        border-radius: 0px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-        transition: all 0.3s ease;
-        .article-cta {
-            margin-left: -20px;
-            margin-right: -20px;
-        }
-        .main-article-content {
-            .ad-row {
-                height: 90px;
+        .modal-container {
+            width: 764px;
+            height: 100%;
+            overflow: auto;
+            /* display: flex;
+            flex-direction: column; */
+            //align-items: center;
+            margin: 0px auto;
+            padding: 7px 20px 0px;
+            background-color: #fff;
+            border-radius: 0px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+            transition: all 0.3s ease;
+            .article-cta {
+                margin-left: -20px;
+                margin-right: -20px;
             }
-            .article-body-ad {
-                float: left;
-                display: flex;
-                flex-direction: column;
+            .main-article-content {
+                .ad-row {
+                    height: 90px;
+                }
+                .article-body-ad {
+                    float: left;
+                    display: flex;
+                    flex-direction: column;
+                }
+                .article-body-ad img {
+                    width: 135px; 
+                    height: 90px; 
+                    margin: 5px 18px 8px 0;
+                    object-fit: cover;
+                }
+                .innerAdContainer {
+                    float: left;
+                }
+                .article-inner-ad {
+                    margin: 0 0 15px;
+                }
+                .inner-ad-title {
+                    font-family: 'Playfair display';
+                    font-size: 0.8rem;
+                }
+                .inner-ad-subtitle {
+                    font-family: 'Roboto', sans-serif;
+                    font-size: 0.7rem;
+                }
             }
-            .article-body-ad img {
-                width: 135px; 
-                height: 90px; 
-                margin: 5px 18px 8px 0;
-                object-fit: cover;
-            }
-            .innerAdContainer {
-                float: left;
-            }
-            .article-inner-ad {
-                margin: 0 0 15px;
-            }
-            .inner-ad-title {
-                font-family: 'Playfair display';
-                font-size: 0.8rem;
-            }
-            .inner-ad-subtitle {
-                font-family: 'Roboto', sans-serif;
-                font-size: 0.7rem;
-            }
-        }
-        .ad-article-full {
-            width: calc(100% + 20px + 20px);
-            margin-left: -20px;
-            margin-right: -20px;
-            height: 150px;
-            overflow: visible;
-            padding: 0;
-        }
-    }
-    .sticky {
-        position: -webkit-sticky; /* Safari */
-        position: sticky;
-        top: -5px;
-    }
-    .modal-content-type {
-        //float: left;
-        font-size: 0.85rem !important;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 700;
-        clear: both;
-    }
-    .close-content-modal {
-        float: right;
-        display: block;
-        img {
-            height: 15px;
-            float: right;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-    }
-    .content-header {
-        width: 100%;
-        border-bottom: 1px solid #d1d3d4;
-        padding-bottom: 5px;
-    }
-    .title-row {
-        padding-top: 15px;
-        padding-bottom: 15px;
-        h3 {
-            margin-bottom: 5px;
-        }
-    }
-    .modal-content-subtitle {
-        font-size: 0.95rem !important;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 400;
-    }
-    .text-sub{
-        line-height: 0.95rem;
-        font-size: 0.75rem !important;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 300;
-        padding-top: 10px;
-    }
-    .main-article-content {
-        align-self: center;
-        width: 450px;
-        padding-top: 20px;
-        //display: flex;
-        //flex-direction: column;
-        margin-left: auto;
-        margin-right: auto;
-
-        p {    
-            line-height: 0.95rem;
-            font-size: 0.75rem !important;
-            text-align: justify;
-        }
-        h1 ,h2 {
-            margin-top: 10px;
-            margin-bottom: 25px;
-        }
-        h3 {
-            margin-bottom: 20px;
-        }
-        .article-text-highlight {
-            font-family: 'Playfair display';
-            font-size: 0.9rem !important;
-            line-height: 1.2rem;
-            margin: 0 1.5rem 1rem;
-            text-align: center;
-        }
-        .article-text-table {
-            margin: 0 auto 1rem;
-            td:not(:first-of-type) {
-                padding-left: 25px;
+            .ad-article-full {
+                width: calc(100% + 20px + 20px);
+                margin-left: -20px;
+                margin-right: -20px;
+                height: 150px;
+                overflow: visible;
+                padding: 0;
             }
         }
-        .article-text-separator {
-            clear: both;
-            margin: 0 0 1rem;
+        .sticky {
+            position: -webkit-sticky; /* Safari */
+            position: sticky;
+            top: -5px;
         }
-        ul li, ol li {
+        .modal-content-type {
+            //float: left;
             font-size: 0.85rem !important;
             font-family: 'Roboto', sans-serif;
-            font-weight: 300;
+            font-weight: 700;
+            clear: both;
         }
-        .ad-row {
-            margin-bottom: 16px;
-        }
-        .author-info {
-            display: flex;
-            margin-bottom: 20px;;
-        }
-        .author-pic img {
-            width: 74px;
-            height: 74px;
-        }
-        .author-data {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            .author-name {
-                font-size: 0.95rem !important;
-                font-family: 'Playfair display';
-                font-weight: 400;
+        .close-content-modal {
+            float: right;
+            display: block;
+            img {
+                height: 15px;
+                float: right;
+                margin-top: 10px;
+                cursor: pointer;
             }
-            .author-job-title {
+        }
+        .content-header {
+            width: 100%;
+            border-bottom: 1px solid #d1d3d4;
+            padding-bottom: 5px;
+        }
+        .title-row {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            h3 {
+                margin-bottom: 5px;
+            }
+        }
+        .modal-content-subtitle {
+            font-size: 0.95rem !important;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+        }
+        .text-sub{
+            line-height: 0.95rem;
+            font-size: 0.75rem !important;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            padding-top: 10px;
+        }
+        .main-article-content {
+            align-self: center;
+            width: 450px;
+            padding-top: 20px;
+            //display: flex;
+            //flex-direction: column;
+            margin-left: auto;
+            margin-right: auto;
+
+            p {    
+                line-height: 0.95rem;
+                font-size: 0.75rem !important;
+                text-align: justify;
+            }
+            h1 ,h2 {
+                margin-top: 10px;
+                margin-bottom: 25px;
+            }
+            h3 {
+                margin-bottom: 20px;
+            }
+            b, strong {
+                font-weight: 700;
+            }
+            .article-text-highlight {
+                font-family: 'Playfair display';
+                font-size: 0.9rem !important;
+                line-height: 1.2rem;
+                margin: 0 1.5rem 1rem;
+                text-align: center;
+            }
+            .article-text-table {
+                margin: 0 auto 1rem;
+                td:not(:first-of-type) {
+                    padding-left: 25px;
+                }
+            }
+            .article-text-separator {
+                clear: both;
+                margin: 0 0 1rem;
+            }
+            ul li, ol li {
                 font-size: 0.85rem !important;
                 font-family: 'Roboto', sans-serif;
-                font-weight: 400;
+                font-weight: 300;
             }
-        }
-        .main-comment-input {
-            margin: 0 0 60px;
+            .ad-row {
+                margin-bottom: 16px;
+            }
+            .author-info {
+                display: flex;
+                margin-bottom: 20px;;
+            }
+            .author-pic img {
+                width: 74px;
+                height: 74px;
+            }
+            .author-data {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                .author-name {
+                    font-size: 0.95rem !important;
+                    font-family: 'Playfair display';
+                    font-weight: 400;
+                }
+                .author-job-title {
+                    font-size: 0.85rem !important;
+                    font-family: 'Roboto', sans-serif;
+                    font-weight: 400;
+                }
+            }
+            .main-comment-input {
+                margin: 0 0 60px;
+            }
         }
     }
     @media only screen and (max-width: 767px) {
-        .modal-container {
-            width: 100%;
-        }
-        .main-article-content {
-            width: 95%;
-            .ad-row, .ad-box.ad-row {
-                padding: 0px;
+        .article-modal {
+            .modal-container {
+                width: 100%;
+            }
+            .main-article-content {
+                width: 95%;
+                .ad-row, .ad-box.ad-row {
+                    padding: 0px;
+                }
             }
         }
     }
