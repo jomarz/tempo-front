@@ -1,5 +1,5 @@
 <template>
-    <div class="news-small-box">
+    <div class="news-small-box" @click="openContent(boxContent.permalink, boxContent.id, 0)">
         <div class="news-thumbnail">
             <img :src="boxContent.imgUrl" alt="">
         </div>
@@ -18,6 +18,12 @@ export default {
             required: true,
             type: Object
         }
+    },
+    methods: {
+        openContent(permalink, id, isEvent) {console.log({permalink, id, isEvent});
+            if (isEvent == 1)   this.$router.push('/evento/'+permalink);
+            else                this.$router.push('/articulo/'+permalink);
+        }
     }
 }
 </script>
@@ -25,6 +31,7 @@ export default {
 <style lang="scss" scoped>
     .news-small-box {
         width: 209px;
+        cursor: pointer;
         .news-thumbnail img {
             width: 209px;
             height: 113px;
