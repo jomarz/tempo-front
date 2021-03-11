@@ -80,10 +80,10 @@ export default {
         }
         .box-title-row {
             border-bottom: 2px solid #fff;
-            height: 42px;
+            height: 59px;
         }
         .box-content-row {
-            height: 85px;
+            height: 70px;
         }
         .box-title-row, .box-content-row {
             margin-left: 0px;
@@ -91,7 +91,7 @@ export default {
         }
         .box-content {
             height: 100%;
-            padding-top: 5px;
+            padding-top: 2px;
             padding-bottom: 2px;
         }
         .box-content, .box-title {
@@ -104,8 +104,10 @@ export default {
             padding-top: 1px;
         }
         .box-subtitle {
+            padding-top: 2px;
+            line-height: normal;
             display: -webkit-box;
-            -webkit-line-clamp: 1;
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
@@ -113,7 +115,7 @@ export default {
             //height: 100%;
             //max-height: 67px;
             display: -webkit-box;
-            -webkit-line-clamp: 4;
+            -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
