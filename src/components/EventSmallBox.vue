@@ -1,5 +1,5 @@
 <template>
-    <div class="event-small-box ">
+    <div class="event-small-box" @click="openContent(boxContent.permalink, boxContent.id, 1)">
         <div class="">
             <div class="thumbnail">
                 <img :src="boxContent.imgUrl" alt="">
@@ -41,6 +41,12 @@ export default {
             required: true,
             type: Object
         }
+    },
+    methods: {
+        openContent(permalink, id, isEvent) {console.log({permalink, id, isEvent});
+            if (isEvent == 1)   this.$router.push('/evento/'+permalink);
+            else                this.$router.push('/articulo/'+permalink);
+        }
     }
     
 }
@@ -51,6 +57,7 @@ export default {
         width: 335px;
         display: inline-block;
         margin-bottom: 40px;
+        cursor: pointer;
         .thumbnail {
             width: 130px;
             float: left;
