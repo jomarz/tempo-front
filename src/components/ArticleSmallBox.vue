@@ -9,8 +9,8 @@
                     <div class="row box-title-row no-gutters">
                         <div class="box-info-left col-1"></div>
                         <div class="box-info-right col-11 box-title">
-                            <h6 class="article-title">{{ toLowerFirstUpper(boxContent.title) }}</h6>
-                            <span class="box-subtitle">{{ boxContent.subtitle }}</span>
+                            <h6 class="article-title" v-html="boxContent.title"></h6>
+                            <span class="box-subtitle" v-html="boxContent.subtitle"></span>
                         </div>
                     </div>
                     <div class="row box-content-row no-gutters">
