@@ -52,7 +52,7 @@ import NewsHorizontal from './NewsHorizontal.vue';
 export default {
     components: { SectionNav, ArticlesGrid, NewsVertical, NewsHorizontal },
     setup() {
-        const navTitle = "Artículos/Noticias";
+        const navTitle = "Artículos";
         const menuItems = [
             { text: 'Clásica', url: "#", filter: 'clásica' },
             { text: 'Ópera', url: "#", filter: 'ópera' },
