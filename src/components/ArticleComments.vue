@@ -2,7 +2,7 @@
     <div class="article-comments">
         <div class="separator"></div>
         <div class="comment-nav-row">
-            <img src="..\assets\img\icons\BlueArrowDownIcon.svg" alt="" class="close-comments-icon" @click="$emit('toggle-article-comments')">
+            <img src="..\assets\img\icons\BlueArrowDownIcon.svg" alt="" class="close-comments-icon prevent-article-close" @click="$emit('toggle-article-comments')">
         </div>
         <template v-for="comment in comments" :key="comment.comment_id" >
             <Comment :comment="comment" @update-comments="$emit('update-comments')" />

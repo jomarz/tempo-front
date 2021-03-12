@@ -1,7 +1,7 @@
 <template>
     <transition name="modal">
-        <div class="modal-mask article-modal">
-            <div class="modal-wrapper">
+        <div class="modal-mask article-modal" @click="checkClickOutsideArticle($event)">
+            <div class="modal-wrapper" ref="modalWrapper" id="modal-wrapper">
                 <div v-if="showContent" class="modal-container">
                     <div class="content-header"> 
                         <div class="close-content-modal" >
@@ -304,6 +304,11 @@ export default {
                 this.comments = response.data;
                 this.commentCount = this.countComments(this.comments);
             });
+        },
+        checkClickOutsideArticle(e) {
+            if(!e.target.closest('#modal-wrapper') && !e.target.classList.contains('prevent-article-close')) {
+                this.$emit('close-article');
+            }
         }
     },
     computed: {
