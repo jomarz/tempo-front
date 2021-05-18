@@ -16,7 +16,7 @@
                     <div class="row box-content-row no-gutters">
                         <div class="box-info-left col-1 box-day"></div>
                         <div class="box-info-right col-11 box-content">
-                            <p class="box-text">{{ boxContent.description }}</p>
+                            <p class="box-text" v-html="boxContent.description"></p>
                             <read-more-link contentType="article" :contentPermalink="boxContent.permalink" isEvent="0" :contentName="boxContent.title" :contentId="boxContent.id"/>
                         </div>
                     </div>

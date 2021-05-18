@@ -29,11 +29,19 @@ import MobileFeatured from './MobileFeatured.vue';
 export default {
     components: { FeaturedInfo, MobileFeatured },
     setup () {
-        const featuredType = 'event';
+        var featuredType = ref('event');
         const featuredAPI = new FeaturedAPI();
         var featuredInfo = ref([]);
         var showInfo = ref(false);
-        featuredAPI.getFeaturedInfo('', (data) => { featuredInfo.value = Lister.assignDateFields(data.data)[0]; showInfo.value = true;} );
+        featuredAPI.getFeaturedInfo('', (data) => {
+            if (data.data[0].post_type === 'event') {
+                featuredInfo.value = Lister.assignDateFields(data.data)[0]; 
+                showInfo.value = true;
+            } else if (data.data[0].post_type === 'article') {
+                featuredInfo.value = data.data[0];
+                showInfo.value = true;
+            }   
+        } );
         return { featuredType, featuredInfo, showInfo }
     }
 }
