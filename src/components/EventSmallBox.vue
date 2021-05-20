@@ -63,7 +63,7 @@ export default {
             float: left;
         }
         .thumbnail img {
-            height: 137px;
+            height: 147px;
             width: 130px;
             object-fit: cover;
         }
@@ -80,7 +80,7 @@ export default {
                 height: 36px;
             }
             .box-info-table tr.box-info-bottom-row {
-                height: 98px;
+                height: 111px;
             }
             .box-info-table td.box-info-left-col {
                 width: 34px;
@@ -100,7 +100,7 @@ export default {
                 text-align: end;
             }
             .box-info-content-cell {
-                padding-top: 4px;
+                padding-top: 7px;
             }
             .event-title {
                 font-size: 0.75rem !important;
@@ -119,16 +119,19 @@ export default {
             }
             .box-month {
                 font-size: 0.55rem !important;
+                line-height: 0.90rem;
             }
             .box-location {
-                font-size: 0.55rem !important;
-                line-height: 0.65rem;
+                font-size: 0.66rem !important;
+                line-height: 0.75rem;
             }
             p.box-text {
                 display: -webkit-box;
                 -webkit-line-clamp: 3;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
+                line-height: 0.72rem;
+                font-size: 0.63rem !important;
             }
             .more-link {
                 font-size: 0.5rem !important;

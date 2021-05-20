@@ -59,8 +59,12 @@ export default {
         var contentUnfilteredFullList = ref([]);
         const getEvents = function(year, month)
         {
-            eventsAPI.getMonthEvents(year, month, (data) => { 
-                contentUnfilteredFullList.value = Lister.assignDateFields(data.data);
+            eventsAPI.getMonthEvents(year, month, (data) => {
+                // DEV only
+                contentUnfilteredFullList.value = [Lister.assignDateFields(data.data)[0],Lister.assignDateFields(data.data)[0],Lister.assignDateFields(data.data)[0],Lister.assignDateFields(data.data)[0]];
+                // end DEV only
+                // Uncomment next when in prod
+                //contentUnfilteredFullList.value = Lister.assignDateFields(data.data);
                 console.log(contentUnfilteredFullList.value);
                 store.eventsCarousel.setNumPages(data.data.length);
                 });
