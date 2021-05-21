@@ -17,8 +17,8 @@ export default {
 <style lang="scss" scoped>
     .media-controls {
         display: flex;
+        justify-content: flex-end;
         background-color: black;
-        //height: min-content;
         padding: 5px 0;
         .media-icon {
             box-sizing: content-box;

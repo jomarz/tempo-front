@@ -35,9 +35,9 @@
                 <span class="dot" @click="currentSlide(2)"></span>
                 <span class="dot" @click="currentSlide(3)"></span>
             </div> -->
-            <media-controls class="article-media-controls" @jump-to-type="jumpToMediaType" />
         </div>
     </div>
+    <media-controls class="article-media-controls" @jump-to-type="jumpToMediaType" />
 </template>
 
 <script>
@@ -139,7 +139,7 @@ export default {
         currentSlide(n) {
             this.showSlides(this.slideIndex = n);
         },
-        showSlides(n) {console.log(this.mediaFullList);
+        showSlides(n) {
             var i;
             var slides = document.getElementsByClassName("mySlides");
             //var dots = document.getElementsByClassName("dot");
@@ -163,8 +163,8 @@ export default {
         }
     },
     mounted() {
-        console.log(this.slideIndex);
-        console.log(this.mediaFullList);
+        /* console.log(this.slideIndex);
+        console.log(this.mediaFullList); */
         //this.showSlides(this.slideIndex);
     }
 }
@@ -174,7 +174,7 @@ export default {
     .modal-main-display {
         width: 100%;
         display: flex;
-        margin-bottom: 35px;
+        margin-bottom: 2px;
         .info-box {
             width: 215px;
             height: 292px;
@@ -189,13 +189,7 @@ export default {
             margin-left: 3px;
             background-color: gray;
         }
-        .article-media-controls{
-            position: absolute;
-            bottom: -34px;
-            right: 0px;
-            /* border: solid 1px white; */
-            border-top: solid 1px white;
-        }
+
         * {box-sizing:border-box}
 
         /* Slideshow container */
