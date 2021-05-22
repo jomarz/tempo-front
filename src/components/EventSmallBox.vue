@@ -116,10 +116,12 @@ export default {
                 -webkit-line-clamp: 1;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
+                font-weight: 700;
             }
             .box-month {
-                font-size: 0.55rem !important;
-                line-height: 0.90rem;
+                font-size: 0.64rem !important;
+                line-height: 0.94rem;
+                padding-bottom: 1px;
             }
             .box-location {
                 font-size: 0.66rem !important;

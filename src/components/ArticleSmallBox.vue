@@ -115,10 +115,12 @@ export default {
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            font-size: 0.62rem !important;
+            font-weight: 700;
+            letter-spacing: 0.005rem;
         }
         .box-text {
-            //height: 100%;
-            //max-height: 67px;
+            font-size: 0.63rem !important;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;

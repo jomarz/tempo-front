@@ -2,15 +2,13 @@
     <div class="feat-info-article">
         <h1 class="feat-article-title">{{featuredInfo.title}}</h1>
         <feat-info-article-box :featuredInfo="featuredInfo" />
-        <read-more-link class="feat-article-link" contentType="article" :contentPermalink="featuredInfo.permalink" isEvent="0" :contentId="featuredInfo.id" />
     </div>
 </template>
 
 <script>
 import FeatInfoArticleBox from './FeatInfoArticleBox.vue'
-import ReadMoreLink from './ReadMoreLink.vue'
 export default {
-  components: { ReadMoreLink, FeatInfoArticleBox },
+  components: { FeatInfoArticleBox },
     props: {
         featuredInfo: {
             required: true,

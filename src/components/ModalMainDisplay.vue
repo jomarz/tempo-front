@@ -1,10 +1,9 @@
 <template>
     <div class="modal-main-display">
-        <div class="info-box md-up">
-            <feat-info-event v-if="contentType==='event'" :featuredInfo="content" class="article-modal-info"/>
-            <feat-info-article v-if="contentType==='article'" :featuredInfo="content" class="article-modal-info"/>
+        <div v-if="contentType==='event'" class="info-box md-up">
+            <feat-info-event :featuredInfo="content" class="article-modal-info"/>
         </div>
-        <div class="media-box">
+        <div class="media-box" :class="{fullWidthMedia: contentType==='article'}">
             <!-- Slideshow container -->
             <div class="slideshow-container" :class="hideSlides">
                 <template v-for="(media, index) in mediaFullList" :key="media.mediaId">
@@ -27,29 +26,24 @@
             <a class="prev" @click="plusSlides(-1)">&#10094;</a>
             <a class="next" @click="plusSlides(1)">&#10095;</a>
             </div>
-            <br>
-
-            <!-- The dots/circles -->
-            <!-- <div style="text-align:center">
-                <span class="dot" @click="currentSlide(1)"></span>
-                <span class="dot" @click="currentSlide(2)"></span>
-                <span class="dot" @click="currentSlide(3)"></span>
-            </div> -->
         </div>
-    </div>
+    </div>  
     <media-controls class="article-media-controls" @jump-to-type="jumpToMediaType" />
+    <div v-if="contentType==='article'" class="info-box">
+        <ArticleModalInfoBox :featuredInfo="content"/>
+    </div>
 </template>
 
 <script>
 import { ref } from 'vue'
 import store from '../store/store.js';
-import FeatInfoArticle from './FeatInfoArticle.vue'
 import FeatInfoEvent from './FeatInfoEvent.vue'
 import MediaControls from './MediaControls.vue'
+import ArticleModalInfoBox from './ArticleModalInfoBox'
 import MediaAPI from '../classes/MediaAPI'
 
 export default {
-    components: { FeatInfoEvent, FeatInfoArticle, MediaControls },
+    components: { FeatInfoEvent, MediaControls, ArticleModalInfoBox },
     props: {
         contentType: {
             required: true,
@@ -80,6 +74,7 @@ export default {
         ];
         var mediaFullList = ref(emptyMedia);
         var hideSlides = ref(true);
+        console.log(props.content);
         /* const dummy = [
             {
                 mediaId: 1,
@@ -188,6 +183,10 @@ export default {
             height: 292px;
             margin-left: 3px;
             background-color: gray;
+        }
+        .media-box.fullWidthMedia {
+            width: 100%;
+            margin-left: 0px;
         }
 
         * {box-sizing:border-box}

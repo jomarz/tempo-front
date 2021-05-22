@@ -99,6 +99,7 @@ export default {
     $route (newRoute, from){
         console.log(from);
         console.log(newRoute);
+        document.title = newRoute.meta.title || 'Revista Tempo';
         if(newRoute.params != undefined && newRoute.params.type != undefined && newRoute.params.permalink != undefined)  {
             var isEvent = 0; console.log(store.getShowArticleState());
             if(store.getShowArticleState()) {
@@ -145,7 +146,7 @@ export default {
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto+Condensed:wght@700&family=Roboto:wght@300;400;700&display=swap');
 
   html, body {
-    font-size: 20px;
+    font-size: 19px;
   }
   body {
     margin: auto;
