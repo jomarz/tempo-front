@@ -39,6 +39,7 @@ export default {
                 showInfo.value = true;
             } else if (data.data[0].post_type === 'article') {
                 featuredInfo.value = data.data[0];
+                featuredType.value = 'article'
                 showInfo.value = true;
             }   
         } );
