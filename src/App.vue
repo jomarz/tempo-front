@@ -259,6 +259,11 @@ export default {
     .ad-row, .ad-box.ad-row {
       max-height: 200px;
     }
+    .calendar-row .ad-small {
+        img {
+            height: 100%;
+        }
+    }
     .ad-small {
       height: 100%;
     }
@@ -358,6 +363,7 @@ export default {
     }
     .ad-row, .ad-box.ad-row {
       padding: 0 15px;
+      margin-top: 15px;
       background-color: white;
       max-height: 150px;
     }

@@ -3,7 +3,8 @@
         <template v-if="ad">
             <a :href="ad.linkUrl"><img :src="ad.imgUrl" alt="" class="ad-img"></a>
         </template>
-        <img v-else src="https://picsum.photos/id/1002/1200/200" alt="" class="ad-img">
+        <div v-else class="empty-ad"></div>
+        <!-- <img v-else src="https://picsum.photos/id/1002/1200/200" alt="" class="ad-img"> -->
     </div>
 </template>
 
@@ -26,6 +27,10 @@ export default {
             width: 100%;
             object-position: left;
             object-fit: cover;
+        }
+        .empty-ad {
+            width: 100%;
+            background-color: white;
         }
     }
 </style>
