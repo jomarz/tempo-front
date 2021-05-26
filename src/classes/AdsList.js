@@ -11,11 +11,11 @@ export default class AdsList
     }
 
     buildAdList(adsObj = {})
-    {
+    {console.log(this.pagePositions);
         this.pagePositions.forEach(position => {
             if((adsObj[position] != undefined)) {
-                //this.adsList[position] = adsObj[position]; 
-                this.adsList[position] = false;
+                this.adsList[position] = adsObj[position]; 
+                //this.adsList[position] = false;  // Uncomment if no ads are comming and comment previous line
             }
             else    this.adsList[position] = false;
         });

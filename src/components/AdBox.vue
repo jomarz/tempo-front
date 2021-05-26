@@ -18,13 +18,12 @@ export default {
 <style lang="scss" scoped>
     .ad-box {
         box-sizing: border-box;
-        height: 100%;
+        max-height: 200px;
         width: 100%;
         background-color: black;
         overflow: hidden;
         img {
             width: 100%;
-            height: 100%;
             object-position: left;
             object-fit: cover;
         }

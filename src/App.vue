@@ -96,9 +96,7 @@ export default {
     }
   },
   watch:{
-    $route (newRoute, from){
-        console.log(from);
-        console.log(newRoute);
+    $route (newRoute){
         document.title = newRoute.meta.title || 'Revista Tempo';
         if(newRoute.params != undefined && newRoute.params.type != undefined && newRoute.params.permalink != undefined)  {
             var isEvent = 0; console.log(store.getShowArticleState());
@@ -259,7 +257,7 @@ export default {
     }
     /* ad boxes styles*/
     .ad-row, .ad-box.ad-row {
-      height: 200px;
+      max-height: 200px;
     }
     .ad-small {
       height: 100%;
@@ -359,12 +357,13 @@ export default {
       font-size: 19px;
     }
     .ad-row, .ad-box.ad-row {
-      padding: 15px;
+      padding: 0 15px;
       background-color: white;
-      height: 150px;
+      max-height: 150px;
     }
     .calendar-row .ad-small {
       padding-right: 15px;
+      margin-top: 25px;
       background-color: white;
       height: 150px;
     }
