@@ -10,7 +10,7 @@
                         <td class="box-info-left-col"></td>
                         <td class="box-info-right-col">
                             <h6 class="event-title">{{ boxContent.title }}</h6>
-                            <span class="box-subtitle">{{ boxContent.subtitle }}</span>
+                            <span class="box-subtitle">{{ boxContent.artist }}</span>
                         </td>
                     </tr>
                     <tr class="box-info-bottom-row">

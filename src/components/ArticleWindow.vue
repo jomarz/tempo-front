@@ -458,7 +458,7 @@ export default {
             margin-right: auto;
 
             p {    
-                line-height: 0.95rem;
+                line-height: 1.18rem;
                 font-size: 0.75rem !important;
                 text-align: justify;
             }

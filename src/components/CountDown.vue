@@ -1,5 +1,5 @@
 <template>
-    <div class="count-down">
+    <div v-if="!distanceToEvent.eventIsPast" class="count-down">
         <div class="count-down-item">
             <div class="count-down-number">{{distanceToEvent.days}}</div>
             <div class="count-down-item-title">DÍAS</div>
@@ -27,7 +27,7 @@ export default {
     computed: {
         distanceToEvent()
         {
-            let eventDatetime = new EventDatetime(this.datetime);
+            let eventDatetime = new EventDatetime(this.datetime); console.log(eventDatetime.getDistanceToEvent());
             return eventDatetime.getDistanceToEvent();
         }
     }

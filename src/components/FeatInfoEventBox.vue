@@ -4,7 +4,7 @@
             <td class="left-col">
             </td>
             <td class="right-col name-cell">
-                <h4 class="feat-event-name">{{featuredInfo.name}}</h4>
+                <h4 class="feat-event-name">{{featuredInfo.artist}}</h4>
             </td>
         </tr>
         <tr class="bottom-row">
@@ -38,6 +38,12 @@ export default {
     h1, h2, h4 {
         color: white;
     }
+    .feat-event-name {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
     .feat-event-month {   
         font-family: 'Roboto', sans-serif;
         color: white;
@@ -68,6 +74,7 @@ export default {
     .home-main.feat-info-event {
         .feat-event-name {
             min-height: 1.1rem;
+            font-size: 0.95rem !important;
         }
         .feat-info-box {
             margin-top: 25px;
@@ -97,7 +104,7 @@ export default {
 
     .article-modal-info.feat-info-event {
         .feat-event-name {
-            font-size: 0.75rem !important;
+            font-size: 0.8rem !important;
             min-height: 0.85rem;
             line-height: normal;
         }
