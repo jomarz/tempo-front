@@ -1,9 +1,11 @@
 <template>
     <div class="video-small-box">
         <div class="video-container">
-            <iframe :src="boxContent.src" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-wrapper">
+                <iframe :src="boxContent.src" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </div>
-        <div class="video-box-subtitle">
+        <div class="video-box-title">
             {{boxContent.title}}
         </div>
     </div>
@@ -19,14 +21,21 @@ export default {
 
 <style lang="scss" scoped>
     .video-small-box {
+        max-width: 221px;
         .video-container {
-        width: 209px;
-        height: 127px;
+            width: 221px;
+            height: 139px;
             overflow: hidden;
             position: relative;
-            //width:100%;
+            padding: 6px;
+            border: 1px solid #d1d3d4;
         }
-
+        .video-wrapper {
+            overflow: hidden;
+            position: relative;
+            width: 209px;
+            height: 127px;
+        }
         .video-container::after {
             padding-top: 56.25%;
             display: block;
@@ -40,12 +49,12 @@ export default {
             width: 100%;
             height: 100%;
         }
-        .video-box-subtitle {
-            font-size: 0.75rem !important;
-            line-height: 1rem;
-            font-family: 'Roboto', sans-serif;
+        .video-box-title {
+            font-size: 0.9rem !important;
+            line-height: 1.1rem;
+            font-family: 'Playfair display';
             font-weight: 400;
-            margin-top: 6px;
+            margin: 6px 0 15px;
         }
     }
     .horizontal-carousel-video {
@@ -56,7 +65,6 @@ export default {
     @media only screen and (min-width: 767px) and (max-width: 1199px) {
         .video-small-box {
             .video-container {
-                width: 170px;
             }
         }
     }

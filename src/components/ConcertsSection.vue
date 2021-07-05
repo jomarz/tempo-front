@@ -59,8 +59,13 @@ export default {
         var contentUnfilteredFullList = ref([]);
         const getEvents = function(year, month)
         {
-            eventsAPI.getMonthEvents(year, month, (data) => { 
-                contentUnfilteredFullList.value = Lister.assignDay(data.data);
+            eventsAPI.getMonthEvents(year, month, (data) => {
+                // DEV only
+                //contentUnfilteredFullList.value = [Lister.assignDateFields(data.data)[0],Lister.assignDateFields(data.data)[0],Lister.assignDateFields(data.data)[0],Lister.assignDateFields(data.data)[0]];
+                // end DEV only
+                // Uncomment next line when in prod
+                contentUnfilteredFullList.value = Lister.assignDateFields(data.data);
+                console.log(contentUnfilteredFullList.value);
                 store.eventsCarousel.setNumPages(data.data.length);
                 });
         }
@@ -87,10 +92,8 @@ export default {
         contentFullList: function() {
             if(store.sectionFilter.events.applyFilter) {
                 var filteredContent = this.contentUnfilteredFullList.filter( element => {
-                    console.log(element.musicGenre);
                     return element.musicGenre.includes(store.sectionFilter.events.filter);
                 });
-                console.log(filteredContent);
                 return filteredContent;
             }
             return this.contentUnfilteredFullList;

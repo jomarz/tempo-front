@@ -10,7 +10,7 @@ export default class EventDatetime
     {
         // Timezone offset of the times passed to the constructor
         // Ideally, we should get this from the DB
-        var DBtimeZone = -6.00;
+        var DBtimeZone = -5.00;
 
         // Get today's date and time
         var now = new Date();

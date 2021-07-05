@@ -51,6 +51,7 @@ export default {
 
 <style lang="scss" scoped>
     .article-icons {
+        clear: both;
         display: flex;
         justify-content: flex-start;
         align-items: center;

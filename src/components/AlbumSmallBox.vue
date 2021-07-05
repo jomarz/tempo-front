@@ -1,5 +1,5 @@
 <template>
-    <div class="album-small-box">
+    <div class="album-small-box" @click="openContent(boxContent.permalink, boxContent.id, 0)">
         <div class="thumbnal-container">
             <img :src="boxContent.imgUrl" alt="" class="thumbnail-image">
         </div>
@@ -18,6 +18,12 @@ export default {
             required: true,
             type: Object
         }
+    },
+    methods: {
+        openContent(permalink, id, isEvent) {console.log({permalink, id, isEvent});
+            if (isEvent == 1)   this.$router.push('/evento/'+permalink);
+            else                this.$router.push('/articulo/'+permalink);
+        }
     }
 }
 </script>
@@ -25,6 +31,7 @@ export default {
 <style lang="scss" scoped>
     .album-small-box {
         width: 151px;
+        cursor: pointer;
         .thumbnal-container {
             border: 1px solid #d1d3d4;
             padding: 7px;

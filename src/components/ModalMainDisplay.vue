@@ -1,10 +1,9 @@
 <template>
     <div class="modal-main-display">
-        <div class="info-box md-up">
-            <feat-info-event v-if="contentType==='event'" :featuredInfo="content" class="article-modal-info"/>
-            <feat-info-article v-if="contentType==='article'" :featuredInfo="content" class="article-modal-info"/>
+        <div v-if="contentType==='event'" class="info-box md-up">
+            <feat-info-event :featuredInfo="content" class="article-modal-info"/>
         </div>
-        <div class="media-box">
+        <div class="media-box" :class="{fullWidthMedia: contentType==='article'}">
             <!-- Slideshow container -->
             <div class="slideshow-container" :class="hideSlides">
                 <template v-for="(media, index) in mediaFullList" :key="media.mediaId">
@@ -17,7 +16,7 @@
                     <div v-else-if="media.mediaType=='playlistUrl'" class="mySlides fades media-audio" :class="{firstslide: index==0}">
                         <iframe :src="media.url" frameborder="0" allowtransparency="true" allow="encrypted-media;" allowfullscreen></iframe>
                     </div>
-                    <div v-else-if="media.mediaType=='timeLineUrl'" class="mySlides fades media-audio" :class="{firstslide: index==0}">
+                    <div v-else-if="media.mediaType=='timeLineUrl'" class="mySlides fades media-timeline" :class="{firstslide: index==0}">
                         <img :src="media.url" >
                     </div>
 
@@ -27,29 +26,24 @@
             <a class="prev" @click="plusSlides(-1)">&#10094;</a>
             <a class="next" @click="plusSlides(1)">&#10095;</a>
             </div>
-            <br>
-
-            <!-- The dots/circles -->
-            <!-- <div style="text-align:center">
-                <span class="dot" @click="currentSlide(1)"></span>
-                <span class="dot" @click="currentSlide(2)"></span>
-                <span class="dot" @click="currentSlide(3)"></span>
-            </div> -->
-            <media-controls class="article-media-controls" @jump-to-type="jumpToMediaType" />
         </div>
+    </div>  
+    <media-controls class="article-media-controls" @jump-to-type="jumpToMediaType" />
+    <div v-if="contentType==='article'" class="info-box">
+        <ArticleModalInfoBox :featuredInfo="content"/>
     </div>
 </template>
 
 <script>
 import { ref } from 'vue'
 import store from '../store/store.js';
-import FeatInfoArticle from './FeatInfoArticle.vue'
 import FeatInfoEvent from './FeatInfoEvent.vue'
 import MediaControls from './MediaControls.vue'
+import ArticleModalInfoBox from './ArticleModalInfoBox'
 import MediaAPI from '../classes/MediaAPI'
 
 export default {
-    components: { FeatInfoEvent, FeatInfoArticle, MediaControls },
+    components: { FeatInfoEvent, MediaControls, ArticleModalInfoBox },
     props: {
         contentType: {
             required: true,
@@ -80,6 +74,7 @@ export default {
         ];
         var mediaFullList = ref(emptyMedia);
         var hideSlides = ref(true);
+        console.log(props.content);
         /* const dummy = [
             {
                 mediaId: 1,
@@ -139,7 +134,7 @@ export default {
         currentSlide(n) {
             this.showSlides(this.slideIndex = n);
         },
-        showSlides(n) {console.log(this.mediaFullList);
+        showSlides(n) {
             var i;
             var slides = document.getElementsByClassName("mySlides");
             //var dots = document.getElementsByClassName("dot");
@@ -163,8 +158,8 @@ export default {
         }
     },
     mounted() {
-        console.log(this.slideIndex);
-        console.log(this.mediaFullList);
+        /* console.log(this.slideIndex);
+        console.log(this.mediaFullList); */
         //this.showSlides(this.slideIndex);
     }
 }
@@ -174,7 +169,7 @@ export default {
     .modal-main-display {
         width: 100%;
         display: flex;
-        margin-bottom: 35px;
+        margin-bottom: 2px;
         .info-box {
             width: 215px;
             height: 292px;
@@ -189,13 +184,11 @@ export default {
             margin-left: 3px;
             background-color: gray;
         }
-        .article-media-controls{
-            position: absolute;
-            bottom: -34px;
-            right: 0px;
-            /* border: solid 1px white; */
-            border-top: solid 1px white;
+        .media-box.fullWidthMedia {
+            width: 100%;
+            margin-left: 0px;
         }
+
         * {box-sizing:border-box}
 
         /* Slideshow container */
@@ -206,6 +199,15 @@ export default {
             margin: auto;
             overflow: hidden;
             .media-img {
+                width: 100%;
+                height: 100%;
+                img {    
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+            .media-timeline {
                 width: 100%;
                 height: 100%;
                 img {    

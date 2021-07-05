@@ -4,17 +4,16 @@
             <td class="left-col">
             </td>
             <td class="right-col name-cell">
-                <h4 class="feat-event-name">{{featuredInfo.artist}}</h4>
+                <h4 class="feat-article-name"></h4>
             </td>
         </tr>
         <tr class="bottom-row">
             <td class="left-col day-cell">
-                <h2 class="feat-event-day">{{featuredInfo.day}}</h2>
+                <h2 class="feat-event-day"></h2>
             </td>
             <td class="right-col">
-                <span class="feat-event-month">DE {{featuredInfo.monthName}}, {{featuredInfo.year}}</span>
-                <span class="feat-event-location">{{featuredInfo.location}}</span>
-                <read-more-link v-if="featuredInfo.showContent==1" class="feat-event-link" contentType="event" :contentPermalink="featuredInfo.permalink" isEvent="1" :contentId="featuredInfo.id" />
+                <div class="feat-article-description">{{featuredInfo.artist}}</div>
+                <read-more-link class="feat-article-link" contentType="article" :contentPermalink="featuredInfo.permalink" isEvent="0" :contentId="featuredInfo.id" />
             </td>
         </tr>
     </table>
@@ -38,30 +37,18 @@ export default {
     h1, h2, h4 {
         color: white;
     }
-    .feat-event-name {
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-    .feat-event-month {   
-        font-family: 'Roboto', sans-serif;
-        color: white;
-        font-weight: 700;
-    }
-    .feat-event-location {   
+    .feat-article-description {   
         font-family: 'Roboto', sans-serif;
         color: white;
         font-weight: 300;
-        display: block;
+        font-size: 1rem;
+        line-height: 1.1rem;
+        margin-top: 5px;
     }
-    a.feat-event-link {
+    a.feat-article-link {
         font-family: 'Roboto', sans-serif;
         font-weight: 700;
         color: #ffc828;
-        display: block;
-    }
-    td.day-cell {
         display: block;
     }
     .top-row {
@@ -71,21 +58,17 @@ export default {
         border-left: 1px solid white;
     }
 
-    .home-main.feat-info-event {
-        .feat-event-name {
+    .home-main.feat-info-article {
+        .feat-article-name {
             min-height: 1.1rem;
-            font-size: 0.95rem !important;
+        }
+        .feat-article-description {
+            
         }
         .feat-info-box {
             margin-top: 25px;
         }
-        .feat-event-month {   
-            font-size: 0.8rem !important;
-        }
-        .feat-event-location {   
-            font-size: 0.8rem !important;
-        }
-        a.feat-event-link {
+        a.feat-article-link {
             font-size: 0.6rem !important;
         }
         .feat-info-box td {
@@ -102,28 +85,17 @@ export default {
         }
     }
 
-    .article-modal-info.feat-info-event {
-        .feat-event-name {
-            font-size: 0.8rem !important;
+    .article-modal-info.feat-info-article {
+        .feat-article-name {
+            font-size: 0.75rem !important;
             min-height: 0.85rem;
             line-height: normal;
-        }
-        .feat-event-day {
-            font-size: 1.1rem !important;
         }
         .feat-info-box {
             max-width: 90%;
             margin-top: 25px;
         }
-        .feat-event-month {   
-            font-size: 0.65rem !important;
-            line-height: normal;
-        }
-        .feat-event-location {   
-            font-size: 0.55rem !important;
-            line-height: normal;
-        }
-        a.feat-event-link {
+        a.feat-article-link {
             font-size: 0.55rem !important;
         }
         .feat-info-box td {
@@ -138,7 +110,7 @@ export default {
         .top-row td {
             padding-bottom: 5px;
         }
-        .feat-event-link {
+        .feat-article-link {
             display: none;
         }
     }
@@ -146,7 +118,7 @@ export default {
         .name-cell {
             height: 1.2rem;
         }
-        .feat-event-name {
+        .feat-article-name {
             font-size: 0.75rem !important;
             display: -webkit-box;
             -webkit-line-clamp: 2;
@@ -154,32 +126,12 @@ export default {
             overflow: hidden;
             min-height: 0.85rem;
         }
-        .feat-event-month {   
-            font-size: 0.65rem !important;
-            font-family: 'Roboto', sans-serif;
-            color: white;
-            font-weight: 700;
-        }
-        .feat-event-location {   
-            font-size: 0.55rem !important;
-            font-family: 'Roboto', sans-serif;
-            color: white;
-            font-weight: 300;
-            display: block;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        a.feat-event-link {
+        a.feat-article-link {
             font-size: 0.55rem !important;
             font-family: 'Roboto', sans-serif;
             font-weight: 700;
             color: #ffc828;
             display: block;
-        }
-        .feat-event-day {
-            font-size: 1rem !important;
         }
         .feat-info-box td {
             padding-top: 2px;

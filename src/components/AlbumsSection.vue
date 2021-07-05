@@ -11,7 +11,7 @@
                 <AlbumsCTA />
             </div>
             <div class="col-12 col-md-3">
-                <printed-vertical :printedList="printedList" />
+                <printed-vertical v-if="false" :printedList="printedList" />
             </div>
         </div>
     </div>
