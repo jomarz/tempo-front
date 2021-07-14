@@ -65,7 +65,7 @@ export default  {
         this.showMobileSearchbox.state = !this.showMobileSearchbox.state;
     },
     setfeatVideo(videoInfo) {
-        this.featVideo.src = videoInfo.src;
+        this.featVideo.src = 'https://www.youtube.com/embed/'+videoInfo.snippet.resourceId.videoId;
         this.featVideo.title = videoInfo.title;
     },
 }

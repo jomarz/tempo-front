@@ -2,7 +2,7 @@
     <div class="video-small-box">
         <div class="video-container">
             <div class="video-wrapper">
-                <iframe :src="boxContent.src" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe :src="'https://www.youtube.com/embed/'+boxContent.snippet.resourceId.videoId" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
         <div class="video-box-title">

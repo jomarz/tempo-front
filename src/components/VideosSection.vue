@@ -15,17 +15,20 @@
 </template>
 
 <script>
+import { ref } from 'vue'
 import store from '../store/store.js';
 import MainVideo from './MainVideo.vue';
 import SectionNavNoMenu from './SectionNavNoMenu.vue';
 import VideoCarousel from './VideoCarousel.vue';
 import HorizontalCarousel from './HorizontalCarousel.vue';
+import VideoListAPI from '../classes/VideoListAPI.js';
 export default {
   components: { SectionNavNoMenu, MainVideo, VideoCarousel, HorizontalCarousel },
     setup() 
     {
         const navTitle = "Videos Tempo";
-        const videoFullList = [
+        //var showVideoSection = ref(false);
+        /* const videoFullList = [
             {
                 src: 'https://www.youtube.com/embed/UL1qpV6YtAE',
                 title: 'Bach en Bogotá - Hans Fagius',
@@ -66,8 +69,14 @@ export default {
                 title: 'Serenade for Strings | Dvořák',
                 subtitle: ''
             },
-        ];
-        store.videoCarousel.setNumPages(videoFullList.length);
+        ]; */
+        var videoFullList = ref([])
+        const videoAPI = new VideoListAPI();
+        videoAPI.getVideos('', (data) => {
+            console.log(data.data);
+            videoFullList.value = data.data.items;
+            //store.videoCarousel.setNumPages(videoFullList.length);
+        });
         return { navTitle, store, videoFullList };  
     },
     computed: {
