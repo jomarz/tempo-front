@@ -235,13 +235,10 @@ export default {
         var commentCount = ref(0);
         var likesCount = ref(0);
         postContentAPI.getContent(store.articleData.id, store.articleData.permalink, store.articleData.isEvent, (data) => {
-            if(data.data != null) {console.log(data.data);
-                console.log(content.value);
+            if(data.data != null) {
                 let tempContent = data.data;
                 tempContent.contents.forEach((element, index) => {
                     if(element.contentType === 'table') {
-                        console.log(JSON.parse(element.html));
-                        console.log(index);
                         tempContent.contents[index].html = JSON.parse(element.html);
                     }
                 });
