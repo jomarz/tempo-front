@@ -16,9 +16,9 @@ export default  {
         articles: { applyFilter: false, filter: '' }
     }),
     featVideo: reactive({
-        title: 'Krzysztof Penderecki',
+        title: '',
         subtitle: '',
-        src: 'https://www.youtube-nocookie.com/embed/_x2QIJyxJQA',
+        src: '',
     }),
     eventsCarousel: new Carousel(1,9),
     videoCarousel: new Carousel(1,3),
@@ -66,6 +66,6 @@ export default  {
     },
     setfeatVideo(videoInfo) {
         this.featVideo.src = 'https://www.youtube.com/embed/'+videoInfo.snippet.resourceId.videoId;
-        this.featVideo.title = videoInfo.title;
+        this.featVideo.title = videoInfo.snippet.title;
     },
 }

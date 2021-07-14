@@ -70,11 +70,13 @@ export default {
                 subtitle: ''
             },
         ]; */
-        var videoFullList = ref([])
+        var videoFullList = ref([]);
+        //var featVideo = ref({});
         const videoAPI = new VideoListAPI();
         videoAPI.getVideos('', (data) => {
             console.log(data.data);
             videoFullList.value = data.data.items;
+            store.setfeatVideo(data.data.items[0]);
             //store.videoCarousel.setNumPages(videoFullList.length);
         });
         return { navTitle, store, videoFullList };  

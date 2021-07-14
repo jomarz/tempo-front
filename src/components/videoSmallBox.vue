@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="video-box-title">
-            {{boxContent.title}}
+            {{boxContent.snippet.title}}
         </div>
     </div>
 </template>
