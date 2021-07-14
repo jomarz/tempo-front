@@ -51,10 +51,14 @@ export default {
         }
         .video-box-title {
             font-size: 0.9rem !important;
-            line-height: 1.1rem;
+            line-height: 1rem;
             font-family: 'Playfair display';
             font-weight: 400;
-            margin: 6px 0 15px;
+            margin: 5px 0 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
     }
     .horizontal-carousel-video {
