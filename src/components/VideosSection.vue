@@ -77,7 +77,7 @@ export default {
             console.log(data.data);
             videoFullList.value = data.data.items;
             store.setfeatVideo(data.data.items[0]);
-            //store.videoCarousel.setNumPages(videoFullList.length);
+            store.videoCarousel.setNumPages(videoFullList.value.length);
         });
         return { navTitle, store, videoFullList };  
     },
