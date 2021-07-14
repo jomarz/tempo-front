@@ -28,13 +28,19 @@
                             </div>
                         </div>
                         <template v-for="(element, index) in content.contents" :key="element.id" :class="{innerAdContainer: element.contentType=='innerAds'}">
-                            <ad-box v-if="index==content.contents.length-1" :ad="articleAdsList['ARTICLE_BODY_BOTTOM_FULL_BANNER']" class="ad-row" />
+                            <ad-box v-if="index==content.contents.length-1 && articleAdsList['ARTICLE_BODY_BOTTOM_FULL_BANNER']" :ad="articleAdsList['ARTICLE_BODY_BOTTOM_FULL_BANNER']" class="ad-row" />
                             <div v-if="element.contentType == 'innerAds'" class="article-body-ad" >
-                                <div v-for="(innerAd, index) in element.ads" class="article-inner-ad" :key="index">
+                                <div v-if="articleAdsList['ARTICLE_BODY_LEFT_FIRST_RECTANGLE']" class="article-inner-ad">
+                                    <a :href="articleAdsList['ARTICLE_BODY_LEFT_FIRST_RECTANGLE'].linkUrl"><img :src="articleAdsList['ARTICLE_BODY_LEFT_FIRST_RECTANGLE'].imgUrl" alt="" class="ad-img"></a>
+                                </div>
+                                <div v-if="articleAdsList['ARTICLE_BODY_LEFT_SECOND_RECTANGLE']" class="article-inner-ad">
+                                    <a :href="articleAdsList['ARTICLE_BODY_LEFT_SECOND_RECTANGLE'].linkUrl"><img :src="articleAdsList['ARTICLE_BODY_LEFT_SECOND_RECTANGLE'].imgUrl" alt="" class="ad-img"></a>
+                                </div>
+                                <!-- <div v-for="(innerAd, index) in element.ads" class="article-inner-ad" :key="index">
                                     <img :src="innerAd.imgUrl" alt="">
                                     <div class="inner-ad-title" v-html="innerAd.title"></div>
                                     <div class="inner-ad-subtitle" v-html="innerAd.subtitle"></div>
-                                </div>
+                                </div> -->
                             </div>
                             <p v-else-if="element.contentType == 'p'" class="article-text" v-html="element.html" ></p>
                             <h2 v-else-if="element.contentType == 'h2'" class="article-text" v-html="element.html"></h2>
@@ -57,7 +63,7 @@
                         <article-comments v-if="showComments" :comments="comments" @toggle-article-comments="toggleArticleComments()" @update-comments="updateComments()" />
                         <comment-respond class="main-comment-input" @update-comments="updateComments()" />
                     </div>
-                    <ad-box class="ad-row ad-article-full" :ad="articleAdsList['ARTICLE_CONTENT_BOTTOM_FULL_BANNER']" />
+                    <ad-box v-if="articleAdsList['ARTICLE_CONTENT_BOTTOM_FULL_BANNER']" class="ad-row ad-article-full" :ad="articleAdsList['ARTICLE_CONTENT_BOTTOM_FULL_BANNER']" />
                     <related-articles :relatedArticles="relatedArticles" class="md-up" />
                     <article-cta />
                 </div>
@@ -281,7 +287,7 @@ export default {
         ARTICLE_CONTENT_BOTTOM_FULL_BANNER: false
         });
         adsAPI.getAds('article', (data)=> {
-        articleAdsList.value = articleAds.buildAdList(data.data);
+            articleAdsList.value = articleAds.buildAdList(data.data);
         });
         return { store, contentType, content, relatedArticles, articleAds, articleAdsList, showContent, showComments, comments, commentCount, likePostAPI, postIsLiked, likesCount, countComments, commentsAPI };
     },
