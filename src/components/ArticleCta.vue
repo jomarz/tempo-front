@@ -35,6 +35,7 @@ export default {
         }
         .article-cta-text {
         font-size: 0.7rem !important;
+        line-height: 0.8rem;
         font-family: 'Roboto', sans-serif;
         font-weight: 400;
         max-width: 520px;

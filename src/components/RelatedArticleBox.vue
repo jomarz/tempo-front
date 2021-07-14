@@ -37,8 +37,8 @@ export default {
             margin-bottom: 8px;
         }
         .related-title {
-            font-size: 0.9rem;
-            line-height: 1.15rem;
+            font-size: 0.85rem;
+            line-height: 1rem;
             margin: 0 0 5px;
         }
         .related-description {
