@@ -502,7 +502,8 @@ export default {
             }
             .author-info {
                 display: flex;
-                margin-bottom: 20px;;
+                margin-bottom: 20px;
+                margin-left: -13px;
             }
             .author-pic img {
                 width: 74px;
@@ -512,6 +513,7 @@ export default {
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-end;
+                margin-bottom: 7px;
                 .author-name {
                     font-size: 0.95rem !important;
                     font-family: 'Playfair display';

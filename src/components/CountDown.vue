@@ -93,5 +93,21 @@ export default {
                 font-size: 0.4rem;
             }
         }
+        .event-modal-lower-info-box {
+            .count-down {
+                margin: 15px 0 0;
+                .count-down-item {
+                    height: 58px;
+                    width: 58px;
+                }
+                .count-down-number {
+                    font-size: 1.05rem;
+                    line-height: 1.15rem;
+                }
+                .count-down-item-title {
+                    font-size: 0.5rem;
+                }
+            }
+        }
     }
 </style>

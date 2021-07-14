@@ -32,6 +32,9 @@
     <div v-if="contentType==='article'" class="info-box">
         <ArticleModalInfoBox :featuredInfo="content"/>
     </div>
+    <div v-else-if="contentType==='event'" class="lower-info-box-event">
+        <event-modal-lower-info-box :featuredInfo="content"/>
+    </div>
 </template>
 
 <script>
@@ -41,9 +44,10 @@ import FeatInfoEvent from './FeatInfoEvent.vue'
 import MediaControls from './MediaControls.vue'
 import ArticleModalInfoBox from './ArticleModalInfoBox'
 import MediaAPI from '../classes/MediaAPI'
+import EventModalLowerInfoBox from './EventModalLowerInfoBox'
 
 export default {
-    components: { FeatInfoEvent, MediaControls, ArticleModalInfoBox },
+    components: { FeatInfoEvent, MediaControls, ArticleModalInfoBox, EventModalLowerInfoBox },
     props: {
         contentType: {
             required: true,
@@ -166,6 +170,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+    .lower-info-box-event {
+        display: none; // For smaller screens will be vissible
+    }
     .modal-main-display {
         width: 100%;
         display: flex;
@@ -188,7 +196,7 @@ export default {
             width: 100%;
             margin-left: 0px;
         }
-
+        
         * {box-sizing:border-box}
 
         /* Slideshow container */
@@ -321,6 +329,9 @@ export default {
                 margin-left: 0;
                 background-color: gray;
             }
+        }
+        .lower-info-box-event {
+            display: flex;
         }
     }
 </style>

@@ -194,5 +194,58 @@ export default {
         .top-row td {
             padding-bottom: 5px;
         }
+        .event-modal-lower-info-box {    
+            .name-cell {
+                height: 1.2rem;
+            }
+            .feat-event-name {
+                font-size: 0.8rem !important;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                min-height: 0.85rem;
+            }
+            .feat-event-month {   
+                font-size: 0.7rem !important;
+                font-family: 'Roboto', sans-serif;
+                color: white;
+                font-weight: 700;
+            }
+            .feat-event-location {   
+                font-size: 0.6rem !important;
+                font-family: 'Roboto', sans-serif;
+                color: white;
+                font-weight: 300;
+                display: block;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+            a.feat-event-link {
+                font-size: 0.6rem !important;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 700;
+                color: #ffc828;
+                display: block;
+            }
+            .feat-event-day {
+                font-size: 1.05rem !important;
+            }
+            .feat-info-box td {
+                padding-top: 2px;
+            }
+            .feat-info-box td.right-col {
+                padding-left: 6px;
+                padding-right: 5px;
+            }
+            .feat-info-box td.left-col {
+                padding-right: 10px;
+            }
+            .top-row td {
+                padding-bottom: 5px;
+            }
+        }
     }
 </style>
