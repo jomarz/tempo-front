@@ -38,6 +38,9 @@ export default {
             display: none;
         }    
     }
+    .concerts-section .horizontal-carousel {
+        padding: 0;
+    }
     .horizontal-carousel {
         padding: 0 15px;
         width: 100%;

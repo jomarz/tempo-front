@@ -10,7 +10,6 @@
                         <count-down class="mobile-countdown" :datetime="featuredInfo.datetime" ></count-down>
                     </div>
                     <div class="mobile-featured-info">
-                        <h1>{{featuredType}}</h1>
                         <feat-info-event-box :featuredInfo="featuredInfo" class="home-main"/>
                     </div>
                 </template>
@@ -53,7 +52,8 @@ export default {
         var showInfo = ref(false);
         featuredAPI.getFeaturedInfo('', (data) => { 
             if (data.data[0].post_type === 'event') {
-                featuredInfo.value = Lister.assignDateFields(data.data)[0]; 
+                featuredInfo.value = Lister.assignDateFields(data.data)[0];
+                featuredType.value = 'event'
                 showInfo.value = true;
             } else if (data.data[0].post_type === 'article') {
                 featuredInfo.value = data.data[0];
@@ -109,8 +109,12 @@ export default {
             display: flex;
             padding: 10px;
         }
-        .right  -article-mobile-info {
+        .mobile-featured-title {
+            margin-top: 3px;
+        }
+        .right-article-mobile-info {
             padding: 10px 0 0 5px;
+            margin-left: 15px;
         }
     }
 </style>

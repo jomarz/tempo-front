@@ -11,7 +11,7 @@
                 <AlbumsCTA />
             </div>
             <div class="col-12 col-md-3">
-                <printed-vertical v-if="false" :printedList="printedList" />
+                <printed-vertical :printedList="printedList" />
             </div>
         </div>
     </div>
@@ -46,14 +46,10 @@ export default {
           { id: '8', title: "Imodipic iissimus", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a fermentum risus, eget vehicula magna. Aliquam erat volutpat. In condimentum neque neque, in tempus nulla interdum eget. Vestibulum et leo eget purus eleifend semper ut eget tellus. Maecenas sit amet pellentesque tellus.", imgUrl: "https://picsum.photos/seed/jorgeab8/300/300" },
       ]; */
         const printedFullList = [
-            { id: 1, title: "Imodipic iissimus", description: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgabc1/200/300" }, 
-            { id: 2, title: "Imodipic iissimus", description: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgacc2/200/301" },
-            { id: 3, title: "Imodipic iissimus", description: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgabc3/200/300" }, 
-            { id: 4, title: "Imodipic iissimus", description: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgacc4/200/301" },
-            { id: 5, title: "Imodipic iissimus", description: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgabc5/200/300" }, 
-            { id: 6, title: "Imodipic iissimus", description: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgacc6/200/301" },
-            { id: 7, title: "Imodipic iissimus", description: "Bea cullendicid eiur sed qui beatectur, occum andesequi omnihicienes del is dis. Bea cullendicid eiur sed qui beatectur", imgUrl: "https://picsum.photos/seed/jorgacc7/200/301" }
-        ];
+            { id: 1, title: "", description: "", imgUrl: "/img/edicion1.jpeg" },
+            { id: 2, title: "", description: "", imgUrl: "/img/edicion2.jpeg" },
+            { id: 3, title: "", description: "", imgUrl: "/img/edicion3.jpeg" }, 
+            ];
         const albumsAPI = new AlbumsAPI();
         var albumsFullList = ref([]);
         albumsAPI.getPosts(40, 0, (data)=> {
