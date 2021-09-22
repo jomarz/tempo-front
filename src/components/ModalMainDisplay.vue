@@ -17,7 +17,7 @@
                         <iframe :src="media.url" frameborder="0" allowtransparency="true" allow="encrypted-media;" allowfullscreen></iframe>
                     </div>
                     <div v-else-if="media.mediaType=='timeLineUrl'" class="mySlides fades media-timeline" :class="{firstslide: index==0}">
-                        <img :src="media.url" >
+                        <img :src="media.url" v-on:click="openInfograph(media.url)">
                     </div>
 
                 </template>
@@ -127,7 +127,7 @@ export default {
             }
         });
         /* mediaFullList.value = mediaAPI.getDummyMedia(); */
-        return { slideIndex, mediaFullList, hideSlides }
+        return { store, slideIndex, mediaFullList, hideSlides }
     },
     methods: {
         // Next/previous controls
@@ -159,6 +159,10 @@ export default {
         jumpToMediaType(mediaType) {
             const newIndex = this.getFirstOfType(mediaType);
             if(newIndex != -1)  this.currentSlide(newIndex+1);
+        },
+        openInfograph(url) {
+            this.store.setInfographUrl(url);
+            this.store.toggleInfograph();
         }
     },
     mounted() {
@@ -218,6 +222,8 @@ export default {
             .media-timeline {
                 width: 100%;
                 height: 100%;
+                cursor: pointer;
+                z-index: -3;
                 img {    
                     width: 100%;
                     height: 100%;

@@ -20,6 +20,7 @@
   <article-window v-if="store.showArticle.state" @close-article="closeArticle()" :key="articleKey"/>
   <subscribe-window v-if="store.showSubscribe.state" @toggle="store.toggleSubscribe()" />
   <contact-form v-if="store.showContactForm.state" @toggle="store.toggleContactForm()" />
+  <infograph-window v-if="store.showInfograph.state" @toggle="store.toggleInfograph()" />
 
 </template>
 
@@ -34,6 +35,7 @@ import ArticlesSection from './components/ArticlesSection.vue';
 import AlbumsSection from './components/AlbumsSection.vue';
 import Footer from './components/Footer.vue';
 import ArticleWindow from './components/ArticleWindow.vue';
+import InfographWindow from './components/InfographWindow.vue';
 
 import { ref } from 'vue';
 
@@ -88,6 +90,7 @@ export default {
     SubscribeWindow,
     MobileMenu,
     ContactForm,
+    InfographWindow,
   },
   methods: {
     closeArticle() {

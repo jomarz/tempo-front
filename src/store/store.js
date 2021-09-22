@@ -5,6 +5,8 @@ export default  {
     siteURL: "https://revistatempo.co",
     articleData: reactive({ id: 1, permalink: '', isEvent: 0 }),
     showArticle: reactive({ state: false }),
+    showInfograph: reactive({ state: false }),
+    infographUrl: reactive({url: ''}),
     showSubscribe: reactive({ state: false }),
     showContactForm: reactive({ state: false }),
     showMobileMenu: reactive({ state: false }),
@@ -43,14 +45,23 @@ export default  {
     setArticleId(id) {
         this.articleData.id = id;
     },
+    setInfographUrl(url) {
+        this.infographUrl.url = url;
+    },
     toggleArticle() {
         this.showArticle.state = !this.showArticle.state;
+    },
+    toggleInfograph() {
+        this.showInfograph.state = !this.showInfograph.state;
     },
     openArticle() {
         this.showArticle.state = true;
     },
     getShowArticleState() {
         return this.showArticle.state;
+    },
+    getShowInfograph() {
+        return this.showInfograph.state;
     },
     toggleSubscribe() {
         this.showSubscribe.state = !this.showSubscribe.state;
