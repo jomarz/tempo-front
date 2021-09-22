@@ -92,14 +92,14 @@ export default {
     computed: {
         contentFullList: function() {
             // Uncomment next block to filter articles
-            /* if(store.sectionFilter.articles.applyFilter) {
+            if(store.sectionFilter.articles.applyFilter) {
                 var filteredContent = this.contentUnfilteredFullList.filter( element => {
                     console.log(element.musicGenre);
                     return element.musicGenre.includes(store.sectionFilter.articles.filter);
                 });
                 console.log(filteredContent);
                 return filteredContent;
-            } */
+            }
             return this.contentUnfilteredFullList;
         },
         contentList() {
