@@ -4,7 +4,7 @@
             <td class="left-col">
             </td>
             <td class="right-col name-cell">
-                <h4 class="feat-event-name">{{featuredInfo.artist}}</h4>
+                <h4 class="feat-event-name" v-html="featuredInfo.artist"></h4>
             </td>
         </tr>
         <tr class="bottom-row">

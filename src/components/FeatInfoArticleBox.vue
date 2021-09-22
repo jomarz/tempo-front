@@ -12,7 +12,7 @@
                 <h2 class="feat-event-day"></h2>
             </td>
             <td class="right-col">
-                <div class="feat-article-description">{{featuredInfo.artist}}</div>
+                <div class="feat-article-description" v-html="featuredInfo.artist"></div>
                 <read-more-link class="feat-article-link" contentType="article" :contentPermalink="featuredInfo.permalink" isEvent="0" :contentId="featuredInfo.id" />
             </td>
         </tr>

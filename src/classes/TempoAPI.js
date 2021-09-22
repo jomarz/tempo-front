@@ -1,6 +1,6 @@
 export default class TempoAPI {
     constructor() {
-        this.APIUrl = "https://tempo.api.wittrees.com/api/";
+        this.APIUrl = "https://api.temporevista.com/";
     }
     makeAPICall(service, _data, handlerFunction) {
 
