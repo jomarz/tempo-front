@@ -39,8 +39,15 @@ export default  {
         this.articleData.isEvent = isEvent;
     },
     setSectionFilter(section, filter) {
-        this.sectionFilter[section].applyFilter = true;
-        this.sectionFilter[section].filter = filter;
+        if (this.sectionFilter[section].applyFilter && this.sectionFilter[section].filter == filter) {
+            this.sectionFilter[section].applyFilter = false;
+        } else {
+            this.sectionFilter[section].applyFilter = true;
+            this.sectionFilter[section].filter = filter;
+        }
+    },
+    isFiltered(section, filter) {
+        return (this.sectionFilter[section].applyFilter && this.sectionFilter[section].filter == filter);
     },
     setArticleId(id) {
         this.articleData.id = id;

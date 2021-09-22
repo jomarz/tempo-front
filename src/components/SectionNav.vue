@@ -7,7 +7,7 @@
         </div>
         <div class="section-nav-menu">
             <ul class="nav-menu section-menu">
-                <li class="navbar-menu-item" v-for="menuItem in menuItems" :key="menuItem"><a href="" class='navbar-menu-link' :data-text="menuItem.text" @click.prevent="store.setSectionFilter(section, menuItem.filter)">{{menuItem.text}}</a></li>
+                <li class="navbar-menu-item" v-for="menuItem in menuItems" :key="menuItem"><a href="" class='navbar-menu-link' :data-text="menuItem.text" @click.prevent="store.setSectionFilter(section, menuItem.filter)" :class="{onFilter: store.isFiltered(section, menuItem.filter)}">{{menuItem.text}}</a></li>
             </ul>
         </div>
     </div>
@@ -73,6 +73,9 @@ export default {
             .sep-left {
                 border-right: 1px solid black;
             }
+        }
+        a.navbar-menu-link.onFilter {
+            font-weight: 700;
         }
     }
     @media only screen and (max-width: 767px) {
