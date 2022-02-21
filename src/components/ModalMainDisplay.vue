@@ -8,7 +8,7 @@
             <div class="slideshow-container" :class="hideSlides">
                 <template v-for="(media, index) in mediaFullList" :key="media.mediaId">
                     <div v-if="media.mediaType=='imgUrl'" class="mySlides fades media-img" :class="{firstslide: index==0}">
-                        <img :src="media.url" style="width:100%">
+                        <img :src="media.url" style="width:100%" v-on:click="openImagesModal()">
                     </div>
                     <div v-else-if="media.mediaType=='VideoUrl'" class="mySlides fades media-video" :class="{firstslide: index==0}">
                         <iframe :src="media.url" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -78,7 +78,6 @@ export default {
         ];
         var mediaFullList = ref(emptyMedia);
         var hideSlides = ref(true);
-        console.log(props.content);
         /* const dummy = [
             {
                 mediaId: 1,
@@ -163,6 +162,10 @@ export default {
         openInfograph(url) {
             this.store.setInfographUrl(url);
             this.store.toggleInfograph();
+        },
+        openImagesModal() {
+            this.store.setArticleMedia(this.mediaFullList);
+            this.store.toggleImagesModal();
         }
     },
     mounted() {
@@ -217,6 +220,7 @@ export default {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
+                    cursor: zoom-in;
                 }
             }
             .media-timeline {

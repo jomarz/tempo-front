@@ -6,6 +6,8 @@ export default  {
     articleData: reactive({ id: 1, permalink: '', isEvent: 0 }),
     showArticle: reactive({ state: false }),
     showInfograph: reactive({ state: false }),
+    showImagesModal: reactive({ state: false }),
+    articleMedia: reactive({media: []}),
     infographUrl: reactive({url: ''}),
     showSubscribe: reactive({ state: false }),
     showContactForm: reactive({ state: false }),
@@ -55,11 +57,17 @@ export default  {
     setInfographUrl(url) {
         this.infographUrl.url = url;
     },
+    setArticleMedia(mediaList) {
+        this.articleMedia.media = mediaList;
+    },
     toggleArticle() {
         this.showArticle.state = !this.showArticle.state;
     },
     toggleInfograph() {
         this.showInfograph.state = !this.showInfograph.state;
+    },
+    toggleImagesModal() {
+        this.showImagesModal.state = !this.showImagesModal.state;
     },
     openArticle() {
         this.showArticle.state = true;

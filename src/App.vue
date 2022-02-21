@@ -21,6 +21,7 @@
   <subscribe-window v-if="store.showSubscribe.state" @toggle="store.toggleSubscribe()" />
   <contact-form v-if="store.showContactForm.state" @toggle="store.toggleContactForm()" />
   <infograph-window v-if="store.showInfograph.state" @toggle="store.toggleInfograph()" />
+  <images-modal v-if="store.showImagesModal.state" @toggle="store.toggleImagesModal()" />
 
 </template>
 
@@ -46,6 +47,7 @@ import AdsList from './classes/AdsList';
 import SubscribeWindow from './components/SubscribeWindow.vue';
 import MobileMenu from './components/MobileMenu.vue';
 import ContactForm from './components/ContactForm.vue';
+import ImagesModal from './components/ImagesModal.vue';
 
 export default {
   name: 'App',
@@ -91,6 +93,7 @@ export default {
     MobileMenu,
     ContactForm,
     InfographWindow,
+    ImagesModal
   },
   methods: {
     closeArticle() {
