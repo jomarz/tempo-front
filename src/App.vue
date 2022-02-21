@@ -103,9 +103,12 @@ export default {
   },
   watch:{
     $route (newRoute){
-        document.title = newRoute.meta.title || 'Revista Tempo';
+        document.title = newRoute.meta.title || 'Revista Tempo'; console.log(newRoute);
+        if (store.getShowArticleState() && newRoute.path === '/') {
+            this.store.toggleArticle();
+        }
         if(newRoute.params != undefined && newRoute.params.type != undefined && newRoute.params.permalink != undefined)  {
-            var isEvent = 0; console.log(store.getShowArticleState());
+            var isEvent = 0;
             if(store.getShowArticleState()) {
                 this.articleKey += 1;
                 /* this.store.toggleArticle();
