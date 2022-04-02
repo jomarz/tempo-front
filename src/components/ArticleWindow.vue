@@ -463,7 +463,7 @@ export default {
             p {    
                 line-height: 1.18rem;
                 font-size: 0.75rem !important;
-                text-align: justify;
+                text-align: left;
             }
             h1 ,h2 {
                 margin-top: 10px;
