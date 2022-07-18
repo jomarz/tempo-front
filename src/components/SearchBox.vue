@@ -108,7 +108,7 @@ export default {
 
     @media only screen and (max-width: 767px) {
         .search-input {
-            height: 1.2rem;
+            height: 1.5rem;
             width: 100%;
             margin: 15px 0;
             font-size: 1rem;

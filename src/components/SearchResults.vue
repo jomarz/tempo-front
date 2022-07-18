@@ -6,8 +6,8 @@
         <div class="results-content">
             <div class="results-list">
                 <div v-for="result in resultsList" class="search-result" :key="result.id">
-                    <a href="" class="result-title" @click.prevent="openContent(result.permalink, result.postType); $emit('close-results'); closeMobileSearchbox();" >{{result.article_title}}</a>
-                    <div class="result-subtitle">{{result.article_subtitle}}</div>
+                    <a href="" class="result-title" v-html="result.article_title" @click.prevent="openContent(result.permalink, result.postType); $emit('close-results'); closeMobileSearchbox();" ></a>
+                    <div class="result-subtitle" v-html="result.article_subtitle"></div>
                 </div>
             </div>
         </div>
