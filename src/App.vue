@@ -103,7 +103,7 @@ export default {
   },
   watch:{
     $route (newRoute){
-        document.title = newRoute.meta.title || 'Revista Tempo'; console.log(newRoute);
+        document.title = newRoute.meta.title || 'Revista Tempo';
         if (store.getShowArticleState() && newRoute.path === '/') {
             this.store.toggleArticle();
         }
@@ -111,18 +111,6 @@ export default {
             var isEvent = 0;
             if(store.getShowArticleState()) {
                 this.articleKey += 1;
-                /* this.store.toggleArticle();
-                console.log(store.getShowArticleState());
-                if(newRoute.params.type == 'articulo') {
-                    store.setArticlePermalink(newRoute.params.permalink, isEvent);
-                    store.openArticle();
-                } else if (newRoute.params.type == 'evento') {
-                    isEvent = 1;
-                    store.setArticlePermalink(newRoute.params.permalink, isEvent);
-                    store.openArticle();
-                } else {
-                    this.$router.push('/');
-                } */
             }
             else {
                 if(newRoute.params.type == 'articulo') {
@@ -137,13 +125,9 @@ export default {
                 }
             }
         }
-        else  console.log('No permalink');
     }
   }, 
     mounted() {
-        /* console.log(this.$route);
-        if(this.$route.params.permalink == "") console.log("Go home");
-        else console.log(this.$route.params.permalink); */
     }
 }
 </script>

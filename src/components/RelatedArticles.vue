@@ -1,8 +1,8 @@
 <template>
-    <div class="related-articles">
+    <div class="related-articles md-up">
         <h5 class="related-articles-title">También podría interesarle</h5>
         <div class="related-articles-boxes">
-            <related-article-box v-for="articleInfo in relatedArticles" :articleInfo="articleInfo" :key="articleInfo.id" />
+            <related-article-box v-for="articleInfo in relatedArticles" :boxContent="articleInfo" :key="articleInfo.id" />
         </div>
     </div>
 </template>

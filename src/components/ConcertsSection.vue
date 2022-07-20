@@ -65,7 +65,6 @@ export default {
                 // end DEV only
                 // Uncomment next line when in prod
                 contentUnfilteredFullList.value = Lister.assignDateFields(data.data);
-                console.log(contentUnfilteredFullList.value);
                 store.eventsCarousel.setNumPages(data.data.length);
                 });
         }

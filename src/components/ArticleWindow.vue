@@ -65,6 +65,9 @@
                     </div>
                     <ad-box v-if="articleAdsList['ARTICLE_CONTENT_BOTTOM_FULL_BANNER']" class="ad-row ad-article-full" :ad="articleAdsList['ARTICLE_CONTENT_BOTTOM_FULL_BANNER']" />
                     <related-articles :relatedArticles="relatedArticles" class="md-up" />
+                    <div class="mobile-related">
+                        <horizontal-carousel :contentList="relatedArticles" componentName="related-article-box"/>
+                    </div>
                     <article-cta />
                 </div>
             </div>
@@ -89,6 +92,7 @@ import ArticleCta from './ArticleCta.vue';
 import ArticleComments from './ArticleComments.vue';
 import CommentRespond from './CommentRespond.vue';
 import ArticleIcons from './ArticleIcons.vue';
+import HorizontalCarousel from './HorizontalCarousel.vue'
 
 export default {
     setup() {
@@ -250,7 +254,7 @@ export default {
                 });
                 let index2ndP = getIndex2ndParagraph(tempContent.contents);
                 tempContent.contents.splice(index2ndP, 0, innerAds);
-                content.value = tempContent; console.log(tempContent);
+                content.value = tempContent; 
                 // Create reactive likes-count variable
                 likesCount.value = content.value.likes;
                 // Assign month name
@@ -291,7 +295,7 @@ export default {
         });
         return { store, contentType, content, relatedArticles, articleAds, articleAdsList, showContent, showComments, comments, commentCount, likePostAPI, postIsLiked, likesCount, countComments, commentsAPI };
     },
-    components: { ModalMainDisplay, RelatedArticles, AdBox, ArticleCta, ArticleComments, ArticleIcons, CommentRespond  },
+    components: { ModalMainDisplay, RelatedArticles, AdBox, ArticleCta, ArticleComments, ArticleIcons, CommentRespond, HorizontalCarousel  },
     methods: {
         toggleArticleComments() {
             this.showComments = !this.showComments;
@@ -528,6 +532,9 @@ export default {
             .main-comment-input {
                 margin: 0 0 60px;
             }
+        }
+        .mobile-related {
+            display: grid;
         }
     }
     @media only screen and (max-width: 767px) {

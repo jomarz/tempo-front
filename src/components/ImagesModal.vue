@@ -46,7 +46,7 @@ export default {
             //var dots = document.getElementsByClassName("dot");
             if (n > slides.length) {this.imgIndex = 1}
             if (n < 1) {this.imgIndex = slides.length}
-            for (i = 0; i < slides.length; i++) {console.log(i);
+            for (i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";
             }
             /* for (i = 0; i < dots.length; i++) {

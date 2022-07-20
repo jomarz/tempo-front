@@ -1,8 +1,8 @@
 <template>
-    <div class="related-article-box" :articleInfo="articleInfo" @click="openContent(articleInfo.permalink, articleInfo.postType)">
-        <img :src="articleInfo.imgUrl" alt="">
-        <div class="related-title">{{articleInfo.article_title}}</div>
-        <p class="related-description">{{articleInfo.article_subtitle}}</p>
+    <div class="related-article-box" :class="inCarousel ? 'in-carousel' : ''" :boxContent="boxContent" @click="openContent(boxContent.permalink, boxContent.postType)">
+        <img :src="boxContent.imgUrl" alt="">
+        <div class="related-title">{{boxContent.article_title}}</div>
+        <p class="related-description">{{boxContent.article_subtitle}}</p>
     </div>    
 </template>
 
@@ -10,7 +10,11 @@
 import store from '../store/store'
 export default {
     props: {
-        articleInfo: { required: true }
+        boxContent: { required: true },
+        inCarousel: {
+            type: Boolean,
+            default: false
+        }
     },
     methods: {
         openContent(permalink, postType) {
@@ -44,5 +48,8 @@ export default {
         .related-description {
             line-height: normal;
         }
+    }
+    .in-carousel {
+        margin-right: 10px;
     }
 </style>

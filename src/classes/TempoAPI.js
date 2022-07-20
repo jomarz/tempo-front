@@ -26,7 +26,6 @@ export default class TempoAPI {
             })
             .then(data => {
                 handlerFunction(data);
-                //console.log(data);
             })
             .catch(error => {
                 console.error('Error:', error); 

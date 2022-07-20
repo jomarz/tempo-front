@@ -17,10 +17,7 @@ export default {
     components: { Comment },
     props: {
         comments: {type: Array}
-    },
-    setup(props) {
-        console.log(props.comments);
-    },
+    }
     
 }
 </script>

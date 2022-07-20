@@ -19,7 +19,7 @@ export default {
         subscribeToNewsletter()
         {
             const subscribeAPI = new SubscribeAPI();
-            subscribeAPI.sendSubscriptionRequest(this.email, this.name, (response) => {console.log(response)} );
+            subscribeAPI.sendSubscriptionRequest(this.email, this.name, () => {} );
         }
     }
 }

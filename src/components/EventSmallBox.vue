@@ -43,7 +43,7 @@ export default {
         }
     },
     methods: {
-        openContent(permalink, id, isEvent) {console.log({permalink, id, isEvent});
+        openContent(permalink, id, isEvent) {
             if (isEvent == 1)   this.$router.push('/evento/'+permalink);
             else                this.$router.push('/articulo/'+permalink);
         }

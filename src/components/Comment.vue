@@ -46,8 +46,8 @@ export default {
     computed: {
         timeSinceCommentString()
         {
-            let commentDatetime = new EventDatetime(this.comment.comment_datetime);console.log(this.comment.comment_datetime);
-            var timeSinceComment = commentDatetime.getDistanceToEvent();console.log(timeSinceComment);
+            let commentDatetime = new EventDatetime(this.comment.comment_datetime);
+            var timeSinceComment = commentDatetime.getDistanceToEvent();
             if(timeSinceComment.days > 0) {
                 if(timeSinceComment.days == 1)      return '1 día';
                 else                                return timeSinceComment.days+' días';

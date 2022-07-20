@@ -58,7 +58,8 @@ export default {
             type: Object
         },
         contentId: {
-            required: true
+            required: true,
+            type: Number
         },
         isEvent: {
             required: true
@@ -168,11 +169,6 @@ export default {
             this.store.toggleImagesModal();
         }
     },
-    mounted() {
-        /* console.log(this.slideIndex);
-        console.log(this.mediaFullList); */
-        //this.showSlides(this.slideIndex);
-    }
 }
 </script>
 

@@ -2,7 +2,7 @@
     <div class="horizontal-carousel">
         <div class="content-wrapper">
             <div v-for="content in contentList" :key="content.id" class="horizontal-carousel-item">
-                <component :is="componentName" :boxContent="content" ></component>
+                <component :is="componentName" :boxContent="content" :inCarousel="true" ></component>
                 <div v-if="componentName=='video-small-box'" class="mask-youtube" @click="changeVideo(content)" ></div>
             </div>
         </div>
@@ -17,9 +17,10 @@ import NewsSmallBox from './NewsSmallBox.vue';
 import VideoSmallBox from './videoSmallBox.vue';
 import AlbumSmallBox from './AlbumSmallBox.vue';
 import PrintedSmallBox from './PrintedSmallBox.vue';
+import RelatedArticleBox from './RelatedArticleBox.vue';
 
 export default {
-  components: { ArticleSmallBox, EventSmallBox, NewsSmallBox, VideoSmallBox, AlbumSmallBox, PrintedSmallBox },
+  components: { ArticleSmallBox, EventSmallBox, NewsSmallBox, VideoSmallBox, AlbumSmallBox, PrintedSmallBox, RelatedArticleBox },
     props: {
         componentName: { required: true },
         contentList : { required: true }
